@@ -16,12 +16,12 @@ import java.util.List;
     private List<Integer> getListOfLengths() {
         List<Integer> lengthList = new ArrayList<>();
         for (int i = 0; i < sequence.length - 1; i++) {
-            lengthList.add(buildSubsequenceWithDifferentOne(i).size());
+            lengthList.add(buildSubsequenceWithDifferenceOne(i).size());
         }
         return lengthList;
     }
 
-    private List<Integer> buildSubsequenceWithDifferentOne(int index) {
+    private List<Integer> buildSubsequenceWithDifferenceOne(int index) {
         List<Integer> subsequence = new ArrayList<>();
         while (index < sequence.length - 1) {
             if ((sequence[index] == sequence[index + 1] + 1) ||
