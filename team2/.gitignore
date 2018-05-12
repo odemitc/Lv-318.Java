@@ -29,3 +29,6 @@ hs_err_pid*
 /.idea
 >>>>>>> d4b2e7c9a2d8c36375f96d3b4a886e5f5fb839f1
 /target/
+/.idea/
+/.settings/
+
