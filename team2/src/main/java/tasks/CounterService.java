@@ -1,4 +1,4 @@
-package java.tasks;
+package tasks;
 
 public class CounterService {
 

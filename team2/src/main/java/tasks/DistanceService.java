@@ -1,4 +1,4 @@
-package java.tasks;
+package tasks;
 
 class DistanceService {
     //s(0)=1

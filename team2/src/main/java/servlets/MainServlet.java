@@ -9,6 +9,6 @@ package servlets;
 public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/jsp/index.jsp").forward(req,resp);
+        req.getRequestDispatcher("/jsp/main.jsp").forward(req,resp);
     }
 }
