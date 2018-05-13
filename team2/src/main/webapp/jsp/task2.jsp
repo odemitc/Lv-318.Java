@@ -10,14 +10,14 @@
 
 <div id="description">
     <h2>
-        Fibonacci
+        Modification Fibonacci
     </h2>
-    The goal: To find which is the member of position n in Fibonacci sequence
+    The goal: To find which is the member of position n in Modification Fibonacci sequence
 </div>
 
 <div id="task">
-    <form action="/task1" method="post">
-        <h4>Input: The position- n which is integer</h4>
+    <form action="/task2" method="post">
+        <h4>Input: The position- n which is integer </h4>
         <br>
         <input type="text" name="n">
         <input id="button" type="submit" value="Go">

@@ -10,13 +10,13 @@
 
 <div id="description">
     <h2>
-        Fibonacci
+        Intresting row
     </h2>
-    The goal: To find which is the member of position n in Fibonacci sequence
+    The goal: To find which is the member of position n in our interesting row.
 </div>
 
 <div id="task">
-    <form action="/task1" method="post">
+    <form action="/task3" method="post">
         <h4>Input: The position- n which is integer</h4>
         <br>
         <input type="text" name="n">

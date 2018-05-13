@@ -3,7 +3,7 @@ package tasks;
 import java.util.ArrayList;
 import java.util.List;
 
- class SequenceService {
+ public class SequenceService {
     private int[] sequence;
 
      SequenceService(int[] sequence) {
