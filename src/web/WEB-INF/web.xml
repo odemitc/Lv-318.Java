@@ -31,6 +31,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Task6</servlet-name>
+        <servlet-class>main.java.servlets.WaysToSumUsingPositiveIntegersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task6</servlet-name>
+        <url-pattern>/task6</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Task2</servlet-name>
         <servlet-class>main.java.servlets.ModificationFibonacciServlet</servlet-class>
     </servlet>
@@ -83,7 +92,6 @@
         <servlet-name>Task11</servlet-name>
         <url-pattern>/task11</url-pattern>
     </servlet-mapping>
-
 
     <servlet>
         <servlet-name>Task12</servlet-name>

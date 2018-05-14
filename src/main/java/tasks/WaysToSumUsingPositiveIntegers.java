@@ -3,7 +3,7 @@ package main.java.tasks;
 import java.util.Arrays;
 
 public class WaysToSumUsingPositiveIntegers {
-    static int countWays(int n)
+    public static int countWays(int n)
     {
         int table[] = new int[n + 1];
         Arrays.fill(table, 0);
