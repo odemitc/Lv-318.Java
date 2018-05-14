@@ -2,11 +2,11 @@ package main.java.tasks;
 
 public class FriendPairs {
 
-	public long countOfPairs(int n) {
+	public static long countOfPairs(int n) {
 		return combinations(n, 2)+1;
 	}
 
-	private long factorial(int n) {
+	private static long factorial(int n) {
 
 		long valueToReturn = 1;
 
@@ -20,7 +20,7 @@ public class FriendPairs {
 
 	}
 
-	private long combinations(int n, int k) {
+	private static long combinations(int n, int k) {
 		return factorial(n) / (factorial(k) * factorial(n - k));
 	}
 
