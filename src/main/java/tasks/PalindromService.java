@@ -3,9 +3,9 @@ package main.java.tasks;
 import java.util.HashSet;
 import java.util.Set;
 
-class PalindromService {
+public class PalindromService {
 
-    private boolean checkPalindrome(String word) {
+    private static boolean checkPalindrome(String word) {
 
         int i = 0;
         int j = word.length() - 1;
@@ -18,7 +18,7 @@ class PalindromService {
         return true;
     }
 
-    private Set<String> findAllPalindroms(String word) {
+    private static Set<String> findAllPalindroms(String word) {
         Set<String> palindromSet = new HashSet<>();
         for (int i = 0; i < word.length(); i++) {
             for (int j = word.length(); j >= i; j--) {
@@ -30,7 +30,7 @@ class PalindromService {
         return palindromSet;
     }
 
-    int getMaxLengthOfPalindrom(String word) {
+   public static int getMaxLengthOfPalindrom(String word) {
         return findAllPalindroms(word).stream()
                 .mapToInt(String::length)
                 .max()
