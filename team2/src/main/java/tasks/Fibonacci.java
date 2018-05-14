@@ -20,7 +20,11 @@ public class Fibonacci {
 				i++;
 			}
 
-			return list.get(n - 1);
+			if (n == 0){
+				return list.get(0);
+			}else{
+				return list.get(n-1);
+			}
 		}
 	
 }

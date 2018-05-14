@@ -12,4 +12,8 @@ public class PaintingFence {
 		return same+different;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 906994556a6002629d7fa8dcc8dbf464b4b18cec

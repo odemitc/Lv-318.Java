@@ -3,7 +3,7 @@ package tasks;
 public class FriendPairs {
 
 	public long countOfPairs(int n) {
-		return c(n, 2)+1;
+		return combinations(n, 2)+1;
 	}
 
 	private long factorial(int n) {
@@ -20,7 +20,7 @@ public class FriendPairs {
 
 	}
 
-	private long c(int n, int k) {
+	private long combinations(int n, int k) {
 		return factorial(n) / (factorial(k) * factorial(n - k));
 	}
 

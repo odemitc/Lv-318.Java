@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package tasks;
+=======
+package java.tasks;
+>>>>>>> 906994556a6002629d7fa8dcc8dbf464b4b18cec
 
 public class FenceService {
 
@@ -15,4 +19,8 @@ public class FenceService {
         }
         return count;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 906994556a6002629d7fa8dcc8dbf464b4b18cec
