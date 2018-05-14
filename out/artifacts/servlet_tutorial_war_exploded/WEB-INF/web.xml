@@ -66,4 +66,13 @@
         <url-pattern>/task12</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Task14</servlet-name>
+        <servlet-class>main.java.servlets.FenceServiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task14</servlet-name>
+        <url-pattern>/task14</url-pattern>
+    </servlet-mapping>
+
 </web-app>
