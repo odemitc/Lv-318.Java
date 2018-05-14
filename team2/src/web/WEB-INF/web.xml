@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>Main</servlet-name>
+        <servlet-class>servlets.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Main</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetTaskServlet</servlet-name>
+        <servlet-class>servlets.GetTaskServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetTaskServlet</servlet-name>
+        <url-pattern>/gettask</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Task1</servlet-name>
+        <servlet-class>servlets.Task1Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task1</servlet-name>
+        <url-pattern>/task1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Task2</servlet-name>
+        <servlet-class>servlets.Task2Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task2</servlet-name>
+        <url-pattern>/task2</url-pattern>
+    </servlet-mapping>
+
+</web-app>

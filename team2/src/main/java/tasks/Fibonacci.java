@@ -1,12 +1,12 @@
-package main.java.tasks;
+package tasks;
 
 import java.util.ArrayList;
 
 public class Fibonacci {
 
-		private ArrayList<Long> list = new ArrayList<Long>();
+		private static ArrayList<Long> list = new ArrayList<Long>();
 
-		public long fibonacciNumberCalc(int n) {
+		public static long fibonacciNumberCalc(int n) {
 
 			list.clear();
 

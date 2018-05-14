@@ -1,11 +1,14 @@
+package tasks;
+
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ModificationFibonacci {
 
-	private List<Integer> fibonachiList = new ArrayList<>();
+	private static List<Integer> fibonachiList = new ArrayList<>();
 
-	private void createFibonacciList(int n) {
+	private static void createFibonacciList(int n) {
 		fibonachiList.clear();
 		fibonachiList.add(0, 1);
 		fibonachiList.add(1, 1);
@@ -19,7 +22,7 @@ public class ModificationFibonacci {
 
 	}
 
-	public int findPossition(int k) {
+	public static int findPossition(int k) {
 		createFibonacciList(k);
 		return fibonachiList.get(k - 1);
 	}
