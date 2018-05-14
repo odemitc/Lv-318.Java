@@ -1,7 +1,7 @@
-package servlets;
+package  main.java.servlets;
 
 
-import tasks.IntrestingRow;
+import main.java.tasks.IntrestingRow;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

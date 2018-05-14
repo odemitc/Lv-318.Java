@@ -1,6 +1,6 @@
-package servlets;
+package  main.java.servlets;
 
-import tasks.Fibonacci;
+import  main.java.tasks.Fibonacci;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
