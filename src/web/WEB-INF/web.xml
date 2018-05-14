@@ -49,6 +49,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Task8</servlet-name>
+        <servlet-class>main.java.servlets.PathsWithoutCrossingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task8</servlet-name>
+        <url-pattern>/task8</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Task10</servlet-name>
         <servlet-class>main.java.servlets.PalindromServlet</servlet-class>
     </servlet>
@@ -58,12 +67,21 @@
     </servlet-mapping>
 
     <servlet>
-    <servlet-name>Task12</servlet-name>
-    <servlet-class>main.java.servlets.CounterServiceServlet</servlet-class>
-</servlet>
+        <servlet-name>Task12</servlet-name>
+        <servlet-class>main.java.servlets.CounterServiceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Task12</servlet-name>
         <url-pattern>/task12</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Task13</servlet-name>
+        <servlet-class>main.java.servlets.PaintingFenceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task13</servlet-name>
+        <url-pattern>/task13</url-pattern>
     </servlet-mapping>
 
     <servlet>

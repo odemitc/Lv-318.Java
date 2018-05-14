@@ -1,7 +1,7 @@
 package main.java.tasks;
 
 public class PaintingFence {
-	public int countWays(int n, int k) {
+	public static int countWays(int n, int k) {
 		int same=0;
 		int different = k;
 		for(int i=2; i<=n; i++) {

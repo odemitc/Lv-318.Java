@@ -2,25 +2,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Task 8</title>
-    <link href="/styles/main.css" rel="stylesheet" type="text/css"/>
+    <title>Task 13</title>
+    <link href="/styles/task12.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 
 <div id="description">
     <h2>
-        Paths without crossing
+        Painting the fence
     </h2>
-    The goal: Program to count number of ways to connect n (where n is even) points on a circle
-    such that no two connecting lines cross each other and every point is connected with one other point.
+    The goal:Given a fence with n posts and k colors, find out the number of ways of painting
+    the fence such that at most 2 adjacent posts have the same color.
+
+
 </div>
 
 <div id="task">
-    <form action="/task8" method="post">
-        <h4>Input:number of points - where n is an even and integer</h4>
-        <br>
+    <form action="/task13" method="post">
+        <h4>Input: n posts - which is integer</h4>
         <input type="text" name="n">
+        <h4>Input: k colors - which is integer</h4>
+        <input type="text" name="k">
+        <br>
         <input id="button" type="submit" value="Go">
     </form>
 </div>
