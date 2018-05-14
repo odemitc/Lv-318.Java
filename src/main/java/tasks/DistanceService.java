@@ -1,9 +1,9 @@
 package main.java.tasks;
 
-class DistanceService {
+public class DistanceService {
     //s(0)=1
     //s(n)=s(n-1)+s(n-1)+s(n-2)
-    private static int countWaysToCoverDistance(int distance) {
+    public static int countWaysToCoverDistance(int distance) {
         int[] countArray = new int[distance + 1];
         countArray[0] = 1;
         countArray[1] = 2;
