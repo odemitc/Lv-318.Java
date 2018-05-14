@@ -58,6 +58,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Task9</servlet-name>
+        <servlet-class>main.java.servlets.LowHighEffortsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task9</servlet-name>
+        <url-pattern>/task9</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Task10</servlet-name>
         <servlet-class>main.java.servlets.PalindromServlet</servlet-class>
     </servlet>
@@ -65,6 +74,16 @@
         <servlet-name>Task10</servlet-name>
         <url-pattern>/task10</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Task11</servlet-name>
+        <servlet-class>main.java.servlets.FirendPairsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task11</servlet-name>
+        <url-pattern>/task11</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>Task12</servlet-name>
