@@ -31,6 +31,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Task4</servlet-name>
+        <servlet-class>main.java.servlets.SequenceServiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task4</servlet-name>
+        <url-pattern>/task4</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Task6</servlet-name>
         <servlet-class>main.java.servlets.WaysToSumUsingPositiveIntegersServlet</servlet-class>
     </servlet>
