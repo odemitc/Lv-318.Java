@@ -1,10 +1,13 @@
-META-INF/
-.idea/
-out/
-target/
-
 # Compiled class file
 *.class
+
+.idea/
+/target/
+/.idea/
+/.settings/
+.metadata/
+
+
 
 
 # Log file
@@ -24,4 +27,8 @@ target/
 *.zip
 *.tar.gz
 *.rar
-*.iml
+*.project
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
