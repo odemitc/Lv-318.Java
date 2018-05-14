@@ -2,6 +2,10 @@
 *.class
 
 .idea/
+/target/
+/.idea/
+/.settings/
+
 
 
 
