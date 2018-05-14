@@ -1,5 +1,4 @@
-package tasks;
-
+package main.java.tasks;
 public class PathsWithoutCrossing {
 
 	public long amountOfPathsWithoutCrosses(int n) {

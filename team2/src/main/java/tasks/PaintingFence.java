@@ -1,4 +1,4 @@
-package tasks;
+package main.java.tasks;
 
 public class PaintingFence {
 	public int countWays(int n, int k) {
@@ -12,8 +12,5 @@ public class PaintingFence {
 		return same+different;
 	}
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 906994556a6002629d7fa8dcc8dbf464b4b18cec
+
