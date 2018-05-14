@@ -26,6 +26,10 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
+                        <option value="10">11</option>
+                        <option value="12">12</option>
+                        <option value="10">13</option>
+                        <option value="10">14</option>
                     </select>
                     <input type="submit" value="Go !" />
                 </form>

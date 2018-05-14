@@ -39,4 +39,13 @@
         <url-pattern>/task2</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Task12</servlet-name>
+        <servlet-class>main.java.servlets.CounterServiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task12</servlet-name>
+        <url-pattern>/task12</url-pattern>
+    </servlet-mapping>
+
 </web-app>
