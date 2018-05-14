@@ -23,7 +23,7 @@
 
     <servlet>
         <servlet-name>Task1</servlet-name>
-        <servlet-class>main.java.servlets.Task1Servlet</servlet-class>
+        <servlet-class>main.java.servlets.FibonacciServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task1</servlet-name>
@@ -32,7 +32,7 @@
 
     <servlet>
         <servlet-name>Task2</servlet-name>
-        <servlet-class>main.java.servlets.Task2Servlet</servlet-class>
+        <servlet-class>main.java.servlets.ModificationFibonacciServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task2</servlet-name>

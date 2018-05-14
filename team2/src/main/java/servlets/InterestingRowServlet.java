@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class Task3Servlet extends HttpServlet {
+public class InterestingRowServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int n = Integer.parseInt(req.getParameter("n"));
         int num = IntrestingRow.intrestingRow(n);
