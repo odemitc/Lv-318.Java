@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Task 14</title>
-    <link href="/styles/mian.css" rel="stylesheet" type="text/css"/>
+    <link href="/styles/task12.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -30,8 +30,8 @@
     </form>
 </div>
 <c:if test="${requestScope.output != null}">
-    <div id="result" style="margin: 100px 170px">
-
+    <div id="result">
+        <br>
         <h4>Output: <c:out value="${requestScope.output}"/></h4>
     </div>
 </c:if>

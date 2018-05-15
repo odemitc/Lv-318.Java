@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Task 13</title>
+    <title>Task 8</title>
     <link href="/styles/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -10,26 +10,23 @@
 
 <div id="description">
     <h2>
-        Painting the fence
+        Paths without crossing
     </h2>
-    The goal:Given a fence with n posts and k colors, find out the number of ways of painting
-    the fence such that at most 2 adjacent posts have the same color.
-
-
+    The goal: Program to count number of ways to connect n (where n is even) points on a circle
+    such that no two connecting lines cross each other and every point is connected with one other point.
 </div>
 
 <div id="task">
-    <form action="/task13" method="post">
-        <h4>Input: n posts - which is integer</h4>
-        <input type="text" name="n">
-        <h4>Input: k colors - which is integer</h4>
-        <input type="text" name="k">
+    <form action="/task8" method="post">
+        <h4>Input:number of points - where n is an even and integer</h4>
         <br>
+        <input type="text" name="n">
         <input id="button" type="submit" value="Go">
     </form>
 </div>
 <c:if test="${requestScope.output != null}">
-    <div id="result" style="margin: 100px 170px">
+    <div id="result">
+        <br>
         <h4>Output: <c:out value="${requestScope.output}"/></h4>
     </div>
 </c:if>

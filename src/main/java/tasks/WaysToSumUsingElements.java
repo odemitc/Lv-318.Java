@@ -1,7 +1,7 @@
 package main.java.tasks;
 
 public class WaysToSumUsingElements {
-    static int countWays(int n, int... array)
+    public static int countWays(int n, int... array)
     {
         int[] arr = array;
         int count[] = new int[n + 1];
