@@ -14,9 +14,10 @@ import java.io.IOException;
 public class CalculateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String number = req.getParameter("number");
+        String firstNumber = req.getParameter("firstNumber");
+        String secondNumber = req.getParameter("secondNumber");
         String label = req.getParameter("tasklabel");
-        String result = UtilityFabric.execute(number, label);
+        String result = UtilityFabric.execute(firstNumber, secondNumber, label);
         req.setAttribute("result", result);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/resultPage.jsp");
         requestDispatcher.forward(req, resp);
