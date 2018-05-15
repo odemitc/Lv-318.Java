@@ -6,7 +6,7 @@ public class WaysToTileFloor {
         return String.valueOf(countTheWays(Integer.valueOf(n), Integer.valueOf(m)));
     }
 
-    private int countTheWays(int n, int m)
+    private static int countTheWays(int n, int m)
     {
         //for storing values of subproblems
         int [] ways = new int[n+1];
