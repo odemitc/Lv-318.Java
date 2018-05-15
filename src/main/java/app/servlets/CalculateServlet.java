@@ -1,6 +1,5 @@
 package app.servlets;
 
-import app.classes.Fibonacci;
 import app.classes.UtilityFabric;
 
 import javax.servlet.RequestDispatcher;

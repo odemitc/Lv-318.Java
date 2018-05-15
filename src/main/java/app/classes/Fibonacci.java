@@ -6,14 +6,16 @@ public class Fibonacci {
         return String.valueOf(fibonacci(Integer.valueOf(n)));
     }
 
-    private static int fibonacci(int n){
-        int f [] = new int[n+1];
-        f[0] = 0;
-        f[1] = 1;
-        for (int i = 2; i <= n; i++){
-            f[i] = f[i-2] + f[i-1];
-        }
-        return f[n];
+    private static int fibonacci(int number){
+        if (number <= 1) return number;
+        int f1 = 1;
+        int f2 = 1;
 
-     }
+        for (int i = 2; i < number; i++) {
+            int temp = f2;
+            f2 += f1;
+            f1 = temp;
+        }
+        return f2;
+    }
 }
