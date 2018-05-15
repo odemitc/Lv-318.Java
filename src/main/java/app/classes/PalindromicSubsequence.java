@@ -3,7 +3,7 @@ package app.classes;
 public class PalindromicSubsequence {
 
     public static String execute(String n){
-        return "";
+        return String.valueOf(longestPalindrome(n));
     }
 
     private static int longestPalindrome(String s) {
