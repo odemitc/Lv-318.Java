@@ -12,6 +12,8 @@ public class UtilityFabric {
             break;
             case 10 : result = PalindromicSubsequence.execute(param1);
             break;
+            case 13 : result = Fence.execute(param1, param2);
+            break;
             default: result = "There is no such variant in the library";
             break;
         }
