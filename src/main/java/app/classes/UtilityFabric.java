@@ -6,7 +6,7 @@ public class UtilityFabric {
         switch (Integer.valueOf(label)){
             case 1 : result = Fibonacci.execute(param1);
             break;
-            case 2 : result = "";
+            case 6 : result = WaysAsSumPositiveInt.execute(param1);
             break;
             case 7 : result = CoverIn3Steps.execute(param1);
             break;
