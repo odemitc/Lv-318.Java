@@ -2,7 +2,7 @@ package app.classes;
 
 public class WaysToTileFloor {
 
-    public String execute (String n, String m){
+    public static String execute (String n, String m){
         return String.valueOf(countTheWays(Integer.valueOf(n), Integer.valueOf(m)));
     }
 
