@@ -8,6 +8,8 @@ public class UtilityFabric {
             break;
             case 2 : result = "";
             break;
+            case 10 : result = PalindromicSubsequence.execute(param);
+            break;
             default: result = "There is no such variant in the library";
             break;
         }
