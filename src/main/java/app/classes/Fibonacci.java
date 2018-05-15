@@ -6,7 +6,7 @@ public class Fibonacci {
         return String.valueOf(fibonacci(Integer.valueOf(n)));
     }
 
-    private static int fibonacci(int n){
+    private static int execute(int n){
         int f [] = new int[n+1];
         f[0] = 0;
         f[1] = 1;
