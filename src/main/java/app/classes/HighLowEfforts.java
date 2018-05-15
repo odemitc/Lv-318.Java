@@ -1,6 +1,6 @@
 package app.classes;
 
-public class HightLowEfforts {
+public class HighLowEfforts {
     public static String execute(String strLowTasks, String strHighTasks) {
         return Integer.toString(maxAmountTasks(strLowTasks, strHighTasks));
     }
