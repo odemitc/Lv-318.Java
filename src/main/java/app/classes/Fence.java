@@ -2,8 +2,8 @@ package app.classes;
 
 public class Fence {
 
-    public static String execute(String n){
-        return "";
+    public static String execute(String n, String m){
+        return String.valueOf(numWays(Integer.valueOf(n), Integer.valueOf(m)));
     }
 
     private static int numWays(int n, int k) {
