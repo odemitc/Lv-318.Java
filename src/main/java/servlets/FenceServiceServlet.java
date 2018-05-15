@@ -1,6 +1,6 @@
-package main.java.servlets;
+package servlets;
 
-import main.java.tasks.FenceService;
+import tasks.FenceService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

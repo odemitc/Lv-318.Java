@@ -1,14 +1,12 @@
-package main.java.servlets;
+package servlets;
 
-import main.java.tasks.SequenceService;
+import tasks.SequenceService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SequenceServiceServlet extends HttpServlet {
 

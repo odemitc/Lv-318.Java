@@ -5,7 +5,7 @@
          version="3.1">
     <servlet>
         <servlet-name>Main</servlet-name>
-        <servlet-class>main.java.servlets.MainServlet</servlet-class>
+        <servlet-class>servlets.MainServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Main</servlet-name>
@@ -14,7 +14,7 @@
 
     <servlet>
         <servlet-name>GetTaskServlet</servlet-name>
-        <servlet-class>main.java.servlets.GetTaskServlet</servlet-class>
+        <servlet-class>servlets.GetTaskServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetTaskServlet</servlet-name>
@@ -23,7 +23,7 @@
 
     <servlet>
         <servlet-name>Task1</servlet-name>
-        <servlet-class>main.java.servlets.FibonacciServlet</servlet-class>
+        <servlet-class>servlets.FibonacciServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task1</servlet-name>
@@ -31,8 +31,17 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Task3</servlet-name>
+        <servlet-class>servlets.InterestingRowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task3</servlet-name>
+        <url-pattern>/task3</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Task4</servlet-name>
-        <servlet-class>main.java.servlets.SequenceServiceServlet</servlet-class>
+        <servlet-class>servlets.SequenceServiceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task4</servlet-name>
@@ -40,8 +49,17 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Task5</servlet-name>
+        <servlet-class>servlets.WaysToSumUsingElementsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Task5</servlet-name>
+        <url-pattern>/task5</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Task6</servlet-name>
-        <servlet-class>main.java.servlets.WaysToSumUsingPositiveIntegersServlet</servlet-class>
+        <servlet-class>servlets.WaysToSumUsingPositiveIntegersServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task6</servlet-name>
@@ -50,7 +68,7 @@
 
     <servlet>
         <servlet-name>Task2</servlet-name>
-        <servlet-class>main.java.servlets.ModificationFibonacciServlet</servlet-class>
+        <servlet-class>servlets.ModificationFibonacciServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task2</servlet-name>
@@ -59,7 +77,7 @@
 
     <servlet>
         <servlet-name>Task7</servlet-name>
-        <servlet-class>main.java.servlets.DistanceServiceServlet</servlet-class>
+        <servlet-class>servlets.DistanceServiceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task7</servlet-name>
@@ -68,7 +86,7 @@
 
     <servlet>
         <servlet-name>Task8</servlet-name>
-        <servlet-class>main.java.servlets.PathsWithoutCrossingServlet</servlet-class>
+        <servlet-class>servlets.PathsWithoutCrossingServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task8</servlet-name>
@@ -77,7 +95,7 @@
 
     <servlet>
         <servlet-name>Task9</servlet-name>
-        <servlet-class>main.java.servlets.LowHighEffortsServlet</servlet-class>
+        <servlet-class>servlets.LowHighEffortsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task9</servlet-name>
@@ -86,7 +104,7 @@
 
     <servlet>
         <servlet-name>Task10</servlet-name>
-        <servlet-class>main.java.servlets.PalindromServlet</servlet-class>
+        <servlet-class>servlets.PalindromServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task10</servlet-name>
@@ -95,7 +113,7 @@
 
     <servlet>
         <servlet-name>Task11</servlet-name>
-        <servlet-class>main.java.servlets.FirendPairsServlet</servlet-class>
+        <servlet-class>servlets.FirendPairsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task11</servlet-name>
@@ -104,7 +122,7 @@
 
     <servlet>
         <servlet-name>Task12</servlet-name>
-        <servlet-class>main.java.servlets.CounterServiceServlet</servlet-class>
+        <servlet-class>servlets.CounterServiceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task12</servlet-name>
@@ -113,7 +131,7 @@
 
     <servlet>
         <servlet-name>Task13</servlet-name>
-        <servlet-class>main.java.servlets.PaintingFenceServlet</servlet-class>
+        <servlet-class>servlets.PaintingFenceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task13</servlet-name>
@@ -122,7 +140,7 @@
 
     <servlet>
         <servlet-name>Task14</servlet-name>
-        <servlet-class>main.java.servlets.FenceServiceServlet</servlet-class>
+        <servlet-class>servlets.FenceServiceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Task14</servlet-name>

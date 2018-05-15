@@ -1,5 +1,6 @@
-package main.java.servlets;
-import main.java.tasks.DistanceService;
+package servlets;
+
+import tasks.DistanceService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

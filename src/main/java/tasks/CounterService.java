@@ -1,4 +1,4 @@
-package main.java.tasks;
+package tasks;
 public class CounterService {
 
    public static int countWaysToTileFloor(int n, int m) {

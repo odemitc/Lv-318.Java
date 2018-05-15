@@ -1,6 +1,6 @@
-package main.java.servlets;
+package servlets;
 
-import main.java.tasks.CounterService;
+import tasks.CounterService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

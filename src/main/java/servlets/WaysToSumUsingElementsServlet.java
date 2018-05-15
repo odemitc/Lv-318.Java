@@ -1,7 +1,6 @@
-package main.java.servlets;
+package servlets;
 
-import main.java.tasks.WaysToSumUsingElements;
-import main.java.tasks.WaysToSumUsingPositiveIntegers;
+import tasks.WaysToSumUsingElements;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

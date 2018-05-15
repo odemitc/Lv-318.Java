@@ -1,4 +1,4 @@
-package main.java.tasks;
+package tasks;
 
 public class PaintingFence {
 	public static int countWays(int n, int k) {

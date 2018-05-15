@@ -1,4 +1,4 @@
-package main.java.tasks;
+package tasks;
 
 public class IntrestingRow {
     public static int intrestingRow(int n)

@@ -1,8 +1,6 @@
-package main.java.servlets;
+package servlets;
 
-
-
-import main.java.tasks.FriendPairs;
+import tasks.FriendPairs;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
