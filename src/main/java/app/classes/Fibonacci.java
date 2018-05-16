@@ -17,8 +17,8 @@ public class Fibonacci {
      * This method is used to provide the acces
      * to private method fibonacci.
      *
-     * @param n the String presentation of element position
-     * @return the String presentatio of the element with n-th position
+     * @param n the String representation of element position
+     * @return the String representation of the element with n-th position
      */
     public static String execute(String n) {
         return String.valueOf(fibonacci(Integer.valueOf(n)));
