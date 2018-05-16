@@ -10,6 +10,7 @@ public class UtilityFabric {
             break;
             case 7 : result = CoverIn3Steps.execute(param1);
             break;
+            case 9: result = HighLowEfforts.execute(param1, param2);
             case 10 : result = PalindromicSubsequence.execute(param1);
             break;
             case 12 : result = WaysToTileFloor.execute(param1, param2);

@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package app.classes;
 
 public class ModificationFibonachi {
     public static String execute(String str){
