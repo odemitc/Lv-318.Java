@@ -26,7 +26,7 @@
 </div>
 <c:if test="${requestScope.output != null}">
     <div id="result">
-        <h4>Output: <c:out value = "${requestScope.output}"/></h4>
+        <h4>Output: <c:out value="${requestScope.output}"/></h4>
     </div>
 </c:if>
 

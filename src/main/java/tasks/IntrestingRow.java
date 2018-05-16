@@ -1,8 +1,7 @@
 package tasks;
 
 public class IntrestingRow {
-    public static int intrestingRow(int n)
-    {
+    public static int intrestingRow(int n) {
         if (n == 0)
             return 0;
 

@@ -2,7 +2,7 @@ package tasks;
 
 public class LowHightEfforts {
 
-	public static int maxAmountTasks(int days, int lowTasks [], int hightTasks []) {
+	public static int maxAmountTasks(int days, int lowTasks [], int hightTasks[]) {
 		int maxAmount=0;
 		if(days==0) {
 			return 0;

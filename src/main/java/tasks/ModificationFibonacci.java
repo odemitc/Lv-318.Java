@@ -6,24 +6,24 @@ import java.util.List;
 
 public class ModificationFibonacci {
 
-	private static List<Integer> fibonachiList = new ArrayList<>();
+    private static List<Integer> fibonachiList = new ArrayList<>();
 
-	private static void createFibonacciList(int n) {
-		fibonachiList.clear();
-		fibonachiList.add(0, 1);
-		fibonachiList.add(1, 1);
-		fibonachiList.add(2, 1);
-		fibonachiList.add(3, 2);
-		for (int i = 4; i < n; i++) {
-			int element = fibonachiList.get(i - 1) + fibonachiList.get(i - 3);
-			fibonachiList.add(i, element);
+    private static void createFibonacciList(int n) {
+        fibonachiList.clear();
+        fibonachiList.add(0, 1);
+        fibonachiList.add(1, 1);
+        fibonachiList.add(2, 1);
+        fibonachiList.add(3, 2);
+        for (int i = 4; i < n; i++) {
+            int element = fibonachiList.get(i - 1) + fibonachiList.get(i - 3);
+            fibonachiList.add(i, element);
 
-		}
+        }
 
-	}
+    }
 
-	public static int findPossition(int k) {
-		createFibonacciList(k);
-		return fibonachiList.get(k - 1);
-	}
+    public static int findPossition(int k) {
+        createFibonacciList(k);
+        return fibonachiList.get(k - 1);
+    }
 }

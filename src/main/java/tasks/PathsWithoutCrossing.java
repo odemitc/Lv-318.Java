@@ -32,7 +32,8 @@ public class PathsWithoutCrossing {
     }
 
     /**
-     *Private util method for calculation specified catalan number.
+     * Private util method for calculation specified catalan number.
+     *
      * @param n - integer number of item of interest.
      * @return Catalan number on n-th place of type int.
      */

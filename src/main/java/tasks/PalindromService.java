@@ -30,7 +30,7 @@ public class PalindromService {
         return palindromSet;
     }
 
-   public static int getMaxLengthOfPalindrom(String word) {
+    public static int getMaxLengthOfPalindrom(String word) {
         return findAllPalindroms(word).stream()
                 .mapToInt(String::length)
                 .max()

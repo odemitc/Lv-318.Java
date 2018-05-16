@@ -16,7 +16,7 @@ public class WaysToSumUsingPositiveIntegersServlet extends HttpServlet {
 
         int countWays = WaysToSumUsingPositiveIntegers.countWays(n);
         System.out.println(countWays);
-        req.setAttribute("output",countWays);
-        req.getRequestDispatcher("/jsp/task6.jsp").forward(req,resp);
+        req.setAttribute("output", countWays);
+        req.getRequestDispatcher("/jsp/task6.jsp").forward(req, resp);
     }
 }
