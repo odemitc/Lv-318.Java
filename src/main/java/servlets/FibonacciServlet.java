@@ -16,7 +16,7 @@ public class FibonacciServlet extends HttpServlet {
 
         long fibonacciNumber = Fibonacci.fibonacciNumberCalc(n);
         System.out.println(fibonacciNumber);
-        req.setAttribute("output",fibonacciNumber);
-        req.getRequestDispatcher("/jsp/task1.jsp").forward(req,resp);
+        req.setAttribute("output", fibonacciNumber);
+        req.getRequestDispatcher("/jsp/task1.jsp").forward(req, resp);
     }
 }

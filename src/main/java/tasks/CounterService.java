@@ -1,7 +1,8 @@
 package tasks;
+
 public class CounterService {
 
-   public static int countWaysToTileFloor(int n, int m) {
+    public static int countWaysToTileFloor(int n, int m) {
         int count[] = new int[n + 1];
         count[0] = 0;
         int i;

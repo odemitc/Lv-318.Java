@@ -13,8 +13,8 @@ public class InterestingRowServlet extends HttpServlet {
         int n = Integer.parseInt(req.getParameter("n"));
         int num = IntrestingRow.intrestingRow(n);
         System.out.println(num);
-        req.setAttribute("output",num);
-        req.getRequestDispatcher("/jsp/task3.jsp").forward(req,resp);
+        req.setAttribute("output", num);
+        req.getRequestDispatcher("/jsp/task3.jsp").forward(req, resp);
     }
 }
 

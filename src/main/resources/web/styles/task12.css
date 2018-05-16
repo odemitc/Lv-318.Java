@@ -1,14 +1,16 @@
-body{
+body {
     margin: 0;
 }
-#head{
+
+#head {
     background-image: url("/res/bg.jpg");
     background-repeat: repeat-x;
     margin: 0;
     height: 352px;
     width: auto;
 }
-#picture{
+
+#picture {
     position: relative;
     margin: 0 auto;
     width: 1200px;
@@ -16,7 +18,8 @@ body{
     background-image: url("/res/header.jpg");
     background-size: cover;
 }
-#form{
+
+#form {
     display: block;
     width: 300px;
     height: 150px;
@@ -25,7 +28,8 @@ body{
     top: 80px;
 
 }
-#text{
+
+#text {
     color: white;
     display: inline-block;
     white-space: nowrap;
@@ -34,22 +38,26 @@ body{
     font-family: Arial;
     text-align: left;
 }
-#selector{
+
+#selector {
     margin: 20px;
 }
-#selector select{
+
+#selector select {
     width: 80px;
     height: 25px;
     background-color: azure;
     border: none;
 }
-#selector input{
+
+#selector input {
     width: 80px;
     height: 25px;
     background-color: azure;
     border: none;
 }
-#description{
+
+#description {
     width: 1000px;
     height: 150px;
     margin: 0 auto;
@@ -57,14 +65,16 @@ body{
     font-family: Arial;
     text-align: center;
 }
-#task{
+
+#task {
     width: 1000px;
     height: 250px;
     margin: 0 auto;
     color: black;
     font-family: Arial;
 }
-#task input{
+
+#task input {
     display: inline-block;
     width: 120px;
     height: 25px;
@@ -72,7 +82,8 @@ body{
     border: 1px silver solid;
     margin: 3px;
 }
-#task #button{
+
+#task #button {
     display: inline-block;
     width: 50px;
     height: 25px;
@@ -80,7 +91,8 @@ body{
     border: 1px silver solid;
     margin: 3px;
 }
-#result{
+
+#result {
     width: 1000px;
     height: 250px;
     margin: 0 auto;

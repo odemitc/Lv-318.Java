@@ -8,6 +8,7 @@ public class FriendPairsTest {
 
     @Test
     public void test() {
-        assertTrue(4 == FriendPairs.countOfPairs(3));;
+        assertTrue(4 == FriendPairs.countOfPairs(3));
+        ;
     }
 }

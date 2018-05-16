@@ -3,7 +3,7 @@ package tasks;
 
 public class FenceService {
 
-   public static long countWays(int countOfPosts, int countOfColors) {
+    public static long countWays(int countOfPosts, int countOfColors) {
         if (countOfPosts <= 1 || countOfColors <= 0) {
             return countOfPosts * countOfColors;
         }

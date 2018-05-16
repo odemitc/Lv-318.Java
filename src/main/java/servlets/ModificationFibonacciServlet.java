@@ -14,7 +14,7 @@ public class ModificationFibonacciServlet extends HttpServlet {
         int n = Integer.parseInt(req.getParameter("n"));
         int num = ModificationFibonacci.findPossition(n);
         System.out.println(num);
-        req.setAttribute("output",num);
-        req.getRequestDispatcher("/jsp/task2.jsp").forward(req,resp);
+        req.setAttribute("output", num);
+        req.getRequestDispatcher("/jsp/task2.jsp").forward(req, resp);
     }
 }

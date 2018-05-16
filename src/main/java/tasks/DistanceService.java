@@ -11,6 +11,6 @@ public class DistanceService {
         for (int i = 3; i <= distance; i++) {
             countArray[i] = countArray[i - 1] + countArray[i - 2] + countArray[i - 3];
         }
-        return countArray[distance-1];
+        return countArray[distance - 1];
     }
 }

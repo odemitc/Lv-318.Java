@@ -13,7 +13,7 @@ public class FirendPairsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int n = Integer.parseInt(req.getParameter("number"));
         long pairs = FriendPairs.countOfPairs(n);
-        req.setAttribute("output",pairs);
-        req.getRequestDispatcher("/jsp/task11.jsp").forward(req,resp);
+        req.setAttribute("output", pairs);
+        req.getRequestDispatcher("/jsp/task11.jsp").forward(req, resp);
     }
 }

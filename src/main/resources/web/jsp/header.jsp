@@ -31,7 +31,7 @@
                         <option value="13">13</option>
                         <option value="14">14</option>
                     </select>
-                    <input type="submit" value="Go !" />
+                    <input type="submit" value="Go !"/>
                 </form>
             </div>
         </div>
