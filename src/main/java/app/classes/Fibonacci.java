@@ -1,12 +1,37 @@
 package app.classes;
 
+/**
+ * <h1>Find n-th element of Fibonacci sequence</h1>.
+ *  The Fibonacci class implements method
+ *  to find which is the member of position n in Fibonacci sequence
+ * <p>
+ * <b>Note:</b>The sequence example: 1, 2, 3, 5, 8, 13, ....
+ *
+ * @author  Roman Sitchuk
+ * @version 1.0
+ * @since   2018-05-16
+ */
 public class Fibonacci {
 
-    public static String execute(String n){
+    /**
+     * This method is used to provide the acces
+     * to private method fibonacci.
+     *
+     * @param n the String presentation of element position
+     * @return the String presentatio of the element with n-th position
+     */
+    public static String execute(String n) {
         return String.valueOf(fibonacci(Integer.valueOf(n)));
     }
 
-    private static int fibonacci(int number){
+    /**
+     * This method returns the n-position element of
+     * the Fibonacci sequence.
+     *
+     * @param number the element position
+     * @return the element with n-th position
+     */
+    private static int fibonacci(int number) {
         if (number <= 1) return number;
         int f1 = 1;
         int f2 = 1;
