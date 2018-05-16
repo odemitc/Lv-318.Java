@@ -24,8 +24,10 @@ public class WaysAsSumPositiveInt {
     }
 
     private static int calculateWays(int n) {
+        //store the number of ways for i
         int[] waysCount = new int[n + 1];
 
+        //basic case
         waysCount[0] = 1;
 
         for (int i = 1; i <= n; i++) {
