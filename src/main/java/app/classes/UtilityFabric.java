@@ -1,5 +1,7 @@
 package app.classes;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+
 public class UtilityFabric {
 
     public static String execute(String param1, String param2, String label) {
@@ -7,6 +9,15 @@ public class UtilityFabric {
         switch (Integer.valueOf(label)) {
             case 1:
                 result = Fibonacci.execute(param1);
+                break;
+            case 2:
+                result = ModificationFibonachi.execute(param1);
+                break;
+            case 3:
+                result = InterestingRows.execute(param1);
+                break;
+            case 4:
+                result = LongSubWithDifOne.execute(param1);
                 break;
             case 6:
                 result = WaysAsSumPositiveInt.execute(param1);
