@@ -4,7 +4,6 @@ package app.classes;
  * <h1>Ways to write n as sum of two or more positive integers</h1>.
  *  The Fibonacci class implements method
  *  to find ways to write n as sum of two or more positive integers
- * <p>
  *
  * @author  Roman Sitchuk
  * @version 1.0
