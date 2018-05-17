@@ -30,11 +30,11 @@
 <div class="res">
     <span class="badge badge-success"><h4>Success!</h4></span>  <%
     if (request.getAttribute("result") != null) {
-        out.println("The result of calculation is " + "<b>"+ request.getAttribute("result")+ "</b>");
+        out.println(" The result of calculation is " + "<b>"+ request.getAttribute("result")+ "</b>");
     } else out.println("<p> Try again please! </p>");
 %>
 
-    <a href="../index.html"><button type="button" class="btn">Choose another task</button></a>
+    <a href="../index.html"><button type="button" class="btn">Back to tasks</button></a>
 </div>
 
 
