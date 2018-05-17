@@ -10,6 +10,7 @@ import java.util.Scanner;
  * @author Andrew - Laptop
  * @version 1
  * @since 2018-05-17
+ * test
  */
 public class waysToSumArray {
 	

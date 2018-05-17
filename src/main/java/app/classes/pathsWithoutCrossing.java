@@ -7,6 +7,7 @@ import java.util.Scanner;
  * the problem is that the way these points are distributed around the circle is not exactly specified
  * therefore i assumed that the points go around the circle in a linear manner.
  * this means that the simplest solution to this problem will always be half the number of points if even.
+ * test
  * @author Andrew - Laptop
  *
  */
