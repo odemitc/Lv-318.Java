@@ -25,6 +25,9 @@ public class UtilityFabric {
             case 7:
                 result = CoverIn3Steps.execute(param1);
                 break;
+            case 8:
+                result = pathsWithoutCrossing.execute(param1);
+                break;
             case 9:
                 result = HighLowEfforts.execute(param1, param2);
                 break;
