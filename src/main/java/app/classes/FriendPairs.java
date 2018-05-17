@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @since 2018-05-17
  */
 public class FriendPairs {
+	
 	static Scanner answer;
 	
 	/** 
