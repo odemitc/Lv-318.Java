@@ -2,12 +2,12 @@ package app.classes;
 
 /**
  * <h1>Ways to write n as sum of two or more positive integers</h1>.
- *  The Fibonacci class implements method
- *  to find ways to write n as sum of two or more positive integers
+ * The Fibonacci class implements method
+ * to find ways to write n as sum of two or more positive integers
  *
- * @author  Roman Sitchuk
+ * @author Roman Sitchuk
  * @version 1.0
- * @since   2018-05-16
+ * @since 2018-05-16
  */
 public class WaysAsSumPositiveInt {
 
@@ -15,10 +15,13 @@ public class WaysAsSumPositiveInt {
      * This method is used to provide the acces
      * to private method calculateWays.
      *
-     * @param n  the String representation of the element
+     * @param n the String representation of the element
      * @return the String representation of the result, which is number of ways
      */
     public static String execute(String n) {
+        if (!n.matches("\\d+")) {
+            return "Wrong input, please type in the number!";
+        }
         return String.valueOf(calculateWays(Integer.valueOf(n)));
     }
 

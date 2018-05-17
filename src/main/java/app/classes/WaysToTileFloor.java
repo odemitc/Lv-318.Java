@@ -2,12 +2,12 @@ package app.classes;
 
 /**
  * <h1>Ways to tile the floor</h1>.
- *  The WaysToTileFloor class implements method
- *  to find ways to count the number of ways to tile the given n x m floor using 1 x m tiles
+ * The WaysToTileFloor class implements method
+ * to find ways to count the number of ways to tile the given n x m floor using 1 x m tiles
  *
- * @author  Roman Sitchuk
+ * @author Roman Sitchuk
  * @version 1.0
- * @since   2018-05-16
+ * @since 2018-05-16
  */
 public class WaysToTileFloor {
 
@@ -20,6 +20,9 @@ public class WaysToTileFloor {
      * @return the String representation of the result, which is number of ways
      */
     public static String execute(String n, String m) {
+        if (!n.matches("\\d+") || !m.matches("\\d+")) {
+            return "Wrong input, please type in the number!";
+        }
         return String.valueOf(countTheWays(Integer.valueOf(n), Integer.valueOf(m)));
     }
 

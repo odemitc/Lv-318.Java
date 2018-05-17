@@ -38,7 +38,7 @@ public class ModificationFibonachi {
                 arr[i] = arr[i - 1] +  arr[i - 3];
             }
         }
-        return Integer.toString(arr[n-1]);
+        return String.valueOf(arr[n-1]);
     }
 
 }

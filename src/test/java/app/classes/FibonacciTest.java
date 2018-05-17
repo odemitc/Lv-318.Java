@@ -4,9 +4,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-// writing a comment to test. - akalymon
+
 
 public class FibonacciTest {
+
+    @Test
+    public void testIfBranch() {
+        String expected = "Wrong input, please type in the number!";
+        String result = Fibonacci.execute("Some input");
+        assertEquals(expected,result);
+    }
 
     @Test
     public void testFirstNumber() {

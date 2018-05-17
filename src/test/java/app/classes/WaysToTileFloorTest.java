@@ -7,6 +7,13 @@ import static org.junit.Assert.*;
 public class WaysToTileFloorTest {
 
     @Test
+    public void testIfBranch() {
+        String expected = "Wrong input, please type in the number!";
+        String result = WaysToTileFloor.execute("Some input", String.valueOf(5));
+        assertEquals(expected,result);
+    }
+
+    @Test
     public void testN2M3Input() {
         long result = Long.valueOf(WaysToTileFloor.execute(String.valueOf(2), String.valueOf(3)));
         assertEquals(1, result, 0);
