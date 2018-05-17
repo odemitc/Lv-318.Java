@@ -9,17 +9,29 @@
 <html>
 <head>
     <title>Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .res{
+            padding-left: 200px;
+            margin: 50px;
+        }
+    </style>
 </head>
 <body>
-
-    <h3>Result of calculation</h3>
-<%
+<div class="res">
+    <span class="badge badge-success"><h4>Success!</h4></span>  <%
     if (request.getAttribute("result") != null) {
-        out.println("<p> The result of calculation is " + request.getAttribute("result")+ " </p>");
-    }
-
-
+        out.println("The result of calculation is " + "<b>"+ request.getAttribute("result")+ "</b>");
+    } else out.println("<p> Try again please! </p>");
 %>
+    <a href="../index.html"><button type="button" class="btn">Back</button></a>
+</div>
+
+
 
 </body>
 </html>
