@@ -1,7 +1,5 @@
 package app.classes;
 
-import java.util.Scanner;
-
 /**
  * This method is responsible for finding the number of pairs between friends.
  * the pairings are limited to singles or doubles. The answer to this problem
@@ -12,24 +10,25 @@ import java.util.Scanner;
  * @since 2018-05-17
  */
 public class FriendPairs {
-	
-	static Scanner answer;
-	
-	/** 
+
+	/**
 	 * this is the method responsible for counting the number of pairs possible given the assignment rules
 	 * the method as explained above applies a constant manipulation in order to achieve the result
 	 * at first one method was developed for odd functions and another for even. however since java
 	 * floors the division of odd numbers I believe this function works properly for any input.
-	 * @return
+	 * @param n the String representation of the number of friends
+	 * @return the String representation of the number of pairs
 	 */
-	public static int countPairs() {
-		System.out.print("Please enter the number of friends: ");
-		answer = new Scanner(System.in);
-		String start = answer.nextLine();
-		int numFriends = Integer.parseInt(start);
-		int baseCase = 1;
+	 */
+    public static String execute(String n) {
+        return String.valueOf(countPairs(Integer.valueOf(n)));
+    }
+
+	private static int countPairs(int numFriends) {
+
+	    int baseCase = 1;
 		int factorialNumFriends = 1;
-		int numPairs = 0;
+		int numPairs;
 		if (numFriends > 1) {
 				for (int i = 1; i <= numFriends; i++) {
 					factorialNumFriends = factorialNumFriends * i;
@@ -43,13 +42,6 @@ public class FriendPairs {
 		else { numPairs = 1; }
 		return numPairs;
 	} // end countPairs
-	
-	/**
-	 * main class method responsible for calling countPairs method and displaying result
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		int numPairs = countPairs();
-		System.out.println("The number of pairings is: " + numPairs);
-	} // end main	
+
+
 } // end FriendPairs
