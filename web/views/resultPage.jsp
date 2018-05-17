@@ -8,13 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>List</title>
+    <title>Result</title>
 </head>
 <body>
 
+    <h3>Result of calculation</h3>
 <%
     if (request.getAttribute("result") != null) {
-        out.println("<p> The requested element is " + request.getAttribute("result")+ " </p>");
+        out.println("<p> The result of calculation is " + request.getAttribute("result")+ " </p>");
     }
 
 
