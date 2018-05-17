@@ -1,11 +1,32 @@
 package app.classes;
+/**
+ * <h1>Interesting row</h1>
+ * The goal: To find which is the member of position n in our interesting row.
+ * @author  Iryna Holod
+ * @version 1.0
+ * @since   2018-05-17
+ */
 
 public class InterestingRows {
+
+    /**
+     * This method is used to provide the access
+     * to private method {@link #findTheMember(int)}.
+     *
+     * @param str the String representation of the position og element
+     * @return the String representation of the member of position n in our interesting row
+     */
     public static String execute(String str){
 
         return findTheMember(Integer.parseInt(str));
     }
-    public static String findTheMember(int n) {
+
+    /**
+     * This method calculate which is the member of position n in our interesting row.
+     * @param n the position og element
+     * @return the member of position n in our interesting row
+     */
+    private static String findTheMember(int n) {
         if(n<0){
             return "wrong input value";
         }
