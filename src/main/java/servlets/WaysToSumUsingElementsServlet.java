@@ -19,8 +19,18 @@ public class WaysToSumUsingElementsServlet extends HttpServlet {
             array[i] = Integer.parseInt(strings[i]);
         }
 
-        int countWays = WaysToSumUsingElements.countWays(n, array);
-        req.setAttribute("output", countWays);
+        if (n > 0 & array.length != 0) {
+            int countWays = WaysToSumUsingElements.countWays(n, array);
+            req.setAttribute("output", countWays);
+        } else {
+            if (n <= 0) {
+                req.setAttribute("output", "Number - n should be greater than 0");
+            }
+
+            if (array.length == 0) {
+                req.setAttribute("output", "You forgot to enter an array");
+            }
+        }
         req.getRequestDispatcher("/jsp/task5.jsp").forward(req, resp);
     }
 }

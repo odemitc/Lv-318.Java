@@ -13,9 +13,14 @@ public class PathsWithoutCrossingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int n = Integer.parseInt(req.getParameter("n"));
-        long countWays = PathsWithoutCrossing.amountOfPathsWithoutCrosses(n);
-        System.out.println(countWays);
-        req.setAttribute("output", countWays);
+
+        if (n > 0) {
+            long countWays = PathsWithoutCrossing.amountOfPathsWithoutCrosses(n);
+            System.out.println(countWays);
+            req.setAttribute("output", countWays);
+        } else {
+            req.setAttribute("output", "The number of points - n should be greater than 0 and  even. Throw 0 if n is odd");
+        }
         req.getRequestDispatcher("/jsp/task8.jsp").forward(req, resp);
     }
 }

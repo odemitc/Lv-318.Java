@@ -19,7 +19,7 @@
 
 <div id="task">
     <form action="/task11" method="post">
-        <h4>Input: Number of friends- n integer. </h4>
+        <h4>Input: Number of friends- n integer greater than 0. </h4>
         <br>
         <input type="text" name="number">
         <input id="button" type="submit" value="Go">

@@ -17,7 +17,7 @@
 
 <div id="task">
     <form action="/task4" method="post">
-        <h4>Input: Sequence with integer numbers separate only by ",". Example: 3,4,7,8,9</h4>
+        <h4>Input: Sequence with integer numbers. Example: 3,4,7,8,9</h4>
         <br>
         <input type="text" name="seq">
         <input id="button" type="submit" value="Go">

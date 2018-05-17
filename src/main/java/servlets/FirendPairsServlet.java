@@ -12,8 +12,12 @@ public class FirendPairsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int n = Integer.parseInt(req.getParameter("number"));
-        long pairs = FriendPairs.countOfPairs(n);
-        req.setAttribute("output", pairs);
+        if(n>0) {
+            long pairs = FriendPairs.countOfPairs(n);
+            req.setAttribute("output", pairs);
+        }else {
+            req.setAttribute("output", "Number of friends should be greater than 0");
+        }
         req.getRequestDispatcher("/jsp/task11.jsp").forward(req, resp);
     }
 }

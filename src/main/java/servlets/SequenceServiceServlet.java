@@ -13,15 +13,20 @@ public class SequenceServiceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String select = req.getParameter("seq");
-        String[] arrayOfString = select.split(",");
+        String[] arrayOfString = req.getParameter("seq").replaceAll("[\\D]", "").split("");
         int[] sequence = new int[arrayOfString.length];
-        for (int i = 0; i<sequence.length; i++){
+        for (int i = 0; i < arrayOfString.length; i++) {
             sequence[i] = Integer.parseInt(arrayOfString[i]);
+
         }
-        int maxLengthOfSubsequence = SequenceService.getMaxLengthOfSubsequence(sequence);
-        System.out.println(maxLengthOfSubsequence);
-        req.setAttribute("output", maxLengthOfSubsequence);
+
+        if (sequence.length != 0) {
+            int maxLengthOfSubsequence = SequenceService.getMaxLengthOfSubsequence(sequence);
+            System.out.println(maxLengthOfSubsequence);
+            req.setAttribute("output", maxLengthOfSubsequence);
+        }else{
+            req.setAttribute("output", "Invalid input data");
+        }
         req.getRequestDispatcher("/jsp/task4.jsp").forward(req, resp);
     }
 }

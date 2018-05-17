@@ -13,6 +13,7 @@ public class LowHighEffortsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int n = Integer.parseInt(req.getParameter("n"));
+
         String[] numbersLow = req.getParameter("low").replaceAll("[\\D]", "").split("");
         int[] low = new int[numbersLow.length];
         for (int i = 0; i < numbersLow.length; i++) {
@@ -26,8 +27,22 @@ public class LowHighEffortsServlet extends HttpServlet {
             high[i] = Integer.parseInt(numbersHigh[i]);
         }
 
-        int output = LowHightEfforts.maxAmountTasks(n, low, high);
-        req.setAttribute("output", output);
+        if (n > 0 & low.length != 0 & high.length != 0) {
+            int output = LowHightEfforts.maxAmountTasks(n, low, high);
+            req.setAttribute("output", output);
+        } else {
+            if (n <= 0) {
+                req.setAttribute("output", "Number - n should be greater than 0");
+            }
+
+            if (low.length == 0) {
+                req.setAttribute("output", "You forgot to enter the cost of low effort work");
+            }
+
+            if (high.length == 0) {
+                req.setAttribute("output", "You forgot to enter the cost of high effort work");
+            }
+        }
         req.getRequestDispatcher("/jsp/task9.jsp").forward(req, resp);
     }
 }

@@ -14,9 +14,13 @@ public class WaysToSumUsingPositiveIntegersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int n = Integer.parseInt(req.getParameter("n"));
 
-        int countWays = WaysToSumUsingPositiveIntegers.countWays(n);
-        System.out.println(countWays);
-        req.setAttribute("output", countWays);
+        if (n>0) {
+            int countWays = WaysToSumUsingPositiveIntegers.countWays(n);
+            System.out.println(countWays);
+            req.setAttribute("output", countWays);
+        }else {
+            req.setAttribute("output", "You should enter positive integer");
+        }
         req.getRequestDispatcher("/jsp/task6.jsp").forward(req, resp);
     }
 }
