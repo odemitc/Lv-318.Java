@@ -19,7 +19,7 @@ public class FriendPairs {
 	 * @param n the String representation of the number of friends
 	 * @return the String representation of the number of pairs
 	 */
-	 */
+
     public static String execute(String n) {
         return String.valueOf(countPairs(Integer.valueOf(n)));
     }
