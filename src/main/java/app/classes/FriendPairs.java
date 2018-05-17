@@ -24,8 +24,9 @@ public class FriendPairs {
         return String.valueOf(countPairs(Integer.valueOf(n)));
     }
 
-	private static int countPairs(int numFriends) {
+	private static int countPairs(int num) {
 
+    	int numFriends = num;
 	    int baseCase = 1;
 		int factorialNumFriends = 1;
 		int numPairs;

@@ -31,6 +31,9 @@ public class UtilityFabric {
             case 10:
                 result = PalindromicSubsequence.execute(param1);
                 break;
+            case 11:
+                result = FriendPairs.execute(param1);
+                break;
             case 12:
                 result = WaysToTileFloor.execute(param1, param2);
                 break;

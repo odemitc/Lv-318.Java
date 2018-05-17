@@ -21,7 +21,7 @@ public class Fibonacci {
      * @return the String representation of the element with n-th position
      */
     public static String execute(String n) {
-        return String.valueOf(fibonacci(Integer.valueOf(n)));
+        return String.valueOf(fibonacci(Long.valueOf(n)));
     }
 
     /**
@@ -31,13 +31,13 @@ public class Fibonacci {
      * @param number the element position
      * @return the element with n-th position
      */
-    private static int fibonacci(int number) {
+    private static long fibonacci(long number) {
         if (number <= 1) return number;
-        int f1 = 1;
-        int f2 = 1;
+        long f1 = 1;
+        long f2 = 1;
 
         for (int i = 2; i < number; i++) {
-            int temp = f2;
+            long temp = f2;
             f2 += f1;
             f1 = temp;
         }
