@@ -19,6 +19,11 @@
             padding-left: 200px;
             margin: 50px;
         }
+
+        .btn{
+            margin-left: 10px;
+
+        }
     </style>
 </head>
 <body>
@@ -28,7 +33,8 @@
         out.println("The result of calculation is " + "<b>"+ request.getAttribute("result")+ "</b>");
     } else out.println("<p> Try again please! </p>");
 %>
-    <a href="../index.html"><button type="button" class="btn">Back</button></a>
+
+    <a href="../index.html"><button type="button" class="btn">Choose another task</button></a>
 </div>
 
 
