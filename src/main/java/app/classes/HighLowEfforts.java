@@ -30,7 +30,7 @@ public class HighLowEfforts {
      * @return the maximum amount of cost you can perform
      */
 
-    private static String maxAmountTasks(String strLowTasks, String strHighTasks) {
+    public static String maxAmountTasks(String strLowTasks, String strHighTasks) {
 
 
         String temp1[] = strHighTasks.split(" ");
@@ -40,7 +40,7 @@ public class HighLowEfforts {
 
         int highTasks[] = new int[days];
         for (int i = 0; i < days; i++) {
-            if (i == temp1.length) {
+            if (i >= temp1.length) {
                 highTasks[i] = 0;
             } else {
                 highTasks[i] = Integer.parseInt(temp1[i]);
@@ -52,7 +52,7 @@ public class HighLowEfforts {
 
         int lowTasks[] = new int[days];
         for (int i = 0; i < days; i++) {
-            if (i == temp2.length) {
+            if (i >= temp2.length) {
                 lowTasks[i] = 0;
             } else {
                 lowTasks[i] = Integer.parseInt(temp2[i]);

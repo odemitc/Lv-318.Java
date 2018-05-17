@@ -26,7 +26,7 @@ public class ModificationFibonachi {
      */
     public static String findTheMember(int n) {
 
-        if(n<0){
+        if(n<=0){
             return "wrong input value";
         }
 
