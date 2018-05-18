@@ -19,6 +19,9 @@ public class UtilityFabric {
             case 4:
                 result = LongSubWithDifOne.execute(param1);
                 break;
+            case 5:
+                result = waysToSumArray.execute(param1, param2);
+                break;
             case 6:
                 result = WaysAsSumPositiveInt.execute(param1);
                 break;
