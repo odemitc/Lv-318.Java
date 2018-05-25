@@ -22,6 +22,8 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void init() {
         Transport a1 = new Transport("a1");
+        Transport a2 = new Transport("a2");
         transportRepository.save(a1);
+        transportRepository.save(a2);
     }
 }
