@@ -30,15 +30,7 @@ public class DemoApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 
-        int sum = context.getBean(FeedbackRepository.class).findByTransitId(1)
-                .stream()
-                .filter(feedback -> feedback.getFeedbackCriteria().getType() == FeedbackCriteria.FeedbackType.RATING)
-                .mapToInt(feedback -> Integer.valueOf(feedback.getAnswer()))
-                .sum();
 
-        System.out.println(sum);
-
-        int x = 777;
 //
 //        ExtendableCategoryRepository categoryRepository = context.getBean(ExtendableCategoryRepository.class);
 //        NonExtendableCategoryRepository nonExtendableCategoryRepo = context.getBean(NonExtendableCategoryRepository.class);
