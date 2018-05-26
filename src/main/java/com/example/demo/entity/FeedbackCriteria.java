@@ -26,10 +26,10 @@ public class FeedbackCriteria {
         RATING,
         BUSY_HOURS;
 
-//
-//        public <T> T convertAnswer(String answer) {
-//            return //TODO;
-//        }
+
+        public <T> T convertAnswer(String answer) {
+            return //TODO;
+        }
     }
 
     @Embeddable
