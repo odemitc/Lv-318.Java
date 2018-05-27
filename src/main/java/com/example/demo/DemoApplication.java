@@ -39,7 +39,7 @@ public class DemoApplication {
         System.out.println(sum);
 
         int x = 777;
-//
+
 //        ExtendableCategoryRepository categoryRepository = context.getBean(ExtendableCategoryRepository.class);
 //        NonExtendableCategoryRepository nonExtendableCategoryRepo = context.getBean(NonExtendableCategoryRepository.class);
 //

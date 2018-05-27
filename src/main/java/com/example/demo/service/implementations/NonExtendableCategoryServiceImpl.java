@@ -4,11 +4,13 @@ import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.interfaces.NonExtendableCategoryService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
 @Service
+@Transactional
 public class NonExtendableCategoryServiceImpl implements NonExtendableCategoryService {
 
     private NonExtendableCategoryRepository nonExtendableCategoryRepository;
@@ -39,7 +41,7 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
 
     @Override
     public NonExtendableCategory getByName(String name) {
-        return nonExtendableCategoryRepository.findByName(name);
+        return nonExtendableCategoryRepository.findByName(name)
     }
 
     @Override
@@ -47,10 +49,6 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
         return nonExtendableCategoryRepository.findByNextLevelCategoryId(id);
     }
 
-    @Override
-    public NonExtendableCategory getById(int id){
-        return nonExtendableCategoryRepository.findById(id);
-    }
     @Override
     public List<NonExtendableCategory> getAll() {
         return nonExtendableCategoryRepository.findAll();
