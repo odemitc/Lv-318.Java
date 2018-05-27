@@ -1,11 +1,13 @@
 package com.example.demo;
 
 import com.example.demo.entity.ExtendableCategory;
+import com.example.demo.entity.Feedback;
 import com.example.demo.entity.FeedbackCriteria;
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.repository.ExtendableCategoryRepository;
 import com.example.demo.repository.FeedbackRepository;
 import com.example.demo.repository.NonExtendableCategoryRepository;
+import com.example.demo.service.interfaces.ExtendebleCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,6 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.transaction.annotation.Transactional;
+import lombok.Data;
 
 import java.util.Optional;
 
@@ -22,51 +25,53 @@ import java.util.Optional;
 public class DemoApplication {
 
     @Autowired
-    private ExtendableCategoryRepository extendableCategoryRepository;
+    private ExtendebleCategoryService extendebleCategoryService;
 
-    @Autowired
-    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
+//    @Autowired
+//    private ExtendableCategoryRepository extendableCategoryRepository;
+
+//    @Autowired
+//    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 
-        int sum = context.getBean(FeedbackRepository.class).findByTransitId(1)
-                .stream()
-                .filter(feedback -> feedback.getFeedbackCriteria().getType() == FeedbackCriteria.FeedbackType.RATING)
-                .mapToInt(feedback -> Integer.valueOf(feedback.getAnswer()))
-                .sum();
+        ExtendebleCategoryService extendebleCategoryService = context.getBean(ExtendebleCategoryService.class);
 
-        System.out.println(sum);
+        ExtendableCategory publicTransport = new ExtendableCategory();
+        publicTransport.setId(1);
+        publicTransport.setName("Public Transport");
+        extendebleCategoryService.save(publicTransport);
 
-        int x = 777;
-//
-//        ExtendableCategoryRepository categoryRepository = context.getBean(ExtendableCategoryRepository.class);
-//        NonExtendableCategoryRepository nonExtendableCategoryRepo = context.getBean(NonExtendableCategoryRepository.class);
-//
-//        ExtendableCategory publicTransport = new ExtendableCategory().setName("Public Transport");
-//        ExtendableCategory lviv = new ExtendableCategory().setName("Lviv").setNextLevelCategory(publicTransport);
-//        NonExtendableCategory tram = new NonExtendableCategory();
-//
-//        tram.setName("Tram")
-//                .setNextLevelCategory(lviv);
-//
-//        nonExtendableCategoryRepo.save(tram);
+        ExtendableCategory lviv = new ExtendableCategory();
+        lviv.setId(2);
+        lviv.setName("Lviv");
+        lviv.setNextLevelCategory(publicTransport);
+        extendebleCategoryService.save(lviv);
+
+        ExtendableCategory kyiv = new ExtendableCategory();
+        kyiv.setId(3);
+        kyiv.setName("Kyiv");
+        kyiv.setNextLevelCategory(publicTransport);
+        extendebleCategoryService.save(kyiv);
+
+        System.out.println("LIST========================");
+        extendebleCategoryService.listExtendableCategories().stream().forEach(System.out::println);
+
+        System.out.println("FINDBYNAME========================");
+        ExtendableCategory findBy = extendebleCategoryService.findByName("Lviv").get();
+        System.out.println(findBy.getName()+" "+findBy.getId());
+
+
+        System.out.println("FINDBYNEXTLEVELID========================");
+        extendebleCategoryService.findByNextLevelCategoryId(1).stream().forEach(System.out::println);
+
+        System.out.println("FINDBYNEXTLEVELCATEGORY========================");
+        extendebleCategoryService.findByNextLevelCategory(publicTransport).stream().forEach(System.out::println);
+
+//        extendebleCategoryService.delete(lviv);
+
+//        extendebleCategoryService.delete(publicTransport);
     }
 
-//    @Override
-//    @Transactional
-//    public void run(ApplicationArguments args) throws Exception {
-//
-//        Optional<ExtendableCategory> lviv = extendableCategoryRepository.findById(17);
-//
-//        NonExtendableCategory nonExtendableCategory = new NonExtendableCategory();
-//
-////        lviv.get().setName("Lviv");
-//
-//        nonExtendableCategory
-//                .setName("Masrshrutka")
-//                .setNextLevelCategory(lviv.get());
-//
-//        nonExtendableCategoryRepository.save(nonExtendableCategory);
-//    }
 }

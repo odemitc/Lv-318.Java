@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ExtendebleCategoryServiceImpl implements ExtendebleCategoryService {
+public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService {
 
     @Autowired
     private ExtendableCategoryRepository extendableCategoryRepository;
@@ -49,6 +49,6 @@ public class ExtendebleCategoryServiceImpl implements ExtendebleCategoryService 
 
     @Override
     public List<ExtendableCategory> findByNextLevelCategory(ExtendableCategory category) {
-        return 
+        return extendableCategoryRepository.findByNextLevelCategory(category);
     }
 }
