@@ -22,5 +22,7 @@ public interface TransitService {
 
     List<Transit> getAllByCategory(NonExtendableCategory nonExtendableCategory);
 
+    List<Transit> getAllByCategoryId(int id);
+
     List<Transit> getAll();
 }

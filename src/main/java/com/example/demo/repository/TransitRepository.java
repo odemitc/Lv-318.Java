@@ -12,4 +12,5 @@ public interface TransitRepository extends JpaRepository<Transit, Integer> {
 
     List<Transit> findTransitsByCategory(NonExtendableCategory nonExtendableCategory);
 
+    List<Transit> findTransitsByCategoryId(int id);
 }
