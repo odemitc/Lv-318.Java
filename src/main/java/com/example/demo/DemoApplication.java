@@ -68,5 +68,5 @@ public class DemoApplication {
 //                .setNextLevelCategory(lviv.get());
 //
 //        nonExtendableCategoryRepository.save(nonExtendableCategory);
-//    }
+//   }
 }
