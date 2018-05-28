@@ -3,19 +3,17 @@ package com.example.demo.service.implementation;
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.NonExtendableCategoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class NonExtendableCategoryServiceImpl implements NonExtendableCategoryService {
 
-    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
-
-    public NonExtendableCategoryServiceImpl(NonExtendableCategoryRepository nonExtendableCategoryRepository) {
-        this.nonExtendableCategoryRepository = nonExtendableCategoryRepository;
-    }
+    private final NonExtendableCategoryRepository nonExtendableCategoryRepository;
 
     @Override
     public NonExtendableCategory addNonExtendableCategory(NonExtendableCategory nonExtendableCategory) {
