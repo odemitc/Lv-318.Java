@@ -12,20 +12,20 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootApplication
-public class DemoApplication implements ApplicationRunner {
+public class DemoApplication  {
 
-    @Autowired
-    private ExtendableCategoryRepository extendableCategoryRepository;
-
-    @Autowired
-    private TransitRepository transitRepository;
-
-    @Autowired
-    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
+//    @Autowired
+//    private ExtendableCategoryRepository extendableCategoryRepository;
+//
+//    @Autowired
+//    private TransitRepository transitRepository;
+//
+//    @Autowired
+//    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
-        int x = 1;
+//        int x = 1;
 
 
 //        context.getBean(StopRepository.class).saveAll(Arrays.asList(
@@ -62,11 +62,11 @@ public class DemoApplication implements ApplicationRunner {
 //        nonExtendableCategoryRepo.save(tram);
     }
 
-    @Override
-    @Transactional
-    public void run(ApplicationArguments args) throws Exception {
-
-    }
+//    @Override
+//    @Transactional
+//    public void run(ApplicationArguments args) throws Exception {
+//
+//    }
 
 //    @Override
 //    @Transactional

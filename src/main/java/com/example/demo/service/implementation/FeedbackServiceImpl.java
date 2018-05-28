@@ -3,12 +3,14 @@ package com.example.demo.service.implementation;
 import com.example.demo.entity.Feedback;
 import com.example.demo.repository.FeedbackRepository;
 import com.example.demo.service.FeedbackService;
+import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -21,7 +23,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional
     public Feedback addFeedback(Feedback feedback) {
-        return feedbackRepository.saveAndFlush(feedback);
+        return feedbackRepository.save(feedback);
     }
 
 
@@ -53,7 +55,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional
     public Feedback update(Feedback feedback) {
-        return feedbackRepository.saveAndFlush(feedback);
+        return feedbackRepository.save(feedback);
     }
 
     @Override
@@ -65,6 +67,6 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional(readOnly = true)
     public List<Feedback> getAll() {
-        return feedbackRepository.findAll();
+        return Streams.stream(feedbackRepository.findAll()).collect(Collectors.toList());
     }
 }
