@@ -25,14 +25,6 @@ public class Transit {
     @JoinColumn(name = "category_id")
     private NonExtendableCategory category;
 
-//    @CollectionTable(name = "stops_order",
-//            joinColumns = @JoinColumn(name = "transit_id"))
-//    @Column(name = "stop_number")
-//    @ElementCollection
-//    @MapKeyJoinColumn(name = "stop", referencedColumnName = "id")
-//    private Map<Stop, Integer> stopOrder ;
-//
-
     @ManyToMany
     @JoinTable(name = "transit_stop",
         joinColumns = {
