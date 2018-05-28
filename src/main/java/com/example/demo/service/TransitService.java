@@ -4,6 +4,7 @@ import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.entity.Transit;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TransitService {
 
@@ -15,7 +16,7 @@ public interface TransitService {
 
     Transit update(Transit transit);
 
-    Transit getById(int id);
+    Optional<Transit> getById(int id);
 
     Transit getByName(String name);
 
