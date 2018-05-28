@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NonExtendableCategoryRepository extends JpaRepository<NonExtendableCategory, Integer> {
 
-    NonExtendableCategory findById(int id);
-
     NonExtendableCategory findByName(String name);
 
     NonExtendableCategory findByNextLevelCategoryId(int id);

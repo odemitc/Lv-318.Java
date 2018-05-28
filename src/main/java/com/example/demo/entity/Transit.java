@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
+@EqualsAndHashCode(of = "id")
 @Accessors(chain = true)
 public class Transit {
 
@@ -24,14 +26,6 @@ public class Transit {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private NonExtendableCategory category;
-
-//    @CollectionTable(name = "stops_order",
-//            joinColumns = @JoinColumn(name = "transit_id"))
-//    @Column(name = "stop_number")
-//    @ElementCollection
-//    @MapKeyJoinColumn(name = "stop", referencedColumnName = "id")
-//    private Map<Stop, Integer> stopOrder ;
-//
 
     @ManyToMany
     @JoinTable(name = "transit_stop",

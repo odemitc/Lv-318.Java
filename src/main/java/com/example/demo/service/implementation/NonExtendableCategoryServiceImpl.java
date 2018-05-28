@@ -35,11 +35,19 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
 
     @Override
     public NonExtendableCategory update(NonExtendableCategory nonExtendableCategory) {
+        if (nonExtendableCategoryRepository.findById(nonExtendableCategory.getId()) == null) {
+            throw new IllegalArgumentException("No such record to update");
+        }
+
         return nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory);
     }
 
     @Override
     public NonExtendableCategory getByName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("Name should be not empty");
+        }
+
         return nonExtendableCategoryRepository.findByName(name);
     }
 
@@ -49,9 +57,10 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     }
 
     @Override
-    public NonExtendableCategory getById(int id){
-        return nonExtendableCategoryRepository.findById(id);
+    public NonExtendableCategory getById(Integer id) {
+        return nonExtendableCategoryRepository.findById(id).get();
     }
+
     @Override
     public List<NonExtendableCategory> getAll() {
         return nonExtendableCategoryRepository.findAll();
