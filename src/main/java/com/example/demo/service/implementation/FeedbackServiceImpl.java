@@ -3,6 +3,7 @@ package com.example.demo.service.implementation;
 import com.example.demo.entity.Feedback;
 import com.example.demo.repository.FeedbackRepository;
 import com.example.demo.service.FeedbackService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,53 +12,59 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class FeedbackServiceImpl implements FeedbackService {
 
-    private FeedbackRepository feedbackRepository;
+    private final FeedbackRepository feedbackRepository;
 
-    public FeedbackServiceImpl(FeedbackRepository feedbackRepository) {
-        this.feedbackRepository = feedbackRepository;
-    }
 
     @Override
+    @Transactional
     public Feedback addFeedback(Feedback feedback) {
         return feedbackRepository.saveAndFlush(feedback);
     }
 
 
     @Override
-    public void delete(int id) {
+    @Transactional
+    public void delete(Integer id) {
         feedbackRepository.deleteById(id);
 
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Feedback getByAnswer(String answer) {
         return feedbackRepository.getByAnswer(answer);
     }
 
     @Override
-    public List<Feedback> getByTransitId(int id) {
+    @Transactional(readOnly = true)
+    public List<Feedback> getByTransitId(Integer id) {
         return feedbackRepository.findByTransitId(id);
     }
 
     @Override
-    public List<Feedback> getByFeedbackCriteria(int id) {
+    @Transactional(readOnly = true)
+    public List<Feedback> getByFeedbackCriteria(Integer id) {
         return feedbackRepository.findByFeedbackCriteriaId(id);
     }
 
     @Override
+    @Transactional
     public Feedback update(Feedback feedback) {
         return feedbackRepository.saveAndFlush(feedback);
     }
 
     @Override
-    public Optional<Feedback> findById(int id){
+    @Transactional(readOnly = true)
+    public Optional<Feedback> getById(Integer id) {
         return feedbackRepository.findById(id);
     }
 
     @Override
-    public List<Feedback> findAll() {
+    @Transactional(readOnly = true)
+    public List<Feedback> getAll() {
         return feedbackRepository.findAll();
     }
 }
