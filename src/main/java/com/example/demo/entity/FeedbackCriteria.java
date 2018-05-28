@@ -10,17 +10,17 @@ public class FeedbackCriteria {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    private int groupId;
+    private Integer groupId;
 
     private String question;
 
     @Enumerated(value = EnumType.STRING)
     private FeedbackType type;
 
-    @Embedded
-    private FeedbackTypeIdentifier feedbackTypeIdentifier;
+//    @Embedded
+//    private FeedbackTypeIdentifier feedbackTypeIdentifier;
 
     public enum FeedbackType {
         RATING,
@@ -31,10 +31,10 @@ public class FeedbackCriteria {
 //            return //TODO;
 //        }
     }
-
-    @Embeddable
-    public class FeedbackTypeIdentifier {
-        int x;
-        double y;
-    }
+//
+//    @Embeddable
+//    public class FeedbackTypeIdentifier {
+//        int x;
+//        double y;
+//    }
 }

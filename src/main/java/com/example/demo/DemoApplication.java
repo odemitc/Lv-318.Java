@@ -21,12 +21,12 @@ import java.util.Optional;
 @SpringBootApplication
 public class DemoApplication {
 
-    @Autowired
-    private ExtendableCategoryRepository extendableCategoryRepository;
-
-    @Autowired
-    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
-
+//    @Autowired
+//    private ExtendableCategoryRepository extendableCategoryRepository;
+//
+//    @Autowired
+//    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
+//
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 
