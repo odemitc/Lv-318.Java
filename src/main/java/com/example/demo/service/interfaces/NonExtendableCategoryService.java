@@ -18,5 +18,7 @@ public interface NonExtendableCategoryService {
 
     NonExtendableCategory getByNextLevelCategory(int id);
 
+    NonExtendableCategory getById(int id);
+
     List<NonExtendableCategory> getAll();
 }
