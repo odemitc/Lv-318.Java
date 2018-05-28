@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -35,11 +36,19 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
 
     @Override
     public NonExtendableCategory update(NonExtendableCategory nonExtendableCategory) {
+        if (nonExtendableCategoryRepository.findById(nonExtendableCategory.getId()) == null) {
+            throw new IllegalArgumentException("No such record to update");
+        }
+
         return nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory);
     }
 
     @Override
     public NonExtendableCategory getByName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("Name should be not empty");
+        }
+
         return nonExtendableCategoryRepository.findByName(name);
     }
 
@@ -49,9 +58,10 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     }
 
     @Override
-    public NonExtendableCategory getById(int id){
+    public Optional<NonExtendableCategory> getById(Integer id) {
         return nonExtendableCategoryRepository.findById(id);
     }
+
     @Override
     public List<NonExtendableCategory> getAll() {
         return nonExtendableCategoryRepository.findAll();
