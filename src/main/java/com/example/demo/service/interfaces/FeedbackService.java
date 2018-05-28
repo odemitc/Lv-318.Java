@@ -3,6 +3,7 @@ package com.example.demo.service.interfaces;
 import com.example.demo.entity.Feedback;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface FeedbackService {
 
@@ -18,5 +19,7 @@ public interface FeedbackService {
 
     List<Feedback> getByFeedbackCriteria(int id);
 
-    List<Feedback> getAll();
+    List<Feedback> findAll();
+
+    Optional<Feedback> findById(int id);
 }

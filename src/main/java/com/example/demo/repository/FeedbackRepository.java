@@ -2,9 +2,9 @@ package com.example.demo.repository;
 
 import com.example.demo.entity.Feedback;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
 
@@ -13,4 +13,5 @@ public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
     List<Feedback> findByFeedbackCriteriaId(Integer id);
 
     Feedback getByAnswer(String answer);
+
 }

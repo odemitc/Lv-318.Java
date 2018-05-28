@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -51,7 +52,12 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
-    public List<Feedback> getAll() {
+    public Optional<Feedback> findById(int id){
+        return feedbackRepository.findById(id);
+    }
+
+    @Override
+    public List<Feedback> findAll() {
         return feedbackRepository.findAll();
     }
 }

@@ -15,11 +15,11 @@ public class Feedback {
     private String answer;
     private int userId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "transit_id")
     private Transit transit;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "criteria_id")
     private FeedbackCriteria feedbackCriteria;
 }
