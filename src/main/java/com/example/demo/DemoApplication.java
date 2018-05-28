@@ -19,9 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 public class DemoApplication {
-
+//
 //    @Autowired
 //    private ExtendableCategoryRepository extendableCategoryRepository;
 //
@@ -29,10 +28,7 @@ public class DemoApplication {
 //    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
-    }
-}
-//        ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 //
 //        int sum = context.getBean(FeedbackRepository.class).findByTransitId(1)
 //                .stream()
@@ -43,7 +39,7 @@ public class DemoApplication {
 //        System.out.println(sum);
 //
 //        int x = 777;
-////
+//
 //        ExtendableCategoryRepository categoryRepository = context.getBean(ExtendableCategoryRepository.class);
 //        NonExtendableCategoryRepository nonExtendableCategoryRepo = context.getBean(NonExtendableCategoryRepository.class);
 //
@@ -55,7 +51,7 @@ public class DemoApplication {
 //                .setNextLevelCategory(lviv);
 //
 //        nonExtendableCategoryRepo.save(tram);
-
+    }
 
 //    @Override
 //    @Transactional
@@ -73,4 +69,4 @@ public class DemoApplication {
 //
 //        nonExtendableCategoryRepository.save(nonExtendableCategory);
 //    }
-
+}
