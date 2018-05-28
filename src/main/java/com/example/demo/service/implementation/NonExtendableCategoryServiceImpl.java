@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -58,8 +57,8 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     }
 
     @Override
-    public Optional<NonExtendableCategory> getById(Integer id) {
-        return nonExtendableCategoryRepository.findById(id);
+    public NonExtendableCategory getById(Integer id) {
+        return nonExtendableCategoryRepository.findById(id).get();
     }
 
     @Override
