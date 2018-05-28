@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
