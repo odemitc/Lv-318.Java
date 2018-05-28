@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.entity.Transit;
 

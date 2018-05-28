@@ -11,13 +11,13 @@ public interface ExtendebleCategoryService {
 
     void delete(ExtendableCategory extendableCategory);
 
-    Optional<ExtendableCategory> findByName(String name);
+    Optional<ExtendableCategory> getByName(String name);
 
-    List<ExtendableCategory> listExtendableCategories();
+    List<ExtendableCategory> getListExtendableCategories();
 
-    List<ExtendableCategory> findByNextLevelCategoryId(Integer id);
+    List<ExtendableCategory> getByNextLevelCategoryId(Integer id);
 
-    List<ExtendableCategory> findByNextLevelCategory(ExtendableCategory category);
+    List<ExtendableCategory> getByNextLevelCategory(ExtendableCategory category);
 
 
 }
