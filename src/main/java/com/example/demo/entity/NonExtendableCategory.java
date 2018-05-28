@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.List;
 @Data
 @DiscriminatorValue("NON_EXTENDABLE")
 @Accessors(chain = true)
+@EqualsAndHashCode(of = "id")
 public class NonExtendableCategory extends ExtendableCategory {
 
     @OneToMany
