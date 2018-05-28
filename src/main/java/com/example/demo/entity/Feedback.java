@@ -1,19 +1,22 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@Accessors(chain = true)
+
 public class Feedback {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     private String answer;
-    private int userId;
+    private Integer userId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "transit_id")
