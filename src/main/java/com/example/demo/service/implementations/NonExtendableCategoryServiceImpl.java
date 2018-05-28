@@ -4,13 +4,11 @@ import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.interfaces.NonExtendableCategoryService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
 @Service
-@Transactional
 public class NonExtendableCategoryServiceImpl implements NonExtendableCategoryService {
 
     private NonExtendableCategoryRepository nonExtendableCategoryRepository;
