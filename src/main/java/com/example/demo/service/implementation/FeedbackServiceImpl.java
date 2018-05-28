@@ -1,8 +1,8 @@
-package com.example.demo.service.implementations;
+package com.example.demo.service.implementation;
 
 import com.example.demo.entity.Feedback;
 import com.example.demo.repository.FeedbackRepository;
-import com.example.demo.service.interfaces.FeedbackService;
+import com.example.demo.service.FeedbackService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

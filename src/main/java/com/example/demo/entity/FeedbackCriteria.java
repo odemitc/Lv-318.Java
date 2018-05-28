@@ -19,22 +19,28 @@ public class FeedbackCriteria {
     @Enumerated(value = EnumType.STRING)
     private FeedbackType type;
 
-    @Embedded
-    private FeedbackTypeIdentifier feedbackTypeIdentifier;
+//    private FeedbackTypeIdentifier feedbackTypeIdentifier;
 
     public enum FeedbackType {
         RATING,
         BUSY_HOURS;
 
 
-//        public <T> T convertAnswer(String answer) {
-//            return //TODO;
-//        }
+        public <T> T convertAnswer(String answer) {
+            return null; //TODO;
+        }
     }
 
     @Embeddable
     public class FeedbackTypeIdentifier {
-        int x;
-        double y;
+
+        @Enumerated(value = EnumType.STRING)
+        private FeedbackType type;
+
+        private transient Class<?> feedbackClass;
+
+        private FeedbackTypeIdentifier() {
+
+        }
     }
 }

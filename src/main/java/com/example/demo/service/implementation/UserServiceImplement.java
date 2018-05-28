@@ -1,8 +1,8 @@
-package com.example.demo.service.implementations;
+package com.example.demo.service.implementation;
 
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.service.interfaces.UserService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class UserServiceImplement implements UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
     public User addUser(User user) {
@@ -24,7 +24,6 @@ public class UserServiceImplement implements UserService {
 
     @Override
     public User update(User user) {
-
         return userRepository.saveAndFlush(user);
     }
 

@@ -2,7 +2,6 @@ package com.example.demo.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -17,11 +16,11 @@ public class ExtendableCategory {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "next_level_category_id")
+    @JoinColumn(name = "next_level_category_id", foreignKey = @ForeignKey())
     private ExtendableCategory nextLevelCategory;
 }

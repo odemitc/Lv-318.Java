@@ -10,6 +10,8 @@ public interface TransitRepository extends JpaRepository<Transit, Integer> {
 
     Transit findByName(String name);
 
+    List<Transit> findByNameContaining(String name);
+
     List<Transit> findTransitsByCategory(NonExtendableCategory nonExtendableCategory);
 
     List<Transit> findTransitsByCategoryId(int id);

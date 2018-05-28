@@ -1,8 +1,8 @@
-package com.example.demo.service.implementations;
+package com.example.demo.service.implementation;
 
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.repository.NonExtendableCategoryRepository;
-import com.example.demo.service.interfaces.NonExtendableCategoryService;
+import com.example.demo.service.NonExtendableCategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +19,9 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
 
     @Override
     public NonExtendableCategory addNonExtendableCategory(NonExtendableCategory nonExtendableCategory) {
+        if (nonExtendableCategory.getNextLevelCategory() == null) {
+            throw new IllegalArgumentException("NonExtendableCategory must contain next level Category");
+        }
         return nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory);
     }
 

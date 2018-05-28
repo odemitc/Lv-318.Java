@@ -1,4 +1,4 @@
-package com.example.demo.service.interfaces;
+package com.example.demo.service;
 
 import com.example.demo.entity.ExtendableCategory;
 

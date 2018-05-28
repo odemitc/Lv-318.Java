@@ -1,8 +1,9 @@
-package com.example.demo.service;
+package com.example.demo.service.implementation;
 
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.entity.Transit;
 import com.example.demo.repository.TransitRepository;
+import com.example.demo.service.TransitService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
