@@ -4,19 +4,17 @@ import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.entity.Transit;
 import com.example.demo.repository.TransitRepository;
 import com.example.demo.service.TransitService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TransitServiceImpl implements TransitService {
 
-    private TransitRepository transitRepository;
-
-    public TransitServiceImpl(TransitRepository transitRepository) {
-        this.transitRepository = transitRepository;
-    }
+    private final TransitRepository transitRepository;
 
     @Override
     @Transactional
