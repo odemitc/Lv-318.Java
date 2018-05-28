@@ -4,11 +4,14 @@ import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.entity.Transit;
 import com.example.demo.repository.TransitRepository;
 import com.example.demo.service.TransitService;
+import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +22,7 @@ public class TransitServiceImpl implements TransitService {
     @Override
     @Transactional
     public Transit addTransit(Transit transit) {
-        return transitRepository.saveAndFlush(transit);
+        return transitRepository.save(transit);
     }
 
     @Override
@@ -37,13 +40,13 @@ public class TransitServiceImpl implements TransitService {
     @Override
     @Transactional
     public Transit update(Transit transit) {
-        return transitRepository.saveAndFlush(transit);
+        return transitRepository.save(transit);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Transit getById(int id) {
-        return transitRepository.findById(id).get();
+    public Optional<Transit> getById(int id) {
+        return transitRepository.findById(id);
     }
 
     @Override
@@ -67,6 +70,6 @@ public class TransitServiceImpl implements TransitService {
     @Override
     @Transactional(readOnly = true)
     public List<Transit> getAll() {
-        return transitRepository.findAll();
+        return Streams.stream(transitRepository.findAll()).collect(Collectors.toList());
     }
 }

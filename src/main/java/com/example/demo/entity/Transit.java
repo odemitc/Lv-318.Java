@@ -16,7 +16,7 @@ public class Transit {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     private String name;
 
