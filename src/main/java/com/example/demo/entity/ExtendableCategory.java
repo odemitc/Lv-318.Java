@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @DiscriminatorValue("EXTENDABLE")
 @Accessors(chain = true)
 @Table(name = "category")
+@EqualsAndHashCode(of = "id")
 public class ExtendableCategory {
 
     @Id
