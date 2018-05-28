@@ -58,7 +58,6 @@ public class TransitServiceImpl implements TransitService {
         return transitRepository.findTransitsByCategory(nonExtendableCategory);
     }
 
-
     @Override
     @Transactional(readOnly = true)
     public List<Transit> getAllByCategoryId(int id) {
