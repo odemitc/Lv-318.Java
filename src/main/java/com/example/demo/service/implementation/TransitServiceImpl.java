@@ -1,6 +1,7 @@
 package com.example.demo.service.implementation;
 
 import com.example.demo.entity.NonExtendableCategory;
+import com.example.demo.entity.Stop;
 import com.example.demo.entity.Transit;
 import com.example.demo.repository.TransitRepository;
 import com.example.demo.service.TransitService;
@@ -71,5 +72,11 @@ public class TransitServiceImpl implements TransitService {
     @Transactional(readOnly = true)
     public List<Transit> getAll() {
         return Streams.stream(transitRepository.findAll()).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Transit> getTransitsByStopsIn(Stop [] stops) {
+        return transitRepository.findTransitsByStopsIn(stops);
     }
 }

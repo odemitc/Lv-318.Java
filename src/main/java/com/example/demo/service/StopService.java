@@ -14,7 +14,7 @@ public interface StopService {
 
     Stop update(Stop stop);
 
-    List<Stop> getStopByStreet(String street);
+    List<Stop> getStopsByStreet(String street);
 
     List<Stop> getAll();
     Stop getStopByBuilding(String building);

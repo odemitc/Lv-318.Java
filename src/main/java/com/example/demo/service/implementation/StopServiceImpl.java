@@ -57,11 +57,11 @@ public class StopServiceImpl implements StopService {
     }
     @Override
     @Transactional
-    public List<Stop> getStopByStreet(String street) {
+    public List<Stop> getStopsByStreet(String street) {
         if (street == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return stopRepository.findStopByStreet(street);
+        return stopRepository.findStopsByStreet(street);
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.NonExtendableCategory;
+import com.example.demo.entity.Stop;
 import com.example.demo.entity.Transit;
 
 import java.util.List;
@@ -25,4 +26,8 @@ public interface TransitService {
     List<Transit> getAllByCategoryId(int id);
 
     List<Transit> getAll();
+
+    List<Transit> getTransitsByStopsIn(Stop [] stops);
+
+
 }
