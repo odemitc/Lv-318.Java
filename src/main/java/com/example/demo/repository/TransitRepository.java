@@ -20,7 +20,6 @@ public interface TransitRepository extends CrudRepository<Transit, Integer> {
     List<Transit> findTransitsByCategoryId(int id);
 
     @Query("select t from Transit t join t.stops s where s.street in (:stops)")
-
     List<Transit> findTransitsByStopsIn(@Param("stops") Stop [] stops);
 
 
