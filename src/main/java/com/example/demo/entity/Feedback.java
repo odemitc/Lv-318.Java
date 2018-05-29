@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -20,6 +22,7 @@ public class Feedback {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "transit_id")
+    @JsonBackReference
     private Transit transit;
 
     @ManyToOne(cascade = CascadeType.ALL)

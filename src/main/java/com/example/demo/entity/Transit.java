@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -20,6 +21,7 @@ public class Transit {
 
     private String name;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "transit")
     private List<Feedback> feedbacks;
 
