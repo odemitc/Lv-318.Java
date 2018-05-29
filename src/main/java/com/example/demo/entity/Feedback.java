@@ -20,9 +20,9 @@ public class Feedback {
     private String answer;
     private Integer userId;
 
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "transit_id")
-    @JsonBackReference
     private Transit transit;
 
     @ManyToOne(cascade = CascadeType.ALL)
