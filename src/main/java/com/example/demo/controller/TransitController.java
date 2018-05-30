@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.ResourceNotFoundException;
 import com.example.demo.entity.Transit;
 import com.example.demo.service.TransitService;
 import lombok.RequiredArgsConstructor;
@@ -18,16 +17,41 @@ public class TransitController {
     private final TransitService transitService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Transit> getTransit(@PathVariable Integer id) {
-        Transit transit = transitService.getById(id)
-            .orElseThrow(() -> new ResourceNotFoundException(String.format("Transit with id '%s' not found", id)));
-
-        return new ResponseEntity<>(transit, HttpStatus.OK);
+    public ResponseEntity<Transit> getTransitById(@PathVariable Integer id) {
+        return new ResponseEntity<>(transitService.getById(id), HttpStatus.OK);
     }
 
     @CrossOrigin
-    @ResponseBody
+    @GetMapping()
     public ResponseEntity<List<Transit>> getAllTransits() {
         return new ResponseEntity<>(transitService.getAll(), HttpStatus.OK);
     }
+
+    @GetMapping("/category/{category_id}")
+    public ResponseEntity<List<Transit>> getTransitsByCategoryId(@PathVariable Integer category_id) {
+        return new ResponseEntity<>(transitService.getAllByCategoryId(category_id), HttpStatus.OK);
+    }
+
+    @GetMapping("/category/")
+    public ResponseEntity<List<Transit>> getTransitsByCategoryName(@RequestParam String categoryName) {
+        return new ResponseEntity<>(transitService.getAllByCategoryName(categoryName), HttpStatus.OK);
+    }
+
+    @PostMapping()
+    public ResponseEntity<Transit> addTransit(@RequestBody Transit transit) {
+        Transit savedTransit = transitService.addTransit(transit);
+        return new ResponseEntity<>(savedTransit, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTransit(@PathVariable Integer id) {
+        transitService.delete(id);
+    }
+
+    @PutMapping
+    public ResponseEntity<Transit> updateTransit(@RequestBody Transit transit) {
+        Transit updatedTransit = transitService.update(transit);
+        return new ResponseEntity<>(updatedTransit, HttpStatus.OK);
+    }
+
 }
