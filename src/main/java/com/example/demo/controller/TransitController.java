@@ -1,42 +1,31 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.DTO.TransitDTO;
+import com.example.demo.ResourceNotFoundException;
 import com.example.demo.entity.Transit;
 import com.example.demo.service.TransitService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController("/transit")
+@RequiredArgsConstructor
 public class TransitController {
 
-    private TransitService transitService;
-    private ModelMapper modelMapper;
+    private final TransitService transitService;
+    private final ModelMapper modelMapper;
 
-    public TransitController(TransitService transitService) {
-        this.transitService = transitService;
-        modelMapper = new ModelMapper();
+    @GetMapping("/{id}")
+    public ResponseEntity<Transit> getTransit(@PathVariable Integer id) {
+        Transit transit = transitService.getById(id)
+            .orElseThrow(() -> new ResourceNotFoundException(String.format("Transit with id '%s' not found", id)));
+
+        return new ResponseEntity<>(transit, HttpStatus.OK);
     }
 
-    @GetMapping("/transit/simple/{number}")
-    public ResponseEntity<TransitDTO> getSimpleTransit(@PathVariable int number) {
-        TransitDTO transitDTO = modelMapper.map(transitService.getById(number).get(), TransitDTO.class);
-        return new ResponseEntity<>(transitDTO, HttpStatus.OK);
-    }
-
-    @GetMapping("transit/{number}")
-    public ResponseEntity<Transit> getTransit(@PathVariable int number) {
-        return new ResponseEntity<>(transitService.getById(number).get(), HttpStatus.OK);
-    }
-
-    @GetMapping("/transit")
     @CrossOrigin
     @ResponseBody
     public ResponseEntity<List<Transit>> getAllTransits() {

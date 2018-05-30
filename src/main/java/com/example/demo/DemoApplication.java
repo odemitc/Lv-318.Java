@@ -1,11 +1,20 @@
 package com.example.demo;
 
+import com.example.demo.entity.Transit;
+import com.example.demo.repository.TransitRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootApplication
-public class DemoApplication  {
+@RequiredArgsConstructor
+public class DemoApplication implements ApplicationRunner {
+    private final ApplicationContext context;
 
 //    @Autowired
 //    private ExtendableCategoryRepository extendableCategoryRepository;
@@ -18,7 +27,7 @@ public class DemoApplication  {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
-//        int x = 1;
+        int x = 1;
 
 
 //        context.getBean(StopRepository.class).saveAll(Arrays.asList(
@@ -55,12 +64,12 @@ public class DemoApplication  {
 //        nonExtendableCategoryRepo.save(tram);
     }
 
-//    @Override
-//    @Transactional
-//    public void run(ApplicationArguments args) throws Exception {
-//
-//    }
-
+    @Override
+    @Transactional
+    public void run(ApplicationArguments args) throws Exception {
+        Transit transit = context.getBean(TransitRepository.class).findById(5).get();
+        transit.getFeedbacks().size();
+    }
 //    @Override
 //    @Transactional
 //    public void run(ApplicationArguments args) throws Exception {

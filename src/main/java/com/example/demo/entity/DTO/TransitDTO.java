@@ -1,4 +1,4 @@
-package com.example.demo.entity.DTO;
+package com.example.demo.entity.dto;
 
 import com.example.demo.entity.NonExtendableCategory;
 import lombok.Data;
