@@ -53,6 +53,11 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
+    public List<Feedback> getByUserId(Integer id) {
+        return feedbackRepository.findByUserId(id);
+    }
+
+    @Override
     @Transactional
     public Feedback update(Feedback feedback) {
         return feedbackRepository.save(feedback);
