@@ -45,9 +45,9 @@ public class StopController {
     @PostMapping("/addstop")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Stop> createStudent(@RequestBody Stop stop) {
-        Stop savedStudent = stopService.addStop(stop);
+        Stop savedStop = stopService.addStop(stop);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(savedStudent.getId()).toUri();
+                .buildAndExpand(savedStop.getId()).toUri();
         return ResponseEntity.created(location).build();
 
     }
