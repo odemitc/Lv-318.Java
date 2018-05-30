@@ -1,6 +1,6 @@
 package com.example.demo.service.implementation;
 
-import com.example.demo.ResourceNotFoundException;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.NonExtendableCategoryService;

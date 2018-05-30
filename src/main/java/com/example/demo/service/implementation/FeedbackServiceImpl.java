@@ -1,20 +1,17 @@
 package com.example.demo.service.implementation;
 
-import com.example.demo.ResourceNotFoundException;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.entity.Feedback;
-import com.example.demo.repository.FeedbackCriteriaRepository;
 import com.example.demo.repository.FeedbackRepository;
-import com.example.demo.repository.TransitRepository;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.service.FeedbackService;
 import com.google.common.base.Strings;
 import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,7 +33,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     @Transactional
-    public void delete(Integer id) {
+    public void delete(Integer id)  {
         if (id == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
@@ -56,7 +53,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     @Transactional(readOnly = true)
-    public Feedback getById(Integer id) {
+    public Feedback getById(Integer id) throws MethodArgumentTypeMismatchException {
         if (id == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
@@ -65,6 +62,11 @@ public class FeedbackServiceImpl implements FeedbackService {
                         .format("Feedback with id '%s' not found", id)));
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Feedback> getAll() {
+        return Streams.stream(feedbackRepository.findAll()).collect(Collectors.toList());
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -102,9 +104,4 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<Feedback> getAll() {
-        return Streams.stream(feedbackRepository.findAll()).collect(Collectors.toList());
-    }
 }
