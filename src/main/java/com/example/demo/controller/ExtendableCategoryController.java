@@ -17,20 +17,37 @@ import java.util.List;
 public class ExtendableCategoryController {
     private final ExtendebleCategoryService categoryService;
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
         return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{top}")
-    public ResponseEntity<List<ExtendableCategory>> getMiddleCategories(@PathVariable String top) {
+    @GetMapping
+    public ResponseEntity<List<ExtendableCategory>> getCategoriesByNextLevel(@RequestParam String top) {
         return new ResponseEntity<>(categoryService.getByNextLevelCategoryId(categoryService.getByName(top).getId()), HttpStatus.OK);
     }
+//
+//    @GetMapping
+//    public ResponseEntity<List<ExtendableCategory>> getLastCategories(@RequestParam String top, @RequestParam String next) {
+//        ExtendableCategory topCategory = categoryService.getByName(top);
+//        ExtendableCategory nextCategory = categoryService.getByNameAndNextLevelCategory(next, topCategory);
+//        return new ResponseEntity<>(categoryService.getByNextLevelCategory(nextCategory), HttpStatus.OK);
+//    }
 
-    @GetMapping(value = "/{top}/{next}/")
-    public ResponseEntity<List<ExtendableCategory>> getLastCategories(@PathVariable String top, @PathVariable String next) {
-        ExtendableCategory topCategory = categoryService.getByName(top);
-        ExtendableCategory nextCategory = categoryService.getByNameAndNextLevelCategory(next, topCategory);
-        return new ResponseEntity<>(categoryService.getByNextLevelCategory(nextCategory), HttpStatus.OK);
+    @PostMapping()
+    public ResponseEntity<ExtendableCategory> addTransit(@RequestBody ExtendableCategory category) {
+        ExtendableCategory savedCategory = categoryService.save(category);
+        return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTransit(@PathVariable Integer id) {
+        categoryService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ExtendableCategory> updateCategory(@RequestBody ExtendableCategory category, @PathVariable Integer id) {
+        ExtendableCategory updatedCategory = categoryService.update(category.setId(id));
+        return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
     }
 }

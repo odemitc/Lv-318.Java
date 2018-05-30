@@ -11,6 +11,10 @@ public interface ExtendebleCategoryService {
 
     void delete(ExtendableCategory extendableCategory);
 
+    void delete(Integer id);
+
+    ExtendableCategory update(ExtendableCategory category);
+
     ExtendableCategory getByName(String name);
 
     List<ExtendableCategory> getListExtendableCategories();
