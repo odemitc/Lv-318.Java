@@ -48,9 +48,9 @@ public class TransitController {
         transitService.delete(id);
     }
 
-    @PutMapping
-    public ResponseEntity<Transit> updateTransit(@RequestBody Transit transit) {
-        Transit updatedTransit = transitService.update(transit);
+    @PutMapping("/{id}")
+    public ResponseEntity<Transit> updateTransit(@RequestBody Transit transit, @PathVariable Integer id) {
+        Transit updatedTransit = transitService.update(transit.setId(id));
         return new ResponseEntity<>(updatedTransit, HttpStatus.OK);
     }
 
