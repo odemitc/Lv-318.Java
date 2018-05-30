@@ -31,10 +31,7 @@ public class FeedbackController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Feedback> getById(@PathVariable Integer id) {
-        Feedback feedback = feedbackService.getById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Feedback with id '%s' not found", id)));
-        return new ResponseEntity<>(feedback, HttpStatus.OK);
+        return new ResponseEntity<>(feedbackService.getById(id), HttpStatus.OK);
     }
 
 
