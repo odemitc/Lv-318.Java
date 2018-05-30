@@ -22,10 +22,10 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.getByFeedbackCriteria(id), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
-        return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
+//        return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
+//    }
 
 
     @GetMapping(value = "/{id}")
