@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.ResourceNotFoundException;
 import com.example.demo.entity.Feedback;
 import com.example.demo.service.FeedbackService;
 import lombok.RequiredArgsConstructor;
@@ -11,9 +10,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
-@RestController("/feedback")
+@RestController
+@RequestMapping("/feedback")
 @RequiredArgsConstructor
 public class FeedbackController {
     private final FeedbackService feedbackService;
