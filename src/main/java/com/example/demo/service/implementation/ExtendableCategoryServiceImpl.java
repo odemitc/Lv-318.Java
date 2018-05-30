@@ -32,9 +32,15 @@ public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService 
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<ExtendableCategory> getByName(String name) {
+    public ExtendableCategory getByName(String name) {
 
         return extendableCategoryRepository.findByName(name);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ExtendableCategory> getListTopExtendableCategories() {
+        return extendableCategoryRepository.findAllByNextLevelCategoryIsNull();
     }
 
     @Override
@@ -54,5 +60,10 @@ public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService 
     @Transactional(readOnly = true)
     public List<ExtendableCategory> getByNextLevelCategory(ExtendableCategory category) {
         return extendableCategoryRepository.findByNextLevelCategory(category);
+    }
+
+    @Override
+    public ExtendableCategory getByNameAndNextLevelCategory(String name, ExtendableCategory nextLevel) {
+        return extendableCategoryRepository.findByNameAndNextLevelCategory(name, nextLevel);
     }
 }
