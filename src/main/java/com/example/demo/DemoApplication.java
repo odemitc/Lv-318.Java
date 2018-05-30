@@ -67,8 +67,8 @@ public class DemoApplication implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        Transit transit = context.getBean(TransitRepository.class).findById(5).get();
-        transit.getFeedbacks().size();
+//        Transit transit = context.getBean(TransitRepository.class).findById(5).get();
+//        transit.getFeedbacks().size();
     }
 //    @Override
 //    @Transactional
