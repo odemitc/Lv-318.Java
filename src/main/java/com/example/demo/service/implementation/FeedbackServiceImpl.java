@@ -27,6 +27,9 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional
     public Feedback addFeedback(Feedback feedback) {
+        if (feedback == null) {
+            throw new IllegalArgumentException("Parameter should not be null");
+        }
         return feedbackRepository.save(feedback);
     }
 
@@ -34,6 +37,9 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional
     public void delete(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter should not be null");
+        }
         feedbackRepository.deleteById(id);
 
     }
@@ -50,10 +56,11 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     @Transactional(readOnly = true)
-    public Feedback getById(Integer id) {
-        return feedbackRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Feedback with id '%s' not found", id)));
+    public Optional<Feedback> getById(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter should not be null");
+        }
+        return feedbackRepository.findById(id);
     }
 
 
@@ -69,17 +76,26 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional(readOnly = true)
     public List<Feedback> getByTransitId(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter should not be null");
+        }
         return feedbackRepository.findByTransitId(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Feedback> getByFeedbackCriteria(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter should not be null");
+        }
         return feedbackRepository.findByFeedbackCriteriaId(id);
     }
 
     @Override
     public List<Feedback> getByUserId(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter should not be null");
+        }
         return feedbackRepository.findByUserId(id);
     }
 

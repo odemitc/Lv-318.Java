@@ -23,5 +23,5 @@ public interface FeedbackService {
 
     List<Feedback> getAll();
 
-    Feedback getById(Integer id);
+    Optional<Feedback> getById(Integer id);
 }
