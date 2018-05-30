@@ -17,38 +17,41 @@ public class UserServiceImplement implements UserService {
     private UserRepository userRepository;
 
     @Override
+    @Transactional
     public User addUser(User user) {
         return userRepository.saveAndFlush(user);
 
     }
 
     @Override
+    @Transactional
     public User update(User user) {
         return userRepository.saveAndFlush(user);
     }
 
     @Override
-    public void delete(int id) {
-      userRepository.deleteById(id);
+    @Transactional
+    public User getByEmailAndPassword(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password);
     }
 
     @Override
-    public void delete(String email) {
-        userRepository.deleteByEmail( email);
+    @Transactional
+    public void delete(String email,String password) {
+        userRepository.deleteByEmailAndPassword( email,password);
 
     }
 
     @Override
+    @Transactional
     public User getById(int id) {
       return userRepository.findById(id);
     }
 
-    @Override
-    public User getByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
+
 
     @Override
+    @Transactional
     public List<User> getAll() {
         return userRepository.findAll();
     }

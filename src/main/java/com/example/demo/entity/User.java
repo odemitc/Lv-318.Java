@@ -1,17 +1,24 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.util.List;
+
 
 @Entity
 @Table(name = "users")
 @Data
+@Accessors(chain = true)
+@EqualsAndHashCode(of ="id")
 public class User {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false)
-    private int id;
+    private Integer id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -28,13 +35,6 @@ public class User {
     @Column(name = "image")
     private byte[] image;
 
-    public User() {
-    }
 
-    public User(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
+
 }
