@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.entity.Transit;
 import com.example.demo.service.TransitService;
 import lombok.RequiredArgsConstructor;

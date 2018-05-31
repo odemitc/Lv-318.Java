@@ -94,12 +94,7 @@ public class TransitServiceImpl implements TransitService {
         if (Strings.isNullOrEmpty(name)) {
             throw new IllegalArgumentException("Category name should not be empty");
         }
-        List<Transit> transits = transitRepository.findTransitsByCategoryName(name);
-        if (transits.isEmpty()) {
-            throw new ResourceNotFoundException(String.format("Category with name '%s' not found", name));
-        } else {
-            return transits;
-        }
+        return transitRepository.findTransitsByCategoryName(name);
     }
 
     @Override
@@ -108,12 +103,7 @@ public class TransitServiceImpl implements TransitService {
         if (id == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        List<Transit> transits = transitRepository.findTransitsByCategoryId(id);
-        if (transits.isEmpty()) {
-            throw new ResourceNotFoundException(String.format("Category with id '%s' not found", id));
-        } else {
-            return transits;
-        }
+        return transitRepository.findTransitsByCategoryId(id);
     }
 
     @Override

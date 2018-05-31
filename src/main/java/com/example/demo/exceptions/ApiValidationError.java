@@ -1,6 +1,5 @@
 package com.example.demo.exceptions;
 
-import com.example.demo.exceptions.ApiSubError;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
