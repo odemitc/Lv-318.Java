@@ -52,7 +52,7 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     }
 
     @Override
-    public NonExtendableCategory getByNextLevelCategory(int id) {
+    public List<NonExtendableCategory> getByNextLevelCategory(int id) {
         return nonExtendableCategoryRepository.findByNextLevelCategoryId(id);
     }
 
@@ -61,10 +61,5 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
         return nonExtendableCategoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String
                         .format("Category with id '%s' not found", id)));
-    }
-
-    @Override
-    public List<NonExtendableCategory> getAll() {
-        return nonExtendableCategoryRepository.findAll();
     }
 }

@@ -17,37 +17,33 @@ import java.util.List;
 public class NonExtendableCategoryController {
     private final NonExtendableCategoryService nonExtendableCategoryService;
 
-    @GetMapping("/")
-    public ResponseEntity<List<NonExtendableCategory>> getAllCategories() {
-        return new ResponseEntity<>(nonExtendableCategoryService.getAll(), HttpStatus.OK);
-    }
-
     @GetMapping
-    public ResponseEntity<NonExtendableCategory> getCategoryByNextLevel(@RequestParam String up) {
-        NonExtendableCategory category = nonExtendableCategoryService.getByNextLevelCategory(nonExtendableCategoryService.getByName(up).getId());
+    public ResponseEntity<List<NonExtendableCategory>> getCategoryByNextLevel(@RequestParam String up) {
+        List<NonExtendableCategory> categories = nonExtendableCategoryService.getByNextLevelCategory(nonExtendableCategoryService.getByName(up).getId());
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(category.getId()).toUri();
-
-        return ResponseEntity.created(location).build();
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<NonExtendableCategory> addCategory(@RequestBody NonExtendableCategory nonExtendableCategory) {
 
         NonExtendableCategory category = nonExtendableCategoryService.addNonExtendableCategory(nonExtendableCategory);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(category.getId()).toUri();
+
         return ResponseEntity.created(location).build();
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id) {
         nonExtendableCategoryService.delete(id);
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<NonExtendableCategory> updateCategory(@RequestParam NonExtendableCategory nonExtendableCategory, @PathVariable Integer id) {
         NonExtendableCategory updatedCategory = nonExtendableCategoryService.update((NonExtendableCategory) nonExtendableCategory.setId(id));
 
