@@ -38,8 +38,8 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     @Override
     public NonExtendableCategory update(NonExtendableCategory nonExtendableCategory) {
         return nonExtendableCategoryRepository.findById(nonExtendableCategory.getId())
-            .map(category -> nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory))
-            .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
+                .map(category -> nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory))
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
     }
 
     @Override
@@ -58,7 +58,9 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
 
     @Override
     public NonExtendableCategory getById(Integer id) {
-        return nonExtendableCategoryRepository.findById(id).get();
+        return nonExtendableCategoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Category with id '%s' not found", id)));
     }
 
     @Override
