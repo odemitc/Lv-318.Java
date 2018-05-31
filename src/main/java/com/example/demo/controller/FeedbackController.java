@@ -17,15 +17,15 @@ import java.util.List;
 public class FeedbackController {
     private final FeedbackService feedbackService;
 
-    @GetMapping
-    public ResponseEntity<List<Feedback>> getByFeedbackCriteria(@RequestParam("criteriaId") Integer id) {
-        return new ResponseEntity<>(feedbackService.getByFeedbackCriteria(id), HttpStatus.OK);
-    }
-
 //    @GetMapping
-//    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
-//        return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
+//    public ResponseEntity<List<Feedback>> getByFeedbackCriteria(@RequestParam("criteriaId") Integer id) {
+//        return new ResponseEntity<>(feedbackService.getByFeedbackCriteria(id), HttpStatus.OK);
 //    }
+
+    @GetMapping
+    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
+        return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
+    }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Feedback> getById(@PathVariable Integer id) {

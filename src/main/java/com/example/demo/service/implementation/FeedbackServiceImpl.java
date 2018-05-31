@@ -7,6 +7,7 @@ import com.example.demo.service.FeedbackService;
 import com.google.common.base.Strings;
 import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
@@ -33,12 +34,15 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     @Transactional
-    public void delete(Integer id)  {
+    public void delete(Integer id) {
         if (id == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        feedbackRepository.deleteById(id);
-
+        try {
+            feedbackRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(String.format("Transit with id '%s' not found", id));
+        }
     }
 
     @Override
