@@ -24,6 +24,17 @@ public class NonExtendableCategoryController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
+
+    @GetMapping("/{id}")
+    public ResponseEntity<NonExtendableCategory> getCategoryById(@PathVariable Integer id){
+
+        NonExtendableCategory category = nonExtendableCategoryService.getById(id);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(category.getId()).toUri();
+        return ResponseEntity.created(location).build();
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<NonExtendableCategory> addCategory(@RequestBody NonExtendableCategory nonExtendableCategory) {
