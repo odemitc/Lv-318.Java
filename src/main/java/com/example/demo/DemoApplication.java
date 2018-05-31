@@ -1,20 +1,13 @@
 package com.example.demo;
 
-import com.example.demo.entity.Transit;
-import com.example.demo.repository.TransitRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootApplication
-@RequiredArgsConstructor
-public class DemoApplication implements ApplicationRunner {
-    private final ApplicationContext context;
+//@RequiredArgsConstructor
+public class DemoApplication {
+//    private final ApplicationContext context;
 
 //    @Autowired
 //    private ExtendableCategoryRepository extendableCategoryRepository;
@@ -62,13 +55,13 @@ public class DemoApplication implements ApplicationRunner {
 //                .setNextLevelCategory(lviv);
 //
 //        nonExtendableCategoryRepo.save(tram);
-    }
+//    }
 
-    @Override
-    @Transactional
-    public void run(ApplicationArguments args) throws Exception {
-        Transit transit = context.getBean(TransitRepository.class).findById(5).get();
-        transit.getFeedbacks().size();
+//    @Override
+//    @Transactional
+//    public void run(ApplicationArguments args) throws Exception {
+//        Transit transit = context.getBean(TransitRepository.class).findById(5).get();
+//        transit.getFeedbacks().size();
     }
 //    @Override
 //    @Transactional

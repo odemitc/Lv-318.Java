@@ -8,9 +8,13 @@ import java.util.Optional;
 
 public interface ExtendableCategoryRepository extends CrudRepository<ExtendableCategory, Integer> {
 
-    Optional<ExtendableCategory> findByName(String name);
+    ExtendableCategory findByName(String name);
 
     List<ExtendableCategory> findByNextLevelCategoryId(Integer id);
 
     List<ExtendableCategory> findByNextLevelCategory(ExtendableCategory extendableCategory);
+
+    List<ExtendableCategory> findAllByNextLevelCategoryIsNull();
+
+    ExtendableCategory findByNameAndNextLevelCategory(String name, ExtendableCategory nextLevelCategory);
 }

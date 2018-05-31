@@ -11,7 +11,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController("/feedback")
+@RestController
+@RequestMapping("/feedback")
 @RequiredArgsConstructor
 public class FeedbackController {
     private final FeedbackService feedbackService;
@@ -21,10 +22,10 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.getByFeedbackCriteria(id), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
-        return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
+//        return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
+//    }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Feedback> getById(@PathVariable Integer id) {
