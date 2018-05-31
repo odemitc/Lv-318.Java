@@ -3,19 +3,18 @@ package com.example.demo.controller;
 import com.example.demo.entity.Transit;
 import com.example.demo.service.TransitService;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/transit")
+@RestController
+@RequestMapping("/transit")
 @RequiredArgsConstructor
 public class TransitController {
 
     private final TransitService transitService;
-    private final ModelMapper modelMapper;
 
     @GetMapping("/{id}")
     public ResponseEntity<Transit> getTransitById(@PathVariable Integer id) {

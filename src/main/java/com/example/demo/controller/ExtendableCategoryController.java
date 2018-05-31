@@ -17,7 +17,7 @@ import java.util.List;
 public class ExtendableCategoryController {
     private final ExtendebleCategoryService categoryService;
 
-    @GetMapping("/")
+    @GetMapping("/top/")
     public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
         return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
     }

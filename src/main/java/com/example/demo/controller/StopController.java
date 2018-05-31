@@ -12,7 +12,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Optional;
 
-@RestController("/stop")
+@RestController
+@RequestMapping("/stop")
 @RequiredArgsConstructor
 public class StopController {
 
@@ -39,7 +40,7 @@ public class StopController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Stop>  add(@RequestBody Stop stop) {
+    public ResponseEntity<Stop> add(@RequestBody Stop stop) {
         Stop savedStop = stopService.addStop(stop);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedStop.getId()).toUri();
