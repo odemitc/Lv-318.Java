@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @DiscriminatorValue("NON_EXTENDABLE")
 @Accessors(chain = true)
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(callSuper = true)
 public class NonExtendableCategory extends ExtendableCategory {
 
     @OneToMany
