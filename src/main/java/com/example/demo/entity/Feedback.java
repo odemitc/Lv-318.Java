@@ -25,6 +25,7 @@ public class Feedback {
     @JoinColumn(name = "transit_id")
     private Transit transit;
 
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "criteria_id")
     private FeedbackCriteria feedbackCriteria;

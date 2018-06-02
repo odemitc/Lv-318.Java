@@ -1,45 +1,57 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.DTO.TransitDTO;
 import com.example.demo.entity.Transit;
 import com.example.demo.service.TransitService;
-import org.modelmapper.ModelMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/transit")
+@RequiredArgsConstructor
 public class TransitController {
 
-    private TransitService transitService;
-    private ModelMapper modelMapper;
+    private final TransitService transitService;
 
-    public TransitController(TransitService transitService) {
-        this.transitService = transitService;
-        modelMapper = new ModelMapper();
+    @GetMapping("/{id}")
+    public ResponseEntity<Transit> getTransitById(@PathVariable Integer id) {
+        return new ResponseEntity<>(transitService.getById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/transit/simple/{number}")
-    public ResponseEntity<TransitDTO> getSimpleTransit(@PathVariable int number) {
-        TransitDTO transitDTO = modelMapper.map(transitService.getById(number).get(), TransitDTO.class);
-        return new ResponseEntity<>(transitDTO, HttpStatus.OK);
-    }
-
-    @GetMapping("transit/{number}")
-    public ResponseEntity<Transit> getTransit(@PathVariable int number) {
-        return new ResponseEntity<>(transitService.getById(number).get(), HttpStatus.OK);
-    }
-
-    @GetMapping("/transit")
     @CrossOrigin
-    @ResponseBody
+    @GetMapping()
     public ResponseEntity<List<Transit>> getAllTransits() {
         return new ResponseEntity<>(transitService.getAll(), HttpStatus.OK);
     }
+
+    @GetMapping("/category/{category_id}")
+    public ResponseEntity<List<Transit>> getTransitsByCategoryId(@PathVariable Integer category_id) {
+        return new ResponseEntity<>(transitService.getAllByCategoryId(category_id), HttpStatus.OK);
+    }
+
+    @GetMapping("/category/")
+    public ResponseEntity<List<Transit>> getTransitsByCategoryName(@RequestParam String categoryName) {
+        return new ResponseEntity<>(transitService.getAllByCategoryName(categoryName), HttpStatus.OK);
+    }
+
+    @PostMapping()
+    public ResponseEntity<Transit> addTransit(@RequestBody Transit transit) {
+        Transit savedTransit = transitService.addTransit(transit);
+        return new ResponseEntity<>(savedTransit, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTransit(@PathVariable Integer id) {
+        transitService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Transit> updateTransit(@RequestBody Transit transit, @PathVariable Integer id) {
+        Transit updatedTransit = transitService.update(transit.setId(id));
+        return new ResponseEntity<>(updatedTransit, HttpStatus.OK);
+    }
+
 }

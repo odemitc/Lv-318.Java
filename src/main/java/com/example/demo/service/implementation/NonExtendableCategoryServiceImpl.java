@@ -1,8 +1,10 @@
 package com.example.demo.service.implementation;
 
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.NonExtendableCategoryService;
+import com.google.common.base.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,34 +37,29 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
 
     @Override
     public NonExtendableCategory update(NonExtendableCategory nonExtendableCategory) {
-        if (nonExtendableCategoryRepository.findById(nonExtendableCategory.getId()) == null) {
-            throw new IllegalArgumentException("No such record to update");
-        }
-
-        return nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory);
+        return nonExtendableCategoryRepository.findById(nonExtendableCategory.getId())
+                .map(category -> nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory))
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
     }
 
     @Override
     public NonExtendableCategory getByName(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("Name should be not empty");
+        if (Strings.isNullOrEmpty(name)) {
+            throw new IllegalArgumentException("Name should not be empty");
         }
 
         return nonExtendableCategoryRepository.findByName(name);
     }
 
     @Override
-    public NonExtendableCategory getByNextLevelCategory(int id) {
+    public List<NonExtendableCategory> getByNextLevelCategory(int id) {
         return nonExtendableCategoryRepository.findByNextLevelCategoryId(id);
     }
 
     @Override
     public NonExtendableCategory getById(Integer id) {
-        return nonExtendableCategoryRepository.findById(id).get();
-    }
-
-    @Override
-    public List<NonExtendableCategory> getAll() {
-        return nonExtendableCategoryRepository.findAll();
+        return nonExtendableCategoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Category with id '%s' not found", id)));
     }
 }

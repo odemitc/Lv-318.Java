@@ -19,7 +19,9 @@ public interface FeedbackService {
 
     List<Feedback> getByFeedbackCriteria(Integer id);
 
+    List<Feedback> getByUserId(Integer id);
+
     List<Feedback> getAll();
 
-    Optional<Feedback> getById(Integer id);
+    Feedback getById(Integer id);
 }
