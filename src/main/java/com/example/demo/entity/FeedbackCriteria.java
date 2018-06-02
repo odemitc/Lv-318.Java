@@ -1,18 +1,22 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@EqualsAndHashCode(of ="id")
+@Accessors(chain = true)
 public class FeedbackCriteria {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
-    private int groupId;
+    private Integer groupId;
 
     private String question;
 
