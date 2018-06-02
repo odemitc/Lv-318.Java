@@ -1,10 +1,20 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.FeedbackCriteria;
+
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.entity.FeedbackCriteria;
+
 public interface FeedbackCriteriaService {
+    FeedbackCriteria save(FeedbackCriteria feedbackCriteria);
+
+    void delete(Integer id);
+
+    void delete(FeedbackCriteria feedbackCriteria);
+
+    FeedbackCriteria update(FeedbackCriteria feedbackCriteria);
+    List<FeedbackCriteria> getAll();
 
     Optional <FeedbackCriteria> getById(Integer id);
 
