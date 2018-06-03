@@ -3,6 +3,7 @@ package com.example.demo.entity.DTO;
 import com.example.demo.entity.NonExtendableCategory;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
@@ -14,6 +15,15 @@ public class NonExtendableCategoryDTO {
     private URI linkToUpperCategory;
 
     public NonExtendableCategoryDTO(NonExtendableCategory nonExtendableCategory) {
-        this.setId(nonExtendableCategory.getId()).setName(nonExtendableCategory.getName());
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .replacePath("/category/{id}")
+                .buildAndExpand(nonExtendableCategory.getNextLevelCategory().getId())
+                .toUri();
+
+        this.setId(nonExtendableCategory.getId())
+                .setName(nonExtendableCategory.getName())
+                .setLinkToUpperCategory(location);
     }
 }
