@@ -1,8 +1,10 @@
 package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -10,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Accessors(chain = true)
-@EqualsAndHashCode(of ="id")
+@EqualsAndHashCode(of = "id")
 public class Feedback {
 
     @Id

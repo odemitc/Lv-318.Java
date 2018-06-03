@@ -8,8 +8,12 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@EqualsAndHashCode(of ="id")
+@Inheritance
+@DiscriminatorColumn(name = "type")
+@DiscriminatorValue("FEEDBACK_CRITERIA")
 @Accessors(chain = true)
+@Table(name = "criteria")
+@EqualsAndHashCode(of = "id")
 public class FeedbackCriteria {
 
     @Id
