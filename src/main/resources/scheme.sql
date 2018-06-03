@@ -60,3 +60,17 @@ create table feedback
     constraint fk8lxp0isnr3dgtl791ycap66xb
     references transit
 );
+
+create table users
+(
+  id   integer
+   not null
+    constraint users_pkey
+    primary key,
+  first_name        varchar(255),
+  last_name        varchar(255),
+  email        varchar(255),
+  password       varchar(255),
+
+);
+

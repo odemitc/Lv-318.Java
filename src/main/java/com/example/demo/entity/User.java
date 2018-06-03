@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,9 +15,10 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(of ="id")
+
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     @Column(name = "id",nullable = false)
     private Integer id;
 
@@ -29,11 +31,14 @@ public class User {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
+    @JsonIgnore
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "image")
-    private byte[] image;
+
+    /*@JsonManagedReference
+    @OneToMany(mappedBy = "userId")
+    private List<Feedback> feedbacks;*/
 
 
 

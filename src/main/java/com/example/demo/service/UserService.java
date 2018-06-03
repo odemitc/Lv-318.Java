@@ -10,11 +10,11 @@ public interface UserService {
 
     User update(User user);
 
-    void delete (String email,String password);
+    void deleteById(int id);
 
     User getById(int id);
 
-    User getByEmailAndPassword(String email,String password);
+    User getByEmailAndPassword(String email, String password);
 
     List<User> getAll();
 }
