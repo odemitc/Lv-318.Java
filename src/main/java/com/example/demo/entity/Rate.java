@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -15,15 +16,24 @@ import static java.util.stream.Collectors.toList;
 
 @Data
 @Accessors(chain = true)
+@Component
 @RequiredArgsConstructor
 public class Rate {
 
-    private Integer value;
-    private ConverterContext context;
+    private final Integer value;
 
-    public Rate(Integer value) {
-        this.value = value;
-        this.context = ConverterContext.getInstance();
+    private void setConverter(Feedback feedback, ConverterContext context) {
+        if (context.isRatingCriteria(feedback))
+            context.setConverter(new ConverterRaitingCriteria());
+        else
+            context.setConverter(new ConverterFeedbackCriteria());
+    }
+
+    private List<Rate> makeListRates(List<Feedback> feedbackList, ConverterContext context) {
+        return feedbackList.stream()
+                .peek(feedback -> setConverter(feedback, context))
+                .map(feedback -> context.getConverter().convertAnswer(feedback))
+                .collect(toList());
     }
 
     private Double counter(List<Rate> rates) {
@@ -33,21 +43,8 @@ public class Rate {
                 .orElse(0);
     }
 
-    private List<Rate> makeListRates(List<Feedback> feedbackList) {
-        return feedbackList.stream()
-                .peek(feedback -> {
-                    if (context.isRatingCriteria(feedback))
-                        context.setConverter(new ConverterRaitingCriteria());
-                    else
-                        context.setConverter(new ConverterFeedbackCriteria());
-
-                })
-                .map(feedback -> context.getConverter().convertAnswer(feedback))
-                .collect(toList());
-    }
-
-    public Double makeRate(List<Feedback> feedbackList) {
-        return counter(makeListRates(feedbackList));
+    public Double makeRate(List<Feedback> feedbackList, ConverterContext context) {
+        return counter(makeListRates(feedbackList, context));
     }
 
 }

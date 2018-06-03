@@ -17,7 +17,7 @@ import java.util.List;
 public class FeedbackController {
     private final FeedbackService feedbackService;
 
-//    @GetMapping
+    //    @GetMapping
 //    public ResponseEntity<List<Feedback>> getByFeedbackCriteria(@RequestParam("criteriaId") Integer id) {
 //        return new ResponseEntity<>(feedbackService.getByFeedbackCriteria(id), HttpStatus.OK);
 //    }
