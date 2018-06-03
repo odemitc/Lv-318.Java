@@ -1,6 +1,5 @@
 package com.example.demo.exceptions;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 

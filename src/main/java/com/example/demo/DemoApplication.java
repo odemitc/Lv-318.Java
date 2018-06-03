@@ -62,7 +62,7 @@ public class DemoApplication {
 //    public void run(ApplicationArguments args) throws Exception {
 //        Transit transit = context.getBean(TransitRepository.class).findById(5).get();
 //        transit.getFeedbacks().size();
-    }
+//    }
 //    @Override
 //    @Transactional
 //    public void run(ApplicationArguments args) throws Exception {
@@ -79,4 +79,5 @@ public class DemoApplication {
 //
 //        nonExtendableCategoryRepository.save(nonExtendableCategory);
 //   }
+    }
 }
