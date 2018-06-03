@@ -10,8 +10,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @RequiredArgsConstructor
-public class ConverterRaitingCriteria implements Converter {
-
+public class ConverterRatingCriteria implements Converter {
 
     @Override
     public Rate convertAnswer(Feedback feedback) {

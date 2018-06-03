@@ -7,7 +7,7 @@ import com.example.demo.repository.RateRepository;
 import com.example.demo.service.RateService;
 import com.example.demo.service.converters.ConverterContext;
 import com.example.demo.service.converters.ConverterFeedbackCriteria;
-import com.example.demo.service.converters.ConverterRaitingCriteria;
+import com.example.demo.service.converters.ConverterRatingCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +24,7 @@ public class RateServiceImpl implements RateService {
 
     private void setConverter(Feedback feedback, ConverterContext context) {
         if (context.isRatingCriteria(feedback))
-            context.setConverter(new ConverterRaitingCriteria());
+            context.setConverter(new ConverterRatingCriteria());
         else
             context.setConverter(new ConverterFeedbackCriteria());
     }

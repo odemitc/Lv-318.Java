@@ -25,6 +25,7 @@ public class FeedbackCriteria {
     private String question;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(name = "type", insertable = false, updatable = false)
     private FeedbackType type;
 
 //    private FeedbackTypeIdentifier feedbackTypeIdentifier;
@@ -39,16 +40,16 @@ public class FeedbackCriteria {
         }
     }
 
-    @Embeddable
-    public class FeedbackTypeIdentifier {
-
-        @Enumerated(value = EnumType.STRING)
-        private FeedbackType type;
-
-        private transient Class<?> feedbackClass;
-
-        private FeedbackTypeIdentifier() {
-
-        }
-    }
+//    @Embeddable
+//    public class FeedbackTypeIdentifier {
+//
+//        @Enumerated(value = EnumType.STRING)
+//        private FeedbackType type;
+//
+//        private transient Class<?> feedbackClass;
+//
+//        private FeedbackTypeIdentifier() {
+//
+//        }
+//    }
 }

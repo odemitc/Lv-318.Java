@@ -9,9 +9,11 @@ import javax.persistence.Entity;
 
 @Entity
 @Data
-@DiscriminatorValue("RAITING_CRITERIA")
+@DiscriminatorValue("RATING_CRITERIA")
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 public class RatingCriteria extends FeedbackCriteria {
-    private int weight;
+
+
+    private Integer weight;
 }

@@ -16,8 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-
-public class ApiError {
+ class ApiError {
 
     private HttpStatus status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
@@ -30,11 +29,6 @@ public class ApiError {
         timestamp = LocalDateTime.now();
     }
 
-    ApiError(HttpStatus status) {
-        this();
-        this.status = status;
-    }
-
     ApiError(HttpStatus status, Throwable ex) {
         this();
         this.status = status;
@@ -42,12 +36,6 @@ public class ApiError {
         this.debugMessage = ex.getLocalizedMessage();
     }
 
-    ApiError(HttpStatus status, String message, Throwable ex) {
-        this();
-        this.status = status;
-        this.message = message;
-        this.debugMessage = ex.getLocalizedMessage();
-    }
 
     private void addSubError(ApiSubError subError) {
         if (subErrors == null) {
@@ -58,32 +46,6 @@ public class ApiError {
 
     private void addValidationError(String object, String field, Object rejectedValue, String message) {
         addSubError(new ApiValidationError(object, field, rejectedValue, message));
-    }
-
-    private void addValidationError(String object, String message) {
-        addSubError(new ApiValidationError(object, message));
-    }
-
-    private void addValidationError(FieldError fieldError) {
-        this.addValidationError(
-                fieldError.getObjectName(),
-                fieldError.getField(),
-                fieldError.getRejectedValue(),
-                fieldError.getDefaultMessage());
-    }
-
-    void addValidationErrors(List<FieldError> fieldErrors) {
-        fieldErrors.forEach(this::addValidationError);
-    }
-
-    private void addValidationError(ObjectError objectError) {
-        this.addValidationError(
-                objectError.getObjectName(),
-                objectError.getDefaultMessage());
-    }
-
-    void addValidationError(List<ObjectError> globalErrors) {
-        globalErrors.forEach(this::addValidationError);
     }
 
     private void addValidationError(ConstraintViolation<?> cv) {
