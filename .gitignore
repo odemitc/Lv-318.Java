@@ -50,6 +50,7 @@
 hs_err_pid*
 #Maven
 target/
+node_modules/
 
 # Log file
 *.log
