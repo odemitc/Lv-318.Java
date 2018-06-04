@@ -1,7 +1,11 @@
 package com.example.demo.entity;
 
+import com.example.demo.service.converter.ConversionStrategy;
+import com.example.demo.service.converter.impl.BusyHoursDurationConversionStrategy;
+import com.example.demo.service.converter.impl.RatingConversionStrategy;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -32,36 +36,22 @@ public class FeedbackCriteria {
     @Column(name = "load", insertable = false, updatable = false)
     private Load load;
 
-
-
-//    private FeedbackTypeIdentifier feedbackTypeIdentifier;
-
+    @RequiredArgsConstructor
     public enum FeedbackType {
-        RATING,
-        BUSY_HOURS,
-        TECHNICAL_CONDITION;
+        RATING(new RatingConversionStrategy()),
+        BUSY_HOURS(new BusyHoursDurationConversionStrategy());
 
-        public <T> T convertAnswer(String answer) {
-            return null; //TODO;
+        private final ConversionStrategy<?> conversionStrategy;
+
+        @SuppressWarnings("unchecked")
+        public <T> T convertFeedback(Feedback feedback) {
+            return (T) conversionStrategy.convert(feedback);
         }
     }
 
-    public enum Load{
+    public enum Load {
         СИДІВ,
         СТОЯВ,
         ЛЕДВЕ_ЗАЛІЗ
     }
-
-//    @Embeddable
-//    public class FeedbackTypeIdentifier {
-//
-//        @Enumerated(value = EnumType.STRING)
-//        private FeedbackType type;
-//
-//        private transient Class<?> feedbackClass;
-//
-//        private FeedbackTypeIdentifier() {
-//
-//        }
-//    }
 }

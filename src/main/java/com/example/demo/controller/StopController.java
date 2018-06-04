@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.entity.Stop;
 import com.example.demo.service.StopService;
 import lombok.RequiredArgsConstructor;

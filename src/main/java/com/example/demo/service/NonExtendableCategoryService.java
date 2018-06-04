@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.DTO.NonExtendableCategoryDTO;
+import com.example.demo.entity.dto.NonExtendableCategoryDTO;
 import com.example.demo.entity.NonExtendableCategory;
 
 import java.util.List;

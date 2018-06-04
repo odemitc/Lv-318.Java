@@ -2,7 +2,7 @@ package com.example.demo.service.implementation;
 
 import com.example.demo.entity.Stop;
 import com.example.demo.entity.Transit;
-import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.TransitRepository;
 import com.example.demo.service.TransitService;
 import com.google.common.base.Strings;

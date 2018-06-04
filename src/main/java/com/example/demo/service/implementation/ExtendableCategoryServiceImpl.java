@@ -1,6 +1,6 @@
 package com.example.demo.service.implementation;
 
-import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.entity.ExtendableCategory;
 import com.example.demo.repository.ExtendableCategoryRepository;
 import com.example.demo.service.ExtendebleCategoryService;
@@ -12,9 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @RequiredArgsConstructor

@@ -26,6 +26,7 @@ public class FeedbackCriteriaController {
     public void deleteFeedbackCriteria(@PathVariable Integer id){
         feedbackCriteriaService.delete(id);
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<FeedbackCriteria> updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria, @PathVariable Integer id){
         FeedbackCriteria updateFeedbackCriteria = feedbackCriteriaService.update(feedbackCriteria.setId(id));
@@ -53,8 +54,4 @@ public class FeedbackCriteriaController {
     public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@PathVariable String question){
         return new ResponseEntity<>(feedbackCriteriaService.getByQuestion(question), HttpStatus.OK);
     }
-
-
-
-
 }

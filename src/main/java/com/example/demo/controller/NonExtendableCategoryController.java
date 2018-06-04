@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.DTO.NonExtendableCategoryDTO;
+import com.example.demo.entity.dto.NonExtendableCategoryDTO;
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.service.NonExtendableCategoryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.xml.internal.bind.v2.TODO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

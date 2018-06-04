@@ -1,7 +1,7 @@
 package com.example.demo.service.implementation;
 
-import com.example.demo.entity.DTO.NonExtendableCategoryDTO;
-import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.entity.dto.NonExtendableCategoryDTO;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.NonExtendableCategoryService;

@@ -31,8 +31,4 @@ public class Feedback {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "criteria_id")
     private FeedbackCriteria feedbackCriteria;
-
-    public boolean belongToRatingCriteria() {
-        return this.getFeedbackCriteria().getClass().equals(RatingCriteria.class);
-    }
 }
