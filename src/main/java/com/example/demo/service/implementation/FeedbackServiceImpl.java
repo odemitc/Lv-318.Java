@@ -110,19 +110,19 @@ public class FeedbackServiceImpl implements FeedbackService {
         }
         return feedbackRepository.findByUserId(id);
     }
-
-    @PostConstruct
-    private void init() {
-        List<Duration> busyHours = getByTransitId(18).stream()
-                .filter(feedback -> feedback.getFeedbackCriteria().getType() == FeedbackCriteria.FeedbackType.BUSY_HOURS)
-                .<List<Duration>>map(FeedbackCriteria.FeedbackType.BUSY_HOURS::convertFeedback)
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
-
-        double rating = getByTransitId(18).stream()
-                .filter(feedback -> feedback.getFeedbackCriteria().getType() == FeedbackCriteria.FeedbackType.RATING)
-                .mapToInt(FeedbackCriteria.FeedbackType.RATING::convertFeedback)
-                .average()
-                .orElseThrow(() -> new ResourceNotFoundException("No feedbacks found for transit with id 18"));
-    }
+//
+//    @PostConstruct
+//    private void init() {
+//        List<Duration> busyHours = getByTransitId(1).stream()
+//                .filter(feedback -> feedback.getFeedbackCriteria().getType() == FeedbackCriteria.FeedbackType.BUSY_HOURS)
+//                .<List<Duration>>map(FeedbackCriteria.FeedbackType.BUSY_HOURS::convertFeedback)
+//                .flatMap(List::stream)
+//                .collect(Collectors.toList());
+//
+//        double rating = getByTransitId(1).stream()
+//                .filter(feedback -> feedback.getFeedbackCriteria().getType() == FeedbackCriteria.FeedbackType.RATING)
+//                .mapToInt(FeedbackCriteria.FeedbackType.RATING::convertFeedback)
+//                .average()
+//                .orElseThrow(() -> new ResourceNotFoundException("No feedbacks found for transit with id 18"));
+//    }
 }

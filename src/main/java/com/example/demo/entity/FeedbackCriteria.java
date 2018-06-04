@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Inheritance
-@DiscriminatorColumn(name = "type")
+@DiscriminatorColumn(name = "CRITERIA_TYPE")
 @DiscriminatorValue("FEEDBACK_CRITERIA")
 @Accessors(chain = true)
 @Table(name = "criteria")
