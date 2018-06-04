@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 @Data
- class ApiError {
+class ApiError {
 
     private HttpStatus status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
@@ -49,14 +49,12 @@ import java.util.Set;
     }
 
     private void addValidationError(ConstraintViolation<?> cv) {
-        this.addValidationError(
-                cv.getRootBeanClass().getSimpleName(),
+        this.addValidationError(cv.getRootBeanClass().getSimpleName(),
                 ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
-                cv.getInvalidValue(),
-                cv.getMessage());
+                cv.getInvalidValue(), cv.getMessage());
     }
 
-    void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
+     void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
         constraintViolations.forEach(this::addValidationError);
     }
 }

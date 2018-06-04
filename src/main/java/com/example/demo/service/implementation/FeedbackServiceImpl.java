@@ -1,9 +1,11 @@
 package com.example.demo.service.implementation;
 
+import com.example.demo.entity.RatingCriteria;
 import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.entity.Feedback;
 import com.example.demo.repository.FeedbackRepository;
 import com.example.demo.service.FeedbackService;
+import com.example.demo.service.converters.ConvertStrategy;
 import com.google.common.base.Strings;
 import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
@@ -107,5 +109,15 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByUserId(id);
     }
 
+    private boolean belongToRatingCriteria(Feedback feedback) {
+        return feedback.getFeedbackCriteria().getClass().equals(RatingCriteria.class);
+    }
 
+    public Double convertToAverageRate(List<Feedback> feedbacks, ConvertStrategy convertStrategy) {
+        return feedbacks.stream()
+                .filter(feedback -> belongToRatingCriteria(feedback))
+                .mapToInt(feedback -> convertStrategy.convertStrategy(feedback).getValue())
+                .average()
+                .orElse(0);
+    }
 }

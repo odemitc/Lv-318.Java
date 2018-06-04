@@ -28,6 +28,12 @@ public class FeedbackCriteria {
     @Column(name = "type", insertable = false, updatable = false)
     private FeedbackType type;
 
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "load", insertable = false, updatable = false)
+    private Load load;
+
+
+
 //    private FeedbackTypeIdentifier feedbackTypeIdentifier;
 
     public enum FeedbackType {
@@ -38,6 +44,12 @@ public class FeedbackCriteria {
         public <T> T convertAnswer(String answer) {
             return null; //TODO;
         }
+    }
+
+    public enum Load{
+        СИДІВ,
+        СТОЯВ,
+        ЛЕДВЕ_ЗАЛІЗ
     }
 
 //    @Embeddable

@@ -32,4 +32,5 @@ public class Feedback {
     @JoinColumn(name = "criteria_id")
     private FeedbackCriteria feedbackCriteria;
 
+
 }

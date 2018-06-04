@@ -23,10 +23,13 @@ import java.util.List;
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
+    private static HttpHeaders emptyHeaderStub = new HttpHeaders();
+
     @ExceptionHandler(value = ResourceNotFoundException.class)
-    protected ResponseEntity<Object> handleConflict(final ResourceNotFoundException ex, final WebRequest request) {
+    protected ResponseEntity<Object> handleConflict(final ResourceNotFoundException ex,
+                                                    final WebRequest request) {
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
-        return handleExceptionInternal(ex, apiError, new HttpHeaders(), apiError.getStatus(), request);
+        return handleExceptionInternal(ex, apiError, emptyHeaderStub, apiError.getStatus(), request);
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
