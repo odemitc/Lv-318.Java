@@ -1,5 +1,6 @@
 package com.example.demo.service.implementation;
 import com.example.demo.entity.FeedbackCriteria;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.FeedbackCriteriaRepository;
 import com.example.demo.service.FeedbackCriteriaService;
 import lombok.RequiredArgsConstructor;
@@ -54,11 +55,13 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<FeedbackCriteria> getById(Integer id) {
-        if(id == null){
+    public FeedbackCriteria getById(Integer id) {
+        if (id == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return feedbackCriteriaRepository.findById(id);
+
+        return feedbackCriteriaRepository.findById(id).orElseThrow(() ->  new ResourceNotFoundException(String
+                .format("FeedbackCriteria with id '%s' not found", id)));
     }
 
     @Override
