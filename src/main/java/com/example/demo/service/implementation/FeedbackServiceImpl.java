@@ -1,8 +1,8 @@
 package com.example.demo.service.implementation;
 
+import com.example.demo.entity.Feedback;
 import com.example.demo.entity.RatingCriteria;
 import com.example.demo.exceptions.ResourceNotFoundException;
-import com.example.demo.entity.Feedback;
 import com.example.demo.repository.FeedbackRepository;
 import com.example.demo.service.FeedbackService;
 import com.example.demo.service.converters.ConvertStrategy;
@@ -16,6 +16,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.example.demo.entity.FeedbackCriteria.FeedbackType.TECHNICAL_CONDITION;
 
 @Service
 @Transactional
@@ -109,15 +111,30 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByUserId(id);
     }
 
-    private boolean belongToRatingCriteria(Feedback feedback) {
-        return feedback.getFeedbackCriteria().getClass().equals(RatingCriteria.class);
-    }
-
-    public Double convertToAverageRate(List<Feedback> feedbacks, ConvertStrategy convertStrategy) {
-        return feedbacks.stream()
-                .filter(feedback -> belongToRatingCriteria(feedback))
+    public Double convertToAverageRate(List<Feedback> feedbackList, ConvertStrategy convertStrategy) {
+        return feedbackList.stream()
+                .filter(Feedback::belongToRatingCriteria)
                 .mapToInt(feedback -> convertStrategy.convertStrategy(feedback).getValue())
                 .average()
                 .orElse(0);
+    }
+
+    public Double convertToAverageRateWithDifferentStrategy(List<Feedback> feedbackList, ConvertStrategy convertStrategy) {
+        return feedbackList.stream()
+                .filter(Feedback::belongToRatingCriteria)
+                .mapToInt(feedback -> {
+                    RatingCriteria criteria = (RatingCriteria) feedback.getFeedbackCriteria();
+                    return setStrategy(feedback).convertStrategy(feedback).getValue() * criteria.getWeight();
+                })
+                .average()
+                .orElse(0);
+    }
+
+    private ConvertStrategy setStrategy(Feedback feedback) {
+        if (feedback.getFeedbackCriteria().getType().equals(TECHNICAL_CONDITION)) {
+            return ConvertStrategy.convertTechnicalConditionCriteria();
+        } else {
+            return ConvertStrategy.convertLoadCriteria();
+        }
     }
 }

@@ -38,8 +38,8 @@ public class FeedbackCriteria {
 
     public enum FeedbackType {
         RATING,
-        BUSY_HOURS;
-
+        BUSY_HOURS,
+        TECHNICAL_CONDITION;
 
         public <T> T convertAnswer(String answer) {
             return null; //TODO;

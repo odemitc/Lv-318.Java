@@ -38,7 +38,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
         apiError.setMessage("Validation error");
         apiError.addValidationErrors(ex.getConstraintViolations());
-        return handleExceptionInternal(ex, apiError, new HttpHeaders(), apiError.getStatus(), request);
+        return handleExceptionInternal(ex, apiError, emptyHeaderStub, apiError.getStatus(), request);
     }
 
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
@@ -48,6 +48,6 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
         apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'",
                 ex.getName(), ex.getValue(), requiredType != null ? requiredType.getName() : "of the argument"));
-        return handleExceptionInternal(ex, apiError, new HttpHeaders(), apiError.getStatus(), request);
+        return handleExceptionInternal(ex, apiError, emptyHeaderStub, apiError.getStatus(), request);
     }
 }
