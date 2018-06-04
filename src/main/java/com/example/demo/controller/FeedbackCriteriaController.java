@@ -39,7 +39,7 @@ public class FeedbackCriteriaController {
     @GetMapping("/{id}")
     public ResponseEntity<FeedbackCriteria> getById(@PathVariable Integer id){
 
-        return new ResponseEntity<>(feedbackCriteriaService.getById(id).get(), HttpStatus.OK);
+        return new ResponseEntity<>(feedbackCriteriaService.getById(id), HttpStatus.OK);
     }
     @GetMapping("/groupId/{groupId}")
     public ResponseEntity<List<FeedbackCriteria>> getByGroupId(@PathVariable(value = "groupId") Integer groupId){

@@ -12,7 +12,11 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@Inheritance
+@DiscriminatorColumn(name = "CRITERIA_TYPE")
+@DiscriminatorValue("FEEDBACK_CRITERIA")
 @Accessors(chain = true)
+@Table(name = "feedback_criteria")
 @EqualsAndHashCode(of = "id")
 public class FeedbackCriteria {
 
@@ -28,10 +32,6 @@ public class FeedbackCriteria {
     @Column(name = "type", insertable = false, updatable = false)
     private FeedbackType type;
 
-//    @Enumerated(value = EnumType.STRING)
-//    @Column(name = "load", insertable = false, updatable = false)
-//    private Load load;
-
     @RequiredArgsConstructor
     public enum FeedbackType {
         RATING(new RatingConversionStrategy()),
@@ -44,10 +44,4 @@ public class FeedbackCriteria {
             return (T) conversionStrategy.convert(feedback);
         }
     }
-
-//    public enum Load {
-//        СИДІВ,
-//        СТОЯВ,
-//        ЛЕДВЕ_ЗАЛІЗ
-//    }
 }

@@ -16,7 +16,7 @@ public interface FeedbackCriteriaService {
     FeedbackCriteria update(FeedbackCriteria feedbackCriteria);
     List<FeedbackCriteria> getAll();
 
-    Optional <FeedbackCriteria> getById(Integer id);
+    FeedbackCriteria getById(Integer id);
 
     List<FeedbackCriteria> getByGroupId(Integer groupId);
 
