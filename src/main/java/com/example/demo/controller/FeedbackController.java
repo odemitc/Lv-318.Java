@@ -23,8 +23,8 @@ public class FeedbackController {
 //    }
 
     @GetMapping
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
-        return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
+    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("transitId") Integer id) {
+        return new ResponseEntity<>(feedbackService.getByTransitId(id), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")

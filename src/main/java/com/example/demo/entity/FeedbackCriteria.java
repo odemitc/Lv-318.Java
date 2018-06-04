@@ -12,11 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Inheritance
-@DiscriminatorColumn(name = "CRITERIA_TYPE")
-@DiscriminatorValue("FEEDBACK_CRITERIA")
 @Accessors(chain = true)
-@Table(name = "criteria")
 @EqualsAndHashCode(of = "id")
 public class FeedbackCriteria {
 
@@ -32,9 +28,9 @@ public class FeedbackCriteria {
     @Column(name = "type", insertable = false, updatable = false)
     private FeedbackType type;
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "load", insertable = false, updatable = false)
-    private Load load;
+//    @Enumerated(value = EnumType.STRING)
+//    @Column(name = "load", insertable = false, updatable = false)
+//    private Load load;
 
     @RequiredArgsConstructor
     public enum FeedbackType {
@@ -49,9 +45,9 @@ public class FeedbackCriteria {
         }
     }
 
-    public enum Load {
-        СИДІВ,
-        СТОЯВ,
-        ЛЕДВЕ_ЗАЛІЗ
-    }
+//    public enum Load {
+//        СИДІВ,
+//        СТОЯВ,
+//        ЛЕДВЕ_ЗАЛІЗ
+//    }
 }
