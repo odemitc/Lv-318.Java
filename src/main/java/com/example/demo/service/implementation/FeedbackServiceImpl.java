@@ -1,6 +1,7 @@
 package com.example.demo.service.implementation;
 
 import com.example.demo.entity.Feedback;
+import com.example.demo.entity.FeedbackCriteria;
 import com.example.demo.entity.RatingCriteria;
 import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.repository.FeedbackRepository;
@@ -111,30 +112,31 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByUserId(id);
     }
 
-    public Double convertToAverageRate(List<Feedback> feedbackList, ConvertStrategy convertStrategy) {
+    public Double convertToAverageRateForFeedbackType(List<Feedback> feedbackList,
+                                                      FeedbackCriteria.FeedbackType feedbackType) {
         return feedbackList.stream()
-                .filter(Feedback::belongToRatingCriteria)
-                .mapToInt(feedback -> convertStrategy.convertStrategy(feedback).getValue())
+                .mapToInt(feedback -> setStrategy(feedbackType).convertStrategy(feedback).getValue())
                 .average()
                 .orElse(0);
     }
 
-    public Double convertToAverageRateWithDifferentStrategy(List<Feedback> feedbackList, ConvertStrategy convertStrategy) {
+    public Double convertToAverageRate(List<Feedback> feedbackList) {
         return feedbackList.stream()
                 .filter(Feedback::belongToRatingCriteria)
-                .mapToInt(feedback -> {
-                    RatingCriteria criteria = (RatingCriteria) feedback.getFeedbackCriteria();
-                    return setStrategy(feedback).convertStrategy(feedback).getValue() * criteria.getWeight();
-                })
+                .mapToInt(feedback -> setStrategy(feedback.getFeedbackCriteria().
+                        getType()).convertStrategy(feedback).getValue() *
+                        ((RatingCriteria) feedback.getFeedbackCriteria()).getWeight()
+                )
                 .average()
                 .orElse(0);
     }
 
-    private ConvertStrategy setStrategy(Feedback feedback) {
-        if (feedback.getFeedbackCriteria().getType().equals(TECHNICAL_CONDITION)) {
-            return ConvertStrategy.convertTechnicalConditionCriteria();
-        } else {
-            return ConvertStrategy.convertLoadCriteria();
+    private ConvertStrategy setStrategy(FeedbackCriteria.FeedbackType feedbackType) {
+        switch (feedbackType) {
+            case TECHNICAL_CONDITION:
+                return ConvertStrategy.convertTechnicalConditionCriteria();
+            default:
+                return ConvertStrategy.convertLoadCriteria();
         }
     }
 }
