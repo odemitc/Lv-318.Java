@@ -8,8 +8,12 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@EqualsAndHashCode(of ="id")
+@Inheritance
+@DiscriminatorColumn(name = "type")
+@DiscriminatorValue("FEEDBACK_CRITERIA")
 @Accessors(chain = true)
+@Table(name = "criteria")
+@EqualsAndHashCode(of = "id")
 public class FeedbackCriteria {
 
     @Id
@@ -21,30 +25,43 @@ public class FeedbackCriteria {
     private String question;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(name = "type", insertable = false, updatable = false)
     private FeedbackType type;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "load", insertable = false, updatable = false)
+    private Load load;
+
+
 
 //    private FeedbackTypeIdentifier feedbackTypeIdentifier;
 
     public enum FeedbackType {
         RATING,
-        BUSY_HOURS;
-
+        BUSY_HOURS,
+        TECHNICAL_CONDITION;
 
         public <T> T convertAnswer(String answer) {
             return null; //TODO;
         }
     }
 
-    @Embeddable
-    public class FeedbackTypeIdentifier {
-
-        @Enumerated(value = EnumType.STRING)
-        private FeedbackType type;
-
-        private transient Class<?> feedbackClass;
-
-        private FeedbackTypeIdentifier() {
-
-        }
+    public enum Load{
+        СИДІВ,
+        СТОЯВ,
+        ЛЕДВЕ_ЗАЛІЗ
     }
+
+//    @Embeddable
+//    public class FeedbackTypeIdentifier {
+//
+//        @Enumerated(value = EnumType.STRING)
+//        private FeedbackType type;
+//
+//        private transient Class<?> feedbackClass;
+//
+//        private FeedbackTypeIdentifier() {
+//
+//        }
+//    }
 }

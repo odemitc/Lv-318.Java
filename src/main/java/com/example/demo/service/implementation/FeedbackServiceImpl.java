@@ -1,9 +1,12 @@
 package com.example.demo.service.implementation;
 
-import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.entity.Feedback;
+import com.example.demo.entity.FeedbackCriteria;
+import com.example.demo.entity.RatingCriteria;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.repository.FeedbackRepository;
 import com.example.demo.service.FeedbackService;
+import com.example.demo.service.converters.ConvertStrategy;
 import com.google.common.base.Strings;
 import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +17,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.example.demo.entity.FeedbackCriteria.FeedbackType.TECHNICAL_CONDITION;
 
 @Service
 @Transactional
@@ -107,5 +112,31 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByUserId(id);
     }
 
+    public Double convertToAverageRateForFeedbackType(List<Feedback> feedbackList,
+                                                      FeedbackCriteria.FeedbackType feedbackType) {
+        return feedbackList.stream()
+                .mapToInt(feedback -> setStrategy(feedbackType).convertStrategy(feedback).getValue())
+                .average()
+                .orElse(0);
+    }
 
+    public Double convertToAverageRate(List<Feedback> feedbackList) {
+        return feedbackList.stream()
+                .filter(Feedback::belongToRatingCriteria)
+                .mapToInt(feedback -> setStrategy(feedback.getFeedbackCriteria().
+                        getType()).convertStrategy(feedback).getValue() *
+                        ((RatingCriteria) feedback.getFeedbackCriteria()).getWeight()
+                )
+                .average()
+                .orElse(0);
+    }
+
+    private ConvertStrategy setStrategy(FeedbackCriteria.FeedbackType feedbackType) {
+        switch (feedbackType) {
+            case TECHNICAL_CONDITION:
+                return ConvertStrategy.convertTechnicalConditionCriteria();
+            default:
+                return ConvertStrategy.convertLoadCriteria();
+        }
+    }
 }
