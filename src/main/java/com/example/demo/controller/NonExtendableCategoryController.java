@@ -28,34 +28,13 @@ public class NonExtendableCategoryController {
     }
 
 
-//    @GetMapping("/b/{id}")
-//    public ResponseEntity<NonExtendableCategory> getCategoryById(@PathVariable Integer id) {
-//
-//        NonExtendableCategory category = nonExtendableCategoryService.getById(id);
-//
-//        return new ResponseEntity<>(category, HttpStatus.OK);
-//
-//    }
-//
-//    @GetMapping("/a/{id}")
-//    public ResponseEntity<String> getCategoryById(@PathVariable Integer id) throws JsonProcessingException {
-//        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS,false);
-//        NonExtendableCategory category = nonExtendableCategoryService.getById(id);
-//        URI location = ServletUriComponentsBuilder
-//                .fromCurrentRequest()
-//                .replacePath("/category/{id}")
-//                .buildAndExpand(category.getNextLevelCategory().getId())
-//                .toUri();
-//        String linkAsJson = objectMapper.writeValueAsString(Collections.singletonMap("linkToUpperCategory",location));
-//        String json = objectMapper.writeValueAsString(category).concat(linkAsJson);
-//        System.out.print(location.toString());
-//        return ResponseEntity.ok().body(json);
-//    }
-
     @GetMapping("/{id}")
-    public ResponseEntity<NonExtendableCategoryDTO> getCategoryById(@PathVariable Integer id) {
+    public ResponseEntity<NonExtendableCategory> getCategoryById(@PathVariable Integer id) {
 
-        return new ResponseEntity<>(nonExtendableCategoryService.getByIdDTO(id), HttpStatus.OK);
+        NonExtendableCategory category = nonExtendableCategoryService.getById(id);
+
+        return new ResponseEntity<>(category, HttpStatus.OK);
+
     }
 
     @PostMapping
