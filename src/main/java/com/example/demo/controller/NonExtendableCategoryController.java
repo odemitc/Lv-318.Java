@@ -20,9 +20,9 @@ public class NonExtendableCategoryController {
     private final NonExtendableCategoryService nonExtendableCategoryService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    @GetMapping
-    public ResponseEntity<List<NonExtendableCategory>> getCategoryByNextLevel(@RequestParam String up) {
-        List<NonExtendableCategory> categories = nonExtendableCategoryService.getByNextLevelCategory(nonExtendableCategoryService.getByName(up).getId());
+    @GetMapping("/all/{up}")
+    public ResponseEntity<List<NonExtendableCategory>> getCategoryByNextLevel(@PathVariable Integer up) {
+        List<NonExtendableCategory> categories = nonExtendableCategoryService.getByNextLevelCategory(up);
 
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
