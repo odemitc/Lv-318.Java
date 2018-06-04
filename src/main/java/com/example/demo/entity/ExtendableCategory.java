@@ -22,7 +22,7 @@ public class ExtendableCategory {
 
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "next_level_category_id", foreignKey = @ForeignKey())
     private ExtendableCategory nextLevelCategory;
 }
