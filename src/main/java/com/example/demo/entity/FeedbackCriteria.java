@@ -38,8 +38,6 @@ public class FeedbackCriteria {
         RATING(new RatingConversionStrategy()),
         BUSY_HOURS(new BusyHoursDurationConversionStrategy());
 
-        public static String FULL_NAME = FeedbackType.class.getName();
-
         private final ConversionStrategy<?> conversionStrategy;
 
         @SuppressWarnings("unchecked")
@@ -47,8 +45,5 @@ public class FeedbackCriteria {
             return (T) conversionStrategy.convert(feedback);
         }
 
-        public String getFullName() {
-            return FULL_NAME + "." + this;
-        }
     }
 }
