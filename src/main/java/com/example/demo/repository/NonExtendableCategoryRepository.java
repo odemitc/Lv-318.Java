@@ -10,8 +10,6 @@ public interface NonExtendableCategoryRepository extends JpaRepository<NonExtend
 
     List<NonExtendableCategory> findByNextLevelCategoryId(int id);
 
-<<<<<<< HEAD
-=======
     List<NonExtendableCategory> findByNextLevelCategoryNameAndNextLevelCategoryNextLevelCategoryName(String top, String next);
->>>>>>> ac089be09ceca9597bc2c38c5f33da7eabf9504f
+
 }
