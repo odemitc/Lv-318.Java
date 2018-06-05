@@ -16,9 +16,7 @@ public class BusyHoursDurationConversionStrategy implements ConversionStrategy<L
     @SneakyThrows
     public List<Duration> convert(Feedback feedback) {
         String answer = feedback.getAnswer();
-
         return new ObjectMapper().readValue(answer, new TypeReference<List<Duration>>() {
-
         });
     }
 
