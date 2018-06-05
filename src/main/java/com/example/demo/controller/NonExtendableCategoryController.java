@@ -51,7 +51,7 @@ public class NonExtendableCategoryController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable Integer id) {
         nonExtendableCategoryService.delete(id);
     }

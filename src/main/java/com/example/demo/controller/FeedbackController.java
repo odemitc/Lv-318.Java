@@ -19,7 +19,7 @@ public class FeedbackController {
 
     @GetMapping(value = "/criteria/{id}")
     public ResponseEntity<List<Feedback>> getByCriteria(@RequestParam("criteriaId") Integer id) {
-        return new ResponseEntity<>(feedbackService.getByFeedbackCriteria(id), HttpStatus.OK);
+        return new ResponseEntity<>(feedbackService.getByCriteriaId(id), HttpStatus.OK);
     }
 
     @GetMapping
