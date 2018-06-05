@@ -20,7 +20,11 @@ public class Feedback {
     private Integer id;
 
     private String answer;
-    private Integer userId;
+
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)

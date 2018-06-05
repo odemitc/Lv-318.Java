@@ -11,6 +11,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @RestController
 @RequestMapping("/feedback")
 @RequiredArgsConstructor
@@ -28,7 +30,7 @@ public class FeedbackController {
     }
 
     @GetMapping(value = "/user/{id}")
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
+    public ResponseEntity<List<Feedback>> getByUser(@PathVariable Integer id) {
         return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
     }
 

@@ -4,9 +4,12 @@ INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NO
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NON_EXTENDABLE', 19, 'Trolleybus', 17);
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NON_EXTENDABLE', 24, 'Bus', 17);
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NON_EXTENDABLE', 25, 'Marshrutka', 17);
--- INSERT INTO public.feedback_criteria (id, question, type, category_id, group_id) VALUES (3, 'В які години ви користуєтесь', 'BUSY_HOURS', 18, 2);
--- INSERT INTO public.feedback_criteria (id, question, type, category_id, group_id) VALUES (1, 'Стан', 'RATING', 18, 1);
--- INSERT INTO public.feedback_criteria (id, question, type, category_id, group_id) VALUES (2, 'Комфорт', 'RATING', 18, 1);
-INSERT INTO public.transit (id, name, category_id) VALUES (1, '#9', 18);
--- INSERT INTO public.feedback (id, answer, user_id, criteria_id, transit_id) VALUES (1, '59', 777, 1, 1);
--- INSERT INTO public.feedback (id, answer, user_id, criteria_id, transit_id) VALUES (2, '21', 777, 2, 1);
+INSERT INTO public.users (id, email, first_name, image, last_name, password) VALUES (1, '123@gmail.com', 'firstName', null, 'LastName', 'password');
+INSERT INTO public.transit (id, name, category_id) VALUES (1, '#9', 16);
+INSERT INTO public.transit (id, name, category_id) VALUES (2, '#10', 19);
+INSERT INTO public.transit (id, name, category_id) VALUES (3, '#11', 24);
+INSERT INTO public.transit (id, name, category_id) VALUES (4, '#12', 25);
+INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 2, 1, 'о котрій годині виїхали?', 'BUSY_HOURS', null, 25);
+INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('RATING_CRITERIA', 1, 1, 'якість проїзду', 'RATING', 2, 25);
+INSERT INTO public.feedback (id, answer, user_id, criteria_id, transit_id) VALUES (1, '5', 1, 1, 4);
+INSERT INTO public.feedback (id, answer, user_id, criteria_id, transit_id) VALUES (2, '345', 1, 2, 4);
