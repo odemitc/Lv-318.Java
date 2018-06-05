@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.service.NonExtendableCategoryService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NonExtendableCategoryController {
     private final NonExtendableCategoryService nonExtendableCategoryService;
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @GetMapping("/all")
     @CrossOrigin(origins = "http://localhost:4200")
@@ -44,7 +42,7 @@ public class NonExtendableCategoryController {
 
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<NonExtendableCategory> addCategory(@RequestBody NonExtendableCategory nonExtendableCategory) {
 
         NonExtendableCategory category = nonExtendableCategoryService.addNonExtendableCategory(nonExtendableCategory);
