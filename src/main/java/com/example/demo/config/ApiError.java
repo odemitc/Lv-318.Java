@@ -1,6 +1,5 @@
 package com.example.demo.config;
 
-import com.example.demo.exception.ApiSubError;
 import com.example.demo.exception.ApiValidationError;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
