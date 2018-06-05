@@ -60,10 +60,10 @@ INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, typ
 
 INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (2, '345', 2, 4, 1);
 INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (1, '5', 2, 4, 1);
-INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (3, 'Так', 3, 1, 1);
-INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (4, '10', 5, 4, 1);
-INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (5, '12', 8, 3, 1);
-INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (6, 'Так', 9, 3, 1);
+INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (3, 'Так', 3, 1, 2);
+INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (4, '10', 5, 4, 2);
+INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (5, '12', 8, 3, 3);
+INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (6, 'Так', 9, 3, 3);
 
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (1, 1, 1);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (1, 2, 2);
