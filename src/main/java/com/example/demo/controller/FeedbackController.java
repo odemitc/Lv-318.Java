@@ -44,4 +44,11 @@ public class FeedbackController {
         return new ResponseEntity<>(savedFeedback, HttpStatus.CREATED);
     }
 
+    @GetMapping(value ="/rate/{transitId}")
+    public ResponseEntity<Double> getAverageRateByTransit(@PathVariable Integer transitId){
+        return  new ResponseEntity<>(feedbackService.convertRatingFeedBacks(transitId), HttpStatus.OK);
+    }
+
+
+
 }
