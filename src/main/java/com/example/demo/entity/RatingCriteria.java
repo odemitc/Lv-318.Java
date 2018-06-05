@@ -14,6 +14,5 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper = true)
 public class RatingCriteria extends FeedbackCriteria {
 
-
     private Integer weight;
 }
