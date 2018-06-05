@@ -6,7 +6,7 @@ INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NO
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NON_EXTENDABLE', 25, 'Marshrutka', 17);
 
 --users
-INSERT INTO public.users (id, email, first_name, image, last_name, password) VALUES (1, '123@gmail.com', 'firstName', null, 'LastName', 'password');
+INSERT INTO public.users (id, email, first_name, last_name, password) VALUES (1, '123@gmail.com', 'firstName', 'LastName', 'password');
 
 
 INSERT INTO public.stop (id, building, street) VALUES (1, null, '"Залізничний Вокзал"');
