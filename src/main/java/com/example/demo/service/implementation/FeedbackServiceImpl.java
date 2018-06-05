@@ -59,9 +59,6 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public List<Feedback> getByUserId(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         return feedbackRepository.findByUser_Id(id);
     }
 
