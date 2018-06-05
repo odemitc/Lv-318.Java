@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/NonExtendableCategory")
+@CrossOrigin
 @RequiredArgsConstructor
 public class NonExtendableCategoryController {
     private final NonExtendableCategoryService nonExtendableCategoryService;
