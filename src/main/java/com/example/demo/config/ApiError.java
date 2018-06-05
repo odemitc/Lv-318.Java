@@ -51,7 +51,9 @@ class ApiError {
                 cv.getInvalidValue(), cv.getMessage());
     }
 
-     void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
-        constraintViolations.forEach(this::addValidationError);
+    void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
+        for (ConstraintViolation<?> cv : constraintViolations) {
+            this.addValidationError(cv);
+        }
     }
 }

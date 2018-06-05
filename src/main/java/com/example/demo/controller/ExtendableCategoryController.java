@@ -17,11 +17,13 @@ public class ExtendableCategoryController {
     private final ExtendebleCategoryService categoryService;
 
     @GetMapping("/top/")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
         return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<ExtendableCategory>> getCategoriesByNextLevel(@RequestParam String top) {
         return new ResponseEntity<>(categoryService.getByNextLevelCategoryId(categoryService.getByName(top).getId()), HttpStatus.OK);
     }

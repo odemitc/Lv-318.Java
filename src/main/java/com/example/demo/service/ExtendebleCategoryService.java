@@ -26,6 +26,4 @@ public interface ExtendebleCategoryService {
     List<ExtendableCategory> getByNextLevelCategory(ExtendableCategory category);
 
     ExtendableCategory getByNameAndNextLevelCategory(String name, ExtendableCategory nextLevel);
-
-
 }

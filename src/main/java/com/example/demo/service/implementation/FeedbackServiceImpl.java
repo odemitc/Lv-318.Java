@@ -30,10 +30,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     @Transactional(readOnly = true)
-    public Feedback getById(Integer id) throws MethodArgumentTypeMismatchException {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
+    public Feedback getById(Integer id) {
         return feedbackRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String
                         .format("Feedback with id '%s' not found", id)));
@@ -42,26 +39,17 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     @Transactional(readOnly = true)
     public List<Feedback> getByTransitId(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         return feedbackRepository.findByTransit_Id(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Feedback> getByCriteriaId(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         return feedbackRepository.findByFeedbackCriteria_Id(id);
     }
 
     @Override
     public List<Feedback> getByUserId(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         return feedbackRepository.findByUser_Id(id);
     }
 

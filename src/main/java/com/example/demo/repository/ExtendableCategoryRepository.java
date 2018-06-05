@@ -17,4 +17,5 @@ public interface ExtendableCategoryRepository extends CrudRepository<ExtendableC
     List<ExtendableCategory> findAllByNextLevelCategoryIsNull();
 
     ExtendableCategory findByNameAndNextLevelCategory(String name, ExtendableCategory nextLevelCategory);
+
 }

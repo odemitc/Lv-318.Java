@@ -51,4 +51,9 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
                 .orElseThrow(() -> new ResourceNotFoundException(String
                         .format("Category with id '%s' not found", id)));
     }
+
+    @Override
+    public List<NonExtendableCategory> getByNames(String name, String next) {
+        return nonExtendableCategoryRepository.findByNextLevelCategoryNameAndNextLevelCategoryNextLevelCategoryName(name, next);
+    }
 }
