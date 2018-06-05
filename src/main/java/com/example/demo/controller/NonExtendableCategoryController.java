@@ -38,15 +38,11 @@ public class NonExtendableCategoryController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<NonExtendableCategory> addCategory(@RequestBody NonExtendableCategory nonExtendableCategory) {
 
         NonExtendableCategory category = nonExtendableCategoryService.addNonExtendableCategory(nonExtendableCategory);
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(category.getId()).toUri();
-
-        return ResponseEntity.created(location).build();
+        return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -60,9 +56,6 @@ public class NonExtendableCategoryController {
     public ResponseEntity<NonExtendableCategory> updateCategory(@RequestParam NonExtendableCategory nonExtendableCategory, @PathVariable Integer id) {
         NonExtendableCategory updatedCategory = nonExtendableCategoryService.update((NonExtendableCategory) nonExtendableCategory.setId(id));
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(updatedCategory.getId()).toUri();
-
-        return ResponseEntity.created(location).build();
+        return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
     }
 }
