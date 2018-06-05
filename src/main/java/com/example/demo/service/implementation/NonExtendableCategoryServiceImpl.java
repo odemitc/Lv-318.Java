@@ -4,7 +4,6 @@ import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.NonExtendableCategoryService;
-import com.google.common.base.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,15 +38,6 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
         return nonExtendableCategoryRepository.findById(nonExtendableCategory.getId())
                 .map(category -> nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory))
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
-    }
-
-    @Override
-    public NonExtendableCategory getByName(String name) {
-        if (Strings.isNullOrEmpty(name)) {
-            throw new IllegalArgumentException("Name should not be empty");
-        }
-
-        return nonExtendableCategoryRepository.findByName(name);
     }
 
     @Override

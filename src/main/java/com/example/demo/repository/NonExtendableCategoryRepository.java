@@ -8,7 +8,5 @@ import java.util.List;
 
 public interface NonExtendableCategoryRepository extends JpaRepository<NonExtendableCategory, Integer> {
 
-    NonExtendableCategory findByName(String name);
-
     List<NonExtendableCategory> findByNextLevelCategoryId(int id);
 }

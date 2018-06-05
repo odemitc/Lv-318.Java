@@ -12,8 +12,6 @@ public interface NonExtendableCategoryService {
 
     NonExtendableCategory update(NonExtendableCategory nonExtendableCategory);
 
-    NonExtendableCategory getByName(String name);
-
     List<NonExtendableCategory> getByNextLevelCategory(int id);
 
     NonExtendableCategory getById(Integer id);
