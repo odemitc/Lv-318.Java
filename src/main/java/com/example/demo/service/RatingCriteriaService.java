@@ -12,7 +12,7 @@ public interface RatingCriteriaService {
     void delete(RatingCriteria ratingCriteria);
     RatingCriteria update(RatingCriteria ratingCriteria);
     List<FeedbackCriteria> getAll();
-    FeedbackCriteria getByWeight(Integer weight);
-    List<RatingCriteria> getByWeightList(Integer weight); // is this needed?
+//    FeedbackCriteria getByWeight(Integer weight);
+//    List<RatingCriteria> getByWeightList(Integer weight); // is this needed?
 
 }
