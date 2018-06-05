@@ -11,8 +11,8 @@ public interface RatingCriteriaService {
     void delete(Integer weight);
     void delete(RatingCriteria ratingCriteria);
     RatingCriteria update(RatingCriteria ratingCriteria);
-    List<RatingCriteria> getAll();
-    RatingCriteria getByWeight(Integer weight);
-    List<FeedbackCriteria> getByWeightList(Integer weight);
+    List<FeedbackCriteria> getAll();
+    FeedbackCriteria getByWeight(Integer weight);
+    List<RatingCriteria> getByWeightList(Integer weight); // is this needed?
 
 }
