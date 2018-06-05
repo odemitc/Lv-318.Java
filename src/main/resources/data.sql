@@ -1,5 +1,6 @@
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('EXTENDABLE', 18, 'Public Transport', null);
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('EXTENDABLE', 17, 'Lviv', 18);
+INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('EXTENDABLE', 15, 'Kyiv', 18);
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NON_EXTENDABLE', 16, 'Tram', 17);
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NON_EXTENDABLE', 19, 'Trolleybus', 17);
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NON_EXTENDABLE', 24, 'Bus', 17);
