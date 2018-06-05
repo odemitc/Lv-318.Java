@@ -8,12 +8,10 @@ import java.util.Optional;
 
 public interface FeedbackRepository extends CrudRepository<Feedback, Integer> {
 
-    List<Feedback> findByTransitId(Integer id);
+    List<Feedback> findByTransit_Id(Integer id);
 
     List<Feedback> findByUserId(Integer id);
 
-    List<Feedback> findByFeedbackCriteriaId(Integer id);
-
-    Feedback getByAnswer(String answer);
+    List<Feedback> findByFeedbackCriteria_Id(Integer id);
 
 }
