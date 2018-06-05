@@ -70,7 +70,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         if (id == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return feedbackRepository.findByUserId(id);
+        return feedbackRepository.findByUser_Id(id);
     }
 //
 //    @PostConstruct
