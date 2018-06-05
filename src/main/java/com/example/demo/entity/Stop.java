@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-@Data //TODO equals and hashCode
+@Data
 @EqualsAndHashCode(of = "id")
 @Accessors(chain = true)
 public class Stop {
@@ -17,6 +17,6 @@ public class Stop {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String street;
-    private String building;
-}
+ }

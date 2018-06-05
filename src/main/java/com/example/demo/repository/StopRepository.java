@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface StopRepository extends CrudRepository<Stop, Integer> {
 
-    List<Stop> findStopsByStreet(String street);
-    Stop findStopByBuilding(String building);
+    List<Stop> findStopsByStreet(String name);
 
 }

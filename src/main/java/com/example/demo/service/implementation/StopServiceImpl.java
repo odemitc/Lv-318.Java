@@ -1,16 +1,16 @@
 package com.example.demo.service.implementation;
 
 import com.example.demo.entity.Stop;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.StopRepository;
 import com.example.demo.service.StopService;
-import com.google.common.collect.Streams;
+import com.google.common.base.Strings;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -31,21 +31,22 @@ public class StopServiceImpl implements StopService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Stop> getById(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
-        return stopRepository.findById(id);
+    public Stop getById(Integer id) {
+        return stopRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Feedback with id '%s' not found", id)));
     }
 
     @Override
     @Transactional
     public void delete(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
+        try {
+            stopRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(String.format("Transit with id '%s' not found", id));
         }
-         stopRepository.deleteById(id);
     }
+
 
     @Override
     @Transactional
@@ -53,26 +54,19 @@ public class StopServiceImpl implements StopService {
         if (stop == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return stopRepository.save(stop);
+        return stopRepository.findById(stop.getId())
+                .map(transit1 -> stopRepository.save(stop))
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Transit with id '%s' not found", stop.getId())));
     }
+
     @Override
     @Transactional
     public List<Stop> getStopsByStreet(String street) {
-        if (street == null) {
+        if (Strings.isNullOrEmpty(street)) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
         return stopRepository.findStopsByStreet(street);
     }
 
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Stop> getAll() {
-        return Streams.stream(stopRepository.findAll()).collect(Collectors.toList());
-    }
-
-    @Override
-    public Stop getStopByBuilding(String building) {
-        return stopRepository.findStopByBuilding(building);
-    }
 }
