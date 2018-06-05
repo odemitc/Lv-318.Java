@@ -18,12 +18,12 @@ public class FeedbackController {
     private final FeedbackService feedbackService;
 
     @GetMapping(value = "/criteria/{id}")
-    public ResponseEntity<List<Feedback>> getByCriteria(@RequestParam("criteriaId") Integer id) {
+    public ResponseEntity<List<Feedback>> getByCriteria(@PathVariable Integer id) {
         return new ResponseEntity<>(feedbackService.getByCriteriaId(id), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Feedback>> getByTransit(@RequestParam("transitId") Integer id) {
+    @GetMapping(value = "/transit/{id}")
+    public ResponseEntity<List<Feedback>> getByTransit(@PathVariable Integer id) {
         return new ResponseEntity<>(feedbackService.getByTransitId(id), HttpStatus.OK);
     }
 
@@ -39,11 +39,9 @@ public class FeedbackController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Feedback> add(@RequestBody Feedback feedback) {
+    public ResponseEntity<Feedback> add(@RequestBody(required = false) Feedback feedback) {
         Feedback savedFeedback = feedbackService.addFeedback(feedback);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(savedFeedback.getId()).toUri();
-        return ResponseEntity.created(location).build();
+        return new ResponseEntity<>(savedFeedback, HttpStatus.CREATED);
     }
 
 }
