@@ -35,7 +35,7 @@ public class NonExtendableCategoryController {
 
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<NonExtendableCategory> addCategory(@RequestBody NonExtendableCategory nonExtendableCategory) {
 
         NonExtendableCategory category = nonExtendableCategoryService.addNonExtendableCategory(nonExtendableCategory);
