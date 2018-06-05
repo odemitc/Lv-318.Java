@@ -21,15 +21,15 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     private static HttpHeaders emptyHeaderStub = new HttpHeaders();
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
-    protected ResponseEntity<Object> handleConflict(final ResourceNotFoundException ex,
-                                                    final WebRequest request) {
+    protected ResponseEntity<Object> handleConflict( ResourceNotFoundException ex,
+                                                     WebRequest request) {
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
         return handleExceptionInternal(ex, apiError, emptyHeaderStub, apiError.getStatus(), request);
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
-    protected ResponseEntity<Object> handleConstraintViolation(final ConstraintViolationException ex,
-                                                               final WebRequest request) {
+    protected ResponseEntity<Object> handleConstraintViolation( ConstraintViolationException ex,
+                                                                WebRequest request) {
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
         apiError.setMessage("Validation error");
         apiError.addValidationErrors(ex.getConstraintViolations());
@@ -37,8 +37,8 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
-    protected ResponseEntity<Object> handleMethodArgumentTypeMismatch(final MethodArgumentTypeMismatchException ex,
-                                                                      final WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentTypeMismatch( MethodArgumentTypeMismatchException ex,
+                                                                       WebRequest request) {
         Class<?> requiredType = ex.getRequiredType();
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
         apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'",
@@ -47,12 +47,16 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @ExceptionHandler(value = Exception.class)
-    protected ResponseEntity<Object> handleException(final MethodArgumentTypeMismatchException ex,
-                                                     final WebRequest request) {
-        Class<?> requiredType = ex.getRequiredType();
+    public final ResponseEntity<Object> handleAllExceptions(Exception ex,
+                                                            WebRequest request) {
         final ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex);
-        apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'",
-                ex.getName(), ex.getValue(), requiredType != null ? requiredType.getName() : "of the argument"));
+        return handleExceptionInternal(ex, apiError, emptyHeaderStub, apiError.getStatus(), request);
+    }
+
+    @ExceptionHandler(value = {IllegalArgumentException.class, IllegalStateException.class})
+    protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
+        final ApiError apiError = new ApiError(HttpStatus.CONFLICT, ex);
+        apiError.setMessage("This should be application specific");
         return handleExceptionInternal(ex, apiError, emptyHeaderStub, apiError.getStatus(), request);
     }
 }
