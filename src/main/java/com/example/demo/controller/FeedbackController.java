@@ -17,14 +17,14 @@ import java.util.List;
 public class FeedbackController {
     private final FeedbackService feedbackService;
 
+    @GetMapping(value = "/criteria/{id}")
+    public ResponseEntity<List<Feedback>> getByCriteria(@RequestParam("criteriaId") Integer id) {
+        return new ResponseEntity<>(feedbackService.getByCriteriaId(id), HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<List<Feedback>> getByTransit(@RequestParam("transitId") Integer id) {
         return new ResponseEntity<>(feedbackService.getByTransitId(id), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/criteria/{id}")
-    public ResponseEntity<List<Feedback>> getByCriteria(@PathVariable Integer id) {
-        return new ResponseEntity<>(feedbackService.getByCriteriaId(id), HttpStatus.OK);
     }
 
     @GetMapping(value = "/user/{id}")
