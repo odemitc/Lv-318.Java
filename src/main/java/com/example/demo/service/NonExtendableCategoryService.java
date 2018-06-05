@@ -16,4 +16,5 @@ public interface NonExtendableCategoryService {
 
     NonExtendableCategory getById(Integer id);
 
+    List<NonExtendableCategory> getByNames(String name,String next);
 }
