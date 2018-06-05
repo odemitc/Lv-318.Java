@@ -1,6 +1,5 @@
 package com.example.demo.service.implementation;
 
-import com.example.demo.entity.FeedbackCriteria;
 import com.example.demo.entity.RatingCriteria;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.RatingCriteriaRepository;
@@ -49,24 +48,15 @@ public class RatingCriteriaServiceImpl implements RatingCriteriaService {
     }
 
     @Override
-    public List<FeedbackCriteria> getAll() {
+    public List<RatingCriteria> getAll() {
         return ratingCriteriaRepository.findAll();
     }
 
-//    @Override
-//    public RatingCriteria getByWeight(Integer weight) {
-//        if (weight == null) {
-//           throw new IllegalArgumentException("Parameter should not be null");
-//        }
-//        return (RatingCriteria) ratingCriteriaRepository.findByWeight(weight).orElseThrow(() -> new ResourceNotFoundException(String.format("RatingCriteria with id '%s' not found", weight)));
-//    }
-//
-////     not sure if this list weight is needed
-//    @Override
-//    public List<RatingCriteria> getByWeightList(Integer weight) {
-//        if (weight == null) {
-//            throw new IllegalArgumentException("Parameter should not be null");
-//        }
-//        return ratingCriteriaRepository.findByWeightList(weight);
-//    }
+    @Override
+    public RatingCriteria getByWeight(Integer weight) {
+        if (weight == null) {
+           throw new IllegalArgumentException("Parameter should not be null");
+        }
+        return (RatingCriteria) ratingCriteriaRepository.findByWeight(weight).orElseThrow(() -> new ResourceNotFoundException(String.format("RatingCriteria with id '%s' not found", weight)));
+    }
 }
