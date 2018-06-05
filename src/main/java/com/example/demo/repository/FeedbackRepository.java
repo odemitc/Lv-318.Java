@@ -4,16 +4,13 @@ import com.example.demo.entity.Feedback;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface FeedbackRepository extends CrudRepository<Feedback, Integer> {
 
-    List<Feedback> findByTransitId(Integer id);
+    List<Feedback> findByTransit_Id(Integer id);
 
-    List<Feedback> findByUserId(Integer id);
+    List<Feedback> findByUser_Id(Integer id);
 
-    List<Feedback> findByFeedbackCriteriaId(Integer id);
-
-    Feedback getByAnswer(String answer);
+    List<Feedback> findByFeedbackCriteria_Id(Integer id);
 
 }
