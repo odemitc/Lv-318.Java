@@ -12,7 +12,6 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
@@ -21,7 +20,6 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/all")
-
     public ResponseEntity<List<User>> getAllUsers() {
 
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
@@ -48,9 +46,16 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Integer id) {
+
         User updatedUser = userService.update(user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 
-
     }
+
+    @GetMapping(value = "/in")
+    public ResponseEntity<User> getUserByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
+
+        return new ResponseEntity<>(userService.getByEmailAndPassword(email,password), HttpStatus.OK);
+    }
+
 }

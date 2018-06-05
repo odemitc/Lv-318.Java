@@ -7,9 +7,9 @@ INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NO
 INSERT INTO public.category (type, id, name, next_level_category_id) VALUES ('NON_EXTENDABLE', 25, 'Marshrutka', 17);
 
 --users
-INSERT INTO public.users (id, email, first_name, last_name, password) VALUES (1, 'name1@gmail.com', 'Name1', 'Lastname1', '1111');
-INSERT INTO public.users (id, email, first_name, last_name, password) VALUES (2, 'name2@gmail.com', 'Name2', 'Lastname2', '2222');
-INSERT INTO public.users (id, email, first_name, last_name, password) VALUES (3, 'name3@gmail.com', 'Name3', 'Lastname3', '3333');
+INSERT INTO public.users ( email, first_name, last_name, password) VALUES ( 'name1@gmail.com', 'Name1', 'Lastname1', '1111');
+INSERT INTO public.users ( email, first_name, last_name, password) VALUES ( 'name2@gmail.com', 'Name2', 'Lastname2', '2222');
+INSERT INTO public.users ( email, first_name, last_name, password) VALUES ( 'name3@gmail.com', 'Name3', 'Lastname3', '3333');
 
 INSERT INTO public.stop (id, street) VALUES (1, '"Залізничний Вокзал"');
 INSERT INTO public.stop (id, street) VALUES (2, '"Приміський Вокзал"');
