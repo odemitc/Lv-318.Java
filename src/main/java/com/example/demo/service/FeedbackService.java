@@ -9,19 +9,12 @@ public interface FeedbackService {
 
     Feedback addFeedback(Feedback feedback);
 
-    void delete(Integer id);
-
-    Feedback update(Feedback feedback);
-
-    Feedback getByAnswer(String name);
+    Feedback getById(Integer id);
 
     List<Feedback> getByTransitId(Integer id);
 
-    List<Feedback> getByFeedbackCriteria(Integer id);
+    List<Feedback> getByCriteriaId(Integer id);
 
     List<Feedback> getByUserId(Integer id);
 
-    List<Feedback> getAll();
-
-    Feedback getById(Integer id);
 }

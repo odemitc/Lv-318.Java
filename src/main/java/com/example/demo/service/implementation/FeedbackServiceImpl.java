@@ -37,29 +37,6 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 
     @Override
-    @Transactional
-    public void delete(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
-        try {
-            feedbackRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(String.format("Transit with id '%s' not found", id));
-        }
-    }
-
-    @Override
-    @Transactional
-    public Feedback update(Feedback feedback) {
-        return feedbackRepository.findById(feedback.getId())
-                .map(feedback1 -> feedbackRepository.save(feedback))
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Feedback with id '%s' not found", feedback.getId())));
-    }
-
-
-    @Override
     @Transactional(readOnly = true)
     public Feedback getById(Integer id) throws MethodArgumentTypeMismatchException {
         if (id == null) {
@@ -72,35 +49,20 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Feedback> getAll() {
-        return Streams.stream(feedbackRepository.findAll()).collect(Collectors.toList());
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Feedback getByAnswer(String answer) {
-        if (Strings.isNullOrEmpty(answer)) {
-            throw new IllegalArgumentException("Answer should not be empty");
-        }
-        return feedbackRepository.getByAnswer(answer);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<Feedback> getByTransitId(Integer id) {
         if (id == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return feedbackRepository.findByTransitId(id);
+        return feedbackRepository.findByTransit_Id(id);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Feedback> getByFeedbackCriteria(Integer id) {
+    public List<Feedback> getByCriteriaId(Integer id) {
         if (id == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return feedbackRepository.findByFeedbackCriteriaId(id);
+        return feedbackRepository.findByFeedbackCriteria_Id(id);
     }
 
     @Override
