@@ -1,0 +1,17 @@
+<div class="top">
+  <mat-sidenav-container class="container">
+    <mat-sidenav #sidenav mode="side" hasBackdrop="false">
+      <button class="mainbutton" mat-button (click)="sidenav.toggle()"></button>
+      <div class="excategory">
+        <app-excategory></app-excategory>
+      </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <p>
+        <button class="mainbutton" mat-button (click)="sidenav.toggle()"></button>
+      </p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

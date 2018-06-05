@@ -1,0 +1,7 @@
+.non{
+  position: absolute;
+  z-index: 11;
+  width: 700px;
+  top: 25%;
+  left: 25%;
+}
