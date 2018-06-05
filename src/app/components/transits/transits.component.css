@@ -1,21 +1,9 @@
-/* Structure */
-table {
-  width: 100%;
-}
-
 .mat-form-field {
   font-size: 14px;
   width: 100%;
 }
-
-.transit {
-  position: absolute;
-  z-index: 16;
-  top: 30%;
-  left: 30%;
-  height: 300px;
-  width: 300px;
-}
 .mat-elevation-z8{
-  width: 500px;
+  width: 800px;
+  margin: 150px auto;
 }
+

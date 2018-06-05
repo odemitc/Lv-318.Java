@@ -1,7 +1,21 @@
-.non{
-  position: absolute;
-  z-index: 11;
-  width: 700px;
-  top: 25%;
-  left: 25%;
+/*.non{*/
+  /*position: absolute;*/
+  /*z-index: 11;*/
+  /*width: 700px;*/
+  /*top: 25%;*/
+  /*left: 25%;*/
+/*}*/
+/* Structure */
+/*table {*/
+  /*width: 100%;*/
+/*}*/
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
 }
+.mat-elevation-z8{
+  width: 800px;
+  margin: 150px auto;
+}
+

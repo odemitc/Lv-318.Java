@@ -13,6 +13,8 @@ import {Category} from '../../models/category';
 export class NonExCategoryComponent implements OnInit {
   private list: Observable<ExcategoryModel[]>;
 
+  displayedColumns = ['id', 'name','nextLevelCategory_name'];
+
   top: String;
   city: String;
   private sub: any;

@@ -1,37 +1,25 @@
 <div class="non">
-  <!--link parameter 1 : {{top}}-->
-  <!--<br/>-->
-  <!--link parameter 2 : {{city}}-->
-
-  <!--&lt;!&ndash;<div *ngFor="let category of list | async">&ndash;&gt;-->
-  <!--<nav>-->
-    <!--<a [routerLink]="['/category', category.nextLevelCategory.nextLevelCategory.name, category.nextLevelCategory.name,-->
-      <!--category.id]">-->
-      <!--<button mat-menu-item>{{category.name}}</button>-->
-    <!--</a>-->
-  <!--</nav>-->
-  <!--</div>-->
 
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th class="hidden">Id</th>
-      <th>Name</th>
-      <th>Next level category</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let category of list | async" [routerLink]="['/category', category.nextLevelCategory.nextLevelCategory.name, category.nextLevelCategory.name,
-      category.id]">
-        <td class="hidden">{{category.id}}</td>
-        <td>{{category.name}}</td>
-        <td>{{category.nextLevelCategory.name}}</td>
-        <td>
-          <button class="btn btn-danger"> Delete Category</button>
-        </td>
-    </tr>
-    </tbody>
+  <table mat-table [dataSource]="list" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
+      <mat-cell *matCellDef="let category"> {{category.id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+      <mat-cell *matCellDef="let category" [routerLink]="['/category', category.nextLevelCategory.nextLevelCategory.name, category.nextLevelCategory.name,
+      category.id]"> {{category.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="nextLevelCategory_name">
+      <mat-header-cell *matHeaderCellDef> NextLevelCategory</mat-header-cell>
+      <mat-cell *matCellDef="let category"> {{category.nextLevelCategory.name}}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
   </table>
 </div>
+<!--[routerLink]="['/category', category.nextLevelCategory.nextLevelCategory.name, category.nextLevelCategory.name,-->
+<!--category.id]"-->

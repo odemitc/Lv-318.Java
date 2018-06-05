@@ -52,8 +52,10 @@ import {ExcategoryService} from "./services/excategory.service";
 import { MenuComponent } from './components/menu/menu.component';
 import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
 import { TransitsComponent } from './components/transits/transits.component';
+import { MainComponent } from './components/main/main.component';
+import {SlideshowModule} from 'ng-simple-slideshow';
 
-// import { MenuComponent } from './components/menu/menu.component';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { TransitsComponent } from './components/transits/transits.component';
     SidenavComponent,
     MenuComponent,
     NonExCategoryComponent,
-    TransitsComponent
+    TransitsComponent,
+    MainComponent
   ],
   exports:[
     MatAutocompleteModule,
@@ -111,7 +114,8 @@ import { TransitsComponent } from './components/transits/transits.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    SlideshowModule
   ],
   providers: [ExcategoryService],
   bootstrap: [AppComponent]
