@@ -1,8 +1,7 @@
 package com.example.demo.service.implementation;
 
-import com.example.demo.entity.dto.NonExtendableCategoryDTO;
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.entity.NonExtendableCategory;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.NonExtendableCategoryService;
 import com.google.common.base.Strings;
@@ -61,12 +60,5 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
         return nonExtendableCategoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String
                         .format("Category with id '%s' not found", id)));
-    }
-
-    @Override
-    public NonExtendableCategoryDTO getByIdDTO(Integer id){
-        return new NonExtendableCategoryDTO(nonExtendableCategoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Category with id '%s' not found", id))));
     }
 }

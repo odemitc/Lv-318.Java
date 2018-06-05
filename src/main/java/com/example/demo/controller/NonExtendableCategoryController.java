@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.dto.NonExtendableCategoryDTO;
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.service.NonExtendableCategoryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
