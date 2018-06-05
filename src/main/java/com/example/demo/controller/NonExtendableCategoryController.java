@@ -66,6 +66,4 @@ public class NonExtendableCategoryController {
 
         return ResponseEntity.created(location).build();
     }
-
-    //TODO take care about feedbackCriterias and chose one of getCategoryById methods
 }
