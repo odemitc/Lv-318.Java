@@ -33,9 +33,6 @@ public class TransitServiceImpl implements TransitService {
     @Override
     @Transactional
     public void delete(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         try {
             transitRepository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
@@ -71,9 +68,6 @@ public class TransitServiceImpl implements TransitService {
     @Override
     @Transactional(readOnly = true)
     public Transit getById(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         return transitRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException(String
                 .format("Transit with id '%s' not found", id)));
@@ -100,9 +94,6 @@ public class TransitServiceImpl implements TransitService {
     @Override
     @Transactional(readOnly = true)
     public List<Transit> getAllByCategoryId(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         return transitRepository.findTransitsByCategoryId(id);
     }
 
