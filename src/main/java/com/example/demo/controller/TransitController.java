@@ -27,6 +27,7 @@ public class TransitController {
         return new ResponseEntity<>(transitService.getAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/category/{category_id}")
     public ResponseEntity<List<Transit>> getTransitsByCategoryId(@PathVariable Integer category_id) {
         return new ResponseEntity<>(transitService.getAllByCategoryId(category_id), HttpStatus.OK);
