@@ -1,11 +1,9 @@
 package com.example.demo.service.implementation;
 
-import com.example.demo.entity.dto.NonExtendableCategoryDTO;
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.entity.NonExtendableCategory;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.NonExtendableCategoryRepository;
 import com.example.demo.service.NonExtendableCategoryService;
-import com.google.common.base.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,15 +41,6 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     }
 
     @Override
-    public NonExtendableCategory getByName(String name) {
-        if (Strings.isNullOrEmpty(name)) {
-            throw new IllegalArgumentException("Name should not be empty");
-        }
-
-        return nonExtendableCategoryRepository.findByName(name);
-    }
-
-    @Override
     public List<NonExtendableCategory> getByNextLevelCategory(int id) {
         return nonExtendableCategoryRepository.findByNextLevelCategoryId(id);
     }
@@ -61,12 +50,5 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
         return nonExtendableCategoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String
                         .format("Category with id '%s' not found", id)));
-    }
-
-    @Override
-    public NonExtendableCategoryDTO getByIdDTO(Integer id){
-        return new NonExtendableCategoryDTO(nonExtendableCategoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Category with id '%s' not found", id))));
     }
 }

@@ -1,12 +1,10 @@
 package com.example.demo.service.converter.impl;
 
 import com.example.demo.entity.Feedback;
-import com.example.demo.entity.FeedbackCriteria;
 import com.example.demo.entity.RatingCriteria;
 import com.example.demo.service.converter.ConversionStrategy;
 
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class RatingConversionStrategy implements BiFunction<String, RatingCriteria, Integer>, ConversionStrategy<Integer> {
 

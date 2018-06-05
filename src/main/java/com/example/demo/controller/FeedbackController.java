@@ -17,13 +17,18 @@ import java.util.List;
 public class FeedbackController {
     private final FeedbackService feedbackService;
 
-    //    @GetMapping
-//    public ResponseEntity<List<Feedback>> getByFeedbackCriteria(@RequestParam("criteriaId") Integer id) {
-//        return new ResponseEntity<>(feedbackService.getByFeedbackCriteria(id), HttpStatus.OK);
-//    }
+    @GetMapping(value = "/criteria/{id}")
+    public ResponseEntity<List<Feedback>> getByCriteria(@PathVariable Integer id) {
+        return new ResponseEntity<>(feedbackService.getByCriteriaId(id), HttpStatus.OK);
+    }
 
-    @GetMapping
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer id) {
+    @GetMapping(value = "/transit/{id}")
+    public ResponseEntity<List<Feedback>> getByTransit(@PathVariable Integer id) {
+        return new ResponseEntity<>(feedbackService.getByTransitId(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/user/{id}")
+    public ResponseEntity<List<Feedback>> getByUser(@PathVariable Integer id) {
         return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
     }
 
@@ -34,26 +39,9 @@ public class FeedbackController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Feedback> add(@RequestBody Feedback feedback) {
+    public ResponseEntity<Feedback> add(@RequestBody(required = false) Feedback feedback) {
         Feedback savedFeedback = feedbackService.addFeedback(feedback);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(savedFeedback.getId()).toUri();
-        return ResponseEntity.created(location).build();
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") Integer id) {
-        feedbackService.delete(id);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Feedback> updateStudent(@RequestBody Feedback feedback, @PathVariable Integer id) {
-        Feedback updatedFeedback = feedbackService.update(feedback.setId(id));
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(updatedFeedback.getId()).toUri();
-        return ResponseEntity.created(location).build();
+        return new ResponseEntity<>(savedFeedback, HttpStatus.CREATED);
     }
 
 }

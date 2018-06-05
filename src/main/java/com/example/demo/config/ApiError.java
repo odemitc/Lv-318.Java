@@ -1,6 +1,5 @@
 package com.example.demo.config;
 
-import com.example.demo.exception.ApiSubError;
 import com.example.demo.exception.ApiValidationError;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -21,7 +20,7 @@ class ApiError {
     private LocalDateTime timestamp;
     private String message;
     private String debugMessage;
-    private List<ApiSubError> subErrors;
+    private List<ApiValidationError> subErrors;
 
     private ApiError() {
         timestamp = LocalDateTime.now();
@@ -35,7 +34,7 @@ class ApiError {
     }
 
 
-    private void addSubError(ApiSubError subError) {
+    private void addSubError(ApiValidationError subError) {
         if (subErrors == null) {
             subErrors = new ArrayList<>();
         }
@@ -52,7 +51,9 @@ class ApiError {
                 cv.getInvalidValue(), cv.getMessage());
     }
 
-     void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
-        constraintViolations.forEach(this::addValidationError);
+    void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
+        for (ConstraintViolation<?> cv : constraintViolations) {
+            this.addValidationError(cv);
+        }
     }
 }
