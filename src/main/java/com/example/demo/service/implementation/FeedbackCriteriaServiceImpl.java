@@ -1,5 +1,6 @@
 package com.example.demo.service.implementation;
 import com.example.demo.entity.FeedbackCriteria;
+import com.example.demo.entity.RatingCriteria;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.FeedbackCriteriaRepository;
 import com.example.demo.service.FeedbackCriteriaService;
@@ -26,9 +27,6 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
 
     @Override
     public void delete(Integer id) {
-        if(id == null){
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         feedbackCriteriaRepository.deleteById(id);
     }
 
@@ -56,10 +54,6 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     @Override
     @Transactional(readOnly = true)
     public FeedbackCriteria getById(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
-
         return feedbackCriteriaRepository.findById(id).orElseThrow(() ->  new ResourceNotFoundException(String
                 .format("FeedbackCriteria with id '%s' not found", id)));
     }
@@ -67,15 +61,12 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     @Override
     @Transactional(readOnly = true)
     public List<FeedbackCriteria> getByGroupId(Integer groupId) {
-        if(groupId == null){
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
         return feedbackCriteriaRepository.findByGroupId(groupId);
     }
 
     @Override
     public List<FeedbackCriteria> getByQuestion(String question) {
-        if(question == null){
+        if(question.isEmpty()){
             throw new IllegalArgumentException("Parameter should not be null");
         }
         return feedbackCriteriaRepository.findByQuestion(question);
@@ -85,5 +76,18 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     @Transactional(readOnly = true)
     public List<FeedbackCriteria> getByType(FeedbackCriteria.FeedbackType type) {
         return feedbackCriteriaRepository.findByType(type);
+    }
+
+    @Override
+    public List<RatingCriteria> getByWeight(Integer id) {
+        if(id == null){
+            throw new IllegalArgumentException("Parameter should not be null");
+        }
+        return feedbackCriteriaRepository.findByWeight(id);
+    }
+
+    @Override
+    public  List<FeedbackCriteria> getByCategoryId(Integer id){
+        return feedbackCriteriaRepository.findFeedbackCriteriaByNonExtendableCategoryId(id);
     }
 }
