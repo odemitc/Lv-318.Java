@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.FeedbackCriteria;
+import com.example.demo.entity.RatingCriteria;
 import com.example.demo.service.FeedbackCriteriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/feedback-criteria")
+@CrossOrigin(origins = "http://localhost:4200")
 public class FeedbackCriteriaController {
     private final FeedbackCriteriaService feedbackCriteriaService;
 
@@ -51,7 +53,17 @@ public class FeedbackCriteriaController {
         return new ResponseEntity<>(feedbackCriteriaService.getByType(type), HttpStatus.OK);
     }
     @GetMapping("/question/{question}")
-    public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@PathVariable String question){
+    public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@PathVariable(value="question") String question){
         return new ResponseEntity<>(feedbackCriteriaService.getByQuestion(question), HttpStatus.OK);
     }
+    @GetMapping("/weight/{weight}")
+    public ResponseEntity<List<RatingCriteria>> getByWeight(@PathVariable(value = "weight") Integer weight){
+        return new ResponseEntity<>(feedbackCriteriaService.getByWeight(weight), HttpStatus.OK);
+    }
+
+    @GetMapping("/categoryId/{categoryId}")
+    public ResponseEntity<List<FeedbackCriteria>> getByCategoryId(@PathVariable(value = "categoryId") Integer categoryId){
+        return new ResponseEntity<>(feedbackCriteriaService.getByCategoryId(categoryId), HttpStatus.OK);
+    }
+
 }

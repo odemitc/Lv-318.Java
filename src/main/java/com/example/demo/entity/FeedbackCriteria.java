@@ -29,7 +29,7 @@ public class FeedbackCriteria {
     private String question;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "type", insertable = false, updatable = false)
+    @Column(name = "type", updatable = false)
     private FeedbackType type;
 
     @RequiredArgsConstructor
