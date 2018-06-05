@@ -1,17 +1,23 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "users")
 @Data
+@Accessors(chain = true)
+@EqualsAndHashCode(of ="id")
+
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     @Column(name = "id",nullable = false)
-    private int id;
+    private Integer id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -22,19 +28,15 @@ public class User {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
+  //  @JsonIgnore
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "image")
-    private byte[] image;
 
-    public User() {
-    }
+    /*@JsonManagedReference
+    @OneToMany(mappedBy = "userId")
+    private List<Feedback> feedbacks;*/
 
-    public User(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
+
+
 }
