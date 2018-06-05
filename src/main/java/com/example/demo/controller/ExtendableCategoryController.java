@@ -33,6 +33,11 @@ public class ExtendableCategoryController {
 //        return new ResponseEntity<>(categoryService.getByNextLevelCategory(nextCategory), HttpStatus.OK);
 //    }
 
+    @GetMapping("/{name}")
+    public ResponseEntity<ExtendableCategory> getCategoryByName(@PathVariable String name){
+        return new ResponseEntity<>(categoryService.getByName(name), HttpStatus.OK);
+    }
+
     @PostMapping()
     public ResponseEntity<ExtendableCategory> addTransit(@RequestBody ExtendableCategory category) {
         ExtendableCategory savedCategory = categoryService.save(category);

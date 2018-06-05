@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.ExtendableCategory;
 import com.example.demo.entity.NonExtendableCategory;
 import com.example.demo.service.NonExtendableCategoryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NonExtendableCategoryController {
     private final NonExtendableCategoryService nonExtendableCategoryService;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+//    private final NonExtendableCategoryService extendableCategoryService;
 
     @GetMapping("/all/{up}")
     public ResponseEntity<List<NonExtendableCategory>> getCategoryByNextLevel(@PathVariable Integer up) {
@@ -42,6 +43,17 @@ public class NonExtendableCategoryController {
 
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
+
+//    @PostMapping("/add/")
+//    public ResponseEntity<NonExtendableCategory> addCategory(@RequestParam("name") String name, @RequestParam("id") Integer id) {
+//
+//        NonExtendableCategory nonExtendableCategory = new NonExtendableCategory();
+//        nonExtendableCategory.setName(name).setNextLevelCategory(extendableCategoryService.getById(id));
+//
+//        NonExtendableCategory category = nonExtendableCategoryService.addNonExtendableCategory(nonExtendableCategory);
+//
+//        return new ResponseEntity<>(category, HttpStatus.OK);
+//    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
