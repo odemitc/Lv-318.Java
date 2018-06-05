@@ -40,6 +40,7 @@ public class TransitController {
         return new ResponseEntity<>(transitService.getAllByCategoryName(categoryName), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping()
     public ResponseEntity<Transit> addTransit(@RequestBody Transit transit) {
         Transit savedTransit;
