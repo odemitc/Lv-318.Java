@@ -20,24 +20,19 @@ public class TransitController {
     private final TransitService transitService;
     private final NonExtendableCategoryRepository nonExtendableCategoryRepository;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Transit> getTransitById(@PathVariable Integer id) {
+    @GetMapping(params = "id")
+    public ResponseEntity<Transit> getTransitById(@RequestParam("id") Integer id) {
         return new ResponseEntity<>(transitService.getById(id), HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Transit>> getAllTransits() {
         return new ResponseEntity<>(transitService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/category/{category_id}")
-    public ResponseEntity<List<Transit>> getTransitsByCategoryId(@PathVariable Integer category_id) {
-        return new ResponseEntity<>(transitService.getAllByCategoryId(category_id), HttpStatus.OK);
-    }
-
-    @GetMapping("/category/")
-    public ResponseEntity<List<Transit>> getTransitsByCategoryName(@RequestParam String categoryName) {
-        return new ResponseEntity<>(transitService.getAllByCategoryName(categoryName), HttpStatus.OK);
+    @GetMapping(params = "categoryId")
+    public ResponseEntity<List<Transit>> getTransitsByCategoryId(@RequestParam("categoryId") Integer categoryId) {
+        return new ResponseEntity<>(transitService.getAllByCategoryId(categoryId), HttpStatus.OK);
     }
 
     @PostMapping
@@ -53,15 +48,14 @@ public class TransitController {
         return new ResponseEntity<>(savedTransit, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteTransit(@PathVariable Integer id) {
+    @DeleteMapping(params = "id")
+    public void deleteTransit(@RequestParam("id") Integer id) {
         transitService.delete(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Transit> updateTransit(@RequestBody Transit transit, @PathVariable Integer id) {
+    @PutMapping(params = "id")
+    public ResponseEntity<Transit> updateTransit(@RequestBody Transit transit, @RequestParam("id") Integer id) {
         Transit updatedTransit = transitService.update(transit.setId(id));
         return new ResponseEntity<>(updatedTransit, HttpStatus.OK);
     }
-
 }
