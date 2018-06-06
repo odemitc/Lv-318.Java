@@ -1,7 +1,7 @@
 package org.uaTransport.entity.dto;
 
-import org.uaTransport.entity.NonExtendableCategory;
 import lombok.Data;
+import org.uaTransport.entity.NonExtendableCategory;
 
 @Data
 public class TransitDTO {

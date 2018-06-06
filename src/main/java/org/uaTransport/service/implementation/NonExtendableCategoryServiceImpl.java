@@ -1,12 +1,12 @@
 package org.uaTransport.service.implementation;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.uaTransport.entity.NonExtendableCategory;
 import org.uaTransport.exception.ResourceNotFoundException;
 import org.uaTransport.repository.NonExtendableCategoryRepository;
 import org.uaTransport.service.NonExtendableCategoryService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,8 +36,8 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     @Transactional
     public NonExtendableCategory update(NonExtendableCategory nonExtendableCategory) {
         return nonExtendableCategoryRepository.findById(nonExtendableCategory.getId())
-            .map(category -> nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory))
-            .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
+                .map(category -> nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory))
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
     }
 
     @Override
@@ -48,8 +48,8 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     @Override
     public NonExtendableCategory getById(Integer id) {
         return nonExtendableCategoryRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Category with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Category with id '%s' not found", id)));
     }
 
     @Override

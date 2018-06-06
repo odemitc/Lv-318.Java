@@ -1,12 +1,12 @@
 package org.uaTransport.controller;
 
 
-import org.uaTransport.entity.ExtendableCategory;
-import org.uaTransport.service.ExtendebleCategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.uaTransport.entity.ExtendableCategory;
+import org.uaTransport.service.ExtendebleCategoryService;
 
 import java.util.List;
 

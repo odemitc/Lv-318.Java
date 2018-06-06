@@ -1,7 +1,7 @@
 package org.uaTransport.repository;
 
-import org.uaTransport.entity.ExtendableCategory;
 import org.springframework.data.repository.CrudRepository;
+import org.uaTransport.entity.ExtendableCategory;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package org.uaTransport.config;
 
-import org.uaTransport.exception.ApiValidationError;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.http.HttpStatus;
+import org.uaTransport.exception.ApiValidationError;
 
 import javax.validation.ConstraintViolation;
 import java.time.LocalDateTime;
@@ -47,8 +47,8 @@ class ApiError {
 
     private void addValidationError(ConstraintViolation<?> cv) {
         this.addValidationError(cv.getRootBeanClass().getSimpleName(),
-            ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
-            cv.getInvalidValue(), cv.getMessage());
+                ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
+                cv.getInvalidValue(), cv.getMessage());
     }
 
     void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {

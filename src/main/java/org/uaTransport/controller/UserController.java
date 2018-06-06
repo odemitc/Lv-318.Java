@@ -1,12 +1,12 @@
 package org.uaTransport.controller;
 
 
-import org.uaTransport.entity.User;
-import org.uaTransport.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.uaTransport.entity.User;
+import org.uaTransport.service.UserService;
 
 import java.util.List;
 

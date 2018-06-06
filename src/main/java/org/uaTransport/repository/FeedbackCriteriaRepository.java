@@ -1,12 +1,12 @@
 package org.uaTransport.repository;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.uaTransport.entity.FeedbackCriteria;
-import org.uaTransport.entity.RatingCriteria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.uaTransport.entity.FeedbackCriteria;
+import org.uaTransport.entity.RatingCriteria;
+
+import java.util.List;
+import java.util.Optional;
 
 public interface FeedbackCriteriaRepository extends JpaRepository<FeedbackCriteria, Integer> {
 

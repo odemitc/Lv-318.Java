@@ -1,7 +1,7 @@
 package org.uaTransport.repository;
 
-import org.uaTransport.entity.FeedbackCriteria;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.uaTransport.entity.FeedbackCriteria;
 
 public interface RatingCriteriaRepository extends JpaRepository<FeedbackCriteria, Integer> {
 

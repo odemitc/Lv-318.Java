@@ -1,12 +1,12 @@
 package org.uaTransport.entity;
 
-import org.uaTransport.service.converter.ConversionStrategy;
-import org.uaTransport.service.converter.impl.BusyHoursDurationConversionStrategy;
-import org.uaTransport.service.converter.impl.RatingConversionStrategy;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
+import org.uaTransport.service.converter.ConversionStrategy;
+import org.uaTransport.service.converter.impl.BusyHoursDurationConversionStrategy;
+import org.uaTransport.service.converter.impl.RatingConversionStrategy;
 
 import javax.persistence.*;
 

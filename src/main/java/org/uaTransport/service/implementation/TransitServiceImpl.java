@@ -1,16 +1,16 @@
 package org.uaTransport.service.implementation;
 
-import org.uaTransport.entity.Stop;
-import org.uaTransport.entity.Transit;
-import org.uaTransport.exception.ResourceNotFoundException;
-import org.uaTransport.repository.TransitRepository;
-import org.uaTransport.service.TransitService;
 import com.google.common.base.Strings;
 import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.uaTransport.entity.Stop;
+import org.uaTransport.entity.Transit;
+import org.uaTransport.exception.ResourceNotFoundException;
+import org.uaTransport.repository.TransitRepository;
+import org.uaTransport.service.TransitService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,17 +60,17 @@ public class TransitServiceImpl implements TransitService {
             throw new IllegalArgumentException("Parameter should not be null");
         }
         return transitRepository.findById(transit.getId())
-            .map(transit1 -> transitRepository.save(transit))
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", transit.getId())));
+                .map(transit1 -> transitRepository.save(transit))
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Transit with id '%s' not found", transit.getId())));
     }
 
     @Override
     @Transactional(readOnly = true)
     public Transit getById(Integer id) {
         return transitRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Transit with id '%s' not found", id)));
     }
 
     @Override

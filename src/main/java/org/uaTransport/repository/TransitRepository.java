@@ -1,10 +1,10 @@
 package org.uaTransport.repository;
 
-import org.uaTransport.entity.Stop;
-import org.uaTransport.entity.Transit;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.uaTransport.entity.Stop;
+import org.uaTransport.entity.Transit;
 
 import java.util.List;
 

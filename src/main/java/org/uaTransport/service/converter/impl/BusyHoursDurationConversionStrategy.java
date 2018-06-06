@@ -1,11 +1,11 @@
 package org.uaTransport.service.converter.impl;
 
-import org.uaTransport.entity.Feedback;
-import org.uaTransport.service.converter.ConversionStrategy;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;
 import lombok.SneakyThrows;
+import org.uaTransport.entity.Feedback;
+import org.uaTransport.service.converter.ConversionStrategy;
 
 import java.time.Duration;
 import java.util.List;

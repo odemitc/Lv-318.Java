@@ -1,9 +1,9 @@
 package org.uaTransport.repository;
 
+import org.springframework.data.repository.CrudRepository;
 import org.uaTransport.entity.Feedback;
 import org.uaTransport.entity.FeedbackCriteria;
 import org.uaTransport.entity.Transit;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
