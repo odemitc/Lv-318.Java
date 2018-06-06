@@ -56,6 +56,9 @@ import { MainComponent } from './components/main/main.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
 import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC/add-feedback-criteria.component';
+import {UserService} from './services/user.service';
+
+import {AddUserComponent} from './components/add-user/add-user.component';
 
 
 
@@ -69,7 +72,8 @@ import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC
     TransitsComponent,
     MainComponent,
     FeedbackCriteriaComponent,
-    AddFeedbackCriteriaComponent
+    AddFeedbackCriteriaComponent,
+    AddUserComponent
   ],
   exports:[
     MatAutocompleteModule,
@@ -121,7 +125,7 @@ import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC
     MatToolbarModule,
     SlideshowModule
   ],
-  providers: [ExcategoryService],
+  providers: [ExcategoryService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
