@@ -1,13 +1,9 @@
 package org.uaTransport.service.implementation;
 
-import org.uaTransport.entity.FeedbackCriteria;
 import org.uaTransport.entity.RatingCriteria;
+import org.uaTransport.exception.ResourceNotFoundException;
 import org.uaTransport.repository.RatingCriteriaRepository;
 import org.uaTransport.service.RatingCriteriaService;
-import com.example.demo.entity.RatingCriteria;
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.repository.RatingCriteriaRepository;
-import com.example.demo.service.RatingCriteriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

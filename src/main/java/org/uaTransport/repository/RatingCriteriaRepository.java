@@ -2,6 +2,7 @@ package org.uaTransport.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.uaTransport.entity.FeedbackCriteria;
+import org.uaTransport.entity.RatingCriteria;
 
 import java.util.Optional;
 

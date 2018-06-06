@@ -1,8 +1,6 @@
 package org.uaTransport.service;
 
-import org.uaTransport.entity.FeedbackCriteria;
 import org.uaTransport.entity.RatingCriteria;
-import com.example.demo.entity.RatingCriteria;
 
 import java.util.List;
 
@@ -15,6 +13,9 @@ public interface RatingCriteriaService {
     void delete(RatingCriteria ratingCriteria);
 
     RatingCriteria update(RatingCriteria ratingCriteria);
+
     List<RatingCriteria> getAll();
+
     RatingCriteria getByWeight(Integer weight);
+}
 

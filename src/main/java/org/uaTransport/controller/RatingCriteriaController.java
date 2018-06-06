@@ -1,11 +1,11 @@
-package com.example.demo.controller;
+package org.uaTransport.controller;
 
-import com.example.demo.entity.RatingCriteria;
-import com.example.demo.service.RatingCriteriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.uaTransport.entity.RatingCriteria;
+import org.uaTransport.service.RatingCriteriaService;
 
 import java.util.List;
 
