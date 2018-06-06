@@ -3,8 +3,12 @@ package org.uaTransport.service.implementation;
 import org.uaTransport.entity.Feedback;
 import org.uaTransport.entity.FeedbackCriteria;
 import org.uaTransport.entity.Transit;
+import org.uaTransport.entity.dto.FeedbackDTO;
 import org.uaTransport.exception.ResourceNotFoundException;
+import org.uaTransport.repository.FeedbackCriteriaRepository;
 import org.uaTransport.repository.FeedbackRepository;
+import org.uaTransport.repository.TransitRepository;
+import org.uaTransport.repository.UserRepository;
 import org.uaTransport.service.FeedbackService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,13 +33,12 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.save(feedback);
     }
 
-
     @Override
     @Transactional(readOnly = true)
     public Feedback getById(Integer id) {
         return feedbackRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Feedback with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Feedback with id '%s' not found", id)));
     }
 
     @Override
@@ -62,22 +65,21 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByTransitAndFeedbackCriteriaType(transit, feedbackType);
     }
 
-
     public List<Duration> convertBusyHoursFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(new Transit().setId(transitId), FeedbackCriteria.FeedbackType.BUSY_HOURS)
-            .stream()
-            .<List<Duration>>map(FeedbackCriteria.FeedbackType.BUSY_HOURS::convertFeedback)
-            .flatMap(List::stream)
-            .collect(Collectors.toList());
+                .stream()
+                .<List<Duration>>map(FeedbackCriteria.FeedbackType.BUSY_HOURS::convertFeedback)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
-
 
     public Double convertRatingFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(new Transit().setId(transitId), FeedbackCriteria.FeedbackType.RATING)
-            .stream()
-            .mapToInt(FeedbackCriteria.FeedbackType.RATING::convertFeedback)
-            .average()
-            .orElseThrow(ResourceNotFoundException::new);
+                .stream()
+                .mapToInt(FeedbackCriteria.FeedbackType.RATING::convertFeedback)
+                .average()
+                .orElseThrow(ResourceNotFoundException::new);
     }
+
 
 }

@@ -19,7 +19,6 @@ public class Feedback {
 
     private String answer;
 
-
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
@@ -28,7 +27,6 @@ public class Feedback {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "transit_id")
     private Transit transit;
-
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "criteria_id")
