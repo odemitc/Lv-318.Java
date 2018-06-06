@@ -35,3 +35,8 @@ a:active {
   font-family: Tahoma;
   color: black;
 }
+
+.criteriaButton{
+  position: relative;
+  left: 600px;
+}

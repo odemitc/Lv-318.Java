@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {FeedbackCService} from '../uaTrasport/feedbackC.service';
+import {FeedbackCService} from '../../services/feedbackC.service';
 
 @Component({
   selector: 'app-feedback-criteria',

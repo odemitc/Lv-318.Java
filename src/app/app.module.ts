@@ -54,6 +54,8 @@ import { NonExCategoryComponent } from './components/non-ex-category/non-ex-cate
 import { TransitsComponent } from './components/transits/transits.component';
 import { MainComponent } from './components/main/main.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
+import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
+import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC/add-feedback-criteria.component';
 
 
 
@@ -65,7 +67,9 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     MenuComponent,
     NonExCategoryComponent,
     TransitsComponent,
-    MainComponent
+    MainComponent,
+    FeedbackCriteriaComponent,
+    AddFeedbackCriteriaComponent
   ],
   exports:[
     MatAutocompleteModule,
