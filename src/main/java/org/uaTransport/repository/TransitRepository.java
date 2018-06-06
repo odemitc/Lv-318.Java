@@ -1,6 +1,5 @@
 package org.uaTransport.repository;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.uaTransport.entity.Stop;
@@ -14,9 +13,10 @@ public interface TransitRepository extends CrudRepository<Transit, Integer> {
 
     List<Transit> findByNameContaining(String name);
 
+    List<Transit> findByCategoryName(String name);
+
     List<Transit> findByCategoryId(int id);
 
-    @Query("select t from Transit t join t.stops s where s.street in (:stops)")
-    List<Transit> findTransitsByStopsIn(@Param("stops") Stop[] stops);
+    List<Transit> findByStopsIn(@Param("stops") Stop... stops);
 
 }

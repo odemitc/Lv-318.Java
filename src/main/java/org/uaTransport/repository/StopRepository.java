@@ -9,4 +9,4 @@ public interface StopRepository extends CrudRepository<Stop, Integer> {
 
     List<Stop> findStopsByStreet(String name);
 
-}
+    }
