@@ -6,7 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 //@RequiredArgsConstructor
-public class DemoApplication {
+public class UaTransportApplication {
 //    private final ApplicationContext context;
 
 //    @Autowired
@@ -19,7 +19,7 @@ public class DemoApplication {
 //    private NonExtendableCategoryRepository nonExtendableCategoryRepository;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
         int x = 1;
 
 

@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DemoApplicationTests {
+public class uaTransportApplicationTests {
 
 	@Test
 	public void contextLoads() {
