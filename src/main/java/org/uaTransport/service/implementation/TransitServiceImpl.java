@@ -25,7 +25,7 @@ public class TransitServiceImpl implements TransitService {
     @Transactional
     public Transit addTransit(Transit transit) {
         if (transit == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
+            throw new IllegalArgumentException("Transit object should not be null");
         }
         return transitRepository.save(transit);
     }
@@ -44,7 +44,7 @@ public class TransitServiceImpl implements TransitService {
     @Transactional
     public void delete(Transit transit) {
         if (transit == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
+            throw new IllegalArgumentException("Transit object should not be null");
         }
         try {
             transitRepository.delete(transit);
@@ -57,20 +57,20 @@ public class TransitServiceImpl implements TransitService {
     @Transactional
     public Transit update(Transit transit) {
         if (transit == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
+            throw new IllegalArgumentException("Transit object should not be null");
         }
         return transitRepository.findById(transit.getId())
-                .map(transit1 -> transitRepository.save(transit))
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Transit with id '%s' not found", transit.getId())));
+            .map(transit1 -> transitRepository.save(transit))
+            .orElseThrow(() -> new ResourceNotFoundException(String
+                .format("Transit with id '%s' not found", transit.getId())));
     }
 
     @Override
     @Transactional(readOnly = true)
     public Transit getById(Integer id) {
         return transitRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Transit with id '%s' not found", id)));
+            .orElseThrow(() -> new ResourceNotFoundException(String
+                .format("Transit with id '%s' not found", id)));
     }
 
     @Override
@@ -80,15 +80,6 @@ public class TransitServiceImpl implements TransitService {
             throw new IllegalArgumentException("Name should not be empty");
         }
         return transitRepository.findByName(name);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Transit> getAllByCategoryName(String name) {
-        if (Strings.isNullOrEmpty(name)) {
-            throw new IllegalArgumentException("Category name should not be empty");
-        }
-        return transitRepository.findByCategoryName(name);
     }
 
     @Override
