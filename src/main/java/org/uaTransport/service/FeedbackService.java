@@ -18,7 +18,7 @@ public interface FeedbackService {
 
     List<Feedback> getByUserId(Integer id);
 
-    List<Feedback> getByTransitAndFeedbackCriteria(Transit transit, FeedbackCriteria.FeedbackType feedbackType);
+    List<Feedback> getByTransitAndFeedbackCriteria(Integer transitId, FeedbackCriteria.FeedbackType feedbackType);
 
     Double convertRatingFeedBacks(Integer transitId);
 }

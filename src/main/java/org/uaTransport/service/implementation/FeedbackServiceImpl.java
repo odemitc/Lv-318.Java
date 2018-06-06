@@ -61,12 +61,12 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Feedback> getByTransitAndFeedbackCriteria(Transit transit, FeedbackCriteria.FeedbackType feedbackType) {
-        return feedbackRepository.findByTransitAndFeedbackCriteriaType(transit, feedbackType);
+    public List<Feedback> getByTransitAndFeedbackCriteria(Integer transitId, FeedbackCriteria.FeedbackType feedbackType) {
+        return feedbackRepository.findByTransitIdAndFeedbackCriteriaType(transitId, feedbackType);
     }
 
     public List<Duration> convertBusyHoursFeedBacks(Integer transitId) {
-        return getByTransitAndFeedbackCriteria(new Transit().setId(transitId), FeedbackCriteria.FeedbackType.BUSY_HOURS)
+        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.BUSY_HOURS)
                 .stream()
                 .<List<Duration>>map(FeedbackCriteria.FeedbackType.BUSY_HOURS::convertFeedback)
                 .flatMap(List::stream)
@@ -74,7 +74,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     public Double convertRatingFeedBacks(Integer transitId) {
-        return getByTransitAndFeedbackCriteria(new Transit().setId(transitId), FeedbackCriteria.FeedbackType.RATING)
+        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.RATING)
                 .stream()
                 .mapToInt(FeedbackCriteria.FeedbackType.RATING::convertFeedback)
                 .average()
