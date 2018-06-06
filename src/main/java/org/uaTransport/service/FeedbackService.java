@@ -3,6 +3,7 @@ package org.uaTransport.service;
 import org.uaTransport.entity.Feedback;
 import org.uaTransport.entity.FeedbackCriteria;
 import org.uaTransport.entity.Transit;
+import org.uaTransport.entity.dto.FeedbackDTO;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface FeedbackService {
 
     List<Feedback> getByUserId(Integer id);
 
-    List<Feedback> getByTransitAndFeedbackCriteria(Transit transit, FeedbackCriteria.FeedbackType feedbackType);
+    List<Feedback> getByTransitAndFeedbackCriteria(Integer transitId, FeedbackCriteria.FeedbackType feedbackType);
 
     Double convertRatingFeedBacks(Integer transitId);
 }
