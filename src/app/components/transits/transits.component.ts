@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TransitService } from '../../services/transit.service';
-import { Transit } from '../../models/transit.model';
+import { Convert, Transit } from '../../models/transit.model';
 import { Observable } from 'rxjs';
 import { DataSource } from '@angular/cdk/collections';
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-transits',
@@ -14,7 +15,9 @@ export class TransitsComponent implements OnInit {
   private sub: any;
   private id: String;
 
-  transits:Observable<Transit[]>;
+  transit = new Transit(new Category());
+
+  transits: Observable<Transit[]>;
 
   dataSource = new TransitDataSource(this.transitService);
   displayedColumns = ['id', 'name', 'category_id', 'category_name', 'nextLevelCategory_id', 'nextLevelCategory_name'];
@@ -26,6 +29,12 @@ export class TransitsComponent implements OnInit {
       this.id = params['id'];
     });
    this.transits = this.transitService.getTransitsById(this.id);
+  }
+
+  onSubmit() {
+    this.transitService.addTransit(this.transit)
+      .subscribe(res => console.log(res));
+    alert('Transit added: ' + Convert.transitToJson(this.transit));
   }
 }
 

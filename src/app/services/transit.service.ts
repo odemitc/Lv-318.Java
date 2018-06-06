@@ -9,7 +9,7 @@ import {Transit} from '../models/transit.model';
 export class TransitService {
 
   private serviceUrl = 'http://localhost:8080/transit/';
-  private addUrl = 'localhost:8080/transit/';
+  private addUrl = 'http://localhost:8080/transit/';
 
   constructor(private http: HttpClient) {
   }
