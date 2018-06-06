@@ -4,16 +4,20 @@ import com.example.demo.entity.RatingCriteria;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.RatingCriteriaRepository;
 import com.example.demo.service.RatingCriteriaService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class RatingCriteriaServiceImpl implements RatingCriteriaService {
 
     private final RatingCriteriaRepository ratingCriteriaRepository;
 
-    public RatingCriteriaServiceImpl(RatingCriteriaRepository ratingCriteriaRepository) {
-        this.ratingCriteriaRepository = ratingCriteriaRepository;
-    }
+//    public RatingCriteriaServiceImpl(RatingCriteriaRepository ratingCriteriaRepository) {
+//        this.ratingCriteriaRepository = ratingCriteriaRepository;
+//    }
 
     @Override
     public RatingCriteria save(RatingCriteria ratingCriteria) {
