@@ -1,12 +1,12 @@
 package org.uaTransport.controller;
 
-import org.uaTransport.entity.FeedbackCriteria;
-import org.uaTransport.entity.RatingCriteria;
-import org.uaTransport.service.FeedbackCriteriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.uaTransport.entity.FeedbackCriteria;
+import org.uaTransport.entity.RatingCriteria;
+import org.uaTransport.service.FeedbackCriteriaService;
 
 import java.util.List;
 

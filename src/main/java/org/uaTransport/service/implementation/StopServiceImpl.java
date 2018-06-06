@@ -1,14 +1,14 @@
 package org.uaTransport.service.implementation;
 
-import org.uaTransport.entity.Stop;
-import org.uaTransport.exception.ResourceNotFoundException;
-import org.uaTransport.repository.StopRepository;
-import org.uaTransport.service.StopService;
 import com.google.common.base.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.uaTransport.entity.Stop;
+import org.uaTransport.exception.ResourceNotFoundException;
+import org.uaTransport.repository.StopRepository;
+import org.uaTransport.service.StopService;
 
 import java.util.List;
 
@@ -33,8 +33,8 @@ public class StopServiceImpl implements StopService {
     @Transactional(readOnly = true)
     public Stop getById(Integer id) {
         return stopRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Feedback with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Feedback with id '%s' not found", id)));
     }
 
     @Override
@@ -55,9 +55,9 @@ public class StopServiceImpl implements StopService {
             throw new IllegalArgumentException("Parameter should not be null");
         }
         return stopRepository.findById(stop.getId())
-            .map(transit1 -> stopRepository.save(stop))
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", stop.getId())));
+                .map(transit1 -> stopRepository.save(stop))
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Transit with id '%s' not found", stop.getId())));
     }
 
     @Override

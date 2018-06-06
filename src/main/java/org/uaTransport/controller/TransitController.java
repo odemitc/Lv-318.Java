@@ -1,13 +1,13 @@
 package org.uaTransport.controller;
 
-import org.uaTransport.entity.Transit;
-import org.uaTransport.exception.ResourceNotFoundException;
-import org.uaTransport.repository.NonExtendableCategoryRepository;
-import org.uaTransport.service.TransitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.uaTransport.entity.Transit;
+import org.uaTransport.exception.ResourceNotFoundException;
+import org.uaTransport.repository.NonExtendableCategoryRepository;
+import org.uaTransport.service.TransitService;
 
 import java.util.List;
 

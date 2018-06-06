@@ -1,15 +1,15 @@
 package org.uaTransport.service.implementation;
 
-import org.uaTransport.exception.ResourceNotFoundException;
-import org.uaTransport.entity.ExtendableCategory;
-import org.uaTransport.repository.ExtendableCategoryRepository;
-import org.uaTransport.service.ExtendebleCategoryService;
 import com.google.common.base.Strings;
 import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.uaTransport.entity.ExtendableCategory;
+import org.uaTransport.exception.ResourceNotFoundException;
+import org.uaTransport.repository.ExtendableCategoryRepository;
+import org.uaTransport.service.ExtendebleCategoryService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,9 +47,9 @@ public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService 
             throw new IllegalArgumentException("Parameter should not be null");
         }
         return extendableCategoryRepository.findById(category.getId())
-            .map(category1 -> extendableCategoryRepository.save(category))
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Category with id '%s' not found", category.getId())));
+                .map(category1 -> extendableCategoryRepository.save(category))
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Category with id '%s' not found", category.getId())));
     }
 
     @Override

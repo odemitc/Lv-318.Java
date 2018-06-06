@@ -1,12 +1,12 @@
 package org.uaTransport.service.implementation;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.uaTransport.entity.User;
 import org.uaTransport.exception.ResourceNotFoundException;
 import org.uaTransport.repository.UserRepository;
 import org.uaTransport.service.UserService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -53,8 +53,8 @@ public class UserServiceImplement implements UserService {
     @Transactional(readOnly = true)
     public User getById(int id) {
         return userRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("User with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("User with id '%s' not found", id)));
 
     }
 

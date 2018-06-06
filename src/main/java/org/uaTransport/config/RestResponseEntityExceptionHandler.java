@@ -1,6 +1,5 @@
 package org.uaTransport.config;
 
-import org.uaTransport.exception.ResourceNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.uaTransport.exception.ResourceNotFoundException;
 
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
@@ -37,7 +37,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         Class<?> requiredType = ex.getRequiredType();
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
         apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'",
-            ex.getName(), ex.getValue(), requiredType != null ? requiredType.getName() : "of the argument"));
+                ex.getName(), ex.getValue(), requiredType != null ? requiredType.getName() : "of the argument"));
         return handleExceptionInternal(ex, apiError, HTTP_HEADERS, apiError.getStatus(), request);
     }
 

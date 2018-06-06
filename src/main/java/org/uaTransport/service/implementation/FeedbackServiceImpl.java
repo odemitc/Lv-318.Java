@@ -1,5 +1,8 @@
 package org.uaTransport.service.implementation;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.uaTransport.entity.Feedback;
 import org.uaTransport.entity.FeedbackCriteria;
 import org.uaTransport.entity.Transit;
@@ -10,9 +13,6 @@ import org.uaTransport.repository.FeedbackRepository;
 import org.uaTransport.repository.TransitRepository;
 import org.uaTransport.repository.UserRepository;
 import org.uaTransport.service.FeedbackService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.util.List;

@@ -31,11 +31,11 @@ public class Transit {
 
     @ManyToMany
     @JoinTable(name = "transit_stop",
-        joinColumns = {
-            @JoinColumn(name = "transit_id")},
-        inverseJoinColumns = {
-            @JoinColumn(name = "stop_id")
-        }
+            joinColumns = {
+                    @JoinColumn(name = "transit_id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "stop_id")
+            }
     )
     @OrderColumn(name = "stop_index")
     private List<Stop> stops;
