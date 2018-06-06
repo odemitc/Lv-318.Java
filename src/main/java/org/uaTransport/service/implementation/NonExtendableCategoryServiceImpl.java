@@ -23,7 +23,7 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
         if (nonExtendableCategory.getNextLevelCategory() == null) {
             throw new IllegalArgumentException("NonExtendableCategory must contain next level Category");
         }
-        return nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory);
+        return nonExtendableCategoryRepository.save(nonExtendableCategory);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     @Transactional
     public NonExtendableCategory update(NonExtendableCategory nonExtendableCategory) {
         return nonExtendableCategoryRepository.findById(nonExtendableCategory.getId())
-                .map(category -> nonExtendableCategoryRepository.saveAndFlush(nonExtendableCategory))
+                .map(category -> nonExtendableCategoryRepository.save(nonExtendableCategory))
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
     }
 
