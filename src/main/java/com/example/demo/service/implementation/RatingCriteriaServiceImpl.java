@@ -15,10 +15,6 @@ public class RatingCriteriaServiceImpl implements RatingCriteriaService {
 
     private final RatingCriteriaRepository ratingCriteriaRepository;
 
-//    public RatingCriteriaServiceImpl(RatingCriteriaRepository ratingCriteriaRepository) {
-//        this.ratingCriteriaRepository = ratingCriteriaRepository;
-//    }
-
     @Override
     public RatingCriteria save(RatingCriteria ratingCriteria) {
         if (ratingCriteria == null) {
@@ -29,7 +25,7 @@ public class RatingCriteriaServiceImpl implements RatingCriteriaService {
 
     @Override
     public void delete(Integer weight) {
-        if(weight == null) {
+        if (weight == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
         ratingCriteriaRepository.deleteById(weight);
@@ -59,8 +55,9 @@ public class RatingCriteriaServiceImpl implements RatingCriteriaService {
     @Override
     public RatingCriteria getByWeight(Integer weight) {
         if (weight == null) {
-           throw new IllegalArgumentException("Parameter should not be null");
+            throw new IllegalArgumentException("Parameter should not be null");
         }
-        return (RatingCriteria) ratingCriteriaRepository.findByWeight(weight).orElseThrow(() -> new ResourceNotFoundException(String.format("RatingCriteria with id '%s' not found", weight)));
+        return (RatingCriteria) ratingCriteriaRepository.findByWeight(weight).orElseThrow(() -> new
+                ResourceNotFoundException(String.format("RatingCriteria with id '%s' not found", weight)));
     }
 }

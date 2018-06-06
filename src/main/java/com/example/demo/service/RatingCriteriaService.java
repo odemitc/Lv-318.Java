@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.FeedbackCriteria;
 import com.example.demo.entity.RatingCriteria;
 
 import java.util.List;
