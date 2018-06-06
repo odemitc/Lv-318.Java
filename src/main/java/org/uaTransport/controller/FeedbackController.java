@@ -43,9 +43,9 @@ public class FeedbackController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Feedback> add(@RequestBody FeedbackDTO feedbackDTO) {
         return new ResponseEntity<>(feedbackService.addFeedback(feedbackDTO.toEntity()),
                 HttpStatus.CREATED);
     }
+
 }
