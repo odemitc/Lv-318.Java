@@ -88,13 +88,13 @@ public class TransitServiceImpl implements TransitService {
         if (Strings.isNullOrEmpty(name)) {
             throw new IllegalArgumentException("Category name should not be empty");
         }
-        return transitRepository.findTransitsByCategoryName(name);
+        return transitRepository.findByCategoryName(name);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Transit> getAllByCategoryId(Integer id) {
-        return transitRepository.findTransitsByCategoryId(id);
+        return transitRepository.findByCategoryId(id);
     }
 
     @Override

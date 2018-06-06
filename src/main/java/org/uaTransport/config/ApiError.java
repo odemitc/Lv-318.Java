@@ -47,8 +47,8 @@ class ApiError {
 
     private void addValidationError(ConstraintViolation<?> cv) {
         this.addValidationError(cv.getRootBeanClass().getSimpleName(),
-                ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
-                cv.getInvalidValue(), cv.getMessage());
+            ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
+            cv.getInvalidValue(), cv.getMessage());
     }
 
     void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {

@@ -12,35 +12,27 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/category")
+@CrossOrigin
 @RequiredArgsConstructor
 public class ExtendableCategoryController {
     private final ExtendebleCategoryService categoryService;
 
     @GetMapping("/top/")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
         return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
     }
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<ExtendableCategory>> getCategoriesByNextLevel(@RequestParam String top) {
         return new ResponseEntity<>(categoryService.getByNextLevelCategoryId(categoryService.getByName(top).getId()), HttpStatus.OK);
     }
-//
-//    @GetMapping
-//    public ResponseEntity<List<ExtendableCategory>> getLastCategories(@RequestParam String top, @RequestParam String next) {
-//        ExtendableCategory topCategory = categoryService.getByName(top);
-//        ExtendableCategory nextCategory = categoryService.getByNameAndNextLevelCategory(next, topCategory);
-//        return new ResponseEntity<>(categoryService.getByNextLevelCategory(nextCategory), HttpStatus.OK);
-//    }
 
     @GetMapping("/{name}")
-    public ResponseEntity<ExtendableCategory> getCategoryByName(@PathVariable String name){
+    public ResponseEntity<ExtendableCategory> getCategoryByName(@PathVariable String name) {
         return new ResponseEntity<>(categoryService.getByName(name), HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<ExtendableCategory> addTransit(@RequestBody ExtendableCategory category) {
         ExtendableCategory savedCategory = categoryService.save(category);
         return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);

@@ -22,7 +22,7 @@ public class StopController {
     }
 
     @GetMapping("/get/{street}")
-    public ResponseEntity<List<Stop>> getByStreet(@PathVariable (value = "street") String street) {
+    public ResponseEntity<List<Stop>> getByStreet(@PathVariable(value = "street") String street) {
         return new ResponseEntity<>(stopService.getStopsByStreet(street), HttpStatus.OK);
     }
 
@@ -41,7 +41,7 @@ public class StopController {
     @PutMapping("/{id}")
     public ResponseEntity<Stop> update(@RequestBody Stop stop, @PathVariable Integer id) {
         Stop savedStop = stopService.update(stop.setId(id));
-        return  new ResponseEntity<>(savedStop, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedStop, HttpStatus.CREATED);
     }
 
 }

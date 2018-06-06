@@ -47,9 +47,9 @@ public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService 
             throw new IllegalArgumentException("Parameter should not be null");
         }
         return extendableCategoryRepository.findById(category.getId())
-                .map(category1 -> extendableCategoryRepository.save(category))
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Category with id '%s' not found", category.getId())));
+            .map(category1 -> extendableCategoryRepository.save(category))
+            .orElseThrow(() -> new ResourceNotFoundException(String
+                .format("Category with id '%s' not found", category.getId())));
     }
 
     @Override
@@ -93,7 +93,7 @@ public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService 
             throw new IllegalArgumentException("Parameter should not be null");
         }
         List<ExtendableCategory> categoryList = extendableCategoryRepository.findByNextLevelCategoryId(id);
-        if(categoryList.isEmpty()){
+        if (categoryList.isEmpty()) {
             throw new ResourceNotFoundException(String.format("Category with id '%s' not found", id));
         }
         return categoryList;
@@ -106,7 +106,7 @@ public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService 
             throw new IllegalArgumentException("Parameter should not be null");
         }
         List<ExtendableCategory> categoryList = extendableCategoryRepository.findByNextLevelCategory(category);
-        if(categoryList.isEmpty()){
+        if (categoryList.isEmpty()) {
             throw new ResourceNotFoundException("Such category  not found");
         }
         return categoryList;
@@ -114,11 +114,11 @@ public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService 
 
     @Override
     public ExtendableCategory getByNameAndNextLevelCategory(String name, ExtendableCategory nextLevel) {
-        if (name == null || nextLevel == null ) {
+        if (name == null || nextLevel == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
         ExtendableCategory extendableCategory = extendableCategoryRepository.findByNameAndNextLevelCategory(name, nextLevel);
-        if(extendableCategory == null){
+        if (extendableCategory == null) {
             throw new ResourceNotFoundException("Such category  not found");
         }
         return extendableCategory;

@@ -8,7 +8,7 @@ import org.uaTransport.entity.RatingCriteria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface FeedbackCriteriaRepository  extends JpaRepository<FeedbackCriteria, Integer>{
+public interface FeedbackCriteriaRepository extends JpaRepository<FeedbackCriteria, Integer> {
 
     Optional<FeedbackCriteria> findById(Integer id);
 

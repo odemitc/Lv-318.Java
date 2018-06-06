@@ -27,5 +27,4 @@ public interface TransitService {
 
     List<Transit> getTransitsByStopsIn(Stop[] stops);
 
-
 }

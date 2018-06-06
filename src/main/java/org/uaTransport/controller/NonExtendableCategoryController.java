@@ -17,7 +17,6 @@ public class NonExtendableCategoryController {
     private final NonExtendableCategoryService nonExtendableCategoryService;
 
     @GetMapping("/all")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<NonExtendableCategory>> getCategoryByNextLevel(@RequestParam Integer up) {
         List<NonExtendableCategory> categories = nonExtendableCategoryService.getByNextLevelCategory(up);
 
@@ -25,7 +24,6 @@ public class NonExtendableCategoryController {
     }
 
     @GetMapping("/get")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<NonExtendableCategory>> getCategoryByNames(@RequestParam String name, @RequestParam String next) {
         List<NonExtendableCategory> categories = nonExtendableCategoryService.getByNames(name, next);
         return new ResponseEntity<>(categories, HttpStatus.OK);
@@ -33,7 +31,6 @@ public class NonExtendableCategoryController {
 
 
     @GetMapping("/{id}")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<NonExtendableCategory> getCategoryById(@PathVariable Integer id) {
 
         NonExtendableCategory category = nonExtendableCategoryService.getById(id);

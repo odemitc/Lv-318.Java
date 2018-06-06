@@ -25,7 +25,7 @@ public class RatingCriteriaServiceImpl implements RatingCriteriaService {
 
     @Override
     public void delete(Integer weight) {
-        if(weight == null) {
+        if (weight == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
         ratingCriteriaRepository.deleteById(weight);

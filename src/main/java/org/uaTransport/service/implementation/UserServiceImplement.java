@@ -21,7 +21,7 @@ public class UserServiceImplement implements UserService {
     @Override
     @Transactional
     public User addUser(User user) {
-        if(user==null){
+        if (user == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
         return userRepository.saveAndFlush(user);
@@ -30,7 +30,7 @@ public class UserServiceImplement implements UserService {
     @Override
     @Transactional
     public User update(User user) {
-        if(user==null){
+        if (user == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
         return userRepository.saveAndFlush(user);
@@ -45,16 +45,16 @@ public class UserServiceImplement implements UserService {
 
     @Override
     @Transactional
-    public void deleteById(int id ) {
+    public void deleteById(int id) {
         userRepository.deleteById(id);
-        }
+    }
 
     @Override
     @Transactional(readOnly = true)
     public User getById(int id) {
-        return  userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("User with id '%s' not found", id)));
+        return userRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException(String
+                .format("User with id '%s' not found", id)));
 
     }
 

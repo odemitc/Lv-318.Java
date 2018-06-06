@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/transit")
+@CrossOrigin
 @RequiredArgsConstructor
 public class TransitController {
 
@@ -24,13 +25,11 @@ public class TransitController {
         return new ResponseEntity<>(transitService.getById(id), HttpStatus.OK);
     }
 
-    @CrossOrigin
     @GetMapping()
     public ResponseEntity<List<Transit>> getAllTransits() {
         return new ResponseEntity<>(transitService.getAll(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/category/{category_id}")
     public ResponseEntity<List<Transit>> getTransitsByCategoryId(@PathVariable Integer category_id) {
         return new ResponseEntity<>(transitService.getAllByCategoryId(category_id), HttpStatus.OK);
@@ -41,8 +40,7 @@ public class TransitController {
         return new ResponseEntity<>(transitService.getAllByCategoryName(categoryName), HttpStatus.OK);
     }
 
-    @CrossOrigin
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<Transit> addTransit(@RequestBody Transit transit) {
         Transit savedTransit;
         Integer categoryId = transit.getCategory().getId();

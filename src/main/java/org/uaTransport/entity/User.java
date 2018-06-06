@@ -12,12 +12,12 @@ import javax.persistence.*;
 @Table(name = "users")
 @Data
 @Accessors(chain = true)
-@EqualsAndHashCode(of ="id")
+@EqualsAndHashCode(of = "id")
 
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "first_name")
