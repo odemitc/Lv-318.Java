@@ -57,9 +57,11 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     @Override
     @Transactional
     public NonExtendableCategory update(NonExtendableCategory nonExtendableCategory) {
-        return nonExtendableCategoryRepository.findById(nonExtendableCategory.getId())
-                .map(category -> nonExtendableCategoryRepository.save(nonExtendableCategory))
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
+        if (nonExtendableCategoryRepository.existsById(nonExtendableCategory.getId())) {
+            return nonExtendableCategoryRepository.save(nonExtendableCategory);
+        } else {
+            throw new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId()));
+        }
     }
 
     @Override

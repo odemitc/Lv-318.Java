@@ -58,7 +58,7 @@ public class NonExtendableCategoryController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<NonExtendableCategory> updateCategory(@RequestParam NonExtendableCategory nonExtendableCategory, @PathVariable Integer id) {
+    public ResponseEntity<NonExtendableCategory> update(@RequestParam NonExtendableCategory nonExtendableCategory, @PathVariable Integer id) {
         NonExtendableCategory updatedCategory = nonExtendableCategoryService.update((NonExtendableCategory) nonExtendableCategory.setId(id));
 
         return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
