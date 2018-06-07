@@ -5,8 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uaTransport.entity.Transit;
-import org.uaTransport.exception.ResourceNotFoundException;
-import org.uaTransport.repository.NonExtendableCategoryRepository;
 import org.uaTransport.service.TransitService;
 
 import java.util.List;
@@ -18,7 +16,6 @@ import java.util.List;
 public class TransitController {
 
     private final TransitService transitService;
-    private final NonExtendableCategoryRepository nonExtendableCategoryRepository;
 
     @GetMapping(params = "id")
     public ResponseEntity<Transit> getTransitById(@RequestParam("id") Integer id) {
@@ -37,15 +34,7 @@ public class TransitController {
 
     @PostMapping
     public ResponseEntity<Transit> addTransit(@RequestBody Transit transit) {
-        Transit savedTransit;
-        Integer categoryId = transit.getCategory().getId();
-        if (nonExtendableCategoryRepository.existsById(categoryId)) {
-            savedTransit = transitService.addTransit(transit);
-        } else {
-            throw new ResourceNotFoundException(String.format("Category with id '%s' not found", categoryId));
-        }
-
-        return new ResponseEntity<>(savedTransit, HttpStatus.CREATED);
+        return new ResponseEntity<>(transitService.add(transit), HttpStatus.CREATED);
     }
 
     @DeleteMapping(params = "id")

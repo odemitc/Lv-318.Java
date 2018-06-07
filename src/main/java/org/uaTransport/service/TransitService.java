@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TransitService {
 
-    Transit addTransit(Transit transit);
+    Transit add(Transit transit);
 
     void delete(Integer id);
 
