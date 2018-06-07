@@ -11,5 +11,7 @@ INSERT INTO public.transit (id, name, category_id) VALUES (3, '#11', 24);
 INSERT INTO public.transit (id, name, category_id) VALUES (4, '#12', 25);
 INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 2, 1, 'о котрій годині виїхали?', 'BUSY_HOURS', null, 25);
 INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('RATING_CRITERIA', 1, 1, 'якість проїзду', 'RATING', 2, 25);
+INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 3, 1, 'у котрій годині ви найчастіше користуєтесь транспортом', 'BUSY_HOURS', null, 24);
+INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 4, 3, 'чи доїхали ви до місця призначення? ', 'RATING', null, 16);
 INSERT INTO public.feedback (id, answer, user_id, criteria_id, transit_id) VALUES (1, '5', 1, 1, 4);
 INSERT INTO public.feedback (id, answer, user_id, criteria_id, transit_id) VALUES (2, '345', 1, 2, 4);

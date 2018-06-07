@@ -53,7 +53,7 @@ public class FeedbackCriteriaController {
         return new ResponseEntity<>(feedbackCriteriaService.getByType(type), HttpStatus.OK);
     }
     @GetMapping("/question/{question}")
-    public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@PathVariable(value="question") String question){
+    public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@RequestParam(value="question") String question){
         return new ResponseEntity<>(feedbackCriteriaService.getByQuestion(question), HttpStatus.OK);
     }
     @GetMapping("/weight/{weight}")
