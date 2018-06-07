@@ -5,17 +5,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uaTransport.entity.Stop;
+import org.uaTransport.entity.Transit;
 import org.uaTransport.service.StopService;
+import org.uaTransport.service.TransitService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/stop")
-@CrossOrigin
+@CrossOrigin ()
 @RequiredArgsConstructor
 public class StopController {
 
   private final StopService stopService;
+  private final TransitService transitService;
 
   @GetMapping("/{id}")
   public ResponseEntity<Stop> getById(@PathVariable Integer id) {
@@ -24,7 +27,7 @@ public class StopController {
 
   @GetMapping(params = "street")
   public ResponseEntity<List<Stop>> getByStreet(@RequestParam("street") String street) {
-    return new ResponseEntity<>(stopService.getStopsByStreet(street), HttpStatus.OK);
+    return new ResponseEntity<>(stopService.getByStreet(street), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
@@ -33,10 +36,13 @@ public class StopController {
   }
 
 
-  @PostMapping
-  public ResponseEntity<Stop> add(@RequestBody(required = false) Stop stop) {
-    Stop savedStop = stopService.addStop(stop);
-    return new ResponseEntity<>(stopService.addStop(stop), HttpStatus.CREATED);
+  @PostMapping("/{id}")
+  public ResponseEntity<Stop> add(@RequestBody(required = false) Stop stop, @PathVariable Integer id) {
+    Transit transitToUpdate = transitService.getById(id);
+    transitToUpdate.getStops().add(stop);
+    transitService.update(transitToUpdate);
+    Stop savedStop = stopService.save(stop);
+    return new ResponseEntity<>(stopService.save(stop), HttpStatus.CREATED);
   }
 
   @PutMapping("/{id}")
