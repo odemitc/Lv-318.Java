@@ -1,9 +1,5 @@
-package com.example.demo.service.implementation;
-import com.example.demo.entity.FeedbackCriteria;
-import com.example.demo.entity.RatingCriteria;
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.repository.FeedbackCriteriaRepository;
-import com.example.demo.service.FeedbackCriteriaService;
+package org.uaTransport.service.implementation;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +10,6 @@ import org.uaTransport.repository.FeedbackCriteriaRepository;
 import org.uaTransport.service.FeedbackCriteriaService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,13 +42,8 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
         }
 
         return feedbackCriteriaRepository.findById(feedbackCriteria.getId()).orElseThrow(() -> new ResourceNotFoundException(
-                String.format("This FeedbackCriteria does not found", feedbackCriteria)));
+            String.format("This FeedbackCriteria does not found", feedbackCriteria)));
     }
-
-        @Override
-        public List<FeedbackCriteria> getAll () {
-            return feedbackCriteriaRepository.findAll();
-        }
 
     @Override
     public List<FeedbackCriteria> getAll() {
@@ -64,7 +54,7 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     @Transactional(readOnly = true)
     public FeedbackCriteria getById(Integer id) {
         return feedbackCriteriaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String
-                .format("FeedbackCriteria with id '%s' not found", id)));
+            .format("FeedbackCriteria with id '%s' not found", id)));
     }
 
     @Override
