@@ -75,6 +75,13 @@ public class ExtendableCategoryServiceImpl implements ExtendebleCategoryService 
     }
 
     @Override
+    public ExtendableCategory getById(Integer id) {
+        return extendableCategoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String
+                        .format("Category with id '%s' not found", id)));
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<ExtendableCategory> getListTopExtendableCategories() {
         return extendableCategoryRepository.findAllByNextLevelCategoryIsNull();

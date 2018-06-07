@@ -1,5 +1,9 @@
-package org.uaTransport.service.implementation;
-
+package com.example.demo.service.implementation;
+import com.example.demo.entity.FeedbackCriteria;
+import com.example.demo.entity.RatingCriteria;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.FeedbackCriteriaRepository;
+import com.example.demo.service.FeedbackCriteriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +14,7 @@ import org.uaTransport.repository.FeedbackCriteriaRepository;
 import org.uaTransport.service.FeedbackCriteriaService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,22 +35,25 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
         feedbackCriteriaRepository.deleteById(id);
     }
 
-    @Override
-    @Transactional
-    public void delete(FeedbackCriteria feedbackCriteria) {
-        if (feedbackCriteria == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
-        feedbackCriteriaRepository.delete(feedbackCriteria);
-    }
 
     @Transactional
     public FeedbackCriteria update(FeedbackCriteria feedbackCriteria) {
         if (feedbackCriteria == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return feedbackCriteriaRepository.saveAndFlush(feedbackCriteria);
+
+        if (feedbackCriteriaRepository.existsById(feedbackCriteria.getId())) {
+            return feedbackCriteriaRepository.saveAndFlush(feedbackCriteria);
+        }
+
+        return feedbackCriteriaRepository.findById(feedbackCriteria.getId()).orElseThrow(() -> new ResourceNotFoundException(
+                String.format("This FeedbackCriteria does not found", feedbackCriteria)));
     }
+
+        @Override
+        public List<FeedbackCriteria> getAll () {
+            return feedbackCriteriaRepository.findAll();
+        }
 
     @Override
     public List<FeedbackCriteria> getAll() {

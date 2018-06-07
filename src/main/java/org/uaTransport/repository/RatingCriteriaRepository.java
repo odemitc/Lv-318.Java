@@ -2,11 +2,11 @@ package org.uaTransport.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.uaTransport.entity.FeedbackCriteria;
+import org.uaTransport.entity.RatingCriteria;
 
-public interface RatingCriteriaRepository extends JpaRepository<FeedbackCriteria, Integer> {
+import java.util.Optional;
 
-//    Optional<FeedbackCriteria> findByWeight(Integer weight);
-//    List<RatingCriteria> findByWeightList(Integer weight); // This list format may not be necessary
-
+public interface RatingCriteriaRepository extends JpaRepository<RatingCriteria, Integer> {
+    Optional<FeedbackCriteria> findByWeight(Integer weight);
 
 }

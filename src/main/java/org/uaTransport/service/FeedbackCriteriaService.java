@@ -11,8 +11,6 @@ public interface FeedbackCriteriaService {
 
     void delete(Integer id);
 
-    void delete(FeedbackCriteria feedbackCriteria);
-
     FeedbackCriteria update(FeedbackCriteria feedbackCriteria);
 
     List<FeedbackCriteria> getAll();

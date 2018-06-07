@@ -4,8 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.uaTransport.entity.NonExtendableCategory;
+import org.uaTransport.entity.dto.NonExtendableCategoryDto;
 import org.uaTransport.exception.ResourceNotFoundException;
 import org.uaTransport.repository.NonExtendableCategoryRepository;
+import org.uaTransport.service.ExtendebleCategoryService;
+import org.uaTransport.service.FeedbackCriteriaService;
 import org.uaTransport.service.NonExtendableCategoryService;
 
 import java.util.List;
@@ -16,6 +19,8 @@ import java.util.List;
 public class NonExtendableCategoryServiceImpl implements NonExtendableCategoryService {
 
     private final NonExtendableCategoryRepository nonExtendableCategoryRepository;
+    private final ExtendebleCategoryService extendableCategoryService;
+    private final FeedbackCriteriaService feedbackCriteriaService;
 
     @Override
     @Transactional
@@ -27,6 +32,23 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     }
 
     @Override
+    public NonExtendableCategory addNonExtendableCategory(NonExtendableCategoryDto nonExtendableCategory) {
+        NonExtendableCategory categoryToSave = new NonExtendableCategory();
+
+        categoryToSave.setName(nonExtendableCategory.getName());
+        categoryToSave.setNextLevelCategory(extendableCategoryService.getById(nonExtendableCategory.getNextLevelCategory()));
+
+        if (nonExtendableCategory.getFeedbackCriterias() != null) {
+            nonExtendableCategory.getFeedbackCriterias()
+                    .forEach(id -> categoryToSave
+                            .getFeedbackCriterias()
+                            .add(feedbackCriteriaService.getById(id)));
+        }
+
+        return addNonExtendableCategory(categoryToSave);
+    }
+
+    @Override
     @Transactional
     public void delete(int id) {
         nonExtendableCategoryRepository.deleteById(id);
@@ -35,9 +57,11 @@ public class NonExtendableCategoryServiceImpl implements NonExtendableCategorySe
     @Override
     @Transactional
     public NonExtendableCategory update(NonExtendableCategory nonExtendableCategory) {
-        return nonExtendableCategoryRepository.findById(nonExtendableCategory.getId())
-                .map(category -> nonExtendableCategoryRepository.save(nonExtendableCategory))
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId())));
+        if (nonExtendableCategoryRepository.existsById(nonExtendableCategory.getId())) {
+            return nonExtendableCategoryRepository.save(nonExtendableCategory);
+        } else {
+            throw new ResourceNotFoundException(String.format("Category with id '%s' not found", nonExtendableCategory.getId()));
+        }
     }
 
     @Override
