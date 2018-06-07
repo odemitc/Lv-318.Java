@@ -59,10 +59,12 @@ public class TransitServiceImpl implements TransitService {
         if (transit == null) {
             throw new IllegalArgumentException("Transit object should not be null");
         }
-        return transitRepository.findById(transit.getId())
-            .map(transit1 -> transitRepository.save(transit))
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", transit.getId())));
+        if (transitRepository.existsById(transit.getId())) {
+            return transitRepository.save(transit);
+        } else {
+            throw new ResourceNotFoundException(String
+                .format("Transit with id '%s' not found", transit.getId()));
+        }
     }
 
     @Override
