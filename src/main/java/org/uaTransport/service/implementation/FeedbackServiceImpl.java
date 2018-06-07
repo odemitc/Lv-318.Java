@@ -5,13 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.uaTransport.entity.Feedback;
 import org.uaTransport.entity.FeedbackCriteria;
-import org.uaTransport.entity.Transit;
-import org.uaTransport.entity.dto.FeedbackDTO;
 import org.uaTransport.exception.ResourceNotFoundException;
-import org.uaTransport.repository.FeedbackCriteriaRepository;
 import org.uaTransport.repository.FeedbackRepository;
-import org.uaTransport.repository.TransitRepository;
-import org.uaTransport.repository.UserRepository;
 import org.uaTransport.service.FeedbackService;
 
 import java.time.Duration;
