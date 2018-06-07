@@ -3,6 +3,7 @@ package org.uaTransport.service;
 import org.uaTransport.entity.Feedback;
 import org.uaTransport.entity.FeedbackCriteria;
 import org.uaTransport.entity.Transit;
+import org.uaTransport.entity.dto.FeedbackDTO;
 
 import java.util.List;
 
