@@ -24,7 +24,7 @@ public class StopServiceImpl implements StopService {
   @Transactional
   public Stop save(Stop stop) {
     if (stop == null) {
-      throw new IllegalArgumentException("Parameter should not be empty");
+      throw new IllegalArgumentException("Stop object should not be empty");
     }
     return stopRepository.save(stop);
   }
@@ -34,7 +34,7 @@ public class StopServiceImpl implements StopService {
   public Stop getById(Integer id) {
     return stopRepository.findById(id)
       .orElseThrow(() -> new ResourceNotFoundException(String
-        .format("Feedback with id '%s' not found", id)));
+        .format("Stop with id '%s' not found", id)));
   }
 
   @Override
@@ -43,7 +43,7 @@ public class StopServiceImpl implements StopService {
     try {
       stopRepository.deleteById(id);
     } catch (EmptyResultDataAccessException e) {
-      throw new ResourceNotFoundException(String.format("Transit with id '%s' not found", id));
+      throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", id));
     }
   }
 
