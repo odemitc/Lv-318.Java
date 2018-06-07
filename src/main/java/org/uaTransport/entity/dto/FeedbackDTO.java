@@ -9,6 +9,7 @@ import org.uaTransport.entity.User;
 
 @Data
 public class FeedbackDTO {
+
     private Integer id;
     private String answer;
     private Integer userId;

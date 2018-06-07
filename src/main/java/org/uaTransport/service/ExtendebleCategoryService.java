@@ -16,6 +16,8 @@ public interface ExtendebleCategoryService {
 
     ExtendableCategory getByName(String name);
 
+    ExtendableCategory getById(Integer id);
+
     List<ExtendableCategory> getListExtendableCategories();
 
     List<ExtendableCategory> getListTopExtendableCategories();
