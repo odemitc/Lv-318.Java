@@ -9,7 +9,8 @@
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
       <mat-cell *matCellDef="let category" [routerLink]="['/category', category.nextLevelCategory.nextLevelCategory.name, category.nextLevelCategory.name,
-      category.id]"> {{category.name}}</mat-cell>
+      category.id]"> {{category.name}}
+      </mat-cell>
     </ng-container>
     <ng-container matColumnDef="nextLevelCategory_name">
       <mat-header-cell *matHeaderCellDef> NextLevelCategory</mat-header-cell>
@@ -18,7 +19,7 @@
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
 </div>
 <!--[routerLink]="['/category', category.nextLevelCategory.nextLevelCategory.name, category.nextLevelCategory.name,-->

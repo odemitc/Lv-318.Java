@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ExcategoryModel} from "../models/excategory.model";
+import {ExcategoryModel} from '../models/excategory.model';
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class NonExCategoryService {
   }
 
   public getByNames(name: String, nexlevel: String): Observable<ExcategoryModel[]> {
-    return this.http.get<ExcategoryModel[]>(this.serviceUrl+'get?name=' + name + '&next=' + nexlevel);
+    return this.http.get<ExcategoryModel[]>(this.serviceUrl + 'get?name=' + name + '&next=' + nexlevel);
   }
 
   public deleteCategory(category) {

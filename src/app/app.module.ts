@@ -5,8 +5,8 @@ import 'hammerjs';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import { InMemoryDataService }  from './in-memory-data.service';
-import {HttpClientModule} from "@angular/common/http";
-import {AppRoutingModule} from './/app-routing.module';
+import {HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
 // import 'hammerjs';
 import {
@@ -48,7 +48,7 @@ import {
 } from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {SidenavComponent} from './components/sidenav/sidenav.component';
-import {ExcategoryService} from "./services/excategory.service";
+import {ExcategoryService} from './services/excategory.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
 import { TransitsComponent } from './components/transits/transits.component';
@@ -75,7 +75,7 @@ import {AddUserComponent} from './components/add-user/add-user.component';
     AddFeedbackCriteriaComponent,
     AddUserComponent
   ],
-  exports:[
+  exports: [
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

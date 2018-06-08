@@ -1,8 +1,8 @@
-import { Component, HostBinding, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Observable} from "rxjs/index";
-import {ExcategoryModel} from "../../models/excategory.model";
-import {NonExCategoryService} from "../../services/non-ex-category.service";
+import {Observable} from 'rxjs/index';
+import {ExcategoryModel} from '../../models/excategory.model';
+import {NonExCategoryService} from '../../services/non-ex-category.service';
 import {Category} from '../../models/category';
 
 @Component({
@@ -13,7 +13,7 @@ import {Category} from '../../models/category';
 export class NonExCategoryComponent implements OnInit {
   private list: Observable<ExcategoryModel[]>;
 
-  displayedColumns = ['id', 'name','nextLevelCategory_name'];
+  displayedColumns = ['id', 'name', 'nextLevelCategory_name'];
 
   top: String;
   city: String;
@@ -34,5 +34,5 @@ export class NonExCategoryComponent implements OnInit {
   deleteCategory(category: Category): void {
     this.service.deleteCategory(category);
     this.list = this.service.getByNames(this.city, this.top);
-      }
+  }
 }
