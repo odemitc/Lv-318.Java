@@ -5,7 +5,7 @@ import org.uaTransport.entity.Stop;
 import java.util.List;
 
 public interface StopService {
-    Stop addStop(Stop stop);
+    Stop save(Stop stop);
 
     Stop getById(Integer id);
 
@@ -13,6 +13,6 @@ public interface StopService {
 
     Stop update(Stop stop);
 
-    List<Stop> getStopsByStreet(String street);
+    List<Stop> getByStreet(String street);
 
 }
