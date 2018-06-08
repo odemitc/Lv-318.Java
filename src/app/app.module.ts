@@ -59,6 +59,7 @@ import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC
 import {UserService} from './services/user.service';
 
 import {AddUserComponent} from './components/add-user/add-user.component';
+import { TransitComponent } from './components/transit/transit.component';
 
 
 
@@ -73,7 +74,8 @@ import {AddUserComponent} from './components/add-user/add-user.component';
     MainComponent,
     FeedbackCriteriaComponent,
     AddFeedbackCriteriaComponent,
-    AddUserComponent
+    AddUserComponent,
+    TransitComponent
   ],
   exports: [
     MatAutocompleteModule,

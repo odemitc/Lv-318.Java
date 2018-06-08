@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  imageSources: String[] = [ "../../../assets/1.png",
-    "../../../assets/2.png",
-    "../../../assets/3.png"
+  imageSources: String[] = ['../../../assets/1.png',
+    '../../../assets/2.png',
+    '../../../assets/3.png'
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
