@@ -65,13 +65,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public List<Feedback> addAll(List<FeedbackDTO> feedbackDTOList) {
-        return Streams.stream(feedbackRepository.saveAll(convertFromDTO(feedbackDTOList))).collect(Collectors.toList());
-
-    }
-
-    private List<Feedback> convertFromDTO(List<FeedbackDTO> feedbackDTOList) {
-        return feedbackDTOList.stream()
-                .map(FeedbackDTO::toEntity)
+        return Streams.stream(feedbackRepository.saveAll(FeedbackDTO.toEntity(feedbackDTOList)))
                 .collect(Collectors.toList());
     }
 
