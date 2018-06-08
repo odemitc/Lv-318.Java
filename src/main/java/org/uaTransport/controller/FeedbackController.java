@@ -17,19 +17,19 @@ import java.util.List;
 public class FeedbackController {
     private final FeedbackService feedbackService;
 
-    @GetMapping(value = "/criteria")
+    @GetMapping(params = "id")
     public ResponseEntity<List<Feedback>> getByCriteria(@RequestParam Integer id) {
         return new ResponseEntity<>(feedbackService.getByCriteriaId(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/transit")
-    public ResponseEntity<List<Feedback>> getByTransit(@RequestParam Integer id) {
-        return new ResponseEntity<>(feedbackService.getByTransitId(id), HttpStatus.OK);
+    @GetMapping(params = "transitId")
+    public ResponseEntity<List<Feedback>> getByTransit(@RequestParam Integer transitId) {
+        return new ResponseEntity<>(feedbackService.getByTransitId(transitId), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/user")
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam Integer id) {
-        return new ResponseEntity<>(feedbackService.getByUserId(id), HttpStatus.OK);
+    @GetMapping(params = "userId")
+    public ResponseEntity<List<Feedback>> getByUser(@RequestParam Integer userId) {
+        return new ResponseEntity<>(feedbackService.getByUserId(userId), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
@@ -43,9 +43,8 @@ public class FeedbackController {
     }
 
     @PostMapping
-    public ResponseEntity<Feedback> add(@RequestBody FeedbackDTO feedbackDTO) {
-        return new ResponseEntity<>(feedbackService.addFeedback(feedbackDTO.toEntity()),
-                HttpStatus.CREATED);
+    public ResponseEntity<List<Feedback>> add(@RequestBody List<FeedbackDTO> feedbackDTOList) {
+        return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
     }
 
 }
