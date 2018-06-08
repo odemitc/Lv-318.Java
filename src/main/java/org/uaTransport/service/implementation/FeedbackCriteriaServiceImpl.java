@@ -30,21 +30,19 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
         feedbackCriteriaRepository.deleteById(id);
     }
 
-    @Override
-    @Transactional
-    public void delete(FeedbackCriteria feedbackCriteria) {
-        if (feedbackCriteria == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
-        feedbackCriteriaRepository.delete(feedbackCriteria);
-    }
 
     @Transactional
     public FeedbackCriteria update(FeedbackCriteria feedbackCriteria) {
         if (feedbackCriteria == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return feedbackCriteriaRepository.saveAndFlush(feedbackCriteria);
+
+        if (feedbackCriteriaRepository.existsById(feedbackCriteria.getId())) {
+            return feedbackCriteriaRepository.saveAndFlush(feedbackCriteria);
+        }
+
+        return feedbackCriteriaRepository.findById(feedbackCriteria.getId()).orElseThrow(() -> new ResourceNotFoundException(
+            String.format("This FeedbackCriteria does not found", feedbackCriteria)));
     }
 
     @Override
@@ -56,7 +54,7 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     @Transactional(readOnly = true)
     public FeedbackCriteria getById(Integer id) {
         return feedbackCriteriaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String
-                .format("FeedbackCriteria with id '%s' not found", id)));
+            .format("FeedbackCriteria with id '%s' not found", id)));
     }
 
     @Override

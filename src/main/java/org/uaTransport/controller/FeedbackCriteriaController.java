@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/feedback-criteria")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class FeedbackCriteriaController {
     private final FeedbackCriteriaService feedbackCriteriaService;
 
@@ -57,7 +57,7 @@ public class FeedbackCriteriaController {
     }
 
     @GetMapping("/question/{question}")
-    public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@PathVariable(value = "question") String question) {
+    public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@RequestParam(value = "question") String question) {
         return new ResponseEntity<>(feedbackCriteriaService.getByQuestion(question), HttpStatus.OK);
     }
 

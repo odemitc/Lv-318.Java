@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.uaTransport.entity.Stop;
 import org.uaTransport.entity.Transit;
 import org.uaTransport.exception.ResourceNotFoundException;
+import org.uaTransport.repository.NonExtendableCategoryRepository;
 import org.uaTransport.repository.TransitRepository;
 import org.uaTransport.service.TransitService;
 
@@ -20,14 +21,22 @@ import java.util.stream.Collectors;
 public class TransitServiceImpl implements TransitService {
 
     private final TransitRepository transitRepository;
+    private final NonExtendableCategoryRepository nonExtendableCategoryRepository;
 
     @Override
     @Transactional
-    public Transit addTransit(Transit transit) {
+    public Transit add(Transit transit) {
         if (transit == null) {
             throw new IllegalArgumentException("Transit object should not be null");
         }
-        return transitRepository.save(transit);
+
+        Integer categoryId = transit.getCategory().getId();
+
+        if (nonExtendableCategoryRepository.existsById(categoryId)) {
+            return transitRepository.save(transit);
+        } else {
+            throw new ResourceNotFoundException(String.format("Category with id '%s' not found", categoryId));
+        }
     }
 
     @Override
@@ -59,10 +68,12 @@ public class TransitServiceImpl implements TransitService {
         if (transit == null) {
             throw new IllegalArgumentException("Transit object should not be null");
         }
-        return transitRepository.findById(transit.getId())
-            .map(transit1 -> transitRepository.save(transit))
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", transit.getId())));
+        if (transitRepository.existsById(transit.getId())) {
+            return transitRepository.save(transit);
+        } else {
+            throw new ResourceNotFoundException(String
+                .format("Transit with id '%s' not found", transit.getId()));
+        }
     }
 
     @Override
