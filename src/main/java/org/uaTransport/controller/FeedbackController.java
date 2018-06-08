@@ -43,7 +43,7 @@ public class FeedbackController {
     }
 
     @PostMapping
-    public ResponseEntity<List<Feedback>> addAll(@RequestBody List<FeedbackDTO> feedbackDTOList) {
+    public ResponseEntity<List<Feedback>> add(@RequestBody List<FeedbackDTO> feedbackDTOList) {
         return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
     }
 
