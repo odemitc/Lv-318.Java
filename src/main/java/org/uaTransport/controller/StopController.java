@@ -20,7 +20,7 @@ public class StopController {
   private final StopService stopService;
   private final TransitService transitService;
 
-  @GetMapping("/{id}")
+  @GetMapping("/{id}") 
   public ResponseEntity<Stop> getById(@PathVariable Integer id) {
     return new ResponseEntity<>(stopService.getById(id), HttpStatus.OK);
   }
