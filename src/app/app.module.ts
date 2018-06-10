@@ -56,9 +56,8 @@ import { MainComponent } from './components/main/main.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
 import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC/add-feedback-criteria.component';
-import {UserService} from './services/user.service';
-
 import {AddUserComponent} from './components/add-user/add-user.component';
+import {StopsComponent} from "./components/stops/stops.component";
 
 
 
@@ -73,7 +72,8 @@ import {AddUserComponent} from './components/add-user/add-user.component';
     MainComponent,
     FeedbackCriteriaComponent,
     AddFeedbackCriteriaComponent,
-    AddUserComponent
+    AddUserComponent,
+    StopsComponent
   ],
   exports: [
     MatAutocompleteModule,
