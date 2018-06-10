@@ -8,8 +8,8 @@ import {Transit} from '../models/transit.model';
 })
 export class TransitService {
 
-  private serviceUrl = 'http://localhost:8080/transit/';
-  private addUrl = 'http://localhost:8080/transit/';
+  private serviceUrl = 'http://localhost:8080/transit';
+  private addUrl = 'http://localhost:8080/transit';
 
   constructor(private http: HttpClient) {
   }
@@ -23,7 +23,7 @@ export class TransitService {
   }
 
   getTransitsById(id: String): Observable<Transit[]> {
-    return this.http.get<Transit[]>(this.serviceUrl + 'category/' + id);
+    return this.http.get<Transit[]>(this.serviceUrl + '?categoryId=' + id);
   }
 
 }
