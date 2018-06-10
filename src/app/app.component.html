@@ -1,6 +1,24 @@
-<app-menu></app-menu>
-<div class="window">
-  <app-sidenav></app-sidenav>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.js"></script>
+<div class="container" style="margin-left: auto">
+  <div class="row">
+    <div class="col-sm-6">
+      <canvas id="lineChart" width="150" height="50"></canvas>
+    </div>
+    <div class="col-sm-6">
+    </div>
+  </div>
 </div>
-<router-outlet></router-outlet>
 
+<!--<canvas id="doughnut"></canvas>-->
+
+<div class="container"style="alignment: center">
+  <div class="row">
+    <div class="col-sm-3">
+      <p style="alignment: center">Rating diagram</p>
+      <canvas id="doughnut"></canvas>
+    </div>
+    <div class="col-sm-3">
+    </div>
+  </div>
+</div>
