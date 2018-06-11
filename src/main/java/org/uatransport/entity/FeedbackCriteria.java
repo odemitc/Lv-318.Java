@@ -10,12 +10,10 @@ import org.uatransport.service.converter.impl.RatingConversionStrategy;
 import org.uatransport.service.converter.impl.RouteBusyHoursConversionStrategy;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
-@Inheritance
-@DiscriminatorColumn(name = "CRITERIA_TYPE")
-@DiscriminatorValue("FEEDBACK_CRITERIA")
 @Accessors(chain = true)
 @Table(name = "feedback_criteria")
 @EqualsAndHashCode(of = "id")
@@ -25,14 +23,10 @@ public class FeedbackCriteria {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "question_id")
-    private Integer questionId;
-
-//    @ElementCollection
-//    @CollectionTable(name = "feedback_criteria", joinColumns = @JoinColumn(name = "question_id"))
-//    private List<String> question;
-
     private Integer weight;
+
+    @OneToMany(mappedBy = "feedbackCriteria")
+    private List<Question> questions;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "type", updatable = false)

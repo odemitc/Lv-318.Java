@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.FeedbackCriteria;
-import org.uatransport.entity.RatingCriteria;
 import org.uatransport.service.FeedbackCriteriaService;
 
 import java.util.List;
@@ -46,25 +45,21 @@ public class FeedbackCriteriaController {
         return new ResponseEntity<>(feedbackCriteriaService.getById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/groupId/{groupId}")
-    public ResponseEntity<List<FeedbackCriteria>> getByGroupId(@PathVariable(value = "groupId") Integer groupId) {
-        return new ResponseEntity<>(feedbackCriteriaService.getByGroupId(groupId), HttpStatus.OK);
-    }
+//    @GetMapping("/groupId/{groupId}")
+//    public ResponseEntity<List<FeedbackCriteria>> getByGroupId(@PathVariable(value = "groupId") Integer groupId) {
+//        return new ResponseEntity<>(feedbackCriteriaService.getByGroupId(groupId), HttpStatus.OK);
+//    }
 
     @GetMapping("/type/{type}")
     public ResponseEntity<List<FeedbackCriteria>> getByType(@PathVariable(value = "type") FeedbackCriteria.FeedbackType type) {
         return new ResponseEntity<>(feedbackCriteriaService.getByType(type), HttpStatus.OK);
     }
 
-    @GetMapping("/question/{question}")
-    public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@RequestParam(value = "question") String question) {
-        return new ResponseEntity<>(feedbackCriteriaService.getByQuestion(question), HttpStatus.OK);
-    }
+//    @GetMapping("/question/{question}")
+//    public ResponseEntity<List<FeedbackCriteria>> getByQuestion(@RequestParam(value = "question") String question) {
+//        return new ResponseEntity<>(feedbackCriteriaService.getByQuestion(question), HttpStatus.OK);
+//    }
 
-    @GetMapping("/weight/{weight}")
-    public ResponseEntity<List<RatingCriteria>> getByWeight(@PathVariable(value = "weight") Integer weight) {
-        return new ResponseEntity<>(feedbackCriteriaService.getByWeight(weight), HttpStatus.OK);
-    }
 
     @GetMapping("/categoryId/{categoryId}")
     public ResponseEntity<List<FeedbackCriteria>> getByCategoryId(@PathVariable(value = "categoryId") Integer categoryId) {
