@@ -5,9 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 import org.uatransport.service.converter.ConversionStrategy;
-import org.uatransport.service.converter.impl.BusyHoursDurationConversionStrategy;
-import org.uatransport.service.converter.impl.RatingConversionStrategy;
-import org.uatransport.service.converter.impl.RouteBusyHoursConversionStrategy;
+import org.uatransport.service.converter.impl.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -38,8 +36,8 @@ public class FeedbackCriteria {
         RATING(new RatingConversionStrategy()),
         BUSY_HOURS(new BusyHoursDurationConversionStrategy()),
         ROUTE_BUSY_HOURS(new RouteBusyHoursConversionStrategy()),
-        ACCEPTER(new RatingConversionStrategy()),
-        CAPACITY(new RatingConversionStrategy());
+        ACCEPTER(new AccepterConversionStrategy()),
+        CAPACITY(new CapacityBusyHoursConversionStrategy());
 
         private final ConversionStrategy<?> conversionStrategy;
 

@@ -10,6 +10,8 @@ import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackRepository;
 import org.uatransport.service.FeedbackService;
+import org.uatransport.service.model.CapacityBusyHoursFeedback;
+import org.uatransport.service.model.RouteBusyHoursFeedback;
 
 import java.time.Duration;
 import java.util.List;
@@ -77,6 +79,30 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .collect(Collectors.toList());
     }
 
+    public List<RouteBusyHoursFeedback> convertRouteBusyHoursFeedBacks(Integer transitId) {
+        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS)
+                .stream()
+                .<List<RouteBusyHoursFeedback>>map(FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS::convertFeedback)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
+    public List<CapacityBusyHoursFeedback> convertCapacityFeedBacks(Integer transitId) {
+        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.CAPACITY)
+                .stream()
+                .<List<CapacityBusyHoursFeedback>>map(FeedbackCriteria.FeedbackType.CAPACITY::convertFeedback)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
+    public List<CapacityBusyHoursFeedback> convertAccepterFeedBacks(Integer transitId) {
+        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ACCEPTER)
+                .stream()
+                .<List<CapacityBusyHoursFeedback>>map(FeedbackCriteria.FeedbackType.ACCEPTER::convertFeedback)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
     public Double convertRatingFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.RATING)
                 .stream()
@@ -84,6 +110,8 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .average()
                 .orElseThrow(ResourceNotFoundException::new);
     }
+
+
 
 
 }

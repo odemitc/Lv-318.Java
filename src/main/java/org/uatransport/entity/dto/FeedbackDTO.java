@@ -25,21 +25,6 @@ public class FeedbackDTO {
 
     ModelMapper modelMapper = new ModelMapper();
 
-    private Feedback toEntity() {
-        return new Feedback()
-                .setUser(new User().setId(this.getUserId()))
-                .setFeedbackCriteria(new FeedbackCriteria().setId(this.getCriteriaId()))
-                .setTransit(new Transit().setId(this.getTransitId()))
-                .setAnswer(this.getAnswer());
-    }
-
-    public static List<Feedback> toEntity(List<FeedbackDTO> feedbackDTOList) {
-        return feedbackDTOList.stream()
-                .map(FeedbackDTO::convertToEntity)
-                .collect(Collectors.toList());
-    }
-
-
     public Feedback convertToEntity() throws ParseException {
         Feedback feedback = modelMapper.map(this, Feedback.class);
         return feedback.setId(this.getId())
@@ -49,4 +34,11 @@ public class FeedbackDTO {
                 .setTransit(new Transit().setId(this.getTransitId()));
 
     }
+
+    public static List<Feedback> toEntity(List<FeedbackDTO> feedbackDTOList) {
+        return feedbackDTOList.stream()
+                .map(FeedbackDTO::convertToEntity)
+                .collect(Collectors.toList());
+    }
+
 }
