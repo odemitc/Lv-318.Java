@@ -47,15 +47,15 @@ INSERT INTO public.transit (id, name, category_id) VALUES (3, '#3А', 24);
 INSERT INTO public.transit (id, name, category_id) VALUES (7, '#6', 16);
 
 
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('RATING_CRITERIA', 11, 1, 'якість проїзду', 'RATING', 2, 16);
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 2, 1, 'о котрій годині виїхали?', 'BUSY_HOURS', null, 16);
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 3, 2, 'Чи доїхали до місця призначення?', 'RATING', null, 16);
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 4, 1, 'о котрій годині виїхали?', 'BUSY_HOURS', null, 25);
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('RATING_CRITERIA', 5, 1, 'якість проїзду', 'RATING', 2, 25);
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 6, 2, 'Чи доїхали до місця призначення?', 'RATING', null, 25);
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 7, 1, 'о котрій годині виїхали?', 'BUSY_HOURS', null, 24);
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('RATING_CRITERIA', 8, 1, 'якість проїзду', 'RATING', 2, 24);
-INSERT INTO public.feedback_criteria (criteria_type, id, group_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 9, 2, 'Чи доїхали до місця призначення?', 'RATING', null, 24);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('RATING_CRITERIA', 11, 1, 'якість проїзду', 'RATING', 2, 16);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 3, 2, 'Чи доїхали до місця призначення?', 'RATING', null, 16);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 2, 1, 'о котрій годині виїхали?', 'BUSY_HOURS', null, 16);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 4, 1, 'о котрій годині виїхали?', 'BUSY_HOURS', null, 25);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('RATING_CRITERIA', 5, 1, 'якість проїзду', 'RATING', 2, 25);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 6, 2, 'Чи доїхали до місця призначення?', 'RATING', null, 25);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 7, 1, 'о котрій годині виїхали?', 'BUSY_HOURS', null, 24);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('RATING_CRITERIA', 8, 1, 'якість проїзду', 'RATING', 2, 24);
+INSERT INTO public.feedback_criteria (criteria_type, id, question_id, question, type, weight, category_id) VALUES ('FEEDBACK_CRITERIA', 9, 2, 'Чи доїхали до місця призначення?', 'RATING', null, 24);
 
 
 INSERT INTO public.feedback (id, answer, criteria_id, transit_id, user_id) VALUES (2, '345', 2, 4, 1);
