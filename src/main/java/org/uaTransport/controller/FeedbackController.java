@@ -17,18 +17,18 @@ import java.util.List;
 public class FeedbackController {
     private final FeedbackService feedbackService;
 
-    @GetMapping(params = "id")
-    public ResponseEntity<List<Feedback>> getByCriteria(@RequestParam Integer id) {
-        return new ResponseEntity<>(feedbackService.getByCriteriaId(id), HttpStatus.OK);
+    @GetMapping(params = "criteriaId")
+    public ResponseEntity<List<Feedback>> getByCriteria(@RequestParam("criteriaId") Integer criteriaId) {
+        return new ResponseEntity<>(feedbackService.getByCriteriaId(criteriaId), HttpStatus.OK);
     }
 
     @GetMapping(params = "transitId")
-    public ResponseEntity<List<Feedback>> getByTransit(@RequestParam Integer transitId) {
+    public ResponseEntity<List<Feedback>> getByTransit(@RequestParam("transitId") Integer transitId) {
         return new ResponseEntity<>(feedbackService.getByTransitId(transitId), HttpStatus.OK);
     }
 
     @GetMapping(params = "userId")
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam Integer userId) {
+    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer userId) {
         return new ResponseEntity<>(feedbackService.getByUserId(userId), HttpStatus.OK);
     }
 
