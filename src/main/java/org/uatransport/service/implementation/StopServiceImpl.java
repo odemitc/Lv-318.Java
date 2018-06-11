@@ -67,4 +67,9 @@ public class StopServiceImpl implements StopService {
     return stopRepository.findByStreet(street);
   }
 
+  public List<Stop> getByTransitId(Integer id) {
+
+    return stopRepository.findByTransitId(id);
+  }
+
 }
