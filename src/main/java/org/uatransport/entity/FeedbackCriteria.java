@@ -10,7 +10,6 @@ import org.uatransport.service.converter.impl.RatingConversionStrategy;
 import org.uatransport.service.converter.impl.RouteBusyHoursConversionStrategy;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -29,9 +28,9 @@ public class FeedbackCriteria {
     @Column(name = "question_id")
     private Integer questionId;
 
-    @ElementCollection
-    @CollectionTable(name = "feedback_criteria", joinColumns = @JoinColumn(name = "question_id"))
-    private List<String> question;
+//    @ElementCollection
+//    @CollectionTable(name = "feedback_criteria", joinColumns = @JoinColumn(name = "question_id"))
+//    private List<String> question;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "type", updatable = false)
