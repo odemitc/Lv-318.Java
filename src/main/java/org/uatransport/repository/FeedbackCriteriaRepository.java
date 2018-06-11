@@ -3,7 +3,6 @@ package org.uatransport.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.uatransport.entity.FeedbackCriteria;
-import org.uatransport.entity.RatingCriteria;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,11 +11,9 @@ public interface FeedbackCriteriaRepository extends JpaRepository<FeedbackCriter
 
     Optional<FeedbackCriteria> findById(Integer id);
 
-    List<FeedbackCriteria> findByQuestion(String question);
+//    List<FeedbackCriteria> findByQuestion(String question);
 
     List<FeedbackCriteria> findByType(FeedbackCriteria.FeedbackType type);
-
-    List<RatingCriteria> findByWeight(Integer weight);
 
     @Query(value = "SELECT * FROM feedback_criteria WHERE category_id = ?1", nativeQuery = true)
     List<FeedbackCriteria> findFeedbackCriteriaByNonExtendableCategoryId(Integer categoryId);

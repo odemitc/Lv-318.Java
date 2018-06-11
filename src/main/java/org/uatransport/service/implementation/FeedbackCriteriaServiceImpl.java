@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.FeedbackCriteria;
-import org.uatransport.entity.RatingCriteria;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackCriteriaRepository;
 import org.uatransport.service.FeedbackCriteriaService;
@@ -58,32 +57,24 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
             .format("FeedbackCriteria with id '%s' not found", id)));
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<FeedbackCriteria> getByGroupId(Integer groupId) {
-        return Collections.emptyList();
-    }
+//    @Override
+//    @Transactional(readOnly = true)
+//    public List<FeedbackCriteria> getByGroupId(Integer groupId) {
+//        return Collections.emptyList();
+//    }
 
-    @Override
-    public List<FeedbackCriteria> getByQuestion(String question) {
-        if (question.isEmpty()) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
-        return feedbackCriteriaRepository.findByQuestion(question);
-    }
+//    @Override
+//    public List<FeedbackCriteria> getByQuestion(String question) {
+//        if (question.isEmpty()) {
+//            throw new IllegalArgumentException("Parameter should not be null");
+//        }
+//        return feedbackCriteriaRepository.findByQuestion(question);
+//    }
 
     @Override
     @Transactional(readOnly = true)
     public List<FeedbackCriteria> getByType(FeedbackCriteria.FeedbackType type) {
         return feedbackCriteriaRepository.findByType(type);
-    }
-
-    @Override
-    public List<RatingCriteria> getByWeight(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
-        return feedbackCriteriaRepository.findByWeight(id);
     }
 
     @Override
