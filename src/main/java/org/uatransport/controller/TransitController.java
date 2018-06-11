@@ -1,10 +1,12 @@
 package org.uatransport.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.Transit;
+import org.uatransport.entity.dto.TransitDTO;
 import org.uatransport.service.TransitService;
 
 import java.util.List;
@@ -16,10 +18,12 @@ import java.util.List;
 public class TransitController {
 
     private final TransitService transitService;
+    private final ModelMapper modelMapper;
 
     @GetMapping(params = "id")
-    public ResponseEntity<Transit> getTransitById(@RequestParam("id") Integer id) {
-        return new ResponseEntity<>(transitService.getById(id), HttpStatus.OK);
+    public ResponseEntity<TransitDTO> getTransitById(@RequestParam("id") Integer id) {
+        TransitDTO transitDTO = modelMapper.map(transitService.getById(id), TransitDTO.class);
+        return new ResponseEntity<>(transitDTO, HttpStatus.OK);
     }
 
     @GetMapping
