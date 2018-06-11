@@ -70,15 +70,6 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByTransitIdAndFeedbackCriteriaType(transitId, feedbackType);
     }
 
-
-    public List<Duration> convertBusyHoursFeedBacks(Integer transitId) {
-        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.BUSY_HOURS)
-                .stream()
-                .<List<Duration>>map(FeedbackCriteria.FeedbackType.BUSY_HOURS::convertFeedback)
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
-    }
-
     public List<RouteBusyHoursFeedback> convertRouteBusyHoursFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS)
                 .stream()
@@ -88,9 +79,9 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     public List<CapacityBusyHoursFeedback> convertCapacityFeedBacks(Integer transitId) {
-        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.CAPACITY)
+        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.CAPACITY_BUSY_HOURS)
                 .stream()
-                .<List<CapacityBusyHoursFeedback>>map(FeedbackCriteria.FeedbackType.CAPACITY::convertFeedback)
+                .<List<CapacityBusyHoursFeedback>>map(FeedbackCriteria.FeedbackType.CAPACITY_BUSY_HOURS::convertFeedback)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
