@@ -15,4 +15,5 @@ public interface FeedbackRepository extends CrudRepository<Feedback, Integer> {
     List<Feedback> findByFeedbackCriteriaId(Integer id);
 
     List<Feedback> findByTransitIdAndFeedbackCriteriaType(Integer transitId, FeedbackCriteria.FeedbackType feedbackType);
+
 }
