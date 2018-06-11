@@ -60,9 +60,8 @@ import { MainComponent } from './components/main/main.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
 import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC/add-feedback-criteria.component';
-import {UserService} from './services/user.service';
-
 import {AddUserComponent} from './components/add-user/add-user.component';
+import {StopsComponent} from "./components/stops/stops.component";
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -83,7 +82,8 @@ export function createTranslateLoader(http: HttpClient) {
     MainComponent,
     FeedbackCriteriaComponent,
     AddFeedbackCriteriaComponent,
-    AddUserComponent
+    AddUserComponent,
+    StopsComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -147,5 +147,4 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
 }
