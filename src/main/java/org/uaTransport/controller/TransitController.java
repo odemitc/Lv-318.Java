@@ -28,6 +28,7 @@ public class TransitController {
     }
 
     @GetMapping(params = "categoryId")
+    @RequestMapping("/category/")
     public ResponseEntity<List<Transit>> getTransitsByCategoryId(@RequestParam("categoryId") Integer categoryId) {
         return new ResponseEntity<>(transitService.getAllByCategoryId(categoryId), HttpStatus.OK);
     }
