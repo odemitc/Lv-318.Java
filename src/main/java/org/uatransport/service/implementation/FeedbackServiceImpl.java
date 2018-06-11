@@ -23,11 +23,17 @@ public class FeedbackServiceImpl implements FeedbackService {
     private final FeedbackRepository feedbackRepository;
 
     @Override
-    public Feedback addFeedback(Feedback feedback) {
-        if (feedback == null) {
+    public Feedback addFeedback(FeedbackDTO feedbackDTO) {
+        if (feedbackDTO == null) {
             throw new IllegalArgumentException("Parameter should not be null");
         }
-        return feedbackRepository.save(feedback);
+        return feedbackRepository.save(feedbackDTO.convertToEntity());
+    }
+
+    @Override
+    public List<Feedback> addAll(List<FeedbackDTO> feedbackDTOList) {
+        return Streams.stream(feedbackRepository.saveAll(FeedbackDTO.toEntity(feedbackDTOList)))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -62,11 +68,6 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByTransitIdAndFeedbackCriteriaType(transitId, feedbackType);
     }
 
-    @Override
-    public List<Feedback> addAll(List<FeedbackDTO> feedbackDTOList) {
-        return Streams.stream(feedbackRepository.saveAll(FeedbackDTO.toEntity(feedbackDTOList)))
-                .collect(Collectors.toList());
-    }
 
     public List<Duration> convertBusyHoursFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.BUSY_HOURS)

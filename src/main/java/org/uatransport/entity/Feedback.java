@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.modelmapper.ModelMapper;
+import org.uatransport.entity.dto.FeedbackDTO;
 
 import javax.persistence.*;
 
@@ -31,4 +33,16 @@ public class Feedback {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "criteria_id")
     private FeedbackCriteria feedbackCriteria;
+
+    ModelMapper modelMapper = new ModelMapper();
+
+    private FeedbackDTO convertToDto() {
+        FeedbackDTO feedbackDTO = modelMapper.map(this, FeedbackDTO.class);
+        return feedbackDTO.setId(this.getId())
+                .setAnswer(this.getAnswer())
+                .setUserId(this.getUser().getId())
+                .setCriteriaId(this.getFeedbackCriteria().getId())
+                .setTransitId(this.getFeedbackCriteria().getId());
+
+    }
 }

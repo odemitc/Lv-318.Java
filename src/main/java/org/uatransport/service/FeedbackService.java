@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface FeedbackService {
 
-    Feedback addFeedback(Feedback feedback);
+    Feedback addFeedback(FeedbackDTO feedbackDTO);
 
     Feedback getById(Integer id);
 

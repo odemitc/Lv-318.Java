@@ -42,9 +42,14 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.convertRatingFeedBacks(transitId), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<List<Feedback>> add(@RequestBody List<FeedbackDTO> feedbackDTOList) {
+    @PostMapping(value = "/add")
+    public ResponseEntity<List<Feedback>> addAll(@RequestBody List<FeedbackDTO> feedbackDTOList) {
         return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
+    }
+
+    @PostMapping
+    public ResponseEntity<Feedback> add(@RequestBody FeedbackDTO feedbackDTO) {
+        return new ResponseEntity<>(feedbackService.addFeedback(feedbackDTO), HttpStatus.CREATED);
     }
 
 }
