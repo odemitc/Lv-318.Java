@@ -28,6 +28,8 @@ public class FeedbackCriteria {
 
     private String question;
 
+    private Integer weight;
+
     @Enumerated(value = EnumType.STRING)
     @Column(name = "type", updatable = false)
     private FeedbackType type;
