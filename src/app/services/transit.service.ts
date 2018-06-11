@@ -23,7 +23,7 @@ export class TransitService {
   }
 
   getTransitsById(id: String): Observable<Transit[]> {
-    return this.http.get<Transit[]>(this.serviceUrl + 'category/' + id);
+    return this.http.get<Transit[]>(this.serviceUrl + 'category/?categoryId='+id);
   }
 
 }

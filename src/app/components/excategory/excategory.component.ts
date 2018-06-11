@@ -12,7 +12,8 @@ import {NonExCategoryComponent} from "../non-ex-category/non-ex-category.compone
 export class ExcategoryComponent implements OnInit {
   private list: Observable<ExcategoryModel[]> = this.service.getTopCategories();
   private cities: Observable<ExcategoryModel[]>;
-
+  private imageToShow: Observable<Blob[]>;
+  private serverURL = 'http://localhost:8080/category/img?link=';
 
 
   constructor(public service: ExcategoryService) {
