@@ -1,5 +1,6 @@
 package org.uatransport.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -19,9 +20,10 @@ public class Question {
 
     private Integer groupId;
 
-    private String questionName;
+    private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "criteria_id")
     private FeedbackCriteria feedbackCriteria;
 

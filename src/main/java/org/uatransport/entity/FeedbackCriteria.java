@@ -1,5 +1,6 @@
 package org.uatransport.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
@@ -25,12 +26,14 @@ public class FeedbackCriteria {
 
     private Integer weight;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "feedbackCriteria")
     private List<Question> questions;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "type", updatable = false)
     private FeedbackType type;
+
 
     @RequiredArgsConstructor
     public enum FeedbackType {
