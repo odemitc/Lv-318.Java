@@ -41,4 +41,14 @@ public class FeedbackDTO {
                 .collect(Collectors.toList());
     }
 
+    private FeedbackDTO convertToDto(Feedback feedback) {
+        FeedbackDTO feedbackDTO = modelMapper.map(this, FeedbackDTO.class);
+        return feedbackDTO.setId(feedback.getId())
+                .setAnswer(feedback.getAnswer())
+                .setUserId(feedback.getUser().getId())
+                .setCriteriaId(feedback.getFeedbackCriteria().getId())
+                .setTransitId(feedback.getFeedbackCriteria().getId());
+
+    }
+
 }

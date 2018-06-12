@@ -10,12 +10,15 @@ import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackRepository;
 import org.uatransport.service.FeedbackService;
+import org.uatransport.service.model.AccepterFeedback;
 import org.uatransport.service.model.CapacityBusyHoursFeedback;
 import org.uatransport.service.model.RouteBusyHoursFeedback;
 
-import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toCollection;
 
 @Service
 @Transactional
@@ -70,6 +73,13 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByTransitIdAndFeedbackCriteriaType(transitId, feedbackType);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Feedback> getByTransitAndFeedbackCriteriaAndUserId(Integer transitId, FeedbackCriteria.FeedbackType feedbackType, Integer userId) {
+        return feedbackRepository.findByTransitIdAndFeedbackCriteriaTypeAndUserId(transitId, feedbackType, userId);
+    }
+
+
     public List<RouteBusyHoursFeedback> convertRouteBusyHoursFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS)
                 .stream()
@@ -86,12 +96,12 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .collect(Collectors.toList());
     }
 
-    public List<CapacityBusyHoursFeedback> convertAccepterFeedBacks(Integer transitId) {
+    public ArrayList<AccepterFeedback> convertAccepterFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ACCEPTER)
                 .stream()
-                .<List<CapacityBusyHoursFeedback>>map(FeedbackCriteria.FeedbackType.ACCEPTER::convertFeedback)
+                .<List<AccepterFeedback>>map(FeedbackCriteria.FeedbackType.ACCEPTER::convertFeedback)
                 .flatMap(List::stream)
-                .collect(Collectors.toList());
+                .collect(toCollection(ArrayList::new));
     }
 
     public Double convertRatingFeedBacks(Integer transitId) {
@@ -102,7 +112,13 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .orElseThrow(ResourceNotFoundException::new);
     }
 
-
+    public Double convertRatingFeedBacksByUser(Integer transitId, Integer userId) {
+        return getByTransitAndFeedbackCriteriaAndUserId(transitId, FeedbackCriteria.FeedbackType.RATING, userId)
+                .stream()
+                .mapToInt(FeedbackCriteria.FeedbackType.RATING::convertFeedback)
+                .average()
+                .orElseThrow(ResourceNotFoundException::new);
+    }
 
 
 }
