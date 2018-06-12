@@ -83,25 +83,23 @@ public class FeedbackServiceImpl implements FeedbackService {
     public List<RouteBusyHoursFeedback> convertRouteBusyHoursFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS)
                 .stream()
-                .<List<RouteBusyHoursFeedback>>map(FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS::convertFeedback)
-                .flatMap(List::stream)
+                .map(feedback -> (RouteBusyHoursFeedback) FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS.convertFeedback(feedback))
                 .collect(Collectors.toList());
     }
 
     public List<CapacityBusyHoursFeedback> convertCapacityFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.CAPACITY_BUSY_HOURS)
                 .stream()
-                .<List<CapacityBusyHoursFeedback>>map(FeedbackCriteria.FeedbackType.CAPACITY_BUSY_HOURS::convertFeedback)
-                .flatMap(List::stream)
+                .map(feedback -> (CapacityBusyHoursFeedback) FeedbackCriteria.FeedbackType.CAPACITY_BUSY_HOURS.convertFeedback(feedback))
                 .collect(Collectors.toList());
     }
 
-    public ArrayList<AccepterFeedback> convertAccepterFeedBacks(Integer transitId) {
+    public List<AccepterFeedback> convertAccepterFeedBacks(Integer transitId) {
+//
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ACCEPTER)
                 .stream()
-                .<List<AccepterFeedback>>map(FeedbackCriteria.FeedbackType.ACCEPTER::convertFeedback)
-                .flatMap(List::stream)
-                .collect(toCollection(ArrayList::new));
+                .map(feedback -> (AccepterFeedback) FeedbackCriteria.FeedbackType.ACCEPTER.convertFeedback(feedback))
+                .collect(Collectors.toList());
     }
 
     public Double convertRatingFeedBacks(Integer transitId) {

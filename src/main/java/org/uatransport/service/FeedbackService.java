@@ -36,6 +36,6 @@ public interface FeedbackService {
 
     List<CapacityBusyHoursFeedback> convertCapacityFeedBacks(Integer transitId);
 
-    ArrayList<AccepterFeedback> convertAccepterFeedBacks(Integer transitId);
+    List<AccepterFeedback> convertAccepterFeedBacks(Integer transitId);
 
 }
