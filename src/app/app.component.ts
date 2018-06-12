@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
         const doughnut = new Chart(CHART, {
           type: 'doughnut',
           data: {
-            labels: ['bad', 'not bad', 'good'],
+            labels: ['bad', 'so-so', 'good'],
             datasets: [{
               label: 'Rating diagram',
               fill: true,
@@ -57,10 +57,6 @@ export class AppComponent implements OnInit {
               borderDashOffset: 0.0,
               data: Object.values(res)
             }]
-          },
-          options: {
-            cutoutPercentage: 90,
-            events: ['click' == null]
           }
         });
       });
