@@ -27,7 +27,8 @@ public class FeedbackCriteria {
     private Integer weight;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "feedbackCriteria")
+    @OneToMany
+    @JoinColumn(name = "criteria_id")
     private List<Question> questions;
 
     @Enumerated(value = EnumType.STRING)

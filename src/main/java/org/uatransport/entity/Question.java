@@ -22,9 +22,4 @@ public class Question {
 
     private String name;
 
-    @JsonBackReference
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "criteria_id")
-    private FeedbackCriteria feedbackCriteria;
-
 }

@@ -71,13 +71,12 @@ public class FeedbackCriteriaController {
     @GetMapping("/question/{question}")
     public ResponseEntity<List<FeedbackCriteria>> getByQuestions(@PathVariable(value = "question") String question) {
         return new ResponseEntity<>(feedbackCriteriaService.getByQuestionsName(question), HttpStatus.OK);
-//нетягне
     }
 
     @GetMapping("/weight/{weight}")
     public ResponseEntity<List<FeedbackCriteria>> getByWeight(@PathVariable(value = "weight") Integer weight) {
         System.out.println(feedbackCriteriaService.getByWeight(weight));
         return new ResponseEntity<>(feedbackCriteriaService.getByWeight(weight), HttpStatus.OK);
-//не тягне
+
     }
 }
