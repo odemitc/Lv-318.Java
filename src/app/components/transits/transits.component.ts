@@ -17,7 +17,7 @@ export class TransitsComponent implements OnInit {
 
   transits: Observable<Transit[]>;
 
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'route'];
 
   constructor(private transitService: TransitService, private route: ActivatedRoute) {
   }

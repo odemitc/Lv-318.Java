@@ -12,11 +12,13 @@
 // }
 
 import {Category} from './category.model';
+import {Stop} from './stop.model';
 
 export class Transit {
   id: number;
   name: string;
   categoryId: number;
+  stops: Stop[];
 }
 
 export interface Transit {

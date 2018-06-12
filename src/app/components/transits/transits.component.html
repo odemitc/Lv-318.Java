@@ -9,6 +9,10 @@
       <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
       <mat-cell *matCellDef="let transit" [routerLink]="['/stop', transit.id]"> {{transit.name}}</mat-cell>
     </ng-container>
+    <ng-container matColumnDef="route">
+      <mat-header-cell *matHeaderCellDef> Route </mat-header-cell>
+      <mat-cell *matCellDef="let transit"> {{transit.stops[0].street }} - {{ transit.stops[transit.stops.length-1].street }}</mat-cell>
+    </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
