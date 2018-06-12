@@ -2,12 +2,19 @@ package org.uatransport.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.ExtendableCategory;
 import org.uatransport.service.ExtendebleCategoryService;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @RestController
@@ -17,7 +24,15 @@ import java.util.List;
 public class ExtendableCategoryController {
     private final ExtendebleCategoryService categoryService;
 
-    @GetMapping("/top/")
+    @GetMapping(value = "/img", produces = MediaType.IMAGE_PNG_VALUE)
+    public void getImage(HttpServletResponse response, @RequestParam String link) throws IOException {
+        ClassPathResource imgFile = new ClassPathResource(link);
+        response.setContentType(MediaType.IMAGE_PNG_VALUE);
+        StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());
+    }
+
+
+    @GetMapping(value = "/top/")
     public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
         return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
     }
