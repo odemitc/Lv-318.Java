@@ -13,6 +13,7 @@ import org.uatransport.service.model.CapacityBusyHoursFeedback;
 import org.uatransport.service.model.RouteBusyHoursFeedback;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/feedback")
@@ -68,14 +69,17 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.convertRouteBusyHoursFeedBacks(transitId), HttpStatus.OK);
     }
 
+    //    @GetMapping(value = "/capacity/{transitId}")
+//    public ResponseEntity<List<CapacityBusyHoursFeedback>> getCapacityFeedBacks(@PathVariable Integer transitId) {
+//        return new ResponseEntity<>(feedbackService.convertCapacityFeedBacks(transitId), HttpStatus.OK);
+//    }
+//
+//    @GetMapping(value = "/accepter/{transitId}")
+//    public ResponseEntity<List<AccepterFeedback>> getAccepterFeedBacks(@PathVariable Integer transitId) {
+//        return new ResponseEntity<>(feedbackService.convertAccepterFeedBacks(transitId), HttpStatus.OK);
+//    }
     @GetMapping(value = "/capacity/{transitId}")
-    public ResponseEntity<List<CapacityBusyHoursFeedback>> getCapacityFeedBacks(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.convertCapacityFeedBacks(transitId), HttpStatus.OK);
+    public ResponseEntity<Map<Integer, Double>> getCapacityMap(@PathVariable Integer transitId) {
+        return new ResponseEntity<>(feedbackService.getCapacityMap(transitId), HttpStatus.OK);
     }
-
-    @GetMapping(value = "/accepter/{transitId}")
-    public ResponseEntity<List<AccepterFeedback>> getAccepterFeedBacks(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.convertAccepterFeedBacks(transitId), HttpStatus.OK);
-    }
-
 }

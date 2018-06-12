@@ -16,7 +16,10 @@ import org.uatransport.service.model.RouteBusyHoursFeedback;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toCollection;
 
@@ -95,7 +98,6 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     public List<AccepterFeedback> convertAccepterFeedBacks(Integer transitId) {
-//
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ACCEPTER)
                 .stream()
                 .map(feedback -> (AccepterFeedback) FeedbackCriteria.FeedbackType.ACCEPTER.convertFeedback(feedback))
@@ -116,6 +118,23 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .mapToInt(FeedbackCriteria.FeedbackType.RATING::convertFeedback)
                 .average()
                 .orElseThrow(ResourceNotFoundException::new);
+    }
+
+    private Double getCapacityByTransitAndHour(Integer transitId, Integer time) {
+        return convertCapacityFeedBacks(transitId).stream()
+                .filter(capacityFeedback -> capacityFeedback.existsInTimeRange(time))
+                .filter(capacityFeedback -> capacityFeedback.capacity != 0)
+                .mapToInt(CapacityBusyHoursFeedback::getCapacity)
+                .average()
+                .orElseThrow(ResourceNotFoundException::new);
+    }
+
+    public Map<Integer, Double> getCapacityMap(Integer transitId) {
+        Map<Integer, Double> capacityMap = new TreeMap<>();
+        for (int hour = 0; hour <= 24; hour++) {
+            capacityMap.put(hour, getCapacityByTransitAndHour(transitId, hour));
+        }
+        return capacityMap;
     }
 
 

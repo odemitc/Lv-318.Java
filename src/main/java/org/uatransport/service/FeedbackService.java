@@ -9,8 +9,11 @@ import org.uatransport.service.model.RouteBusyHoursFeedback;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface FeedbackService {
+
+    List<Feedback> addAll(List<FeedbackDTO> feedbackDTOList);
 
     Feedback addFeedback(FeedbackDTO feedbackDTO);
 
@@ -30,12 +33,12 @@ public interface FeedbackService {
 
     Double convertRatingFeedBacksByUser(Integer transitId, Integer userId);
 
-    List<Feedback> addAll(List<FeedbackDTO> feedbackDTOList);
-
     List<RouteBusyHoursFeedback> convertRouteBusyHoursFeedBacks(Integer transitId);
 
     List<CapacityBusyHoursFeedback> convertCapacityFeedBacks(Integer transitId);
 
     List<AccepterFeedback> convertAccepterFeedBacks(Integer transitId);
+
+    Map<Integer, Double> getCapacityMap(Integer transitId);
 
 }
