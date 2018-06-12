@@ -1,10 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {TransitService} from '../../services/transit.service';
-import {Convert, Transit} from '../../models/transit.model';
-import {Observable} from 'rxjs';
-import {DataSource} from '@angular/cdk/collections';
-import {ActivatedRoute} from '@angular/router';
-import {Category} from '../../models/category.model';
+import { Component, OnInit } from '@angular/core';
+import { TransitService } from '../../services/transit.service';
+import { Convert, Transit } from '../../models/transit.model';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-transits',

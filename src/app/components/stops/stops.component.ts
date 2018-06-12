@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { DataSource } from '@angular/cdk/collections';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
 
-import { Stop } from '../../models/stop.model';
-import {StopService} from "../../services/stop.service";
-import {TransitService} from "../../services/transit.service";
-import {Transit} from "../../models/transit.model";
-import {TransitDataSource} from "../transits/transits.component";
+import {Stop} from '../../models/stop.model';
+import {StopService} from '../../services/stop.service';
 
 @Component({
   selector: 'app-stops',
@@ -22,16 +18,16 @@ export class StopsComponent implements OnInit {
 
   stopsList: Observable<Stop[]>;
 
-  dataSource = new StopDataSource(this.stopService, this);
   displayedColumns = ['id', 'street'];
 
-  constructor(private stopService: StopService,  private route: ActivatedRoute) { }
+  constructor(private stopService: StopService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.sub = this.route.params.forEach(params => {
       this.idTransit = params['id'];
     });
-   this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
+    this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
   }
 
   onSubmit() {
@@ -40,13 +36,3 @@ export class StopsComponent implements OnInit {
     alert('Stop added: ');
   }
 }
-export class StopDataSource extends DataSource<any> {
-  constructor(private stopService: StopService, private stopComponent : StopsComponent) {
-    super();
-  }
-  connect(): Observable<Stop[]> {
-    return this.stopService.getStopsByTransitId(this.stopComponent.idTransit);
-  }
-  disconnect() {}
-}
-
