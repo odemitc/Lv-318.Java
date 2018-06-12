@@ -1,10 +1,8 @@
-
-
-
-
-  <div *ngFor="let category of list | async">
+ <div *ngFor="let category of list | async">
     <button class="excategoryButton"  mat-button [matMenuTriggerFor]="nextlevel" (click)="getCities(category.name)">
-      {{category.name}}
+      {{category.name}}<br/>
+      <img src="{{serverURL}}{{category.iconURL}}"/>
+      {{category.iconurl}}
     </button>
     <mat-menu class="excategoryMenu" #nextlevel="matMenu">
       <div *ngFor="let city of cities | async">

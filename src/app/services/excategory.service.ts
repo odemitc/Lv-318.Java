@@ -19,4 +19,5 @@ export class ExcategoryService {
   getCategoriesByNextLevel(nextLevel:String): Observable<ExcategoryModel[]>{
     return this.http.get<ExcategoryModel[]>(this.serviceUrl+'?top='+nextLevel);
   }
+
 }

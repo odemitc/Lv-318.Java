@@ -1,12 +1,15 @@
 <mat-toolbar class="mat-toolbar">
   <div class="ua"><a [routerLink]="['/main']" [ngStyle]="{'color' : 'black'}">UA</a></div>
   <div class="transport"><a [routerLink]="['/main']" [ngStyle]="{'color' : 'black'}">Transport</a></div>
+  <button (click)="switchLanguage('en')">en</button>
+
+  <button (click)="switchLanguage('ua')">ua</button>
   <div class="criteriaButton">
     <a [routerLink]="['/feedback']">
-      <button mat-stroked-button type="submit">Feedback Criterias</button> </a>
+      <button mat-stroked-button type="submit">{{ 'Feedback'| translate}}</button> </a>
   </div>
   <div class="NewUser">
     <a [routerLink]="['/user/add']">
-      <button mat-stroked-button type="submit">New User</button> </a>
+      <button mat-stroked-button type="submit">{{'User' | translate}}</button> </a>
   </div>
 </mat-toolbar>
