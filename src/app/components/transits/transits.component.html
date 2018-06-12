@@ -9,46 +9,28 @@
       <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
       <mat-cell *matCellDef="let transit"> {{transit.name}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="category_id">
-      <mat-header-cell *matHeaderCellDef> Category Id</mat-header-cell>
-      <mat-cell *matCellDef="let transit"> {{transit.category.id}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="category_name">
-      <mat-header-cell *matHeaderCellDef> Category name</mat-header-cell>
-      <mat-cell *matCellDef="let transit"> {{transit.category.name}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="nextLevelCategory_id">
-      <mat-header-cell *matHeaderCellDef> nextLevelCategory id</mat-header-cell>
-      <mat-cell *matCellDef="let transit"> {{transit.category.nextLevelCategory.id}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="nextLevelCategory_name">
-      <mat-header-cell *matHeaderCellDef> nextLevelCategory name</mat-header-cell>
-      <mat-cell *matCellDef="let transit"> {{transit.category.nextLevelCategory.name}}</mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
 </div>
 
 <div class="AddTransit">
   <h2 class="mat-h2">Add transit</h2>
-<form class="Test" (ngSubmit)="onSubmit()" #myForm="ngForm">
-  <table class="Test" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="Name">
-          <input matInput placeholder="Name" id="name" [(ngModel)]="transit.name" name="name">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="Category">
-          <input matInput placeholder="Category id" type="number" [(ngModel)]="transit.category.id" name="category.id">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-  <button mat-stroked-button type="submit">Submit</button>
-</form>
+  <form class="Test" (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <table class="Test" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="Name">
+            <input matInput placeholder="Name" id="name" [(ngModel)]="transit.name" name="name">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="Category">
+            <input matInput placeholder="Category id" type="number" [(ngModel)]="transit.categoryId" name="category.id">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <button mat-stroked-button type="submit">Submit</button>
+  </form>
 </div>
