@@ -126,12 +126,12 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .filter(capacityFeedback -> capacityFeedback.capacity != 0)
                 .mapToInt(CapacityBusyHoursFeedback::getCapacity)
                 .average()
-                .orElseThrow(ResourceNotFoundException::new);
+                .orElse(0.0);
     }
 
     public Map<Integer, Double> getCapacityMap(Integer transitId) {
         Map<Integer, Double> capacityMap = new TreeMap<>();
-        for (int hour = 0; hour <= 24; hour++) {
+        for (int hour = 0; hour < 24; hour++) {
             capacityMap.put(hour, getCapacityByTransitAndHour(transitId, hour));
         }
         return capacityMap;
