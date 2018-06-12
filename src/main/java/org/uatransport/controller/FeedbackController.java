@@ -1,6 +1,7 @@
 package org.uatransport.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,7 @@ public class FeedbackController {
 
     @GetMapping(params = "transitId")
     public ResponseEntity<List<Feedback>> getByTransit(@RequestParam("transitId") Integer transitId) {
+
         return new ResponseEntity<>(feedbackService.getByTransitId(transitId), HttpStatus.OK);
     }
 

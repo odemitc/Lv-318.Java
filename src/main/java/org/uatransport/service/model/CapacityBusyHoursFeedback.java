@@ -1,9 +1,24 @@
 package org.uatransport.service.model;
 
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class CapacityBusyHoursFeedback {
+
+    @JsonProperty("capacity")
     public Integer capacity;
-    public LocalDateTime start;
-    public LocalDateTime end;
+
+    @JsonProperty("startHour")
+    public Integer startHour;
+
+    @JsonProperty("startMinute")
+    public Integer startMinute;
+
+
+    @JsonProperty("endHour")
+    public Integer endHour;
+
+    @JsonProperty("endMinute")
+    public Integer endMinute;
+
 }
