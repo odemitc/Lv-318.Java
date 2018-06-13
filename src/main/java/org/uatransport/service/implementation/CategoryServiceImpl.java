@@ -129,8 +129,20 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.findByName(name);
     }
 
-    @Override
+
     public List<ExtendableCategory> getAll(Specification specification) {
         return categoryRepository.findAll(specification);
+    }
+
+    public ExtendableCategory getByNameAndNextLevelCategory(String name, ExtendableCategory nextLevel) {
+        if (name == null || nextLevel == null) {
+            throw new IllegalArgumentException("Parameter should not be null");
+        }
+        ExtendableCategory extendableCategory = categoryRepository.findByNameAndNextLevelCategory(name, nextLevel);
+        if (extendableCategory == null) {
+            throw new ResourceNotFoundException("Such category  not found");
+        }
+        return extendableCategory;
+
     }
 }

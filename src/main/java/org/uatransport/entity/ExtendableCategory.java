@@ -25,4 +25,7 @@ public class ExtendableCategory {
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "next_level_category_id", foreignKey = @ForeignKey())
     private ExtendableCategory nextLevelCategory;
+
+    @Column(name = "icon_url")
+    private String iconURL;
 }
