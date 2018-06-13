@@ -35,6 +35,6 @@ public interface FeedbackService {
 
     List<AccepterFeedback> convertAccepterFeedBacks(Integer transitId);
 
-    Map<Integer, Double> getCapacityMap(Integer transitId);
+    Map<Integer, Double> getDataForCapacityHoursDiagram(Integer transitId);
 
 }

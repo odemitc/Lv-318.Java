@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.uatransport.entity.Stop;
 
+import java.lang.reflect.Field;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Data
 public class CapacityFeedback {
@@ -31,11 +34,23 @@ public class CapacityFeedback {
     @JsonProperty("to")
     public String to;
 
-    public  boolean existsInTimeRange(Integer time) {
+    public boolean existsInTimeRange(Integer time) {
         return IntStream.rangeClosed(this.startHour, this.endHour)
                 .boxed()
                 .collect(Collectors.toList())
                 .contains(time);
+    }
+
+    public boolean isCapacityHoursFeedback() {
+        return Stream.of(this.capacity, this.startHour, this.endHour)
+                .allMatch(Objects::nonNull);
+
+    }
+
+    public boolean isCapacityStopsFeedback() {
+        return Stream.of(this.capacity, this.from, this.to)
+                .allMatch(Objects::nonNull);
+
     }
 
 

@@ -74,6 +74,6 @@ public class FeedbackController {
     }
     @GetMapping(value = "/capacity/data/{transitId}")
     public ResponseEntity<Map<Integer, Double>> getCapacityMap(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.getCapacityMap(transitId), HttpStatus.OK);
+        return new ResponseEntity<>(feedbackService.getDataForCapacityHoursDiagram(transitId), HttpStatus.OK);
     }
 }
