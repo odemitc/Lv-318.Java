@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Accessors(chain = true)
-@Table(name="question")
+@Table(name = "question")
 @EqualsAndHashCode(of = "id")
 public class Question {
 

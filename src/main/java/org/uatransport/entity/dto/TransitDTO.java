@@ -12,5 +12,4 @@ public class TransitDTO {
     private String name;
     private Integer categoryId;
     private List<Stop> stops;
-
 }
