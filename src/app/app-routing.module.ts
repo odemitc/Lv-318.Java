@@ -23,7 +23,6 @@ const routes: Routes = [
   },
   {path: 'user/add', component: AddUserComponent}
 
-
 ];
 
 @NgModule({

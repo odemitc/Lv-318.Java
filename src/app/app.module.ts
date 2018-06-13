@@ -52,6 +52,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {SidenavComponent} from './components/sidenav/sidenav.component';
 import {ExcategoryService} from './services/excategory.service';
+import {UserService} from './services/user.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
 import { TransitsComponent } from './components/transits/transits.component';
@@ -61,6 +62,7 @@ import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback
 import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC/add-feedback-criteria.component';
 import {AddUserComponent} from './components/add-user/add-user.component';
 import {StopsComponent} from "./components/stops/stops.component";
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -82,7 +84,8 @@ export function createTranslateLoader(http: HttpClient) {
     FeedbackCriteriaComponent,
     AddFeedbackCriteriaComponent,
     AddUserComponent,
-    StopsComponent
+    StopsComponent,
+    UserProfileComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -142,7 +145,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService ],
+  providers: [ExcategoryService ,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
