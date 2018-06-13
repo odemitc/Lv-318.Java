@@ -18,6 +18,11 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
+
+
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<ExtendableCategory> getCategoryById(@PathVariable Integer id) {
 
