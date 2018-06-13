@@ -4,15 +4,15 @@ import 'hammerjs';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-// import { InMemoryDataService }  from './in-memory-data.service';
+
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-// import 'hammerjs';
 import {
+  MatFormField,
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -48,35 +48,34 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  MatOptionModule
 } from '@angular/material';
+
 import {FormsModule} from '@angular/forms';
-import {SidenavComponent} from './components/sidenav/sidenav.component';
 import {ExcategoryService} from './services/excategory.service';
-import {UserService} from './services/user.service';
-import { MenuComponent } from './components/menu/menu.component';
-import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
-import { TransitsComponent } from './components/transits/transits.component';
-import { MainComponent } from './components/main/main.component';
+import {MenuComponent} from './components/menu/menu.component';
+import {NonExCategoryComponent} from './components/non-ex-category/non-ex-category.component';
+import {TransitsComponent} from './components/transits/transits.component';
+import {MainComponent} from './components/main/main.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
 import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC/add-feedback-criteria.component';
 import {AddUserComponent} from './components/add-user/add-user.component';
 import {StopsComponent} from "./components/stops/stops.component";
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ExcategoryComponent,
-    SidenavComponent,
     MenuComponent,
     NonExCategoryComponent,
     TransitsComponent,
@@ -84,8 +83,7 @@ export function createTranslateLoader(http: HttpClient) {
     FeedbackCriteriaComponent,
     AddFeedbackCriteriaComponent,
     AddUserComponent,
-    StopsComponent,
-    UserProfileComponent
+    StopsComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -122,7 +120,10 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    MatFormField,
+    MatOptionModule,
+    MatSelectModule
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatSidenavModule,
@@ -137,6 +138,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatToolbarModule,
     SlideshowModule,
     HttpClientModule,
+    MatOptionModule,
+    MatSelectModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -145,7 +148,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService ,UserService],
+  providers: [ExcategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
