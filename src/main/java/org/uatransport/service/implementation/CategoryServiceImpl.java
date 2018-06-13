@@ -3,6 +3,7 @@ package org.uatransport.service.implementation;
 import com.google.common.base.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.ExtendableCategory;
@@ -126,5 +127,10 @@ public class CategoryServiceImpl implements CategoryService {
             throw new IllegalArgumentException("Name should not be empty");
         }
         return categoryRepository.findByName(name);
+    }
+
+    @Override
+    public List<ExtendableCategory> getAll(Specification specification) {
+        return categoryRepository.findAll(specification);
     }
 }

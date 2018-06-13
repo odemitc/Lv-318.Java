@@ -1,5 +1,6 @@
 package org.uatransport.service;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.uatransport.entity.ExtendableCategory;
 import org.uatransport.entity.NonExtendableCategory;
 import org.uatransport.entity.dto.NonExtendableCategoryDto;
@@ -27,5 +28,7 @@ public interface CategoryService {
     void delete(ExtendableCategory extendableCategory);
 
     ExtendableCategory getByName(String name);
+
+    List<ExtendableCategory> getAll(Specification specification);
 
 }

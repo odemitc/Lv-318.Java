@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.config.SearchCategoryParam;
+import org.uatransport.config.SearchSpecification;
 import org.uatransport.entity.ExtendableCategory;
 import org.uatransport.service.CategoryService;
 
@@ -26,27 +27,11 @@ public class CategoryController {
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
-    //TODO
-    //    @GetMapping("/top")
-    //    public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
-    //        return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
-    //    }
-    //
-    //    @GetMapping("/all")
-    //    public ResponseEntity<List<ExtendableCategory>> getCategoryByNextLevel(@RequestParam Integer up) {
-    //        List<ExtendableCategory> categories = categoryService.getByNextLevelCategoryId(up);
-    //
-    //        return new ResponseEntity<>(categories, HttpStatus.OK);
-    //    }
-    //    @GetMapping("/get")
-    //    public ResponseEntity<List<NonExtendableCategory>> getCategoryByNames(@RequestParam String name, @RequestParam String next) {
-    //        List<NonExtendableCategory> categories = categoryService.getByNames(name, next);
-    //        return new ResponseEntity<>(categories, HttpStatus.OK);
-    //    }
-    //
     @GetMapping
     public ResponseEntity<List<ExtendableCategory>> search(SearchCategoryParam searchCategoryParam) {
-        return null;
+        SearchSpecification specification = new SearchSpecification(searchCategoryParam);
+
+        return new ResponseEntity<>(categoryService.getAll(specification), HttpStatus.OK);
     }
 
     @PostMapping
