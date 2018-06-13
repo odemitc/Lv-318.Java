@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/category")
-@CrossOrigin // TODO: ADD FILTER !
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService categoryService;
