@@ -31,7 +31,6 @@ public class ExtendableCategoryController {
         StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());
     }
 
-
     @GetMapping(value = "/top/")
     public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
         return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
