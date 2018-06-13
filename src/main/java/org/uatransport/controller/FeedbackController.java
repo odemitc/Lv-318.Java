@@ -1,15 +1,12 @@
 package org.uatransport.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.Feedback;
 import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.service.FeedbackService;
-import org.uatransport.service.model.AccepterFeedback;
-import org.uatransport.service.model.CapacityBusyHoursFeedback;
 import org.uatransport.service.model.RouteBusyHoursFeedback;
 
 import java.util.List;
