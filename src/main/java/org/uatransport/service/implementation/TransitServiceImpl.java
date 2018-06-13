@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 import org.uatransport.exception.ResourceNotFoundException;
-import org.uatransport.repository.NonExtendableCategoryRepository;
+import org.uatransport.repository.CategoryRepository;
 import org.uatransport.repository.TransitRepository;
 import org.uatransport.service.TransitService;
 
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class TransitServiceImpl implements TransitService {
 
     private final TransitRepository transitRepository;
-    private final NonExtendableCategoryRepository nonExtendableCategoryRepository;
+    private final CategoryRepository nonExtendableCategoryRepository;
 
     @Override
     @Transactional
