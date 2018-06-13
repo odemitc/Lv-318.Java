@@ -11,17 +11,12 @@ import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackRepository;
 import org.uatransport.service.FeedbackService;
 import org.uatransport.service.model.AccepterFeedback;
-import org.uatransport.service.model.CapacityBusyHoursFeedback;
-import org.uatransport.service.model.RouteBusyHoursFeedback;
+import org.uatransport.service.model.CapacityFeedback;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import static java.util.stream.Collectors.toCollection;
 
 @Service
 @Transactional
@@ -83,17 +78,10 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
 
-    public List<RouteBusyHoursFeedback> convertRouteBusyHoursFeedBacks(Integer transitId) {
-        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS)
+    public List<CapacityFeedback> convertCapacityFeedBacks(Integer transitId) {
+        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.CAPACITY)
                 .stream()
-                .map(feedback -> (RouteBusyHoursFeedback) FeedbackCriteria.FeedbackType.ROUTE_BUSY_HOURS.convertFeedback(feedback))
-                .collect(Collectors.toList());
-    }
-
-    public List<CapacityBusyHoursFeedback> convertCapacityFeedBacks(Integer transitId) {
-        return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.CAPACITY_BUSY_HOURS)
-                .stream()
-                .map(feedback -> (CapacityBusyHoursFeedback) FeedbackCriteria.FeedbackType.CAPACITY_BUSY_HOURS.convertFeedback(feedback))
+                .map(feedback -> (CapacityFeedback) FeedbackCriteria.FeedbackType.CAPACITY.convertFeedback(feedback))
                 .collect(Collectors.toList());
     }
 
@@ -122,9 +110,11 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     private Double getCapacityByTransitAndHour(Integer transitId, Integer time) {
         return convertCapacityFeedBacks(transitId).stream()
+                .filter(capacityFeedback -> capacityFeedback.startHour!=null)
+                .filter(capacityFeedback -> capacityFeedback.endHour!=null)
                 .filter(capacityFeedback -> capacityFeedback.existsInTimeRange(time))
-                .filter(capacityFeedback -> capacityFeedback.capacity != 0)
-                .mapToInt(CapacityBusyHoursFeedback::getCapacity)
+                .filter(capacityFeedback -> capacityFeedback.capacity != null)
+                .mapToInt(CapacityFeedback::getCapacity)
                 .average()
                 .orElse(0.0);
     }

@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.Feedback;
 import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.service.FeedbackService;
-import org.uatransport.service.model.RouteBusyHoursFeedback;
+import org.uatransport.service.model.AccepterFeedback;
+import org.uatransport.service.model.CapacityFeedback;
 
 import java.util.List;
 import java.util.Map;
@@ -61,21 +62,17 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.convertRatingFeedBacksByUser(transitId, userId), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/route/{transitId}")
-    public ResponseEntity<List<RouteBusyHoursFeedback>> getRouteBusyHoursFeedBacks(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.convertRouteBusyHoursFeedBacks(transitId), HttpStatus.OK);
+
+        @GetMapping(value = "/capacity/{transitId}")
+    public ResponseEntity<List<CapacityFeedback>> getCapacityFeedBacks(@PathVariable Integer transitId) {
+        return new ResponseEntity<>(feedbackService.convertCapacityFeedBacks(transitId), HttpStatus.OK);
     }
 
-    //    @GetMapping(value = "/capacity/{transitId}")
-//    public ResponseEntity<List<CapacityBusyHoursFeedback>> getCapacityFeedBacks(@PathVariable Integer transitId) {
-//        return new ResponseEntity<>(feedbackService.convertCapacityFeedBacks(transitId), HttpStatus.OK);
-//    }
-//
-//    @GetMapping(value = "/accepter/{transitId}")
-//    public ResponseEntity<List<AccepterFeedback>> getAccepterFeedBacks(@PathVariable Integer transitId) {
-//        return new ResponseEntity<>(feedbackService.convertAccepterFeedBacks(transitId), HttpStatus.OK);
-//    }
-    @GetMapping(value = "/capacity/{transitId}")
+    @GetMapping(value = "/accepter/{transitId}")
+    public ResponseEntity<List<AccepterFeedback>> getAccepterFeedBacks(@PathVariable Integer transitId) {
+        return new ResponseEntity<>(feedbackService.convertAccepterFeedBacks(transitId), HttpStatus.OK);
+    }
+    @GetMapping(value = "/capacity/data/{transitId}")
     public ResponseEntity<Map<Integer, Double>> getCapacityMap(@PathVariable Integer transitId) {
         return new ResponseEntity<>(feedbackService.getCapacityMap(transitId), HttpStatus.OK);
     }
