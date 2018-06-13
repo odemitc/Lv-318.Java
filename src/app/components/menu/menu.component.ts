@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AppComponent} from "../../app.component";
+
 
 @Component({
   selector: 'app-menu',
@@ -7,18 +8,16 @@ import {AppComponent} from "../../app.component";
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  constructor(public app :AppComponent) {
+
+  constructor(public app: AppComponent) {
 
   }
 
   ngOnInit() {
   }
 
-
   switchLanguage(language: string) {
     this.app.switchLanguage(language);
   }
-
-
 
 }

@@ -9,17 +9,13 @@ import {ExcategoryModel} from '../models/excategory.model';
 })
 export class NonExCategoryService {
 
-  private serviceUrl = 'http://localhost:8080/NonExtendableCategory/';
+  private serviceUrl = 'http://localhost:8080/category/';
 
   constructor(private http: HttpClient) {
   }
 
   public getByNames(name: String, nexlevel: String): Observable<ExcategoryModel[]> {
     return this.http.get<ExcategoryModel[]>(this.serviceUrl + 'get?name=' + name + '&next=' + nexlevel);
-  }
-
-  public deleteCategory(category) {
-    return this.http.delete(this.serviceUrl, category);
   }
 }
 
