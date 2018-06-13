@@ -1,11 +1,13 @@
 package org.uatransport.repository;
 
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.uatransport.entity.ExtendableCategory;
+import org.uatransport.entity.NonExtendableCategory;
 
 import java.util.List;
 
-public interface ExtendableCategoryRepository extends CrudRepository<ExtendableCategory, Integer> {
+public interface CategoryRepository extends CrudRepository<ExtendableCategory, Integer>, JpaSpecificationExecutor<CategoryRepository> {
 
     ExtendableCategory findByName(String name);
 
@@ -16,5 +18,7 @@ public interface ExtendableCategoryRepository extends CrudRepository<ExtendableC
     List<ExtendableCategory> findAllByNextLevelCategoryIsNull();
 
     ExtendableCategory findByNameAndNextLevelCategory(String name, ExtendableCategory nextLevelCategory);
+
+    List<NonExtendableCategory> findByNextLevelCategoryNameAndNextLevelCategoryNextLevelCategoryName(String top, String next);
 
 }
