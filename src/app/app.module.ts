@@ -62,6 +62,7 @@ import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback
 import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC/add-feedback-criteria.component';
 import {AddUserComponent} from './components/add-user/add-user.component';
 import {StopsComponent} from "./components/stops/stops.component";
+import {UserService} from "./services/user.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -148,7 +149,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService],
+  providers: [ExcategoryService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
