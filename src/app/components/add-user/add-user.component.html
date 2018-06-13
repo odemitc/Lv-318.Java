@@ -1,26 +1,28 @@
-<div class="col-md-6">
-  <h2 class="text-center">New User</h2>
-  <form>
-    <div class="form-group">
-      <label for="email">Email address:</label>
-      <input type="email" [(ngModel)]="user.email" placeholder="Email" name="email" class="form-control" id="email">
-    </div>
+<div class="NewUserForm">
+  <div class="col-md-7">
+    <form class="example-form">
+      <mat-form-field class="email">
+        <textarea matInput [(ngModel)]="user.email" placeholder="Email"name="email" ></textarea>
+      </mat-form-field>
 
-    <div class="form-group">
-      <label for="firstName">First Name:</label>
-      <input [(ngModel)]="user.firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
-    </div>
+      <mat-form-field class="firstName">
+      <textarea matInput [(ngModel)]="user.firstName" placeholder="First Name" name="firstName"></textarea>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="lastName">Last Name:</label>
-      <input [(ngModel)]="user.lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input [(ngModel)]="user.password" placeholder="Password" name="password" class="form-control" id="password">
-    </div>
-    <button class="btn btn-success" (click)="createUser()">Create</button>
-  </form>
+      <mat-form-field class="lastName">
+        <textarea matInput [(ngModel)]="user.lastName" placeholder="Last Name" name="lastName"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="password">
+        <textarea matInput [(ngModel)]="user.password" placeholder="Password" name="password" ></textarea>
+      </mat-form-field>
+
+      <button class="Button" mat-fab (click)="createUser()">Register</button>
+
+    </form>
+  </div>
 </div>
+
+
 
 
