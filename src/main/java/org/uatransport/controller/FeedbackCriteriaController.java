@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/feedbackCriteria")
-@CrossOrigin
+@RequestMapping("/feedback-criteria")
+@CrossOrigin("http://localhost:4200")
 public class FeedbackCriteriaController {
     private final FeedbackCriteriaService feedbackCriteriaService;
 
