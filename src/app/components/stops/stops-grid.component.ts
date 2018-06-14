@@ -4,9 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {StopService} from "../../services/stop.service";
 import {Observable} from "rxjs/index";
 
-
 @Component({
-   selector: 'stops-grid',
+  selector: 'stops-grid',
   templateUrl: './stops-grid.component.html',
   styleUrls: ['./stops-grid.component.css']
 })
@@ -14,13 +13,12 @@ export class StopsGridComponent {
 
   private sub: any;
   public idTransit: number;
-
   public stop = new Stop();
 
   stopsList: Observable<Stop[]>;
 
-
-  constructor(private stopService: StopService,  private route: ActivatedRoute) { }
+  constructor(private stopService: StopService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.sub = this.route.params.forEach(params => {
@@ -44,8 +42,6 @@ export class StopsGridComponent {
 //   {name: 'Molly', human: 'Rob'},
 //   {name: 'Husi', human: 'Matias'},
 // ];
-
-
 
 }
 

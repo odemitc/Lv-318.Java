@@ -1,4 +1,13 @@
-
+<div class="demo-grid-list">
+<mat-grid-list cols="7" rowHeight="50px">
+  <mat-grid-tile
+      *ngFor="let tile of stopsList | async">
+    <!--{{tile.street}}-->
+     <input type="checkbox" [id]="tile.id" [name]="tile" [value]="tile.street" aria-labelledby="ariaid">
+    <div><label id="ariaid">{{tile.street}}</label></div>
+  </mat-grid-tile>
+</mat-grid-list>
+</div>
 <!-- <mat-card>
   <mat-card-title>Ratio-height grid list</mat-card-title>
   <mat-card-content class="demo-basic-list">
@@ -12,13 +21,3 @@
   </mat-card-content> -->
 <!--
 </mat-card> -->
-<div class="demo-grid-list">
-<mat-grid-list cols="7" rowHeight="50px">
-  <mat-grid-tile
-      *ngFor="let tile of stopsList | async">
-    <!--{{tile.street}}-->
-     <input type="checkbox" [id]="tile.id" [name]="tile" [value]="tile.street" aria-labelledby="ariaid">
-    <div><label id="ariaid">{{tile.street}}</label></div>
-  </mat-grid-tile>
-</mat-grid-list>
-</div>
