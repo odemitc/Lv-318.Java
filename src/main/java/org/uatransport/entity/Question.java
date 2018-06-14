@@ -1,5 +1,6 @@
 package org.uatransport.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -21,6 +22,7 @@ public class Question {
 
     private String questionName;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "criteria_id")
     private FeedbackCriteria feedbackCriteria;
