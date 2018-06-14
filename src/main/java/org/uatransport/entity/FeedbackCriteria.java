@@ -24,13 +24,15 @@ public class FeedbackCriteria {
 
     private Integer weight;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "feedbackCriteria")
+   @JsonManagedReference
+    @OneToMany
+    @JoinColumn(name = "criteria_id")
     private List<Question> questions;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "type", updatable = false)
     private FeedbackType type;
+
 
     @RequiredArgsConstructor
     public enum FeedbackType {
