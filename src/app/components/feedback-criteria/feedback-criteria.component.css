@@ -1,4 +1,15 @@
-.feedbackForm{
+.mat-form-field {
+  font-size: 14px;
+  width: 400px;
+  margin: 150px 400px;
+}
+.mat-elevation-z8{
   width: 800px;
   margin: 150px auto;
 }
+
+
+
+
+
+

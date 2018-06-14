@@ -18,8 +18,7 @@ const routes: Routes = [
   {
     path: 'main', component: MainComponent
   },
-  {
-    path: 'feedback', component: FeedbackCriteriaComponent
+  { path: 'feedback-criteria', component: FeedbackCriteriaComponent
   },
   {path: 'user/add', component: AddUserComponent}
 

@@ -1,37 +1,22 @@
-<div class="feedbackForm">
-<br>
-<div class=" row">
-  <div  class="col-md-12">
-     <button class="btn btn-success"> New Criteria</button>
-  </div>
-</div>
-<hr>
-<div class="row">
-  <div class="col-md-12">
+<div class="feedbackCriteria">
+  <mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
 
-    <table class="table">
-      <thead class="thead-light">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Question</th>
-        <th scope="col">Group_Id</th>
-        <th scope="col">Type</th>
-        <th scope="col">EDITE</th>
-        <th scope="col">DELETE</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let f of feedbackCs">
-        <th>{{f.id}}</th>
-        <th> {{f.question}}</th>
-        <td>{{f.groupId}}</td>
-        <td>{{f.type}}</td>
-        <th> <button type="button" class="btn btn-light">EDITE</button></th>
-        <th><button type="button" class="btn btn-danger">DELETE</button></th>
-      </tr>
-      </tbody>
-    </table>
-     </div>
-</div>
-<app-addfeedbackcriteria></app-addfeedbackcriteria>
+  <table mat-table [dataSource]="feedbackCriterias" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let feedbackCriteria"> {{feedbackCriteria.id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let feedbackCriteria"> {{feedbackCriteria.type}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> weight </mat-header-cell>
+      <mat-cell *matCellDef="let feedbackCriteria"> {{ feedbackCriteria.weight }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
 </div>

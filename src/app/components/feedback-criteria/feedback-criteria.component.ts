@@ -1,24 +1,35 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {FeedbackCService} from '../../services/feedbackC.service';
+import { Component, OnInit } from '@angular/core';
+import {FeedbackCriteria} from '../../models/feedback-criteria.model';
+import {FeedbackCriteriaService} from '../../services/feedback-criteria.service';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-feedback-criteria',
   templateUrl: './feedback-criteria.component.html',
-  styleUrls: ['./feedback-criteria.component.css'],
-  providers: [FeedbackCService]
+  styleUrls: ['./feedback-criteria.component.css']
 })
 export class FeedbackCriteriaComponent implements OnInit {
-  feedbackCs: Array<any>;
 
-  constructor(private feedbackCService: FeedbackCService) { }
+  feedbackCriterias: FeedbackCriteria[];
+  displayedColumns = ['id', 'type', 'weight'];
+  dataSource = new MatTableDataSource();
 
-  ngOnInit() {
-    this.feedbackCService.getAll().subscribe(
-      data => {
-        this.feedbackCs = data;
-      },
-      error => console.log(error)
-    );
+  constructor(private feedbackCriteriaService: FeedbackCriteriaService) {
   }
 
+  ngOnInit() {
+    this.getAllFC();
+  }
+
+  getAllFC(): void {
+    this.feedbackCriteriaService.getAllFC()
+      .subscribe(feedbackCriterias => this.feedbackCriterias = feedbackCriterias);
+
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
 }

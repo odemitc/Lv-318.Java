@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TransitService } from '../../services/transit.service';
 import { Convert, Transit } from '../../models/transit.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-transits',
