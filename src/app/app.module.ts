@@ -63,6 +63,7 @@ import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC
 import {AddUserComponent} from './components/add-user/add-user.component';
 import {StopsComponent} from "./components/stops/stops.component";
 import {UserService} from "./services/user.service";
+import {StopsGridComponent} from "./components/stops/stops-grid.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -84,7 +85,8 @@ export function createTranslateLoader(http: HttpClient) {
     FeedbackCriteriaComponent,
     AddFeedbackCriteriaComponent,
     AddUserComponent,
-    StopsComponent
+    StopsComponent,
+    StopsGridComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -141,6 +143,9 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     MatOptionModule,
     MatSelectModule,
+    MatGridListModule,
+    MatIconModule,
+    MatCheckboxModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
