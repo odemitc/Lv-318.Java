@@ -1,3 +1,3 @@
 export class Settings {
-  public static URL = 'http://52.57.242.65';
+  public static URL = 'http://localhost:8080';
 }
