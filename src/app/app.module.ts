@@ -1,27 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
 
-
 import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-// import { InMemoryDataService }  from './in-memory-data.service';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { ExcategoryComponent } from './components/excategory/excategory.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-
-// import 'hammerjs';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -77,10 +65,7 @@ import {StopsComponent} from './components/stops/stops.component';
 import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
 import { FilterPipe } from './filter.pipe';
-
-import { StopsComponent } from "./components/stops/stops.component";
-import { UserService } from "./services/user.service";
-import { StopsGridComponent } from "./components/stops/stops-grid.component";
+import { StopsGridComponent } from './components/stops/stops-grid.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
