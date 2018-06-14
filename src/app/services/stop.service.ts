@@ -8,7 +8,7 @@ import { Stop } from '../models/stop.model';
 })
 export class StopService {
 
-  private serviceUrl = 'http://localhost:8080/stop';
+  private serviceUrl = 'http://localhost:8080/stop/';
 
   constructor(private http: HttpClient) {
   }

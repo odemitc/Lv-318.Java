@@ -13,11 +13,8 @@ import { StopService } from '../../services/stop.service';
 export class StopsComponent implements OnInit {
   private sub: any;
   public idTransit: number;
-
   stop = new Stop();
-
   stopsList: Observable<Stop[]>;
-
   displayedColumns = ['id', 'street'];
 
   constructor(private stopService: StopService, private route: ActivatedRoute) {
