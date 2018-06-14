@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/index';
 import { ExcategoryModel } from '../../models/excategory.model';
 import { NonExCategoryService } from '../../services/non-ex-category.service';
 import { TransitsComponent } from '../transits/transits.component';
+import {Settings} from "../../settings";
 
 @Component({
   selector: 'app-non-ex-category',
@@ -12,7 +13,8 @@ import { TransitsComponent } from '../transits/transits.component';
 })
 export class NonExCategoryComponent implements OnInit {
   public list: Observable<ExcategoryModel[]>;
-  serverURL = 'http://localhost:8080/category/img?link=';
+
+  serverURL = Settings.URL + '/category/img?link=';
 
   displayedColumns = ['id', 'name', 'nextLevelCategory_name'];
 
