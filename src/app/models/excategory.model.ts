@@ -7,7 +7,7 @@ export class ExcategoryModel {
   };
   iconURL: string;
 
-  constructor(fields:Object){
+  constructor(fields: Object) {
     Object.assign(this, fields);
   }
 }

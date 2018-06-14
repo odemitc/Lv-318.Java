@@ -8,9 +8,9 @@ describe('FeedbackCriteriaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedbackCriteriaComponent ]
+      declarations: [FeedbackCriteriaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

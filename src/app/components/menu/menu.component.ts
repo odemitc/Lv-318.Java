@@ -1,5 +1,5 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {AppComponent} from "../../app.component";
+import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../../app.component';
 
 
 @Component({

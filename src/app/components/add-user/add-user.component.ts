@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {UserService} from '../../services/user.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -8,8 +8,6 @@ import { User } from '../../models/user.model';
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css']
 })
-
-
 
 export class AddUserComponent {
 
@@ -21,7 +19,7 @@ export class AddUserComponent {
 
   createUser(): void {
     this.userService.createUser(this.user)
-      .subscribe( data => {
+      .subscribe(data => {
         alert('User created successfully.');
       });
 

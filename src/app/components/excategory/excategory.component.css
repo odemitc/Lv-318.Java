@@ -24,12 +24,11 @@
   height: 50px;
 }
 
-.city-icon{
+.city-icon {
   position: absolute;
   display: block;
   right: 0;
-  top: 2px;
-;
+  top: 2px;;
 }
 
 a {
