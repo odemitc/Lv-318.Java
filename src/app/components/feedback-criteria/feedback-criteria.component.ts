@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import {FeedbackCriteria} from '../../models/feedback-criteria.model';
 import {FeedbackCriteriaService} from '../../services/feedback-criteria.service';
 import {MatTableDataSource} from '@angular/material';
@@ -12,18 +13,19 @@ import {Observable} from 'rxjs';
 })
 export class FeedbackCriteriaComponent implements OnInit {
 
-  feedbackCriterias: FeedbackCriteria[] = new MatTableDataSource(this.getAllFC());
+
+  feedbackCriterias: FeedbackCriteria[];
   displayedColumns = ['id', 'type', 'weight'];
 
   constructor(private feedbackCriteriaService: FeedbackCriteriaService) {
   }
 
   ngOnInit() {
-
+    this.getAllFC();
   }
 
-  getAllFC(): FeedbackCriteria[] {
-    return this.feedbackCriteriaService.getAllFC()
+  getAllFC(): void {
+       this.feedbackCriteriaService.getAllFC()
       .subscribe(feedbackCriterias => this.feedbackCriterias = feedbackCriterias);
 
   }
@@ -31,6 +33,6 @@ export class FeedbackCriteriaComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
-    this.feedbackCriterias.filter = filterValue;
+    // this.feedbackCriterias.filter = filterValue;
   }
 }

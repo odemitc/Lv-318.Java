@@ -1,7 +1,8 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {ExcategoryModel} from "../../models/excategory.model";
-import {ExcategoryService} from "../../services/excategory.service";
-import {Observable} from "rxjs/index";
+import { Component, OnInit } from '@angular/core';
+import { ExcategoryModel } from '../../models/excategory.model';
+import { ExcategoryService } from '../../services/excategory.service';
+import { Observable } from 'rxjs/index';
+import {Settings} from "../../settings";
 
 @Component({
   selector: 'app-excategory',
@@ -11,7 +12,7 @@ import {Observable} from "rxjs/index";
 export class ExcategoryComponent implements OnInit {
   private list: Observable<ExcategoryModel[]> = this.service.getTopCategories();
   private cities: Observable<ExcategoryModel[]>;
-  private serverURL = 'http://localhost:8080/category/img?link=';
+  private serverURL = Settings.URL+ '/category/img?link=';
 
 
   constructor(public service: ExcategoryService) {

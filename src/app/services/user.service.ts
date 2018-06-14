@@ -1,7 +1,7 @@
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-import {User} from '../models/user.model';
+import { User } from '../models/user.model';
 
 
 const httpOptions = {
@@ -23,6 +23,7 @@ export class UserService {
   public createUser(user) {
     return this.http.post<User>(this.userUrl, user);
   }
+
   getUser(login) {
     return this.http.get<User>(this.userUrl + '/in', {
       params: {
@@ -30,6 +31,6 @@ export class UserService {
         password: login.password.toString(),
 
       }
-      });
+    });
   }
 }

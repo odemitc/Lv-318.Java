@@ -1,6 +1,7 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import 'hammerjs';
+
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -10,6 +11,15 @@ import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { ExcategoryComponent } from './components/excategory/excategory.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 // import 'hammerjs';
 import {
@@ -24,13 +34,16 @@ import {
   MatDatepickerModule,
   MatDialogModule,
   MatDividerModule,
-  MatExpansionModule, MatFormFieldModule,
+  MatExpansionModule,
+  MatFormField,
+  MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
   MatNativeDateModule,
+  MatOptionModule,
   MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
@@ -47,8 +60,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
-  MatOptionModule
+  MatTreeModule
 } from '@angular/material';
 
 import {FormsModule} from '@angular/forms';
@@ -60,10 +72,16 @@ import {MainComponent} from './components/main/main.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
 import {AddUserComponent} from './components/add-user/add-user.component';
+
 import {StopsComponent} from './components/stops/stops.component';
 import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
 import { FilterPipe } from './filter.pipe';
+
+import { StopsComponent } from "./components/stops/stops.component";
+import { UserService } from "./services/user.service";
+import { StopsGridComponent } from "./components/stops/stops-grid.component";
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -85,9 +103,11 @@ export function createTranslateLoader(http: HttpClient) {
     FeedbackCriteriaComponent,
     AddUserComponent,
     StopsComponent,
+
     MessageComponent,
     StopsComponent,
-    FilterPipe
+    FilterPipe,
+    StopsGridComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -141,6 +161,9 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     MatOptionModule,
     MatSelectModule,
+    MatGridListModule,
+    MatIconModule,
+    MatCheckboxModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

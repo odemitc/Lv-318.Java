@@ -8,9 +8,13 @@ describe('MessageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+<<<<<<< HEAD:src/app/components/message/message.component.spec.ts
       declarations: [ MessageComponent ]
+=======
+      declarations: [FeedbackCriteriaComponent]
+>>>>>>> aebec2c7317cfda80ae1fa7188997cd86cc0042c:src/app/components/feedback-criteria/feedback-criteria.component.spec.ts
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
-import {Stop} from '../../models/stop.model';
-import {StopService} from '../../services/stop.service';
+import { Stop } from '../../models/stop.model';
+import { StopService } from '../../services/stop.service';
 
 @Component({
   selector: 'app-stops',
@@ -13,11 +13,8 @@ import {StopService} from '../../services/stop.service';
 export class StopsComponent implements OnInit {
   private sub: any;
   public idTransit: number;
-
   stop = new Stop();
-
   stopsList: Observable<Stop[]>;
-
   displayedColumns = ['id', 'street'];
 
   constructor(private stopService: StopService, private route: ActivatedRoute) {

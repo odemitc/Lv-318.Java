@@ -11,8 +11,8 @@
 //   };
 // }
 
-import {Category} from './category.model';
-import {Stop} from './stop.model';
+import { Category } from './category.model';
+import { Stop } from './stop.model';
 
 export class Transit {
   id: number;

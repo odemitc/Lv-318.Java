@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {MatSidenav} from "@angular/material";
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'uaTransport';
 
   @ViewChild('sidenav') public sideNav: MatSidenav;
+
   constructor(private translate: TranslateService) {
     translate.setDefaultLang('ua');
   }
@@ -18,7 +19,8 @@ export class AppComponent {
   switchLanguage(language: string) {
     this.translate.use(language);
   }
-  open(){
+
+  open() {
     this.sideNav.toggle();
   }
 }
