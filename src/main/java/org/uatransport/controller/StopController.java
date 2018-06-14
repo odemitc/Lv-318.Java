@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/stop")
-@CrossOrigin ()
+@CrossOrigin()
 @RequiredArgsConstructor
 public class StopController {
 
@@ -28,6 +28,11 @@ public class StopController {
   @GetMapping(params = "street")
   public ResponseEntity<List<Stop>> getByStreet(@RequestParam("street") String street) {
     return new ResponseEntity<>(stopService.getByStreet(street), HttpStatus.OK);
+  }
+
+  @GetMapping(params = "transit-id")
+  public ResponseEntity<List<Stop>> getByTransitId(@RequestParam("transit-id") Integer id) {
+    return new ResponseEntity<>(stopService.getByTransitId(id), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
