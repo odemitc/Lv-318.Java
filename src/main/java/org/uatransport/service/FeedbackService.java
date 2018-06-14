@@ -2,10 +2,12 @@ package org.uatransport.service;
 
 import org.uatransport.entity.Feedback;
 import org.uatransport.entity.FeedbackCriteria;
+import org.uatransport.entity.Stop;
 import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.service.model.AccepterFeedback;
 import org.uatransport.service.model.CapacityFeedback;
 
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,5 +38,9 @@ public interface FeedbackService {
     List<AccepterFeedback> convertAccepterFeedBacks(Integer transitId);
 
     Map<Integer, Double> getDataForCapacityHoursDiagram(Integer transitId);
+
+    Map<Stop, Double> getDataForCapacityStopDiagram(Integer transitId);
+
+    EnumMap<AccepterFeedback, Double> getDataForAccepterDiagram(Integer transitId);
 
 }

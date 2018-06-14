@@ -12,6 +12,7 @@ import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackRepository;
 import org.uatransport.repository.StopRepository;
 import org.uatransport.service.FeedbackService;
+import org.uatransport.service.StopService;
 import org.uatransport.service.model.AccepterFeedback;
 import org.uatransport.service.model.CapacityFeedback;
 
@@ -25,7 +26,7 @@ import java.util.stream.IntStream;
 public class FeedbackServiceImpl implements FeedbackService {
 
     private final FeedbackRepository feedbackRepository;
-    private final StopRepository stopRepository;
+    private final StopService stopService;
 
     @Override
     public Feedback addFeedback(FeedbackDTO feedbackDTO) {
@@ -122,14 +123,15 @@ public class FeedbackServiceImpl implements FeedbackService {
         return capacityMap;
     }
 
-    //CAPACITY_Stop diagrams
+//    CAPACITY_Stop diagrams
+//TODO:move to StopService
 
     private boolean existsInStopRange(Integer transitId, Stop stop, String from, String to) {
-        return IntStream.rangeClosed(stopRepository.findIndexByTransitIdAndStopName(transitId, from),
-                stopRepository.findIndexByTransitIdAndStopName(transitId, to))
+        return IntStream.rangeClosed(stopService.getIndexByTransitIdAndStopName(transitId, from),
+                stopService.getIndexByTransitIdAndStopName(transitId, to))
                 .boxed()
                 .collect(Collectors.toList())
-                .contains(stopRepository.findIndexByTransitIdAndStopName(transitId, stop.getStreet()));
+                .contains(stopService.getIndexByTransitIdAndStopName(transitId, stop.getStreet()));
     }
 
     private Double getCapacityByTransitAndStops(Integer transitId, Stop stop) {
@@ -144,8 +146,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     public Map<Stop, Double> getDataForCapacityStopDiagram(Integer transitId) {
         Map<Stop, Double> capacityMap = new TreeMap<>(Comparator.comparingInt(stop ->
-                stopRepository.findIndexByTransitIdAndStopName(transitId, stop.getStreet())));
-        for (Stop stop : stopRepository.findByTransitId(transitId)) {
+                stopService.getIndexByTransitIdAndStopName(transitId, stop.getStreet())));
+        for (Stop stop : stopService.getByTransitId(transitId)) {
             capacityMap.put(stop, getCapacityByTransitAndStops(transitId, stop));
         }
         return capacityMap;
@@ -153,7 +155,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     public Map<Stop, Double> getDataForCapacityStopDiagram(List<Stop> stopList, Integer transitId) {
         Map<Stop, Double> capacityMap = new TreeMap<>(Comparator.comparingInt(stop ->
-                stopRepository.findIndexByTransitIdAndStopName(transitId, stop.getStreet())));
+                stopService.getIndexByTransitIdAndStopName(transitId, stop.getStreet())));
         for (Stop stop : stopList) {
             capacityMap.put(stop, getCapacityByTransitAndStops(transitId, stop));
         }
@@ -172,7 +174,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     private Long countByValue(AccepterFeedback value, Integer transitId) {
         return convertAccepterFeedBacks(transitId)
                 .stream()
-                .filter(accepterFeedback -> accepterFeedback==value)
+                .filter(accepterFeedback -> accepterFeedback == value)
                 .count();
     }
 
