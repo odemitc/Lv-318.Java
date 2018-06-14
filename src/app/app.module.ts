@@ -52,17 +52,18 @@ import {
   MatTreeModule
 } from '@angular/material';
 
-import { FormsModule } from '@angular/forms';
-import { ExcategoryService } from './services/excategory.service';
-import { MenuComponent } from './components/menu/menu.component';
-import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
-import { TransitsComponent } from './components/transits/transits.component';
-import { MainComponent } from './components/main/main.component';
-import { SlideshowModule } from 'ng-simple-slideshow';
-import { FeedbackCriteriaComponent } from './components/feedback-criteria/feedback-criteria.component';
-import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/addFC/add-feedback-criteria.component';
-import { AddUserComponent } from './components/add-user/add-user.component';
-import { StopsComponent } from './components/stops/stops.component';
+import {FormsModule} from '@angular/forms';
+import {ExcategoryService} from './services/excategory.service';
+import {MenuComponent} from './components/menu/menu.component';
+import {NonExCategoryComponent} from './components/non-ex-category/non-ex-category.component';
+import {TransitsComponent} from './components/transits/transits.component';
+import {MainComponent} from './components/main/main.component';
+import {SlideshowModule} from 'ng-simple-slideshow';
+import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
+import {AddFeedbackCriteriaComponent} from './components/feedback-criteria/addFC/add-feedback-criteria.component';
+import {AddUserComponent} from './components/add-user/add-user.component';
+import {StopsComponent} from './components/stops/stops.component';
+import {UserService} from './services/user.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -149,7 +150,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService],
+  providers: [ExcategoryService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
