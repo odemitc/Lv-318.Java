@@ -1,7 +1,7 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {ExcategoryModel} from "../../models/excategory.model";
-import {ExcategoryService} from "../../services/excategory.service";
-import {Observable} from "rxjs/index";
+import { Component, OnInit } from '@angular/core';
+import { ExcategoryModel } from '../../models/excategory.model';
+import { ExcategoryService } from '../../services/excategory.service';
+import { Observable } from 'rxjs/index';
 
 @Component({
   selector: 'app-excategory',

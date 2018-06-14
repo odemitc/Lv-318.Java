@@ -9,11 +9,13 @@
       <mat-cell *matCellDef="let transit" [routerLink]="['/stop', transit.id]"> {{transit.name}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="route">
-      <mat-header-cell *matHeaderCellDef> Route </mat-header-cell>
-      <mat-cell *matCellDef="let transit"[routerLink]="['/show-transit-scheme', transit.id]"> {{transit.stops[0].street }} - {{ transit.stops[transit.stops.length-1].street }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef> Route</mat-header-cell>
+      <mat-cell *matCellDef="let transit"> {{transit.stops[0].street }} - {{
+        transit.stops[transit.stops.length-1].street }}
+      </mat-cell>
     </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
 </div>
 <div class="AddTransit">

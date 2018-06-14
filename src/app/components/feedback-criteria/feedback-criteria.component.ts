@@ -1,5 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {FeedbackCService} from '../../services/feedbackC.service';
+import { Component, OnInit } from '@angular/core';
+import { FeedbackCService } from '../../services/feedbackC.service';
 
 @Component({
   selector: 'app-feedback-criteria',
@@ -10,7 +10,8 @@ import {FeedbackCService} from '../../services/feedbackC.service';
 export class FeedbackCriteriaComponent implements OnInit {
   feedbackCs: Array<any>;
 
-  constructor(private feedbackCService: FeedbackCService) { }
+  constructor(private feedbackCService: FeedbackCService) {
+  }
 
   ngOnInit() {
     this.feedbackCService.getAll().subscribe(
