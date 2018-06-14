@@ -1,9 +1,14 @@
+
 <div class="feedbackCriteria">
   <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
-
-  <table mat-table [dataSource]="feedbackCriterias" class="mat-elevation-z8">
+  <form>
+    <div>
+      <input type="text" [(ngModel)]="filteredType" placeholder="search text goes here">
+    </div>
+  </form>
+  <table mat-table [dataSource]="feedbackCriterias | filter:filteredType:'type'" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
       <mat-cell *matCellDef="let feedbackCriteria"> {{feedbackCriteria.id}}</mat-cell>

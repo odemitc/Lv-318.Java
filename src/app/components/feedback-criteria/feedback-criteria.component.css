@@ -1,13 +1,23 @@
 .mat-form-field {
   font-size: 14px;
   width: 400px;
-  margin: 150px 400px;
+  margin: 100px 400px;
 }
 .mat-elevation-z8{
   width: 800px;
-  margin: 150px auto;
+  margin: 100px auto;
+}
+.feedbackCriteria input{
+  margin: auto 400px;
+}
+.input:invalid ~ span:after {
+  content: '✖';
+
 }
 
+.input:valid ~ span:after {
+  content: '✓';
+}
 
 
 

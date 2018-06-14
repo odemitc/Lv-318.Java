@@ -10,10 +10,14 @@ import {StopsComponent} from "./components/stops/stops.component";
 const routes: Routes = [
   {
     path: 'category/:top/:city', component: NonExCategoryComponent
+    // children: [
+    //   {
+    //     path: ':id', component: TransitsComponent
+    //   }
+    // ]
   },
-  {
-    path: 'category/:top/:city/:id', component: TransitsComponent
-  },
+  {path: 'category/:top/:city/:id', component: TransitsComponent},
+
   {path: 'stop/:id', component: StopsComponent},
   {
     path: 'main', component: MainComponent

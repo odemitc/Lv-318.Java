@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/index';
 import {ExcategoryModel} from '../../models/excategory.model';
 import {NonExCategoryService} from '../../services/non-ex-category.service';
 import {Category} from '../../models/category';
+import {TransitsComponent} from "../transits/transits.component";
 
 @Component({
   selector: 'app-non-ex-category',
@@ -11,7 +12,8 @@ import {Category} from '../../models/category';
   styleUrls: ['./non-ex-category.component.css']
 })
 export class NonExCategoryComponent implements OnInit {
-  private list: Observable<ExcategoryModel[]>;
+  public list: Observable<ExcategoryModel[]>;
+   serverURL = 'http://localhost:8080/category/img?link=';
 
   displayedColumns = ['id', 'name', 'nextLevelCategory_name'];
 
@@ -19,6 +21,8 @@ export class NonExCategoryComponent implements OnInit {
   city: String;
   private sub: any;
 
+  @ViewChild(TransitsComponent)
+  private transitChild: TransitsComponent;
 
   constructor(private service: NonExCategoryService, private route: ActivatedRoute) {
   }
@@ -29,10 +33,5 @@ export class NonExCategoryComponent implements OnInit {
       this.city = params['city'];
       this.list = this.service.getByNames(this.city, this.top);
     });
-  }
-
-  deleteCategory(category: Category): void {
-    this.service.deleteCategory(category);
-    this.list = this.service.getByNames(this.city, this.top);
   }
 }

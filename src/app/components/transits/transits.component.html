@@ -1,5 +1,4 @@
 <div class="transit">
-
   <table mat-table [dataSource]="transits" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
@@ -17,7 +16,6 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
 </div>
-
 <div class="AddTransit">
   <h2 class="mat-h2">Add transit</h2>
   <form class="Test" (ngSubmit)="onSubmit()" #myForm="ngForm">
