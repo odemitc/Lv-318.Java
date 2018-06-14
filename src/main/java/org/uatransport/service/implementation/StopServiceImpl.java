@@ -5,19 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.uatransport.entity.FeedbackCriteria;
 import org.uatransport.entity.Stop;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.StopRepository;
 import org.uatransport.service.StopService;
-import org.uatransport.service.model.CapacityFeedback;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Service
 @Transactional
@@ -75,20 +68,18 @@ public class StopServiceImpl implements StopService {
     }
 
     public List<Stop> getByTransitId(Integer id) {
-
         return stopRepository.findByTransitId(id);
     }
 
     @Override
     public Stop getByTransitIdAndStopName(Integer transitId, String street) {
-        return stopRepository.findByTransitIdAndStopName(transitId, street)
-                .orElseThrow(() -> new ResourceNotFoundException("Stop  not found"));
+        return stopRepository.findByTransitIdAndStopName(transitId, "\"" +street + "\"" );
     }
 
     @Override
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
         if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId()))
-            return stopRepository.findIndexByTransitIdAndStopName(transitId, street);
+            return stopRepository.findIndexByTransitIdAndStopName(transitId,"\"" + street + "\"");
         else throw new ResourceNotFoundException("Stop  not found");
 
     }
