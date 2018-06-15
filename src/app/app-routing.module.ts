@@ -29,7 +29,9 @@ const routes: Routes = [
   {
     path: 'user/add', component: AddUserComponent
   },
-  {path: 'show-transit-scheme/:id', component: StopsGridComponent}
+  {
+    path: 'show-transit-scheme/:id', component: StopsGridComponent
+  }
 
 
 ];
