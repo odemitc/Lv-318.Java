@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
 
 import {DiagramService} from '../../../../services/diagram.service';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-raiting-diagram',
@@ -16,18 +17,18 @@ export class RaitingDiagramComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.diagramService.getResults('./assets/mockDataRatingDiagram.json')
+    this.diagramService.getResults(environment.serverURL + '/feedback/accepterMap/' + this.id)
       .subscribe(res => {
         const CHART = document.getElementById('doughnut');
 
         const doughnut = new Chart(CHART, {
           type: 'doughnut',
           data: {
-            labels: ['bad', 'so-so', 'good'],
+            labels: Object.keys(res),
             datasets: [{
               label: 'Rating diagram',
               fill: true,
-              backgroundColor: ['red', 'yellow', 'green'],
+              backgroundColor: ['green', 'red', 'yellow'],
               borderColor: 'gray',
               clickable: false,
               borderCapStyle: 'butt',
