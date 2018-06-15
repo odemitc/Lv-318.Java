@@ -1,6 +1,9 @@
 language: java
 jdk: oraclejdk8
 
+install:
+  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
 script:
   mvn clean install
 
@@ -9,8 +12,8 @@ script:
 
 branches:
   only:
-  - deploy
+    deploy
 
 notifications:
   email:
-  - s.turchynskyi@gmail.com
+    s.turchynskyi@gmail.com
