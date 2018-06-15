@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import { Injectable } from '@angular/core';
 import {FeedbackCriteria} from '../models/feedback-criteria.model';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import { MessageService} from './message.service';
+import { environment } from '../../environments/environment';
 
 
 const httpOptions = {
@@ -13,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class FeedbackCriteriaService {
-  private fcUrl = 'http://localhost:8080/feedback-criteria';
+  private fcUrl = environment.serverURL + '/feedback-criteria';
 
 
   constructor(private  http: HttpClient,
