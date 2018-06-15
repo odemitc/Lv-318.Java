@@ -20,6 +20,7 @@ export class StopService {
   addStop(stop: Stop, id: number): Observable<Stop> {
     return this.http.post<Stop>(this.serviceUrl + '/' + id, stop);
   }
+  
 
 
 }

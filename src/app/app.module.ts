@@ -11,14 +11,6 @@ import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { ExcategoryComponent } from './components/excategory/excategory.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 // import 'hammerjs';
@@ -60,7 +52,9 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
+  MatPaginator,
+  MatTableDataSource
 } from '@angular/material';
 
 import {FormsModule} from '@angular/forms';
@@ -78,9 +72,10 @@ import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
 import { FilterPipe } from './filter.pipe';
 
-import { StopsComponent } from "./components/stops/stops.component";
-import { UserService } from "./services/user.service";
+
 import { StopsGridComponent } from "./components/stops/stops-grid.component";
+import { QuestionComponent } from './components/question/question.component';
+import { AddQuestionComponent } from './components/question/add-question/add-question.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -103,11 +98,12 @@ export function createTranslateLoader(http: HttpClient) {
     FeedbackCriteriaComponent,
     AddUserComponent,
     StopsComponent,
-
     MessageComponent,
     StopsComponent,
     FilterPipe,
-    StopsGridComponent
+    StopsGridComponent,
+    QuestionComponent,
+    AddQuestionComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -144,7 +140,9 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+   
+    
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatSidenavModule,
@@ -164,6 +162,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatGridListModule,
     MatIconModule,
     MatCheckboxModule,
+    MatPaginatorModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,27 +1,9 @@
 
-.mat-form-field {
+.feedbackCriteria{
   font-size: 14px;
-  width: 400px;
-  margin: 100px 400px;
+  width: 50%;
+  margin: 150px 400px;
 }
-
-.feedbackForm {
-  width: 800px;
-  margin: 100px auto;
+.mat-elevation-z8{
+  width: 100%; 
 }
-.feedbackCriteria input{
-  margin: auto 400px;
-}
-.input:invalid ~ span:after {
-  content: '✖';
-
-}
-
-.input:valid ~ span:after {
-  content: '✓';
-}
-
-
-
-
-
