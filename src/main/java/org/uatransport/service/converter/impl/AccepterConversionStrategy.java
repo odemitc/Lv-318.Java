@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.uatransport.entity.Feedback;
 import org.uatransport.service.converter.ConversionStrategy;
-import org.uatransport.service.model.AccepterFeedback;
+import org.uatransport.service.converter.model.AccepterFeedback;
 
 public class AccepterConversionStrategy implements ConversionStrategy<AccepterFeedback> {
 

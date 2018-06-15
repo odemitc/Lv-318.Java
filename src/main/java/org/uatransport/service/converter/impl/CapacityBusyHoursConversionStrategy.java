@@ -4,10 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.uatransport.entity.Feedback;
 import org.uatransport.service.converter.ConversionStrategy;
-import org.uatransport.service.model.CapacityFeedback;
+import org.uatransport.service.converter.model.CapacityFeedback;
 
 public class CapacityBusyHoursConversionStrategy implements ConversionStrategy<CapacityFeedback> {
-
 
     @Override
     @SneakyThrows

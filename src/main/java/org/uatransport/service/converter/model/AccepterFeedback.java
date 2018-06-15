@@ -1,4 +1,4 @@
-package org.uatransport.service.model;
+package org.uatransport.service.converter.model;
 
 public enum  AccepterFeedback {
     YES,
