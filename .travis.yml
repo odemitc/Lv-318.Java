@@ -5,8 +5,11 @@ sudo: required
 services:
   postgresql
 
-addons:
-  postgresql: "9.6"
+postgres:
+  adapter: postgresql
+  database: uaTransport
+  username: postgres
+  password: 1
 
 before_script:
   - psql -U postgres -c 'CREATE DATABASE uatransport;'
