@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.Stop;
 import org.uatransport.exception.ResourceNotFoundException;
@@ -66,20 +67,22 @@ public class StopServiceImpl implements StopService {
         }
         return stopRepository.findByStreet(street);
     }
-
+    @Transactional
     public List<Stop> getByTransitId(Integer id) {
         return stopRepository.findByTransitId(id);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Stop getByTransitIdAndStopName(Integer transitId, String street) {
-        return stopRepository.findByTransitIdAndStopName(transitId, "\"" +street + "\"" );
+        return stopRepository.findByTransitIdAndStopName(transitId, street );
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
         if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId()))
-            return stopRepository.findIndexByTransitIdAndStopName(transitId,"\"" + street + "\"");
+            return stopRepository.findIndexByTransitIdAndStopName(transitId, street );
         else throw new ResourceNotFoundException("Stop  not found");
 
     }
