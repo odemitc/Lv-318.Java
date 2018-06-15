@@ -5,9 +5,12 @@ sudo: required
 services:
   postgresql
 
+addons:
+  postgresql: "9.6"
+
 before_script:
-  - psql -c "CREATE DATABASE uatransport;" -U postgres
-  - psql -c "ALTER USER postgres WITH PASSWORD '1';" -U postgres
+  - psql -U postgres -c 'CREATE DATABASE uatransport;'
+  - psql -U postgres -c "ALTER USER postgres WITH PASSWORD '1';"
 #  - psql -c "CREATE USER postgres WITH PASSWORD '1';" -U postgres
 
 install:
