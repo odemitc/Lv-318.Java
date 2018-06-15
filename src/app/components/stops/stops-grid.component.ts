@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {Stop} from "../../models/stop.model";
-import {ActivatedRoute} from "@angular/router";
-import {StopService} from "../../services/stop.service";
-import {Observable} from "rxjs/index";
+import {Stop} from '../../models/stop.model';
+import {ActivatedRoute} from '@angular/router';
+import {StopService} from '../../services/stop.service';
+import {Observable} from 'rxjs/index';
 
 @Component({
   selector: 'stops-grid',

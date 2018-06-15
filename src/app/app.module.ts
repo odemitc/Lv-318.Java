@@ -66,6 +66,11 @@ import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
 import { FilterPipe } from './filter.pipe';
 import { StopsGridComponent } from './components/stops/stops-grid.component';
+import { BusyHoursDiagramComponent } from './components/stops/components/busy-hours-diagram/busy-hours-diagram.component';
+import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
+import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
+import { StatisticAverageRateComponent } from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
+import {DiagramService} from './services/diagram.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -88,11 +93,14 @@ export function createTranslateLoader(http: HttpClient) {
     FeedbackCriteriaComponent,
     AddUserComponent,
     StopsComponent,
-
     MessageComponent,
     StopsComponent,
     FilterPipe,
-    StopsGridComponent
+    StopsGridComponent,
+    BusyHoursDiagramComponent,
+    RaitingDiagramComponent,
+    AverageRateComponent,
+    StatisticAverageRateComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -157,7 +165,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService],
+  providers: [ExcategoryService, UserService, DiagramService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

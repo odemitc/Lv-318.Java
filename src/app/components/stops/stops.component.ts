@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 import { Stop } from '../../models/stop.model';
 import { StopService } from '../../services/stop.service';
+import {BusyHoursDiagramComponent} from './components/busy-hours-diagram/busy-hours-diagram.component';
 
 @Component({
   selector: 'app-stops',
@@ -16,6 +17,7 @@ export class StopsComponent implements OnInit {
   stop = new Stop();
   stopsList: Observable<Stop[]>;
   displayedColumns = ['id', 'street'];
+  @ViewChild(BusyHoursDiagramComponent) busyHoursDiadram: BusyHoursDiagramComponent;
 
   constructor(private stopService: StopService, private route: ActivatedRoute) {
   }
