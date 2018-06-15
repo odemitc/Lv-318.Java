@@ -3,9 +3,8 @@ jdk: oraclejdk8
 sudo: required
 
 before_script:
-  - psql -U postgres -c 'CREATE DATABASE "uatransport";'
-  - psql -U postgres -c "ALTER USER postgres WITH PASSWORD '1';"
-  - "rake db:migrate"
+  - "psql -U postgres -c 'CREATE DATABASE "uatransport";'"
+  - "psql -U postgres -c "ALTER USER postgres WITH PASSWORD '1';""
 #  - psql -c "CREATE USER postgres WITH PASSWORD '1';" -U postgres
 
 services:
