@@ -4,8 +4,8 @@ jdk: oraclejdk8
 script:
 mvn clean install
 
-before_install:
-- jdk_switcher use oraclejdk8
+#before_install:
+#- jdk_switcher use oraclejdk8
 
 branches:
   only:
