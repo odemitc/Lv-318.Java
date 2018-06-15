@@ -5,6 +5,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
 
+import {AuthService} from './services/auth/auth.service';
 import {AppComponent} from './app.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
@@ -61,7 +62,6 @@ import {SlideshowModule} from 'ng-simple-slideshow';
 import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
 import {AddUserComponent} from './components/add-user/add-user.component';
 
-import {StopsComponent} from './components/stops/stops.component';
 import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
 import { FilterPipe } from './filter.pipe';
@@ -71,6 +71,7 @@ import { RaitingDiagramComponent } from './components/stops/components/raiting-d
 import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
 import { StatisticAverageRateComponent } from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
 import {DiagramService} from './services/diagram.service';
+import { CallbackComponent } from './components/callback/callback.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -92,15 +93,14 @@ export function createTranslateLoader(http: HttpClient) {
     MainComponent,
     FeedbackCriteriaComponent,
     AddUserComponent,
-    StopsComponent,
     MessageComponent,
-    StopsComponent,
     FilterPipe,
     StopsGridComponent,
     BusyHoursDiagramComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
-    StatisticAverageRateComponent
+    StatisticAverageRateComponent,
+    CallbackComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -165,7 +165,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
