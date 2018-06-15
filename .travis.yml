@@ -6,10 +6,12 @@ services:
 
 before_script:
   - psql -c 'create database uatransport;' -U postgres
-#  - psql -c "ALTER USER postgres WITH PASSWORD '1';" -U postgres
 
 addons:
   postgresql: "9.6"
+
+before_install:
+- jdk_switcher use oraclejdk8
 
 install:
   mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
@@ -17,8 +19,9 @@ install:
 script:
   mvn clean install
 
-#before_install:
-#- jdk_switcher use oraclejdk8
+cache:
+  directories:
+  - $HOME/.m2
 
 branches:
   only:
