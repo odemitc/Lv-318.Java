@@ -21,5 +21,4 @@ export class StopService {
     return this.http.post<Stop>(this.serviceUrl + '/' + id, stop);
   }
 
-
 }
