@@ -26,54 +26,51 @@ public class FeedbackCriteriaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FeedbackCriteria> updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria, @PathVariable Integer id) {
-        FeedbackCriteria updateFeedbackCriteria = feedbackCriteriaService.update(feedbackCriteria.setId(id));
-        return new ResponseEntity<>(feedbackCriteriaService.update(feedbackCriteria.setId(id)), HttpStatus.OK);
+    public FeedbackCriteria updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria, @PathVariable Integer id) {
+        return feedbackCriteriaService.update(feedbackCriteria.setId(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<FeedbackCriteria>> getAllFeedbackCriteria() {
-        return new ResponseEntity<>(feedbackCriteriaService.getAll(), HttpStatus.OK);
+    public List<FeedbackCriteria> getAllFeedbackCriteria() {
+        return feedbackCriteriaService.getAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FeedbackCriteria> getById(@PathVariable Integer id) {
-
-        return new ResponseEntity<>(feedbackCriteriaService.getById(id), HttpStatus.OK);
+    public FeedbackCriteria getById(@PathVariable Integer id) {
+        return feedbackCriteriaService.getById(id);
     }
 
     @GetMapping("/type/{type}")
-    public ResponseEntity<List<FeedbackCriteria>> getByType(@PathVariable(value = "type") FeedbackCriteria.FeedbackType type) {
-        return new ResponseEntity<>(feedbackCriteriaService.getByType(type), HttpStatus.OK);
+    public List<FeedbackCriteria> getByType(@PathVariable(value = "type") FeedbackCriteria.FeedbackType type) {
+        return feedbackCriteriaService.getByType(type);
     }
 
 
     @GetMapping("/categoryId/{categoryId}")
-    public ResponseEntity<List<FeedbackCriteria>> getByCategoryId(@PathVariable(value = "categoryId") Integer categoryId) {
-        return new ResponseEntity<>(feedbackCriteriaService.getByCategoryId(categoryId), HttpStatus.OK);
+    public List<FeedbackCriteria> getByCategoryId(@PathVariable(value = "categoryId") Integer categoryId) {
+        return feedbackCriteriaService.getByCategoryId(categoryId);
     }
 
 
     @GetMapping("/questionId/{questionId}")
-    public ResponseEntity<List<FeedbackCriteria>> getByQuestionsId(@PathVariable(value = "questionId") Integer questionId) {
-        return new ResponseEntity<>(feedbackCriteriaService.getByQuestionsId(questionId), HttpStatus.OK);
+    public List<FeedbackCriteria> getByQuestionsId(@PathVariable(value = "questionId") Integer questionId) {
+        return feedbackCriteriaService.getByQuestionsId(questionId);
 
     }
 
     @GetMapping("/groupId/{groupId}")
-    public ResponseEntity<List<FeedbackCriteria>> getByGroupId(@PathVariable(value = "groupId") Integer groupId) {
-        return new ResponseEntity<>(feedbackCriteriaService.getByQuestionsGroupId(groupId), HttpStatus.OK);
+    public List<FeedbackCriteria> getByGroupId(@PathVariable(value = "groupId") Integer groupId) {
+        return feedbackCriteriaService.getByQuestionsGroupId(groupId);
     }
 
     @GetMapping("/question/{question}")
-    public ResponseEntity<List<FeedbackCriteria>> getByQuestions(@PathVariable(value = "question") String question) {
-        return new ResponseEntity<>(feedbackCriteriaService.getByQuestionsName(question), HttpStatus.OK);
+    public List<FeedbackCriteria> getByQuestions(@PathVariable(value = "question") String question) {
+        return feedbackCriteriaService.getByQuestionsName(question);
     }
 
     @GetMapping("/weight/{weight}")
-    public ResponseEntity<List<FeedbackCriteria>> getByWeight(@PathVariable(value = "weight") Integer weight) {
-        System.out.println(feedbackCriteriaService.getByWeight(weight));
-        return new ResponseEntity<>(feedbackCriteriaService.getByWeight(weight), HttpStatus.OK);
+    public List<FeedbackCriteria> getByWeight(@PathVariable(value = "weight") Integer weight) {
+        return feedbackCriteriaService.getByWeight(weight);
 
     }
 }

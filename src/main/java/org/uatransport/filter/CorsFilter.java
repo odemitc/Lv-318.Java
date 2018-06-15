@@ -16,6 +16,8 @@ import static org.uatransport.config.ConfigurationUtils.getPropertyValue;
 @Component
 public class CorsFilter implements Filter {
 
+    private Logger logger = LoggerFactory.getLogger(CorsFilter.class);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -29,6 +31,7 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Methods",getPropertyValue("Access-Control-Allow-Methods"));
         response.setHeader("Access-Control-Allow-Headers", getPropertyValue("Access-Control-Allow-Headers"));
         filterChain.doFilter(servletRequest,response);
+
     }
 
     @Override
