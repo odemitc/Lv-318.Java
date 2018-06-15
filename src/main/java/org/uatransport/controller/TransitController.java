@@ -21,8 +21,8 @@ public class TransitController {
     private final TransitService transitService;
     private final ModelMapper modelMapper;
 
-    @GetMapping(params = "id")
-    public ResponseEntity<TransitDTO> getTransitById(@RequestParam("id") Integer id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<TransitDTO> getTransitById(@PathVariable Integer id) {
         TransitDTO transitDTO = modelMapper.map(transitService.getById(id), TransitDTO.class);
         return new ResponseEntity<>(transitDTO, HttpStatus.OK);
     }
@@ -51,14 +51,14 @@ public class TransitController {
         return new ResponseEntity<>(transitService.add(transit), HttpStatus.CREATED);
     }
 
-    @DeleteMapping(params = "id")
-    public void deleteTransit(@RequestParam("id") Integer id) {
+    @DeleteMapping("/{id}")
+    public void deleteTransit(@PathVariable Integer id) {
         transitService.delete(id);
     }
 
-    @PutMapping(params = "id")
+    @PutMapping("/{id}")
     public ResponseEntity<Transit> updateTransit(@RequestBody TransitDTO transitDTO,
-                                                 @RequestParam("id") Integer id) {
+                                                 @PathVariable Integer id) {
         Transit updatedTransit = transitService.update(modelMapper.map(transitDTO, Transit.class).setId(id));
         return new ResponseEntity<>(updatedTransit, HttpStatus.OK);
     }
