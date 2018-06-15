@@ -53,7 +53,7 @@ INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (1, 5, 
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (1, 6, 6);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (1, 7, 7);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (1, 8, 8);
-INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (1, 9, 9);
+INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (1, 9, 0);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 10, 1);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 11, 2);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 3, 3);
@@ -61,7 +61,7 @@ INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 12,
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 13, 5);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 14, 6);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 15, 7);
-INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 16, 8);
+INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (2, 16, 0);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 14, 2);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 15, 3);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 18, 4);
@@ -74,7 +74,7 @@ INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 22,
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 23, 11);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 24, 12);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 25, 13);
-INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 26, 14);
+INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 26, 0);
 INSERT INTO public.transit_stop (transit_id, stop_id, stop_index) VALUES (4, 10, 1);
 
 INSERT INTO public.feedback_criteria (id, type, weight, category_id) VALUES (1, 'RATING', 2, 4);
