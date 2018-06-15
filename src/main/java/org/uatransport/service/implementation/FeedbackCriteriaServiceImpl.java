@@ -42,7 +42,7 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
         }
 
         return feedbackCriteriaRepository.findById(feedbackCriteria.getId()).orElseThrow(() -> new ResourceNotFoundException(
-            String.format("This FeedbackCriteria does not found", feedbackCriteria)));
+            String.format("This FeedbackCriteria does not found", feedbackCriteria))); // getting a warning too many arguments for format string
     }
 
     @Override
