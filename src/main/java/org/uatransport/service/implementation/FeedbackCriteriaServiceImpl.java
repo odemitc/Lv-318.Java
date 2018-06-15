@@ -8,7 +8,7 @@ import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackCriteriaRepository;
 import org.uatransport.service.FeedbackCriteriaService;
 
-import java.util.Collections;
+;
 import java.util.List;
 
 @Service
@@ -42,7 +42,7 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
         }
 
         return feedbackCriteriaRepository.findById(feedbackCriteria.getId()).orElseThrow(() -> new ResourceNotFoundException(
-            String.format("This FeedbackCriteria does not found", feedbackCriteria))); // getting a warning too many arguments for format string
+            String.format("This FeedbackCriteria does not found", feedbackCriteria)));
     }
 
     @Override
