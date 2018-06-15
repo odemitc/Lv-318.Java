@@ -1,17 +1,18 @@
 language: java
 jdk: oraclejdk8
 
-before_script:
-  - sudo psql -c 'create database uaTransport;' -U postgres
-  - psql -c "SELECT * FROM pg_catalog.pg_tables;" -U postgres
-  - psql -c "ALTER USER postgres WITH PASSWORD '1';" -U postgres
-#  - psql -c "CREATE USER postgres WITH PASSWORD '1';" -U postgres
-
 services:
   postgresql
 
 env:
   DB=pgsql
+
+before_script:
+  - sudo psql -c 'create database uaTransport;' -U postgres
+  - psql -c "SELECT * FROM pg_database;" -U postgres
+  - psql -c "ALTER USER postgres WITH PASSWORD '1';" -U postgres
+#  - psql -c "CREATE USER postgres WITH PASSWORD '1';" -U postgres
+
 
 addons:
   postgresql: "9.6"
