@@ -1,15 +1,16 @@
-import {Component} from '@angular/core';
-import {Stop} from '../../models/stop.model';
-import {ActivatedRoute} from '@angular/router';
-import {StopService} from '../../services/stop.service';
-import {Observable} from 'rxjs/index';
+import { Component, OnInit } from '@angular/core';
+import { Stop } from '../../models/stop.model';
+import { ActivatedRoute } from '@angular/router';
+import { StopService } from '../../services/stop.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
-  selector: 'stops-grid',
+  selector: 'app-stops-grid',
   templateUrl: './stops-grid.component.html',
   styleUrls: ['./stops-grid.component.css']
 })
-export class StopsGridComponent {
+export class StopsGridComponent implements OnInit {
 
   private sub: any;
   public idTransit: number;

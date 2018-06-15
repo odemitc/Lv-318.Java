@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { User } from '../models/user.model';
+import { environment } from '../../environments/environment';
 
 
 const httpOptions = {
@@ -10,10 +11,10 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
+  private userUrl = environment.serverURL + '/user';
+
   constructor(private http: HttpClient) {
   }
-
-  private userUrl = 'http://localhost:8080/user';
 
 
   public deleteUser(user) {
