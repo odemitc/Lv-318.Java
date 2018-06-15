@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ExcategoryModel } from '../models/excategory.model';
-import { Settings } from '../settings';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Settings } from '../settings';
 })
 export class ExcategoryService {
 
-  private serviceUrl = Settings.URL + '/category';
+  private serviceUrl = environment.serverURL + '/category';
 
   constructor(private http: HttpClient) {
   }

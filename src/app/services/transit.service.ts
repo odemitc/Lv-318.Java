@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transit } from '../models/transit.model';
-import { Settings } from '../settings';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransitService {
 
-  private serviceUrl = Settings.URL + '/transit/';
+  private serviceUrl = environment.serverURL + '/transit/';
 
   constructor(private http: HttpClient) {
   }

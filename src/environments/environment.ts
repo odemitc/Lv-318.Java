@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  serverURL: 'http://localhost:8080',
+  auth: {
+    clientID: 'fMvXBLfJoy8yuoUoTGnTa8kI-3gEePfQ',
+    domain: 'uatransport.eu.auth0.com',
+    audience: 'http://localhost:4200',
+    redirect: 'http://localhost:4200/callback',
+    scope: 'openid profile email'
+  }
 };
 
 /*

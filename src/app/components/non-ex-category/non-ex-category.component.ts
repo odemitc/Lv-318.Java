@@ -1,20 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/index';
+import { Observable } from 'rxjs';
 import { ExcategoryModel } from '../../models/excategory.model';
 import { NonExCategoryService } from '../../services/non-ex-category.service';
 import { TransitsComponent } from '../transits/transits.component';
-import {Settings} from "../../settings";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-non-ex-category',
   templateUrl: './non-ex-category.component.html',
   styleUrls: ['./non-ex-category.component.css']
 })
+
 export class NonExCategoryComponent implements OnInit {
   public list: Observable<ExcategoryModel[]>;
 
-  serverURL = Settings.URL + '/category/img?link=';
+  serverURL = environment.serverURL + '/category/img?link=';
 
   displayedColumns = ['id', 'name', 'nextLevelCategory_name'];
 
