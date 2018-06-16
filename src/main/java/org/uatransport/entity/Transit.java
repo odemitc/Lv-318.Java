@@ -27,7 +27,7 @@ public class Transit {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private NonExtendableCategory category;
+    private ExtendableCategory category;
 
     @ManyToMany
     @JoinTable(name = "transit_stop",

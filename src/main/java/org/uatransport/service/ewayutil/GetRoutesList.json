@@ -1,0 +1,307 @@
+{
+  "routesList": {
+    "route": [
+      {
+        "id": "21",
+        "title": "1А",
+        "start_position": "0",
+        "stop_position": "438",
+        "transport": "bus"
+      },
+      {
+        "id": "316",
+        "title": "2А",
+        "start_position": "0",
+        "stop_position": "324",
+        "transport": "bus"
+      },
+      {
+        "id": "23",
+        "title": "3А",
+        "start_position": "0",
+        "stop_position": "541",
+        "transport": "bus"
+      },
+      {
+        "id": "168",
+        "title": "4А",
+        "start_position": "0",
+        "stop_position": "484",
+        "transport": "bus"
+      },
+      {
+        "id": "25",
+        "title": "5А",
+        "start_position": "0",
+        "stop_position": "597",
+        "transport": "bus"
+      },
+      {
+        "id": "26",
+        "title": "6А",
+        "start_position": "0",
+        "stop_position": "428",
+        "transport": "bus"
+      },
+      {
+        "id": "327",
+        "title": "7",
+        "start_position": "0",
+        "stop_position": "1174",
+        "transport": "bus"
+      },
+      {
+        "id": "317",
+        "title": "8",
+        "start_position": "0",
+        "stop_position": "640",
+        "transport": "bus"
+      },
+      {
+        "id": "107",
+        "title": "9",
+        "start_position": "0",
+        "stop_position": "1098",
+        "transport": "bus"
+      },
+      {
+        "id": "184",
+        "title": "10",
+        "start_position": "0",
+        "stop_position": "670",
+        "transport": "bus"
+      },
+      {
+        "id": "134",
+        "title": "11",
+        "start_position": "0",
+        "stop_position": "1090",
+        "transport": "bus"
+      },
+      {
+        "id": "325",
+        "title": "12",
+        "start_position": "0",
+        "stop_position": "982",
+        "transport": "bus"
+      },
+      {
+        "id": "210",
+        "title": "13",
+        "start_position": "0",
+        "stop_position": "970",
+        "transport": "bus"
+      },
+      {
+        "id": "135",
+        "title": "14",
+        "start_position": "0",
+        "stop_position": "812",
+        "transport": "bus"
+      },
+      {
+        "id": "35",
+        "title": "15",
+        "start_position": "0",
+        "stop_position": "691",
+        "transport": "bus"
+      },
+      {
+        "id": "36",
+        "title": "16",
+        "start_position": "0",
+        "stop_position": "782",
+        "transport": "bus"
+      },
+      {
+        "id": "330",
+        "title": "17",
+        "start_position": "0",
+        "stop_position": "748",
+        "transport": "bus"
+      },
+      {
+        "id": "280",
+        "title": "18",
+        "start_position": "0",
+        "stop_position": "912",
+        "transport": "bus"
+      },
+      {
+        "id": "176",
+        "title": "19",
+        "start_position": "0",
+        "stop_position": "1298",
+        "transport": "bus"
+      },
+      {
+        "id": "130",
+        "title": "20",
+        "start_position": "0",
+        "stop_position": "800",
+        "transport": "bus"
+      },
+      {
+        "id": "40",
+        "title": "21",
+        "start_position": "0",
+        "stop_position": "697",
+        "transport": "bus"
+      },
+      {
+        "id": "318",
+        "title": "22",
+        "start_position": "0",
+        "stop_position": "804",
+        "transport": "bus"
+      },
+      {
+        "id": "41",
+        "title": "23",
+        "start_position": "0",
+        "stop_position": "1385",
+        "transport": "bus"
+      },
+      {
+        "id": "304",
+        "title": "24",
+        "start_position": "0",
+        "stop_position": "664",
+        "transport": "bus"
+      },
+      {
+        "id": "87",
+        "title": "25",
+        "start_position": "0",
+        "stop_position": "1281",
+        "transport": "bus"
+      },
+      {
+        "id": "252",
+        "title": "26",
+        "start_position": "0",
+        "stop_position": "1001",
+        "transport": "bus"
+      },
+      {
+        "id": "324",
+        "title": "27",
+        "start_position": "0",
+        "stop_position": "1035",
+        "transport": "bus"
+      },
+      {
+        "id": "329",
+        "title": "28",
+        "start_position": "0",
+        "stop_position": "773",
+        "transport": "bus"
+      },
+      {
+        "id": "303",
+        "title": "29",
+        "start_position": "0",
+        "stop_position": "742",
+        "transport": "bus"
+      },
+      {
+        "id": "231",
+        "title": "30",
+        "start_position": "0",
+        "stop_position": "943",
+        "transport": "bus"
+      },
+      {
+        "id": "189",
+        "title": "31",
+        "start_position": "0",
+        "stop_position": "691",
+        "transport": "bus"
+      },
+      {
+        "id": "232",
+        "title": "37",
+        "start_position": "0",
+        "stop_position": "1059",
+        "transport": "bus"
+      },
+      {
+        "id": "342",
+        "title": "38",
+        "start_position": "0",
+        "stop_position": "867",
+        "transport": "bus"
+      },
+      {
+        "id": "334",
+        "title": "39",
+        "start_position": "0",
+        "stop_position": "918",
+        "transport": "bus"
+      },
+      {
+        "id": "165",
+        "title": "40",
+        "start_position": "0",
+        "stop_position": "1186",
+        "transport": "bus"
+      },
+      {
+        "id": "164",
+        "title": "41",
+        "start_position": "0",
+        "stop_position": "1136",
+        "transport": "bus"
+      },
+      {
+        "id": "60",
+        "title": "42",
+        "start_position": "0",
+        "stop_position": "516",
+        "transport": "bus"
+      },
+      {
+        "id": "162",
+        "title": "43",
+        "start_position": "0",
+        "stop_position": "764",
+        "transport": "bus"
+      },
+      {
+        "id": "214",
+        "title": "44",
+        "start_position": "0",
+        "stop_position": "870",
+        "transport": "bus"
+      },
+      {
+        "id": "228",
+        "title": "45",
+        "start_position": "0",
+        "stop_position": "429",
+        "transport": "bus"
+      },
+      {
+        "id": "212",
+        "title": "46",
+        "start_position": "0",
+        "stop_position": "1169",
+        "transport": "bus"
+      },
+      {
+        "id": "230",
+        "title": "47А",
+        "start_position": "0",
+        "stop_position": "873",
+        "transport": "bus"
+      },
+      {
+        "id": "246",
+        "title": "48",
+        "start_position": "0",
+        "stop_position": "580",
+        "transport": "bus"
+      }
+    ]
+  }
+}

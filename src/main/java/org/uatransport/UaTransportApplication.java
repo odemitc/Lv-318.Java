@@ -10,6 +10,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.uatransport.service.ewayutil.EwayRoutesListSaver;
+import org.uatransport.service.ewayutil.ewayentity.EwayResponseObject;
+import org.uatransport.service.ewayutil.ewayentity.EwayRoute;
+import org.uatransport.service.ewayutil.ewayentity.EwayRouteList;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 @SpringBootApplication
 public class UaTransportApplication {
@@ -19,5 +26,13 @@ public class UaTransportApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
         logger.debug("--Application Started--");
+
+        EwayRoutesListSaver ewayRoutesListSaver = (EwayRoutesListSaver) context.getBean(EwayRoutesListSaver.class);
+//        try {
+//            ewayRoutesListSaver.convertAndSaveEwayRoutes();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
     }
 }
