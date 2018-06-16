@@ -59,6 +59,6 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public List<Question> getByQuestionName(String questionName) {
-        return questionRepository.findByQuestionName(questionName);
+        return questionRepository.findByName(questionName);
     }
 }

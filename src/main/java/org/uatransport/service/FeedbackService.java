@@ -2,7 +2,6 @@ package org.uatransport.service;
 
 import org.uatransport.entity.Feedback;
 import org.uatransport.entity.FeedbackCriteria;
-import org.uatransport.entity.Stop;
 import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.service.model.AccepterFeedback;
 import org.uatransport.service.model.CapacityFeedback;
@@ -39,7 +38,7 @@ public interface FeedbackService {
 
     Map<Integer, Double> getDataForCapacityHoursDiagram(Integer transitId);
 
-    Map<Stop, Double> getDataForCapacityStopDiagram(Integer transitId);
+    Map<String, Double> getDataForCapacityStopDiagram(Integer transitId);
 
     EnumMap<AccepterFeedback, Double> getDataForAccepterDiagram(Integer transitId);
 
