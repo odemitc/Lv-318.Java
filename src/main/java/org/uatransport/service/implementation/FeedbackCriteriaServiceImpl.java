@@ -8,7 +8,7 @@ import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackCriteriaRepository;
 import org.uatransport.service.FeedbackCriteriaService;
 
-import java.util.Collections;
+;
 import java.util.List;
 
 @Service
@@ -57,19 +57,6 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
             .format("FeedbackCriteria with id '%s' not found", id)));
     }
 
-//    @Override
-//    @Transactional(readOnly = true)
-//    public List<FeedbackCriteria> getByGroupId(Integer groupId) {
-//        return Collections.emptyList();
-//    }
-
-//    @Override
-//    public List<FeedbackCriteria> getByQuestion(String question) {
-//        if (question.isEmpty()) {
-//            throw new IllegalArgumentException("Parameter should not be null");
-//        }
-//        return feedbackCriteriaRepository.findByQuestion(question);
-//    }
 
     @Override
     @Transactional(readOnly = true)
@@ -78,7 +65,32 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<FeedbackCriteria> getByCategoryId(Integer id) {
         return feedbackCriteriaRepository.findFeedbackCriteriaByNonExtendableCategoryId(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<FeedbackCriteria> getByWeight(Integer weight) {
+        return feedbackCriteriaRepository.findByWeight(weight);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<FeedbackCriteria> getByQuestionsName(String question) {
+        return feedbackCriteriaRepository.findByQuestionsName(question);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<FeedbackCriteria> getByQuestionsId(Integer questionId) {
+        return feedbackCriteriaRepository.findByQuestionsId(questionId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<FeedbackCriteria> getByQuestionsGroupId(Integer groupId) {
+        return feedbackCriteriaRepository.findByQuestionsGroupId(groupId);
     }
 }

@@ -1,6 +1,5 @@
 package org.uatransport.controller;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +9,10 @@ import org.uatransport.service.UserService;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
-
-
     private final UserService userService;
 
     @GetMapping("/all")

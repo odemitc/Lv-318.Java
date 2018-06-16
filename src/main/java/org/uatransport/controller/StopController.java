@@ -13,10 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/stop")
-@CrossOrigin()
 @RequiredArgsConstructor
 public class StopController {
-
   private final StopService stopService;
   private final TransitService transitService;
 

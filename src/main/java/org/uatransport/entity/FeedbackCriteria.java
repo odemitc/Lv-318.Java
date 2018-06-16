@@ -24,21 +24,23 @@ public class FeedbackCriteria {
 
     private Integer weight;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "feedbackCriteria")
+   @JsonManagedReference
+    @OneToMany
+    @JoinColumn(name = "criteria_id")
     private List<Question> questions;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "type", updatable = false)
     private FeedbackType type;
 
+
     @RequiredArgsConstructor
     public enum FeedbackType {
 
         RATING(new RatingConversionStrategy()),
-        ROUTE_BUSY_HOURS(new RouteBusyHoursConversionStrategy()),
+        ROUTE_BUSY_HOURS(new CapacityBusyHoursConversionStrategy()),
         ACCEPTER(new AccepterConversionStrategy()),
-        CAPACITY_BUSY_HOURS(new CapacityBusyHoursConversionStrategy());
+        CAPACITY(new CapacityBusyHoursConversionStrategy());
 
         private final ConversionStrategy<?> conversionStrategy;
 

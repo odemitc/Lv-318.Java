@@ -20,11 +20,10 @@ public class Question {
 
     private Integer groupId;
 
-    private String questionName;
+    private String name;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "criteria_id")
-    private FeedbackCriteria feedbackCriteria;
+
+
 
 }
+
