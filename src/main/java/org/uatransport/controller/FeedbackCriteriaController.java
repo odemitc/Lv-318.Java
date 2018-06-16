@@ -9,14 +9,11 @@ import org.uatransport.service.FeedbackCriteriaService;
 
 import java.util.List;
 
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/feedback-criteria")
-
 public class FeedbackCriteriaController {
     private final FeedbackCriteriaService feedbackCriteriaService;
-
 
     @PostMapping
     public ResponseEntity<FeedbackCriteria> addFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria) {

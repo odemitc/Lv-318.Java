@@ -10,7 +10,6 @@ import org.uatransport.entity.Stop;
 import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackRepository;
-import org.uatransport.repository.StopRepository;
 import org.uatransport.service.FeedbackService;
 import org.uatransport.service.StopService;
 import org.uatransport.service.model.AccepterFeedback;
@@ -144,11 +143,11 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .orElse(0.0);
     }
 
-    public Map<Stop, Double> getDataForCapacityStopDiagram(Integer transitId) {
-        Map<Stop, Double> capacityMap = new TreeMap<>(Comparator.comparingInt(stop ->
-                stopService.getIndexByTransitIdAndStopName(transitId, stop.getStreet())));
+    public Map<String, Double> getDataForCapacityStopDiagram(Integer transitId) {
+        Map<String, Double> capacityMap = new TreeMap<>(Comparator.comparingInt(stop ->
+                stopService.getIndexByTransitIdAndStopName(transitId, stop)));
         for (Stop stop : stopService.getByTransitId(transitId)) {
-            capacityMap.put(stop, getCapacityByTransitAndStops(transitId, stop));
+            capacityMap.put(stop.getStreet(), getCapacityByTransitAndStops(transitId, stop));
         }
         return capacityMap;
     }

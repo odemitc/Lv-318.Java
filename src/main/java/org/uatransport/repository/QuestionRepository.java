@@ -12,7 +12,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
     List<Question> findByGroupId(Integer groupId);
 
-    List<Question> findByQuestionName(String questionName);
+    List<Question> findByName(String questionName);
     
 
 }

@@ -14,10 +14,8 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/transit")
-@CrossOrigin
 @RequiredArgsConstructor
 public class TransitController {
-
     private final TransitService transitService;
     private final ModelMapper modelMapper;
 
