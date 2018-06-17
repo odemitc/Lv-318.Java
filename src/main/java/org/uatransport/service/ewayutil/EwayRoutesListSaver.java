@@ -30,7 +30,6 @@ public class EwayRoutesListSaver {
     private final TransitRepository transitRepository;
     private final CategoryRepository categoryRepository;
 
-    private String apiUrl = "https://api.eway.in.ua/";
     private String login = "vladlenonopko";
     private String password = "3knKuw8BvsqwP2n";
     private String function = "cities.GetRoutesList";
@@ -65,40 +64,6 @@ public class EwayRoutesListSaver {
         return httpClient.execute(getRequest, ewayRouteResponseHandler);
     }
 
-    private void testJsonRoutesList() throws FileNotFoundException {
-        Gson gson = new Gson();
-        EwayResponseObject object = gson.fromJson(new FileReader("D:\\SoftServeClient\\Lv-318.Java\\src\\main\\java\\org\\uatransport\\service\\ewayutil\\GetRoutesList.json"), EwayResponseObject.class);
-        EwayRouteList ewayRouteList = object.getRoutesList();
-        for (EwayRoute ewayRoute : ewayRouteList.getRoute()) {
-            System.out.println(ewayRoute);
-        }
-    }
-
-    private void testJsonResp() {
-        EwayRoute first = new EwayRoute();
-        first.setId(1);
-        first.setTitle("28");
-        first.setStart_position(0);
-        first.setStop_position(28);
-        first.setTransport("bus");
-
-        EwayRoute second = new EwayRoute();
-        second.setId(2);
-        second.setTitle("35");
-        second.setStart_position(1);
-        second.setStop_position(35);
-        second.setTransport("bus2");
-
-        EwayRoute[] array = {first, second};
-        EwayRouteList list = new EwayRouteList();
-        list.setRoute(array);
-        EwayResponseObject object = new EwayResponseObject();
-        object.setRoutesList(list);
-
-        Gson gson = new Gson();
-        System.out.println(gson.toJson(object));
-    }
-
     public void convertAndSaveEwayRoutes() {
         EwayResponseObject object = null;
         try {
@@ -127,10 +92,4 @@ public class EwayRoutesListSaver {
             transitRepository.save(transit);
         }
     }
-
-    public static void main(String[] args) {
-
-    }
-
-
 }

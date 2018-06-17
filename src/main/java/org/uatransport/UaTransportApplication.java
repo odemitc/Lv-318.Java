@@ -11,6 +11,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.uatransport.service.ewayutil.EwayRoutesListSaver;
+import org.uatransport.service.ewayutil.EwayStopListSaver;
 import org.uatransport.service.ewayutil.ewayentity.EwayResponseObject;
 import org.uatransport.service.ewayutil.ewayentity.EwayRoute;
 import org.uatransport.service.ewayutil.ewayentity.EwayRouteList;
@@ -27,12 +28,12 @@ public class UaTransportApplication {
         ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
         logger.debug("--Application Started--");
 
-        EwayRoutesListSaver ewayRoutesListSaver = (EwayRoutesListSaver) context.getBean(EwayRoutesListSaver.class);
-//        try {
+//        EwayRoutesListSaver ewayRoutesListSaver = (EwayRoutesListSaver) context.getBean(EwayRoutesListSaver.class);
 //            ewayRoutesListSaver.convertAndSaveEwayRoutes();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
+//        EwayStopListSaver stopListSaver = (EwayStopListSaver) context.getBean(EwayStopListSaver.class);
+//        stopListSaver.convertAndSaveStops("21");
+
 
     }
 }

@@ -18,4 +18,7 @@ public class Stop {
     @GeneratedValue
     private Integer id;
     private String street;
+    private Double lat;
+    private Double lng;
+    private Integer direction;
 }
