@@ -14,12 +14,14 @@ before_install:
   - jdk_switcher use oraclejdk8
 
 install:
-  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn package
 
-script:
-  - mvn clean install
+before_deploy:
   - cd target
   - zip -r server *
+  - mkdir -p upload
+  - mv server.zip upload/server.zip
   - cd ..
 #  - pwd
 #  - cd target/jar
@@ -37,7 +39,7 @@ deploy:
       branch: deploy
     bucket: travisdeploybucket
     region: eu-central-1
-    local-dir: target/jar
+    local-dir: upload
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
