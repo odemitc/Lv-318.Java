@@ -5,11 +5,37 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
 
+import {AuthService} from './services/auth/auth.service';
 import {AppComponent} from './app.component';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ExcategoryService} from './services/excategory.service';
+import {MenuComponent} from './components/menu/menu.component';
+import {NonExCategoryComponent} from './components/non-ex-category/non-ex-category.component';
+import {TransitsComponent} from './components/transits/transits.component';
+import {MainComponent} from './components/main/main.component';
+import {SlideshowModule} from 'ng-simple-slideshow';
+import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
+import {AddUserComponent} from './components/add-user/add-user.component';
+
+import {MessageComponent} from './components/message/message.component';
+import {UserService} from './services/user.service';
+import {FilterPipe} from './filter.pipe';
+
+
+import {StopsGridComponent} from './components/stops/stops-grid.component';
+import {QuestionComponent} from './components/question/question.component';
+import {AddQuestionComponent} from './components/question/add-question/add-question.component';
+import {RaitingDiagramComponent} from './components/stops/components/raiting-diagram/raiting-diagram.component';
+import {AverageRateComponent} from './components/stops/components/average-rate/average-rate.component';
+import {StatisticAverageRateComponent} from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
+import {DiagramService} from './services/diagram.service';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
+import {CallbackComponent} from './components/callback/callback.component';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -99,10 +125,13 @@ export function createTranslateLoader(http: HttpClient) {
     StopsComponent,
     FilterPipe,
     StopsGridComponent,
-    BusyHoursDiagramComponent,
+    QuestionComponent,
+    AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
     StatisticAverageRateComponent,
+    CallbackComponent,
+    BusyStopsDiagramComponent,
     AddFeedbackComponent
   ],
   exports: [
@@ -146,10 +175,15 @@ export function createTranslateLoader(http: HttpClient) {
     ReactiveFormsModule
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, MatSidenavModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
     HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MatTableModule,
+    MatTabsModule,
     MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
@@ -164,6 +198,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatGridListModule,
     MatIconModule,
     MatCheckboxModule,
+    MatPaginatorModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -172,9 +207,13 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService,FeedbackService],
+  providers: [ExcategoryService, UserService, DiagramService,FeedbackService,AuthService],
   bootstrap: [AppComponent],
   entryComponents: [AddFeedbackComponent]
+
+
 })
 export class AppModule {
 }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

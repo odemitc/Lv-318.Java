@@ -1,25 +1,23 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
 
-import {DiagramService} from '../../../../services/diagram.service';
 import {environment} from '../../../../../environments/environment';
-
+import {DiagramService} from '../../../../services/diagram.service';
 
 @Component({
-  selector: 'app-busy-hours-diagram',
-  templateUrl: './busy-hours-diagram.component.html',
-  styleUrls: ['./busy-hours-diagram.component.css']
+  selector: 'app-busy-stops-diagram',
+  templateUrl: './busy-stops-diagram.component.html',
 })
-export class BusyHoursDiagramComponent implements AfterViewInit {
+export class BusyStopsDiagramComponent implements AfterViewInit {
   @Input() id: number;
 
   constructor(private diagramService: DiagramService) {
   }
 
   ngAfterViewInit(): void {
-    this.diagramService.getResults(environment.serverURL + '/feedback/byHour/' + this.id)
+    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id)
       .subscribe(res => {
-        const CHART = document.getElementById('lineChart');
+        const CHART = document.getElementById('lineChart1');
 
         const lineChart = new Chart(CHART, {
           type: 'line',
@@ -45,4 +43,5 @@ export class BusyHoursDiagramComponent implements AfterViewInit {
         });
       });
   }
+
 }
