@@ -68,7 +68,6 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.getHourCapacityMap(transitId), HttpStatus.OK);
     }
 
-    //TODO: if brake then decouple
     @GetMapping(value = "/byStop/{transitId}")
     public ResponseEntity<Map<Stop, Double>> getCapacityStopMap(@PathVariable Integer transitId,
                                                                 @RequestParam(value = "stopList[]",
