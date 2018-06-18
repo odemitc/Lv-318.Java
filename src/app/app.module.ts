@@ -1,12 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
 
 import {AppComponent} from './app.component';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
 
@@ -23,7 +23,6 @@ import {
   MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
-  MatFormField,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
@@ -48,10 +47,10 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
 } from '@angular/material';
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ExcategoryService} from './services/excategory.service';
 import {MenuComponent} from './components/menu/menu.component';
 import {NonExCategoryComponent} from './components/non-ex-category/non-ex-category.component';
@@ -64,13 +63,14 @@ import {AddUserComponent} from './components/add-user/add-user.component';
 import {StopsComponent} from './components/stops/stops.component';
 import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
-import { FilterPipe } from './filter.pipe';
-import { StopsGridComponent } from './components/stops/stops-grid.component';
-import { BusyHoursDiagramComponent } from './components/stops/components/busy-hours-diagram/busy-hours-diagram.component';
-import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
-import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
-import { StatisticAverageRateComponent } from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
+import {FilterPipe} from './filter.pipe';
+import {StopsGridComponent} from './components/stops/stops-grid.component';
+import {BusyHoursDiagramComponent} from './components/stops/components/busy-hours-diagram/busy-hours-diagram.component';
+import {RaitingDiagramComponent} from './components/stops/components/raiting-diagram/raiting-diagram.component';
+import {AverageRateComponent} from './components/stops/components/average-rate/average-rate.component';
 import {DiagramService} from './services/diagram.service';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -100,7 +100,7 @@ export function createTranslateLoader(http: HttpClient) {
     BusyHoursDiagramComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
-    StatisticAverageRateComponent
+    BusyStopsDiagramComponent,
   ],
   exports: [
     MatAutocompleteModule,
@@ -140,10 +140,15 @@ export function createTranslateLoader(http: HttpClient) {
     MatTreeModule
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, MatSidenavModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
     HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MatTableModule,
+    MatTabsModule,
     MatMenuModule,
     FormsModule,
     MatFormFieldModule,
@@ -170,3 +175,5 @@ export function createTranslateLoader(http: HttpClient) {
 })
 export class AppModule {
 }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

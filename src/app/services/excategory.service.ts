@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { ExcategoryModel } from '../models/excategory.model';
-import { environment } from '../../environments/environment';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {ExcategoryModel} from '../models/excategory.model';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -16,11 +16,11 @@ export class ExcategoryService {
   }
 
   getTopCategories(): Observable<ExcategoryModel[]> {
-    return this.http.get<ExcategoryModel[]>(this.serviceUrl + '/top/');
+    return this.http.get<ExcategoryModel[]>(this.serviceUrl);
   }
 
   getCategoriesByNextLevel(nextLevel: String): Observable<ExcategoryModel[]> {
-    return this.http.get<ExcategoryModel[]>(this.serviceUrl + '/nextLevel/?nextLevel=' + nextLevel);
+    return this.http.get<ExcategoryModel[]>(this.serviceUrl + '?nextLevelCategoryName=' + nextLevel);
   }
 
 }

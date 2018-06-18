@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
 
 import {DiagramService} from '../../../../services/diagram.service';
@@ -10,23 +10,22 @@ import {environment} from '../../../../../environments/environment';
   templateUrl: './busy-hours-diagram.component.html',
   styleUrls: ['./busy-hours-diagram.component.css']
 })
-export class BusyHoursDiagramComponent implements OnInit {
-
+export class BusyHoursDiagramComponent implements AfterViewInit {
   @Input() id: number;
 
   constructor(private diagramService: DiagramService) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
     this.diagramService.getResults(environment.serverURL + '/feedback/byHour/' + this.id)
       .subscribe(res => {
         const CHART = document.getElementById('lineChart');
+
         const lineChart = new Chart(CHART, {
           type: 'line',
           data: {
             labels: Object.keys(res),
             datasets: [{
-              label: 'Busy hours diagram',
               fill: true,
               lineTension: 0.6,
               backgroundColor: 'rgba(75,192,192,0.4)',
@@ -37,9 +36,13 @@ export class BusyHoursDiagramComponent implements OnInit {
               borderJointStyle: 'miter',
               data: Object.values(res)
             }]
+          },
+          options: {
+            legend: {
+              display: false
+            }
           }
         });
       });
   }
-
 }

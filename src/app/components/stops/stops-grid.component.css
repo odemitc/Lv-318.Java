@@ -28,3 +28,9 @@ p {
 .example-selected-value {
   margin: 15px 0;
 }
+
+mat-tab-group {
+  position: relative;
+  right: 50px;
+  width: 500px;
+}
