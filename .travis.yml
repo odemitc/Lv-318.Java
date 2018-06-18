@@ -9,11 +9,11 @@ addons:
 
 before_install:
   - jdk_switcher use oraclejdk8
+  - psql -c 'create database uatransport;' -U postgres
 
 install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - psql -c 'create database uatransport;' -U postgres
-#  - mvn package
+  - mvn package
 
 before_deploy:
   - cd target
