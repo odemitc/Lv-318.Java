@@ -4,9 +4,6 @@ jdk: oraclejdk8
 services:
   postgresql
 
-before_script:
-  - psql -c 'create database uatransport;' -U postgres
-
 addons:
   postgresql: "9.6"
 
@@ -15,6 +12,7 @@ before_install:
 
 install:
 #  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - psql -c 'create database uatransport;' -U postgres
   - mvn package
 
 before_deploy:
