@@ -54,4 +54,9 @@ public class StopController {
     return new ResponseEntity<>(savedStop, HttpStatus.CREATED);
   }
 
+  @GetMapping(params = "transitTest")
+  public ResponseEntity<List<Stop>> getByTransitIdWhereStreetNotNull(@RequestParam("transitTest") Integer id) {
+    return new ResponseEntity<>(stopService.getByTransidIdWhereStreetNotNull(id), HttpStatus.OK);
+  }
+
 }

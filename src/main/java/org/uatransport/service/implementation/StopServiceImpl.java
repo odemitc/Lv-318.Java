@@ -87,5 +87,8 @@ public class StopServiceImpl implements StopService {
 
     }
 
-
+    @Override
+    public List<Stop> getByTransidIdWhereStreetNotNull(Integer id) {
+        return stopRepository.findByTransitIdWhereStopNotNull(id);
+    }
 }

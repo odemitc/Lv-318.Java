@@ -20,4 +20,6 @@ public interface StopService {
     Stop getByTransitIdAndStopName(Integer transitId, String street);
 
     Integer getIndexByTransitIdAndStopName(Integer transitId, String street);
+
+    List<Stop> getByTransidIdWhereStreetNotNull(Integer id);
 }
