@@ -1,35 +1,45 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {FeedbackCriteria} from '../models/feedback-criteria.model';
 import {catchError, tap} from 'rxjs/operators';
-import { MessageService} from './message.service';
-import { environment } from '../../environments/environment';
-
+import {MessageService} from './message.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
+
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackCriteriaService {
-  private fcUrl = environment.serverURL + '/feedback-criteria';
+  private feedbackCriteriaUrl = 'http://localhost:8080/feedback-criteria';
 
 
   constructor(private  http: HttpClient,
-              private messageService: MessageService) {}
-
-  getAllFC(): Observable<FeedbackCriteria[]> {
-    return this.http.get<FeedbackCriteria[]>(this.fcUrl)
-      .pipe(
-        tap(feedbackCriterias => this.log(`fetched heroes`)),
-        catchError(this.handleError('getAllFeedbackCriterias', []))
-      );
-
+              private messageService: MessageService) {
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  getAllFeedbackCriteria(): Observable<FeedbackCriteria[]> {
+    return this.http.get<FeedbackCriteria[]>(this.feedbackCriteriaUrl)
+      .pipe(
+        tap(feedbackCriterias => this.log(`fetched feedbackCriterias`)),
+        catchError(this.handleError('getAllFeedbackCriterias', []))
+      );
+  }
+
+  deleteFeedbackCriteria(feedbackCriteria: FeedbackCriteria | number): Observable<FeedbackCriteria> {
+    const id = typeof feedbackCriteria === 'number' ? feedbackCriteria : feedbackCriteria.id;
+    const url = `${this.feedbackCriteriaUrl}/{id}`;
+    return this.http.delete<FeedbackCriteria>(url, httpOptions)
+      .pipe(
+        tap(_ => this.log(`deleted feedbackCriteria id=${id}`)),
+        catchError(this.handleError<FeedbackCriteria>('deletefeedbackCriteria'))
+      );
+  }
+
+
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       console.error(error);
@@ -40,6 +50,7 @@ export class FeedbackCriteriaService {
     };
 
   }
+
   private log(message: string) {
     this.messageService.add('HeroService: ' + message);
   }
