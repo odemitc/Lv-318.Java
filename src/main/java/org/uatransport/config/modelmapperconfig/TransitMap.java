@@ -10,9 +10,9 @@ import org.uatransport.entity.dto.TransitDTO;
 @RequiredArgsConstructor
 public class TransitMap extends PropertyMap<Transit, TransitDTO> {
 
-    @Override
-    protected void configure() {
-        map().setCategoryId(source.getCategory().getId());
-        map(source.getCategory().setId(map().getCategoryId()));
-    }
+  @Override
+  protected void configure() {
+    map().setCategoryId(source.getCategory().getId());
+    map(source.getCategory().setId(map().getCategoryId()));
+  }
 }
