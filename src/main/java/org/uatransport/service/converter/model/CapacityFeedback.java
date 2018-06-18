@@ -2,9 +2,11 @@ package org.uatransport.service.converter.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Range;
+import lombok.Data;
+import org.uatransport.service.implementation.FeedbackServiceImpl;
+
 import java.util.Objects;
 import java.util.stream.Stream;
-import lombok.Data;
 
 @Data
 public class CapacityFeedback {
@@ -12,17 +14,7 @@ public class CapacityFeedback {
   @JsonProperty("capacity")
   public Integer capacity;
 
-  @JsonProperty("startHour")
-  public Integer startHour;
-
-  @JsonProperty("startMinute")
-  public Integer startMinute;
-
-  @JsonProperty("endHour")
-  public Integer endHour;
-
-  @JsonProperty("endMinute")
-  public Integer endMinute;
+  private FeedbackServiceImpl.Interval time;
 
   @JsonProperty("from")
   public String from;
@@ -30,7 +22,7 @@ public class CapacityFeedback {
   @JsonProperty("to")
   public String to;
 
-  public boolean existInTimeRange(Integer hour) {
+  public boolean containsHour(Integer hour) {
     return Range.closed(this.startHour, this.endHour).contains(hour);
   }
 

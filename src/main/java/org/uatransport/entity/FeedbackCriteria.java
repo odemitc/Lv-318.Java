@@ -1,14 +1,18 @@
 package org.uatransport.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import java.util.List;
-import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 import org.uatransport.service.converter.ConversionStrategy;
-import org.uatransport.service.converter.impl.*;
+import org.uatransport.service.converter.impl.AccepterConversionStrategy;
+import org.uatransport.service.converter.impl.CapacityBusyHoursConversionStrategy;
+import org.uatransport.service.converter.impl.RatingConversionStrategy;
+import org.uatransport.service.converter.model.CapacityFeedback;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -42,6 +46,14 @@ public class FeedbackCriteria {
     @SuppressWarnings("unchecked")
     public <T> T convertFeedback(Feedback feedback) {
       return (T) conversionStrategy.convert(feedback);
+    }
+  }
+
+  public static class TypedFeedbackType<T> {
+    public static final TypedFeedbackType<CapacityFeedback> CAPACITY = new TypedFeedbackType<>();
+
+    public FeedbackType get() {
+       return FeedbackType.CAPACITY;
     }
   }
 }
