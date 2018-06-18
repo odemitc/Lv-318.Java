@@ -10,7 +10,6 @@ import {AppComponent} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ExcategoryService} from './services/excategory.service';
@@ -32,7 +31,6 @@ import {QuestionComponent} from './components/question/question.component';
 import {AddQuestionComponent} from './components/question/add-question/add-question.component';
 import {RaitingDiagramComponent} from './components/stops/components/raiting-diagram/raiting-diagram.component';
 import {AverageRateComponent} from './components/stops/components/average-rate/average-rate.component';
-import {StatisticAverageRateComponent} from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
 import {DiagramService} from './services/diagram.service';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
@@ -104,7 +102,6 @@ export function createTranslateLoader(http: HttpClient) {
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
-    StatisticAverageRateComponent,
     CallbackComponent,
     BusyStopsDiagramComponent,
   ],
@@ -158,7 +155,6 @@ export function createTranslateLoader(http: HttpClient) {
     MatTableModule,
     MatTabsModule,
     MatMenuModule,
-    ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
