@@ -23,28 +23,9 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ExtendableCategory> getCategoryById(@PathVariable Integer id) {
-
-        ExtendableCategory category = categoryService.getById(id);
-
-        return new ResponseEntity<>(category, HttpStatus.OK);
-    }
-
     @GetMapping(value = "/top/")
     public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
         return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
-    }
-
-    @GetMapping("/nextLevel/")
-    public ResponseEntity<List<ExtendableCategory>> getCategoriesByNextLevel(@RequestParam String nextLevel) {
-        return new ResponseEntity<>(categoryService.getByNextLevelCategoryId(categoryService.getByName(nextLevel).getId()), HttpStatus.OK);
-    }
-
-    @GetMapping("/get")
-    public ResponseEntity<List<NonExtendableCategory>> getCategoryByNames(@RequestParam String name, @RequestParam String next) {
-        List<NonExtendableCategory> categories = categoryService.getByNames(name, next);
-        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
     @GetMapping
