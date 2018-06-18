@@ -18,6 +18,7 @@ install:
 
 script:
   mvn clean install
+  zip server.zip /home/travis/build/44stv/Lv-318.Java/target/uaTransport-0.0.1.jar
 
 #before_deploy:
 
@@ -30,13 +31,13 @@ deploy:
       branch: deploy
     bucket: travisdeploybucket
     region: eu-central-1
-    upload-dir: target/jar
+    local-dir: target/jar
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: travisdeploybucket
-    key: uaTransport-0.0.1.jar
-#    bundle_type: .zip
+    key: uaTransport-0.0.1.zip
+    bundle_type: .zip
     application: ServerCodedeployApplication
     deployment_group: ServerDeploymentGroup
     region: eu-central-1
