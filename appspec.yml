@@ -1,0 +1,8 @@
+version: 0.0
+os: linux
+files:
+  - source: ./uaTransport-1.0.jar
+    destination: /home/ec2-user/server
+#hooks:
+#  AfterInstall:
+#  - location: scripts/afterinstall

@@ -19,8 +19,8 @@ install:
 script:
   - mvn clean install
 #  - pwd
-  - cd target/jar
-  - zip -rm server *
+#  - cd target/jar
+#  - zip -rm server *
 #  - ls /home/travis/build/44stv/Lv-318.Java/target/jar/
 
 #before_deploy:
