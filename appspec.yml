@@ -3,6 +3,7 @@ os: linux
 files:
   - source: server.zip
     destination: /home/ec2-user/server
+    overwrite: yes
 #hooks:
 #  AfterInstall:
 #  - location: scripts/afterinstall

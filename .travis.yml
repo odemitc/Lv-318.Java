@@ -13,7 +13,7 @@ before_install:
 
 install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - mvn package
+  - mvn clean install
 
 before_deploy:
   - cd target
