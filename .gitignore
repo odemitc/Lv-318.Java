@@ -30,6 +30,7 @@
 
 # Log file
 *.log
+*.gz
 
 # BlueJ files
 *.ctxt
