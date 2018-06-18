@@ -1,10 +1,9 @@
-package org.uatransport.service.model;
+package org.uatransport.service.converter.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Range;
 import lombok.Data;
-import org.uatransport.entity.Stop;
 
-import java.lang.reflect.Field;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -34,19 +33,16 @@ public class CapacityFeedback {
     @JsonProperty("to")
     public String to;
 
-    public boolean existsInTimeRange(Integer time) {
-        return IntStream.rangeClosed(this.startHour, this.endHour)
-                .boxed()
-                .collect(Collectors.toList())
-                .contains(time);
+    public boolean existInTimeRange(Integer hour) {
+        return Range.closed(this.startHour, this.endHour).contains(hour);
     }
 
     public boolean isCapacityHoursFeedback() {
         return Stream.of(this.capacity, this.startHour, this.endHour)
                 .allMatch(Objects::nonNull);
-
     }
 
+    //TODO: make inheritance class CapacityStopFeedback extends CapacityFeedback
     public boolean isCapacityStopsFeedback() {
         return Stream.of(this.capacity, this.from, this.to)
                 .allMatch(Objects::nonNull);
