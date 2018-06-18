@@ -16,11 +16,17 @@ public interface FeedbackCriteriaService {
 
     FeedbackCriteria getById(Integer id);
 
-//    List<FeedbackCriteria> getByGroupId(Integer groupId);
-
-//    List<FeedbackCriteria> getByQuestion(String question);
-
     List<FeedbackCriteria> getByType(FeedbackCriteria.FeedbackType type);
 
     List<FeedbackCriteria> getByCategoryId(Integer id);
+
+    List<FeedbackCriteria> getByWeight(Integer weight);
+
+    List<FeedbackCriteria> getByQuestionsName(String question);
+
+    List<FeedbackCriteria> getByQuestionsId(Integer questionId);
+
+    List<FeedbackCriteria> getByQuestionsGroupId(Integer groupId);
+
+
 }
