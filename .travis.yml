@@ -20,6 +20,7 @@ script:
   - mvn clean install
   - cd target
   - zip -r server *
+  - cd ..
 #  - pwd
 #  - cd target/jar
 #  - zip -rm server *
