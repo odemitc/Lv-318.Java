@@ -7,6 +7,7 @@ import { FeedbackCriteriaComponent } from './components/feedback-criteria/feedba
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { StopsComponent } from './components/stops/stops.component';
 import { StopsGridComponent } from './components/stops/stops-grid.component';
+import { AddFeedbackComponent } from './components/stops/components/add-feedback/add-feedback.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,12 @@ const routes: Routes = [
   },
   {
     path: 'show-transit-scheme/:id', component: StopsGridComponent
+  },
+
+  {
+    path: 'feedback/', component: AddFeedbackComponent
   }
+
 
 
 ];

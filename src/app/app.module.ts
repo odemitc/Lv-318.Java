@@ -51,7 +51,7 @@ import {
   MatTreeModule
 } from '@angular/material';
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ExcategoryService} from './services/excategory.service';
 import {MenuComponent} from './components/menu/menu.component';
 import {NonExCategoryComponent} from './components/non-ex-category/non-ex-category.component';
@@ -71,6 +71,8 @@ import { RaitingDiagramComponent } from './components/stops/components/raiting-d
 import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
 import { StatisticAverageRateComponent } from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
 import {DiagramService} from './services/diagram.service';
+import { AddFeedbackComponent } from './components/stops/components/add-feedback/add-feedback.component';
+import { FeedbackService } from './services/feedback.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -100,7 +102,8 @@ export function createTranslateLoader(http: HttpClient) {
     BusyHoursDiagramComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
-    StatisticAverageRateComponent
+    StatisticAverageRateComponent,
+    AddFeedbackComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -137,7 +140,10 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    MatDialogModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatSidenavModule,
@@ -146,6 +152,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatTableModule,
     MatMenuModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -165,8 +172,9 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService],
-  bootstrap: [AppComponent]
+  providers: [ExcategoryService, UserService, DiagramService,FeedbackService],
+  bootstrap: [AppComponent],
+  entryComponents: [AddFeedbackComponent]
 })
 export class AppModule {
 }

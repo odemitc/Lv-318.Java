@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Stop } from '../../models/stop.model';
 import { ActivatedRoute } from '@angular/router';
 import { StopService } from '../../services/stop.service';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material';
 
+import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
 
 @Component({
   selector: 'app-stops-grid',
@@ -13,12 +15,13 @@ import { Observable } from 'rxjs';
 export class StopsGridComponent implements OnInit {
 
   private sub: any;
-  public idTransit: number;
+  @Input() idTransit: number;
   public stop = new Stop();
+  
 
   stopsList: Observable<Stop[]>;
 
-  constructor(private stopService: StopService, private route: ActivatedRoute) {
+  constructor(private stopService: StopService, private route: ActivatedRoute, private dialog : MatDialog) {
   }
 
   ngOnInit() {
@@ -27,22 +30,10 @@ export class StopsGridComponent implements OnInit {
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
   }
+openModal(){
 
-// tiles: {text: string, cols: number, rows: number, color: string}[] = [
-//   {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-//   {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-//   {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-//   {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-// ];
-
-// dogs: {name: string, human: string}[] = [
-//   {name: 'Porter', human: 'Kara'},
-//   {name: 'Mal', human: 'Jeremy'},
-//   {name: 'Koby', human: 'Igor'},
-//   {name: 'Razzle', human: 'Ward'},
-//   {name: 'Molly', human: 'Rob'},
-//   {name: 'Husi', human: 'Matias'},
-// ];
+  this.dialog.open(AddFeedbackComponent,{data:{number:this.idTransit}});
+}
 
 }
 

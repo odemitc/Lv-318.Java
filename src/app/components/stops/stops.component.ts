@@ -6,6 +6,7 @@ import { Stop } from '../../models/stop.model';
 import { StopService } from '../../services/stop.service';
 import {BusyHoursDiagramComponent} from './components/busy-hours-diagram/busy-hours-diagram.component';
 
+
 @Component({
   selector: 'app-stops',
   templateUrl: './stops.component.html',

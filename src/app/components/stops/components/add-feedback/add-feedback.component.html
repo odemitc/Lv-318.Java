@@ -1,0 +1,12 @@
+<h1>
+  Transit № {{data.number}}
+</h1>
+<form  [formGroup]="feedbackForm"  >
+    <mat-form-field>
+      <input  type ="text" formControlName="answer" matInput placeholder="answer"  >
+    </mat-form-field>
+    <button type="submit" mat-raised-button (click)="onSubmit()"  >{{ 'Save' | translate}}</button>
+    <button mat-raised-button (click)="close()">{{ 'Close' | translate}}</button>
+  </form>
+  
+
