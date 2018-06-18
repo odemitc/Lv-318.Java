@@ -1,18 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
-
+import {ReactiveFormsModule}from '@angular/forms';
 import {AuthService} from './services/auth/auth.service';
 import {AppComponent} from './app.component';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
 import { HttpModule } from '@angular/http';
-
-
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -26,7 +26,6 @@ import {
   MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
-  MatFormField,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
@@ -52,8 +51,6 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
-  MatPaginator,
-  MatTableDataSource
 } from '@angular/material';
 
 import {FormsModule} from '@angular/forms';
@@ -75,7 +72,6 @@ import { QuestionComponent } from './components/question/question.component';
 import { AddQuestionComponent } from './components/question/add-question/add-question.component';
 import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
 import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
-import { StatisticAverageRateComponent } from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
 import {DiagramService} from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { QuestionService } from './services/question.service';
@@ -107,7 +103,6 @@ export function createTranslateLoader(http: HttpClient) {
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
-    StatisticAverageRateComponent,
     CallbackComponent,
     BusyHoursDiagramComponent,
     OneQuestionComponent
@@ -148,15 +143,18 @@ export function createTranslateLoader(http: HttpClient) {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-   
-    
+
+
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatSidenavModule,
     HttpModule,
     HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MatTableModule,
+    MatTabsModule,
     MatMenuModule,
     FormsModule,
     MatFormFieldModule,
@@ -184,3 +182,5 @@ export function createTranslateLoader(http: HttpClient) {
 })
 export class AppModule {
 }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

@@ -1,12 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import { Injectable } from '@angular/core';
-import {FeedbackCriteria} from '../models/feedback-criteria.model';
-import {catchError, map, tap} from 'rxjs/operators';
-import { MessageService} from './message.service';
-import {promise} from 'selenium-webdriver';
+import {catchError, tap} from 'rxjs/operators';
+import {MessageService} from './message.service';
 import {Question} from '../models/question.model';
-
+import {Injectable} from '@angular/core';
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

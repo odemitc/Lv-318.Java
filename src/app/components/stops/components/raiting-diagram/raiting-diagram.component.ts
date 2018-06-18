@@ -28,7 +28,7 @@ export class RaitingDiagramComponent implements OnInit {
             datasets: [{
               label: 'Rating diagram',
               fill: true,
-              backgroundColor: ['green', 'red', 'yellow'],
+              backgroundColor: ['rgba(0, 200, 0, 0.7)', 'rgba(255, 26, 26, 0.7)', 'rgba(255, 255, 26, 0.7)'],
               borderColor: 'gray',
               clickable: false,
               borderCapStyle: 'butt',
@@ -36,6 +36,9 @@ export class RaitingDiagramComponent implements OnInit {
               borderDashOffset: 0.0,
               data: Object.values(res)
             }]
+          },
+          options: {
+            cutoutPercentage: 75
           }
         });
       });

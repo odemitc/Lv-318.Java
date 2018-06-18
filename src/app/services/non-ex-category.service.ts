@@ -10,13 +10,13 @@ import { environment } from '../../environments/environment';
 })
 export class NonExCategoryService {
 
-  private serviceUrl = environment.serverURL + '/category/';
+  private serviceUrl = environment.serverURL + '/category';
 
   constructor(private http: HttpClient) {
   }
 
   public getByNames(name: String, nextlevel: String): Observable<ExcategoryModel[]> {
-    return this.http.get<ExcategoryModel[]>(this.serviceUrl + 'get?name=' + name + '&next=' + nextlevel);
+    return this.http.get<ExcategoryModel[]>(this.serviceUrl + '?name=' + name + '&nextLevelCategoryName=' + nextlevel);
   }
 }
 
