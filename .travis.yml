@@ -17,8 +17,8 @@ install:
   mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 script:
-  mvn clean install
-  zip server.zip /home/travis/build/44stv/Lv-318.Java/target/uaTransport-0.0.1.jar
+  - mvn clean install
+  - zip server.zip /home/travis/build/44stv/Lv-318.Java/target/uaTransport-0.0.1.jar
 
 #before_deploy:
 
