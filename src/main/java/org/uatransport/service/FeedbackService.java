@@ -8,7 +8,6 @@ import org.uatransport.entity.FeedbackCriteria;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.service.converter.model.AccepterFeedback;
-import org.uatransport.service.converter.model.CapacityFeedback;
 
 public interface FeedbackService {
 
@@ -30,14 +29,13 @@ public interface FeedbackService {
   List<Feedback> getByTransitAndFeedbackCriteriaAndUserId(
       Integer transitId, FeedbackCriteria.FeedbackType feedbackType, Integer userId);
 
-    Double getAverageRateByTransitId(Integer transitId);
+  Double getAverageRateByTransitId(Integer transitId);
 
-    Double getAverageRateByTransitAndUser(Integer transitId, Integer userId);
+  Double getAverageRateByTransitAndUser(Integer transitId, Integer userId);
 
-    Map<Integer, Double> getHourCapacityMap(Integer transitId);
+  Map<Integer, Double> getHourCapacityMap(Integer transitId);
 
-    Map<Stop, Double> getStopCapacityMap(Integer transitId, Stop... stops);
+  Map<Stop, Double> getStopCapacityMap(Integer transitId, Stop... stops);
 
-    EnumMap<AccepterFeedback, Double> getAccepterAnswerPercentageMap(Integer transitId);
-
+  EnumMap<AccepterFeedback, Double> getAccepterAnswerPercentageMap(Integer transitId);
 }

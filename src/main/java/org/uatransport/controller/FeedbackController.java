@@ -51,31 +51,37 @@ public class FeedbackController {
     return new ResponseEntity<>(feedbackService.addFeedback(feedbackDTO), HttpStatus.CREATED);
   }
 
-    @GetMapping(value = "/rate/{transitId}")
-    public ResponseEntity<Double> getAverageRateByTransit(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.getAverageRateByTransitId(transitId), HttpStatus.OK);
-    }
+  @GetMapping(value = "/rate/{transitId}")
+  public ResponseEntity<Double> getAverageRateByTransit(@PathVariable Integer transitId) {
+    return new ResponseEntity<>(
+        feedbackService.getAverageRateByTransitId(transitId), HttpStatus.OK);
+  }
 
-    @GetMapping(value = "/rate/{transitId}/{userId}")
-    public ResponseEntity<Double> getAverageRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
-        return new ResponseEntity<>(feedbackService.getAverageRateByTransitAndUser(transitId, userId), HttpStatus.OK);
-    }
+  @GetMapping(value = "/rate/{transitId}/{userId}")
+  public ResponseEntity<Double> getAverageRateByTransitAndUser(
+      @PathVariable Integer transitId, @PathVariable Integer userId) {
+    return new ResponseEntity<>(
+        feedbackService.getAverageRateByTransitAndUser(transitId, userId), HttpStatus.OK);
+  }
 
-    @GetMapping(value = "/byHour/{transitId}")
-    public ResponseEntity<Map<Integer, Double>> getCapacityHoursMap(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.getHourCapacityMap(transitId), HttpStatus.OK);
-    }
+  @GetMapping(value = "/byHour/{transitId}")
+  public ResponseEntity<Map<Integer, Double>> getCapacityHoursMap(@PathVariable Integer transitId) {
+    return new ResponseEntity<>(feedbackService.getHourCapacityMap(transitId), HttpStatus.OK);
+  }
 
-    @GetMapping(value = "/byStop/{transitId}")
-    public ResponseEntity<Map<Stop, Double>> getCapacityStopMap(@PathVariable Integer transitId,
-                                                                @RequestParam(value = "stopList[]",
-                                                                        required = false) List<Stop> stopList) {
-        Stop[] stopsVarArg = stopList.toArray(new Stop[stopList.size()]);
-        return new ResponseEntity<>(feedbackService.getStopCapacityMap(transitId, stopsVarArg), HttpStatus.OK);
-    }
+  @GetMapping(value = "/byStop/{transitId}")
+  public ResponseEntity<Map<Stop, Double>> getCapacityStopMap(
+      @PathVariable Integer transitId,
+      @RequestParam(value = "stopList[]", required = false) List<Stop> stopList) {
+    Stop[] stopsVarArg = stopList.toArray(new Stop[stopList.size()]);
+    return new ResponseEntity<>(
+        feedbackService.getStopCapacityMap(transitId, stopsVarArg), HttpStatus.OK);
+  }
 
-    @GetMapping(value = "/accepterMap/{transitId}")
-    public ResponseEntity<EnumMap<AccepterFeedback, Double>> getAccepterMap(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.getAccepterAnswerPercentageMap(transitId), HttpStatus.OK);
-    }
+  @GetMapping(value = "/accepterMap/{transitId}")
+  public ResponseEntity<EnumMap<AccepterFeedback, Double>> getAccepterMap(
+      @PathVariable Integer transitId) {
+    return new ResponseEntity<>(
+        feedbackService.getAccepterAnswerPercentageMap(transitId), HttpStatus.OK);
+  }
 }
