@@ -18,6 +18,7 @@ install:
 
 script:
   - mvn clean install
+  - zip -r server *
 #  - pwd
 #  - cd target/jar
 #  - zip -rm server *
@@ -39,7 +40,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: travisdeploybucket
-    key: uaTransport-1.0.jar
+    key: server.zip
     bundle_type: zip
     application: ServerCodedeployApplication
     deployment_group: ServerDeploymentGroup
