@@ -1,11 +1,7 @@
-import {MatPaginator,MatSort, MatTableDataSource} from '@angular/material';
-import {SelectionModel} from '@angular/cdk/collections';
-import { Component, OnInit , ViewChild} from '@angular/core';
-
-import {Observable} from 'rxjs';
-import { merge, startWith, switchMap, map} from 'rxjs/operators';
-import { Question } from '../../models/question.model';
-import { QuestionService } from '../../services/question.service';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Question} from '../../models/question.model';
+import {QuestionService} from '../../services/question.service';
 
 @Component({
   selector: 'app-question',
@@ -19,15 +15,16 @@ export class QuestionComponent implements OnInit {
   dataSource = new MatTableDataSource<Question>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private questionService: QuestionService) { }
+  constructor(private questionService: QuestionService) {
+  }
 
   ngOnInit() {
     this.getAllQuestion();
   }
 
-  getAllQuestion(): void{
+  getAllQuestion(): void {
     this.questionService.getAllQuestion()
-    .subscribe(questions =>  this.dataSource.data = questions);
+      .subscribe(questions => this.dataSource.data = questions);
     this.dataSource.paginator = this.paginator;
 
   }
@@ -36,7 +33,7 @@ export class QuestionComponent implements OnInit {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
-   
-    
+
+
   }
 }

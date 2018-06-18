@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {DiagramService} from '../../../../services/diagram.service';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-average-rate',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AverageRateComponent implements OnInit {
 
-  constructor() { }
+  @Input() id: number;
+
+  averageRate;
+
+  constructor(private diagramService: DiagramService) {
+  }
 
   ngOnInit() {
+    this.diagramService.getResults(environment.serverURL + '/feedback/rate/' + this.id)
+      .subscribe(res => {
+        this.averageRate = res;
+      });
   }
 
 }

@@ -1,4 +1,4 @@
-export  interface  FeedbackCriteria {
+export interface FeedbackCriteria {
   id: number;
   type: string;
   weight: number;
