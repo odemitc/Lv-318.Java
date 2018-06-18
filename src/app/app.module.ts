@@ -105,7 +105,8 @@ export function createTranslateLoader(http: HttpClient) {
     AverageRateComponent,
     CallbackComponent,
     BusyHoursDiagramComponent,
-    OneQuestionComponent
+    OneQuestionComponent,
+    BusyStopsDiagramComponent
   ],
   exports: [
     MatAutocompleteModule,

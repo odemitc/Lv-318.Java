@@ -36,4 +36,5 @@ export class OneQuestionComponent implements OnInit {
   gotBack(): void {
     this.location.back();
   }
+  
 }
