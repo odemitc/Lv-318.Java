@@ -12,10 +12,10 @@ before_install:
   - psql -c 'create database uatransport;' -U postgres
 
 install:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#  - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn clean install
 
-before_deploy:
+script:
   - cd target
   - zip -r server *
   - mkdir -p upload
