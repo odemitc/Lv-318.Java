@@ -19,6 +19,28 @@ install:
 script:
   mvn clean install
 
+#before_deploy:
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    skip_cleanup: true
+    on: &2
+      branch: deploy
+    bucket: travisdeploybucket
+    region: eu-central-1
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: travisdeploybucket
+    key: uaTransport-0.0.1.jar
+    bundle_type: .jar
+    application: ServerCodedeployApplication
+    deployment_group: ServerDeploymentGroup
+    region: eu-central-1
+    on: *2
+
 cache:
   directories:
   - $HOME/.m2
