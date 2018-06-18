@@ -18,10 +18,9 @@ install:
 
 script:
   - mvn clean install
-#  - zip -r home/travis/build/44stv/Lv-318.Java/target/jar/server.zip home/travis/build/44stv/Lv-318.Java/target/jar
-  - pwd
-  - cd target/jar
-  - zip -rm server *
+#  - pwd
+#  - cd target/jar
+#  - zip -rm server *
 #  - ls /home/travis/build/44stv/Lv-318.Java/target/jar/
 
 #before_deploy:
@@ -41,7 +40,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: travisdeploybucket
     key: server.zip
-    bundle_type: .zip
+    bundle_type: zip
     application: ServerCodedeployApplication
     deployment_group: ServerDeploymentGroup
     region: eu-central-1
