@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class SearchCategoryParam {
-    private Integer id;
-    private String nextLevelCategoryName;
-    private String name;
+  private Integer id;
+  private String nextLevelCategoryName;
+  private String name;
 }

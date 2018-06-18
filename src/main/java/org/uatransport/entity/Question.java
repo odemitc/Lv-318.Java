@@ -1,11 +1,9 @@
 package org.uatransport.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-
-import javax.persistence.*;
 
 @Entity
 @Data
@@ -14,16 +12,9 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = "id")
 public class Question {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
+  @Id @GeneratedValue private Integer id;
 
-    private Integer groupId;
+  private Integer groupId;
 
-    private String name;
-
-
-
-
+  private String name;
 }
-

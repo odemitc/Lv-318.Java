@@ -1,5 +1,6 @@
 package org.uatransport.controller;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +9,6 @@ import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 import org.uatransport.service.StopService;
 import org.uatransport.service.TransitService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/stop")
@@ -38,9 +37,9 @@ public class StopController {
     stopService.delete(id);
   }
 
-
   @PostMapping("/{id}")
-  public ResponseEntity<Stop> add(@RequestBody(required = false) Stop stop, @PathVariable Integer id) {
+  public ResponseEntity<Stop> add(
+      @RequestBody(required = false) Stop stop, @PathVariable Integer id) {
     Transit transitToUpdate = transitService.getById(id);
     transitToUpdate.getStops().add(stop);
     transitService.update(transitToUpdate);
@@ -53,5 +52,4 @@ public class StopController {
     Stop savedStop = stopService.update(stop.setId(id));
     return new ResponseEntity<>(savedStop, HttpStatus.CREATED);
   }
-
 }

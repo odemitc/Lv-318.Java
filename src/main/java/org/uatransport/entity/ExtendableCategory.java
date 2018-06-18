@@ -1,10 +1,9 @@
 package org.uatransport.entity;
 
+import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-
-import javax.persistence.*;
 
 @Entity
 @Data
@@ -16,16 +15,14 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = "id")
 public class ExtendableCategory {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
+  @Id @GeneratedValue private Integer id;
 
-    private String name;
+  private String name;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "next_level_category_id", foreignKey = @ForeignKey())
-    private ExtendableCategory nextLevelCategory;
+  @OneToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "next_level_category_id", foreignKey = @ForeignKey())
+  private ExtendableCategory nextLevelCategory;
 
-    @Column(name = "icon_url")
-    private String iconURL;
+  @Column(name = "icon_url")
+  private String iconURL;
 }
