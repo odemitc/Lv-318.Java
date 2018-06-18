@@ -9,15 +9,16 @@ import {environment} from '../../../../../environments/environment';
 })
 export class AverageRateComponent implements OnInit {
 
-  @Input()id: number;
+  @Input() id: number;
 
   averageRate;
 
-  constructor(private diagramService: DiagramService) { }
+  constructor(private diagramService: DiagramService) {
+  }
 
   ngOnInit() {
     this.diagramService.getResults(environment.serverURL + '/feedback/rate/' + this.id)
-      .subscribe(res =>{
+      .subscribe(res => {
         this.averageRate = res;
       });
   }

@@ -14,8 +14,6 @@ export class StopsGridComponent implements OnInit {
 
   private sub: any;
   public idTransit: number;
-  public stop = new Stop();
-
   stopsList: Observable<Stop[]>;
 
   constructor(private stopService: StopService, private route: ActivatedRoute) {
