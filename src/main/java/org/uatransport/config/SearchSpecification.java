@@ -43,6 +43,13 @@ public class SearchSpecification implements Specification<ExtendableCategory> {
                     .add(criteriaBuilder.equal(root.get("id"), searchCategoryParam.getId()));
         }
 
+        if (searchCategoryParam.getNextLevelCategoryName() == null
+                && searchCategoryParam.getNextLevelCategoryName() == null
+                && searchCategoryParam.getId() == null){
+            predicate.getExpressions().add(
+                    root.in(categoryService.getListTopExtendableCategories())
+            );
+        }
         return predicate;
     }
 }

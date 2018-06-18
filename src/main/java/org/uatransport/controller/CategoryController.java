@@ -23,11 +23,6 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @GetMapping(value = "/top/")
-    public ResponseEntity<List<ExtendableCategory>> getTopCategories() {
-        return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
-    }
-
     @GetMapping
     public ResponseEntity<List<ExtendableCategory>> search(SearchCategoryParam searchCategoryParam) {
         SearchSpecification specification = new SearchSpecification(searchCategoryParam, categoryService);
