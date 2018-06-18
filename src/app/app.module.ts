@@ -10,6 +10,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatAutocompleteModule,
@@ -145,6 +146,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     MatTableModule,
     MatMenuModule,
+    ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
