@@ -20,9 +20,9 @@ script:
   - mvn clean install
 #  - zip -r home/travis/build/44stv/Lv-318.Java/target/jar/server.zip home/travis/build/44stv/Lv-318.Java/target/jar
   - ls
-#  - cd home/travis/build/44stv/Lv-318.Java/target/jar
-#  - zip -r server *
-#  - ls /home/travis/build/44stv/Lv-318.Java/target/jar/
+  - cd target/jar
+  - zip -r server *
+  - ls /home/travis/build/44stv/Lv-318.Java/target/jar/
 
 #before_deploy:
 
