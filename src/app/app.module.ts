@@ -10,7 +10,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
-
+import { HttpModule } from '@angular/http';
 
 
 import {
@@ -65,21 +65,21 @@ import {MainComponent} from './components/main/main.component';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import {FeedbackCriteriaComponent} from './components/feedback-criteria/feedback-criteria.component';
 import {AddUserComponent} from './components/add-user/add-user.component';
-
+import {BusyHoursDiagramComponent} from './components/stops/components/busy-hours-diagram/busy-hours-diagram.component';
 import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
-import { FilterPipe } from './filter.pipe';
 
 
 import { StopsGridComponent } from "./components/stops/stops-grid.component";
 import { QuestionComponent } from './components/question/question.component';
 import { AddQuestionComponent } from './components/question/add-question/add-question.component';
-import { BusyHoursDiagramComponent } from './components/stops/components/busy-hours-diagram/busy-hours-diagram.component';
 import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
 import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
 import { StatisticAverageRateComponent } from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
 import {DiagramService} from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
+import { QuestionService } from './services/question.service';
+import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -102,14 +102,15 @@ export function createTranslateLoader(http: HttpClient) {
     FeedbackCriteriaComponent,
     AddUserComponent,
     MessageComponent,
-    FilterPipe,
     StopsGridComponent,
     QuestionComponent,
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
     StatisticAverageRateComponent,
-    CallbackComponent
+    CallbackComponent,
+    BusyHoursDiagramComponent,
+    OneQuestionComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -152,6 +153,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatSidenavModule,
+    HttpModule,
     HttpClientModule,
     AppRoutingModule,
     MatTableModule,

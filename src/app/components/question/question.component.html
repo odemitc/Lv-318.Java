@@ -1,12 +1,15 @@
 
 <div class="question">
+    <button mat-raised-button a routerLink="/question/add-question"> Add new question </button>
+    <br>
+    <router-outlet></router-outlet>   
     <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-      <mat-cell *matCellDef="let question"> {{question.id}}</mat-cell>
+      <mat-cell *matCellDef="let question" a routerLink="./{{question.id}}"> {{question.id}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="groupId">
       <mat-header-cell *matHeaderCellDef> GroupId </mat-header-cell>

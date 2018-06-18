@@ -29,14 +29,17 @@ export class QuestionComponent implements OnInit {
     this.questionService.getAllQuestion()
     .subscribe(questions =>  this.dataSource.data = questions);
     this.dataSource.paginator = this.paginator;
-
   }
+
+  deleteQuestion(id: number):void{
+    this.questionService.deleteQuestion(id).subscribe();
+  }
+
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
-   
+    this.dataSource.filter = filterValue;  
     
   }
 }
