@@ -20,7 +20,7 @@ script:
   - zip -r server *
   - mkdir -p upload
   - mv server.zip upload/server.zip
-  - cd ..
+#  - cd ..
 #  - pwd
 #  - cd target/jar
 #  - zip -rm server *
