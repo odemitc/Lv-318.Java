@@ -198,8 +198,8 @@ public class FeedbackServiceImpl implements FeedbackService {
   public EnumMap<AccepterFeedback, Double> getAccepterAnswerPercentageMap(Integer transitId) {
     EnumMap<AccepterFeedback, Double> accepterMap = new EnumMap<>(AccepterFeedback.class);
     for (AccepterFeedback accepterFeedback : AccepterFeedback.values()) {
-      double percentValue =
-          countByValue(accepterFeedback, transitId) / countAllAccepterFeedBacks(transitId) * 100;
+      double percentValue = 100 *
+          countByValue(accepterFeedback, transitId) / countAllAccepterFeedBacks(transitId) ;
       accepterMap.put(accepterFeedback, percentValue);
     }
     return accepterMap;
