@@ -17,7 +17,8 @@ install:
 script:
   - cd target/classes
   - mv appspec.yml ..
-  - mv scripts/* ../
+  - mkdir ../scripts
+  - mv scripts/* ../scripts/
   - cd ..
   - zip -r server *
   - mkdir -p upload
