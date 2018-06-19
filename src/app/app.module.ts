@@ -31,10 +31,9 @@ import {QuestionComponent} from './components/question/question.component';
 import {AddQuestionComponent} from './components/question/add-question/add-question.component';
 import {RaitingDiagramComponent} from './components/stops/components/raiting-diagram/raiting-diagram.component';
 import {AverageRateComponent} from './components/stops/components/average-rate/average-rate.component';
-import {StatisticAverageRateComponent} from './components/stops/components/statistic-average-rate/statistic-average-rate.component';
 import {DiagramService} from './services/diagram.service';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
+import {BusyHoursDiagramComponent} from './components/stops/components/busy-hours-diagram/busy-hours-diagram.component';
 import {CallbackComponent} from './components/callback/callback.component';
 import {
   MatAutocompleteModule,
@@ -103,9 +102,9 @@ export function createTranslateLoader(http: HttpClient) {
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
-    StatisticAverageRateComponent,
     CallbackComponent,
     BusyStopsDiagramComponent,
+    BusyHoursDiagramComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -183,5 +182,3 @@ export function createTranslateLoader(http: HttpClient) {
 })
 export class AppModule {
 }
-
-platformBrowserDynamic().bootstrapModule(AppModule);
