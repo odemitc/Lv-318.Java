@@ -1,11 +1,12 @@
 package org.uatransport.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import java.util.List;
-import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,7 +14,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Transit {
 
-  @Id @GeneratedValue /* (strategy = GenerationType.IDENTITY) */ private Integer id;
+  @Id @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
 
   private String name;
 
