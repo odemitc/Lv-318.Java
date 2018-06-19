@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.uatransport.entity.Stop;
-import java.util.List;
 
+import java.util.List;
 
 public interface StopRepository extends CrudRepository<Stop, Integer> {
 
