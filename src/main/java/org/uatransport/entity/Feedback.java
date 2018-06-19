@@ -12,7 +12,10 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(of = "id")
 public class Feedback {
 
-  @Id @GeneratedValue private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", nullable = false)
+  private Integer id;
 
   private String answer;
 
