@@ -149,7 +149,6 @@ public class FeedbackServiceImpl implements FeedbackService {
         return Range.closed(fromStopIndex, toStopIndex).contains(stopIndex);
     }
 
-
     private Double getCapacityByTransitAndStops(Integer transitId, Stop stop) {
         Predicate<CapacityRouteFeedback> existInRange = capacityHourFeedback ->
                 existInStopIndexesRange(transitId, stop,
@@ -195,6 +194,4 @@ public class FeedbackServiceImpl implements FeedbackService {
     private Integer countAllAccepterFeedBacks(Integer transitId) {
         return convertAccepterFeedBacks(transitId).size();
     }
-
-
 }

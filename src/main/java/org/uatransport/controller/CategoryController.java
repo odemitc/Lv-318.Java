@@ -21,10 +21,14 @@ import org.uatransport.service.CategoryService;
 public class CategoryController {
   private final CategoryService categoryService;
 
+  @GetMapping("/top")
+  public ResponseEntity<List<ExtendableCategory>> getTop(){
+    return new ResponseEntity<>(categoryService.getListTopExtendableCategories(), HttpStatus.OK);
+  }
+
   @GetMapping
   public ResponseEntity<List<ExtendableCategory>> search(SearchCategoryParam searchCategoryParam) {
-    SearchSpecification specification =
-        new SearchSpecification(searchCategoryParam, categoryService);
+    SearchSpecification specification = new SearchSpecification(searchCategoryParam);
 
     return new ResponseEntity<>(categoryService.getAll(specification), HttpStatus.OK);
   }
@@ -33,7 +37,7 @@ public class CategoryController {
   @ResponseStatus(HttpStatus.CREATED)
   public ResponseEntity<ExtendableCategory> save(@RequestBody ExtendableCategory category) {
     ExtendableCategory savedCategory = categoryService.save(category);
-    return new ResponseEntity<>(savedCategory, HttpStatus.OK);
+    return new ResponseEntity<>(savedCategory, HttpStatus.CREATED); // TODO: add Location
   }
 
   @DeleteMapping("/{id}")
