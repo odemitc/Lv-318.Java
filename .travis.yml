@@ -12,22 +12,16 @@ before_install:
   - psql -c 'create database uatransport;' -U postgres
 
 install:
-#  - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn clean install
 
 script:
   - cd target/classes
   - mv appspec.yml ..
+  - mv scripts/* ..
   - cd ..
   - zip -r server *
   - mkdir -p upload
   - mv server.zip upload/server.zip
-#  - pwd
-#  - cd target/jar
-#  - zip -rm server *
-#  - ls /home/travis/build/44stv/Lv-318.Java/target/jar/
-
-#before_deploy:
 
 deploy:
   - provider: s3
