@@ -1,6 +1,8 @@
 package org.uatransport.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.List;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
@@ -18,20 +20,18 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 public class FeedbackCriteria {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
+  @Id @GeneratedValue private Integer id;
 
-    private Integer weight;
+  private Integer weight;
 
-    @JsonManagedReference
-    @OneToMany
-    @JoinColumn(name = "criteria_id")
-    private List<Question> questions;
+  @JsonManagedReference
+  @OneToMany
+  @JoinColumn(name = "criteria_id")
+  private List<Question> questions;
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "type", updatable = false)
-    private FeedbackType type;
+  @Enumerated(value = EnumType.STRING)
+  @Column(name = "type", updatable = false)
+  private FeedbackType type;
 
 
     @RequiredArgsConstructor
