@@ -42,7 +42,6 @@ public class CapacityFeedback {
                 .allMatch(Objects::nonNull);
     }
 
-    //TODO: make inheritance class CapacityStopFeedback extends CapacityFeedback
     public boolean isCapacityStopsFeedback() {
         return Stream.of(this.capacity, this.from, this.to)
                 .allMatch(Objects::nonNull);

@@ -80,7 +80,6 @@ public class FeedbackServiceImpl implements FeedbackService {
         return feedbackRepository.findByTransitIdAndFeedbackCriteriaTypeAndUserId(transitId, feedbackType, userId);
     }
 
-    //RATING Feedback converter
     @Override
     @Transactional(readOnly = true)
     public Double getAverageRateByTransitId(Integer transitId) {
@@ -113,7 +112,6 @@ public class FeedbackServiceImpl implements FeedbackService {
         return capacityMap;
     }
 
-    //CAPACITY_Hours diagrams
     private Double getAverageCapacityByTransitAndHour(Integer transitId, Integer feedbackHour) {
         return convertCapacityFeedBacks(transitId).stream()
                 .filter(CapacityFeedback::isCapacityHoursFeedback)
@@ -123,23 +121,11 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .orElse(0.0);
     }
 
-    //CAPACITY Feedback converter
     private List<CapacityFeedback> convertCapacityFeedBacks(Integer transitId) {
         return getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.CAPACITY).stream()
                 .map(feedback -> (CapacityFeedback) FeedbackCriteria.FeedbackType.CAPACITY.convertFeedback(feedback))
                 .collect(Collectors.toList());
     }
-
-//    @Override
-//    @Transactional(readOnly = true)
-//    public Map<Stop, Double> getStopCapacityMap(Integer transitId) {
-//        Map<Stop, Double> capacityMap = new TreeMap<>(Comparator.comparingInt(stop ->
-//                stopService.getIndexByTransitIdAndStopName(transitId, stop.getStreet())));
-//        for (Stop stop : stopService.getByTransitId(transitId)) {
-//            capacityMap.put(stop, getCapacityByTransitAndStops(transitId, stop));
-//        }
-//        return capacityMap;
-//    }
 
     @Override
     @Transactional(readOnly = true)
@@ -153,7 +139,6 @@ public class FeedbackServiceImpl implements FeedbackService {
         return capacityMap;
     }
 
-    //    CAPACITY_Stop diagrams
     private boolean existInStopIndexesRange(Integer transitId, Stop stop, String fromStop, String toStop) {
         Integer fromStopIndex = stopService.getIndexByTransitIdAndStopName(transitId, fromStop);
         Integer toStopIndex = stopService.getIndexByTransitIdAndStopName(transitId, toStop);
