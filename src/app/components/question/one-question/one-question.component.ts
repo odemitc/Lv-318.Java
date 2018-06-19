@@ -20,7 +20,7 @@ export class OneQuestionComponent implements OnInit {
   }
 
   getQuestion(): void{
-    const id = +this.route.snapshot.paramMap.get('id');  
+    const id = +this.route.snapshot.paramMap.get('id');
     this.questionService.getQuestion(id)
     .subscribe(question => this.question = question);
   }
@@ -28,7 +28,7 @@ export class OneQuestionComponent implements OnInit {
   deleteQuestion(id: number):void{
     this.questionService.deleteQuestion(id).subscribe(() => this.gotBack());
   }
-  
+
   updateQuestion(): void{
   this.questionService.updateQuestion(this.question)
   .subscribe(() => this.gotBack());
@@ -36,5 +36,5 @@ export class OneQuestionComponent implements OnInit {
   gotBack(): void {
     this.location.back();
   }
-  
+
 }

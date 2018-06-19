@@ -15,7 +15,7 @@ export class BusyStopsDiagramComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id)
+    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stopList[]=null')
       .subscribe(res => {
         const CHART = document.getElementById('lineChart1');
 

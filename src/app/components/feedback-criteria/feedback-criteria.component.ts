@@ -13,7 +13,7 @@ export class FeedbackCriteriaComponent implements OnInit {
 
   feedbackCriterias: FeedbackCriteria[];
   displayedColumns = ['id', 'type', 'weight'];
-  dataSource = new MatTableDataSource<FeedbackCriteria>();
+  dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

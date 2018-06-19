@@ -1,4 +1,3 @@
-
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -75,12 +74,11 @@ import { RaitingDiagramComponent } from './components/stops/components/raiting-d
 import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
 import {DiagramService} from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
-import {AddFeedbackComponent} from './components/stops/components/add-feedback/add-feedback.component';
-import { OneQuestionComponent } from './components/question/one-question/one-question.component';
-import {FeedbackService} from './services/feedback.service';
 import { QuestionService } from './services/question.service';
-
-
+import { OneQuestionComponent } from './components/question/one-question/one-question.component';
+import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
+import {AddFeedbackComponent} from './components/stops/components/add-feedback/add-feedback.component';
+import {FeedbackService} from './services/feedback.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -103,15 +101,16 @@ export function createTranslateLoader(http: HttpClient) {
     AddUserComponent,
     MessageComponent,
     StopsGridComponent,
-    OneQuestionComponent,
     QuestionComponent,
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
+    StatisticAverageRateComponent,
     CallbackComponent,
     BusyHoursDiagramComponent,
     BusyStopsDiagramComponent,
-    AddFeedbackComponent
+    AddFeedbackComponent,
+    OneQuestionComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -190,5 +189,3 @@ export function createTranslateLoader(http: HttpClient) {
 })
 export class AppModule {
 }
-
-platformBrowserDynamic().bootstrapModule(AppModule);

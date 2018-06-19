@@ -23,6 +23,7 @@ const routes: Routes = [
   },
   {path: 'category/:top/:city/:id', component: TransitsComponent},
 
+
   {
     path: 'main', component: MainComponent
   },
@@ -32,12 +33,10 @@ const routes: Routes = [
 
   {
     path: 'question', component: QuestionComponent},
-  {
-    path: 'question/add-question', component: AddQuestionComponent
-  },        
-      
+  {path: 'question/add-question', component: AddQuestionComponent},
+
   {path: 'question/:id', component: OneQuestionComponent},
-  
+
   {
     path: 'user/add', component: AddUserComponent
   },

@@ -15,9 +15,12 @@ import {AddFeedbackComponent} from '../stops/components/add-feedback/add-feedbac
 })
 export class StopsGridComponent implements OnInit {
 
+  checkedItems: boolean[];
   private sub: any;
  @Input() idTransit: number;
   stopsList: Observable<Stop[]>;
+  stopArray: Stop[] = [];
+  public selectedStops: Stop[] = [];
 
   constructor(private stopService: StopService, private route: ActivatedRoute,public dialog: MatDialog) {
   }
@@ -27,6 +30,25 @@ export class StopsGridComponent implements OnInit {
       this.idTransit = params['id'];
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
+    this.stopsList.subscribe(stopArray =>
+      this.stopArray = stopArray);
+    this.checkedItems = new Array(this.stopArray.length);
+    this.selectStops();
+
+  }
+
+  public selectStops() {
+    for (let i = 0; i < this.checkedItems.length; i++) {
+      if (this.checkedItems[i] === true && !this.selectedStops.includes(this.stopArray[i], 0)) {
+        this.selectedStops.push(this.stopArray[i]);
+      }
+      if (this.checkedItems[i] === false && this.selectedStops.includes(this.stopArray[i], 0)) {
+        this.selectedStops.splice(this.selectedStops.indexOf(this.stopArray[i]), 1);
+      }
+    }
+
+
+    console.log(this.selectedStops);
   }
 
   public openModal(){
