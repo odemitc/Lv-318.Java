@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Stop } from '../../models/stop.model';
 import { ActivatedRoute } from '@angular/router';
 import { StopService } from '../../services/stop.service';
 import { Observable } from 'rxjs';
-import { MatDialog } from '@angular/material';
+import {MatDialog} from '@angular/material';
 
-import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
+import {AddFeedbackComponent} from '../stops/components/add-feedback/add-feedback.component';
+
 
 @Component({
   selector: 'app-stops-grid',
@@ -15,13 +16,10 @@ import { AddFeedbackComponent } from './components/add-feedback/add-feedback.com
 export class StopsGridComponent implements OnInit {
 
   private sub: any;
-  @Input() idTransit: number;
-  public stop = new Stop();
-
-
+ @Input() idTransit: number;
   stopsList: Observable<Stop[]>;
 
-  constructor(private stopService: StopService, private route: ActivatedRoute, private dialog : MatDialog) {
+  constructor(private stopService: StopService, private route: ActivatedRoute,public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -30,10 +28,8 @@ export class StopsGridComponent implements OnInit {
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
   }
-openModal(){
 
-  this.dialog.open(AddFeedbackComponent,{data:{number:this.idTransit}});
+  public openModal(){
+      this.dialog.open(AddFeedbackComponent,{data:{number:this.idTransit}});
+  }
 }
-
-}
-

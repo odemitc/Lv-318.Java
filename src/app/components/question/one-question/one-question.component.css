@@ -1,14 +1,13 @@
-.addfeedback{
+.onequestion{
     font-size: 14px;
     width: 50%;
     margin: 150px 400px;
   }
-
-.mat-raised-button{
+  .mat-raised-button{
 
     margin: 10%;
   }
-.mat-form-field {
+  .mat-form-field {
      
       width: 70%;
   }
