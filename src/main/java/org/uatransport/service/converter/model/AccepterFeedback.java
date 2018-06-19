@@ -1,6 +1,6 @@
 package org.uatransport.service.converter.model;
 
-public enum  AccepterFeedback {
+public enum  AccepterFeedback  {
     YES,
     NO,
     MAYBE

@@ -5,7 +5,6 @@ import org.uatransport.entity.FeedbackCriteria;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.service.converter.model.AccepterFeedback;
-import org.uatransport.service.converter.model.CapacityFeedback;
 
 import java.util.EnumMap;
 import java.util.List;

@@ -24,7 +24,7 @@ public class FeedbackCriteria {
 
     private Integer weight;
 
-   @JsonManagedReference
+    @JsonManagedReference
     @OneToMany
     @JoinColumn(name = "criteria_id")
     private List<Question> questions;
@@ -36,18 +36,9 @@ public class FeedbackCriteria {
 
     @RequiredArgsConstructor
     public enum FeedbackType {
-
-        RATING(new RatingConversionStrategy()),
-        ROUTE_BUSY_HOURS(new CapacityBusyHoursConversionStrategy()),
-        ACCEPTER(new AccepterConversionStrategy()),
-        CAPACITY(new CapacityBusyHoursConversionStrategy());
-
-        private final ConversionStrategy<?> conversionStrategy;
-
-        @SuppressWarnings("unchecked")
-        public <T> T convertFeedback(Feedback feedback) {
-            return (T) conversionStrategy.convert(feedback);
-        }
-
+        RATING,
+        ROUTE_CAPACITY,
+        ACCEPTER,
+        HOURS_CAPACITY;
     }
 }
