@@ -3,9 +3,6 @@ package org.uatransport.service.converter.model;
 import com.google.common.collect.Range;
 import lombok.Data;
 
-import java.util.Objects;
-import java.util.stream.Stream;
-
 @Data
 public class CapacityHourFeedback {
 

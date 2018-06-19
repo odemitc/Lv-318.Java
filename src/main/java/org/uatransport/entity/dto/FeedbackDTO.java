@@ -1,17 +1,13 @@
 package org.uatransport.entity.dto;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.expression.ParseException;
 import org.uatransport.entity.Feedback;
-import org.uatransport.entity.FeedbackCriteria;
-import org.uatransport.entity.Transit;
-import org.uatransport.entity.User;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Accessors(chain = true)
@@ -43,9 +39,9 @@ public class FeedbackDTO {
     private FeedbackDTO convertToDto(Feedback feedback) {
         FeedbackDTO feedbackDTO = modelMapper.map(this, FeedbackDTO.class);
         return feedbackDTO
-                .setAnswer(feedback.getAnswer())
-                .setUserId(feedback.getUser().getId())
-                .setCriteriaId(feedback.getFeedbackCriteria().getId())
-                .setTransitId(feedback.getFeedbackCriteria().getId());
+            .setAnswer(feedback.getAnswer())
+            .setUserId(feedback.getUser().getId())
+            .setCriteriaId(feedback.getFeedbackCriteria().getId())
+            .setTransitId(feedback.getFeedbackCriteria().getId());
     }
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.SneakyThrows;
 import org.uatransport.entity.Feedback;
 import org.uatransport.service.converter.ConversionStrategy;
+
 @Data
 public class FeedbackTypeConverter<T> implements ConversionStrategy {
     private T type;

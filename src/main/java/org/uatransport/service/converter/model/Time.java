@@ -3,7 +3,7 @@ package org.uatransport.service.converter.model;
 import lombok.Data;
 
 @Data
- class Time {
+class Time {
     Integer Hour;
     Integer Minute;
 }

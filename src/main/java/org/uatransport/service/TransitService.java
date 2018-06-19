@@ -1,26 +1,27 @@
 package org.uatransport.service;
 
-import java.util.List;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 
+import java.util.List;
+
 public interface TransitService {
 
-  Transit add(Transit transit);
+    Transit add(Transit transit);
 
-  void delete(Integer id);
+    void delete(Integer id);
 
-  void delete(Transit transit);
+    void delete(Transit transit);
 
-  Transit update(Transit transit);
+    Transit update(Transit transit);
 
-  Transit getById(Integer id);
+    Transit getById(Integer id);
 
-  Transit getByName(String name);
+    Transit getByName(String name);
 
-  List<Transit> getAllByCategoryId(Integer id);
+    List<Transit> getAllByCategoryId(Integer id);
 
-  List<Transit> getAll();
+    List<Transit> getAll();
 
-  List<Transit> getTransitsByStopsIn(Stop[] stops);
+    List<Transit> getTransitsByStopsIn(Stop[] stops);
 }

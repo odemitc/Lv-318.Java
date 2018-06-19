@@ -1,21 +1,22 @@
 package org.uatransport.service;
 
-import java.util.List;
 import org.uatransport.entity.Question;
+
+import java.util.List;
 
 public interface QuestionService {
 
-  Question save(Question question);
+    Question save(Question question);
 
-  Question update(Question question);
+    Question update(Question question);
 
-  void delete(Integer id);
+    void delete(Integer id);
 
-  List<Question> getAll();
+    List<Question> getAll();
 
-  Question getById(Integer id);
+    Question getById(Integer id);
 
-  List<Question> getByGroupId(Integer groupId);
+    List<Question> getByGroupId(Integer groupId);
 
-  List<Question> getByQuestionName(String questionName);
+    List<Question> getByQuestionName(String questionName);
 }

@@ -14,24 +14,25 @@ import java.util.List;
 @Accessors(chain = true)
 public class Transit {
 
-  @Id @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-  private String name;
+    private String name;
 
-  @JsonManagedReference
-  @OneToMany(mappedBy = "transit")
-  private List<Feedback> feedbacks;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "transit")
+    private List<Feedback> feedbacks;
 
-  @ManyToOne
-  @JoinColumn(name = "category_id")
-  private NonExtendableCategory category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private NonExtendableCategory category;
 
-  @ManyToMany
-  @JoinTable(
-      name = "transit_stop",
-      joinColumns = {@JoinColumn(name = "transit_id")},
-      inverseJoinColumns = {@JoinColumn(name = "stop_id")})
-  @OrderColumn(name = "stop_index")
-  private List<Stop> stops;
+    @ManyToMany
+    @JoinTable(
+        name = "transit_stop",
+        joinColumns = {@JoinColumn(name = "transit_id")},
+        inverseJoinColumns = {@JoinColumn(name = "stop_id")})
+    @OrderColumn(name = "stop_index")
+    private List<Stop> stops;
 }

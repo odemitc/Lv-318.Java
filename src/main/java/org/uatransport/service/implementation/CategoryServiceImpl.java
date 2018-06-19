@@ -9,7 +9,6 @@ import org.uatransport.entity.ExtendableCategory;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.CategoryRepository;
 import org.uatransport.service.CategoryService;
-import org.uatransport.service.FeedbackCriteriaService;
 
 import java.util.List;
 
@@ -17,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
+
     @Override
     @Transactional
     public ExtendableCategory save(ExtendableCategory category) {
@@ -44,18 +44,18 @@ public class CategoryServiceImpl implements CategoryService {
             return categoryRepository.save(categoryToUpdate);
         } else {
             throw new ResourceNotFoundException(
-                    String.format("Category with id '%s' not found", categoryToUpdate.getId()));
+                String.format("Category with id '%s' not found", categoryToUpdate.getId()));
         }
     }
 
     @Override
     public ExtendableCategory getById(Integer id) {
         return categoryRepository
-                .findById(id)
-                .orElseThrow(
-                        () ->
-                                new ResourceNotFoundException(
-                                        String.format("Category with id '%s' not found", id)));
+            .findById(id)
+            .orElseThrow(
+                () ->
+                    new ResourceNotFoundException(
+                        String.format("Category with id '%s' not found", id)));
     }
 
     @Override
@@ -74,7 +74,7 @@ public class CategoryServiceImpl implements CategoryService {
             categoryRepository.delete(extendableCategory);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException(
-                    String.format("Category with id '%s' not found", extendableCategory.getId()));
+                String.format("Category with id '%s' not found", extendableCategory.getId()));
         }
     }
 
