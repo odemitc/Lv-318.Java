@@ -19,18 +19,18 @@ public class StopController {
   private final TransitService transitService;
 
   @GetMapping("/{id}")
-  public ResponseEntity<Stop> getById(@PathVariable Integer id) {
-    return new ResponseEntity<>(stopService.getById(id), HttpStatus.OK);
+  public Stop getById(@PathVariable Integer id) {
+    return stopService.getById(id);
   }
 
   @GetMapping(params = "street")
-  public ResponseEntity<List<Stop>> getByStreet(@RequestParam("street") String street) {
-    return new ResponseEntity<>(stopService.getByStreet(street), HttpStatus.OK);
+  public List<Stop> getByStreet(@RequestParam("street") String street) {
+    return stopService.getByStreet(street);
   }
 
   @GetMapping(params = "transit-id")
-  public ResponseEntity<List<Stop>> getByTransitId(@RequestParam("transit-id") Integer id) {
-    return new ResponseEntity<>(stopService.getByTransitId(id), HttpStatus.OK);
+  public List<Stop> getByTransitId(@RequestParam("transit-id") Integer id) {
+    return stopService.getByTransitId(id);
   }
 
   @DeleteMapping("/{id}")

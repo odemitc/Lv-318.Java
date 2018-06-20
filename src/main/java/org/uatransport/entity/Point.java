@@ -11,10 +11,11 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = "id")
 @Accessors(chain = true)
 @DiscriminatorColumn(name = "type")
+@Table(name = "stop")
 @DiscriminatorValue("POINT")
 public class Point {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue
   @Column(name = "id", nullable = false)
   private Integer id;
 
