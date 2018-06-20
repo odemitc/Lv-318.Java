@@ -14,6 +14,9 @@ public class SearchCategoryParam {
     private String name;
 
     public boolean isEmpty() {
-        return id == null && firstNestedCategoryName == null && secondNestedCategoryName == null && name == null;
+        return id == null
+            && firstNestedCategoryName == null
+            && secondNestedCategoryName == null
+            && name == null;
     }
 }

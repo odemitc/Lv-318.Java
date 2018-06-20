@@ -47,7 +47,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/in")
-    public ResponseEntity<User> getUserByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
+    public ResponseEntity<User> getUserByEmailAndPassword(
+        @RequestParam String email, @RequestParam String password) {
 
         return new ResponseEntity<>(userService.getByEmailAndPassword(email, password), HttpStatus.OK);
     }

@@ -10,7 +10,6 @@ import org.uatransport.service.QuestionService;
 import javax.transaction.Transactional;
 import java.util.List;
 
-
 @Service
 @RequiredArgsConstructor
 public class QuestionServiceImpl implements QuestionService {
@@ -33,8 +32,20 @@ public class QuestionServiceImpl implements QuestionService {
         if (questionRepository.existsById(question.getId())) {
             return questionRepository.saveAndFlush(question);
         }
-        return questionRepository.findById(question.getId()).orElseThrow(() -> new ResourceNotFoundException(String
-            .format("This Question does not found", question)));
+        return questionRepository
+            .findById(question.getId())
+            .orElseThrow(
+                () ->
+                    new ResourceNotFoundException(
+                        String.format("This Question %s does not found", question))); // getting
+        // a
+        // warning
+        // too
+        // many
+        // arguments
+        // for
+        // format
+        // string
     }
 
     @Override
@@ -49,7 +60,12 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question getById(Integer id) {
-        return questionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Question with id '%s' not found", id)));
+        return questionRepository
+            .findById(id)
+            .orElseThrow(
+                () ->
+                    new ResourceNotFoundException(
+                        String.format("Question with id '%s' not found", id)));
     }
 
     @Override

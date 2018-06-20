@@ -35,7 +35,8 @@ public class TransitServiceImpl implements TransitService {
         if (nonExtendableCategoryRepository.existsById(categoryId)) {
             return transitRepository.save(transit);
         } else {
-            throw new ResourceNotFoundException(String.format("Category with id '%s' not found", categoryId));
+            throw new ResourceNotFoundException(
+                String.format("Category with id '%s' not found", categoryId));
         }
     }
 
@@ -58,7 +59,8 @@ public class TransitServiceImpl implements TransitService {
         try {
             transitRepository.delete(transit);
         } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(String.format("Transit with id '%s' not found", transit.getId()));
+            throw new ResourceNotFoundException(
+                String.format("Transit with id '%s' not found", transit.getId()));
         }
     }
 
@@ -71,14 +73,19 @@ public class TransitServiceImpl implements TransitService {
         if (transitRepository.existsById(transit.getId())) {
             return transitRepository.save(transit);
         } else {
-            throw new ResourceNotFoundException(String.format("Transit with id '%s' not found", transit.getId()));
+            throw new ResourceNotFoundException(
+                String.format("Transit with id '%s' not found", transit.getId()));
         }
     }
 
     @Override
     @Transactional(readOnly = true)
     public Transit getById(Integer id) {
-        return transitRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Transit with id '%s' not found", id)));
+        return transitRepository
+            .findById(id)
+            .orElseThrow(
+                () ->
+                    new ResourceNotFoundException(String.format("Transit with id '%s' not found", id)));
     }
 
     @Override
