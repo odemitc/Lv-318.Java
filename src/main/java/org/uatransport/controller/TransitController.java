@@ -20,32 +20,27 @@ public class TransitController {
     private final ModelMapper modelMapper;
 
     @GetMapping("/{id}")
-    public ResponseEntity<TransitDTO> getTransitById(@PathVariable Integer id) {
-        TransitDTO transitDTO = modelMapper.map(transitService.getById(id), TransitDTO.class);
-        return new ResponseEntity<>(transitDTO, HttpStatus.OK);
+    public TransitDTO getTransitById(@PathVariable Integer id) {
+        return modelMapper.map(transitService.getById(id), TransitDTO.class);
     }
 
     @GetMapping
-    public ResponseEntity<List<TransitDTO>> getAllTransits() {
-        List<TransitDTO> transits =
-            transitService
-                .getAll()
-                .stream()
-                .map(transit -> modelMapper.map(transit, TransitDTO.class))
-                .collect(Collectors.toList());
-        return new ResponseEntity<>(transits, HttpStatus.OK);
+    public List<TransitDTO> getAllTransits() {
+        return transitService
+            .getAll()
+            .stream()
+            .map(transit -> modelMapper.map(transit, TransitDTO.class))
+            .collect(Collectors.toList());
     }
 
     @GetMapping(params = "categoryId")
-    public ResponseEntity<List<TransitDTO>> getTransitsByCategoryId(
+    public List<TransitDTO> getTransitsByCategoryId(
         @RequestParam("categoryId") Integer categoryId) {
-        List<TransitDTO> transits =
-            transitService
-                .getAllByCategoryId(categoryId)
-                .stream()
-                .map(transit -> modelMapper.map(transit, TransitDTO.class))
-                .collect(Collectors.toList());
-        return new ResponseEntity<>(transits, HttpStatus.OK);
+        return transitService
+            .getAllByCategoryId(categoryId)
+            .stream()
+            .map(transit -> modelMapper.map(transit, TransitDTO.class))
+            .collect(Collectors.toList());
     }
 
     @PostMapping
