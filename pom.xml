@@ -104,13 +104,18 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.coveo</groupId>
-                <artifactId>fmt-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <configLocation>
+                        ${project.basedir}/src/main/resources/checkstyle-configuration.xml
+                    </configLocation>
+                </configuration>
                 <executions>
                     <execution>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
+                        <phase>validate</phase>
+                        <goals><goal>check</goal></goals>
                     </execution>
                 </executions>
             </plugin>

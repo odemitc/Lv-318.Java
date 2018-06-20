@@ -1,28 +1,29 @@
 package org.uatransport.service;
 
-import java.util.List;
 import org.uatransport.entity.FeedbackCriteria;
 
+import java.util.List;
+
 public interface FeedbackCriteriaService {
-  FeedbackCriteria save(FeedbackCriteria feedbackCriteria);
+    FeedbackCriteria save(FeedbackCriteria feedbackCriteria);
 
-  void delete(Integer id);
+    void delete(Integer id);
 
-  FeedbackCriteria update(FeedbackCriteria feedbackCriteria);
+    FeedbackCriteria update(FeedbackCriteria feedbackCriteria);
 
-  List<FeedbackCriteria> getAll();
+    List<FeedbackCriteria> getAll();
 
-  FeedbackCriteria getById(Integer id);
+    FeedbackCriteria getById(Integer id);
 
-  List<FeedbackCriteria> getByType(FeedbackCriteria.FeedbackType type);
+    List<FeedbackCriteria> getByType(FeedbackCriteria.FeedbackType type);
 
-  List<FeedbackCriteria> getByCategoryId(Integer id);
+    List<FeedbackCriteria> getByCategoryId(Integer id);
 
-  List<FeedbackCriteria> getByWeight(Integer weight);
+    List<FeedbackCriteria> getByWeight(Integer weight);
 
-  List<FeedbackCriteria> getByQuestionsName(String question);
+    List<FeedbackCriteria> getByQuestionsName(String question);
 
-  List<FeedbackCriteria> getByQuestionsId(Integer questionId);
+    List<FeedbackCriteria> getByQuestionsId(Integer questionId);
 
-  List<FeedbackCriteria> getByQuestionsGroupId(Integer groupId);
+    List<FeedbackCriteria> getByQuestionsGroupId(Integer groupId);
 }

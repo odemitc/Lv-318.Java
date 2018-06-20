@@ -8,11 +8,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class UaTransportApplication {
-  private static Logger logger = LoggerFactory.getLogger(UaTransportApplication.class);
+    private static Logger logger = LoggerFactory.getLogger(UaTransportApplication.class);
 
-  public static void main(String[] args) {
-    ConfigurableApplicationContext context =
-        SpringApplication.run(UaTransportApplication.class, args);
-    logger.debug("--Application Started--");
-  }
+    public static void main(String[] args) {
+        ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
+        logger.debug("--Application Started--");
+    }
 }

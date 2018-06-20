@@ -38,10 +38,6 @@ public class SearchSpecification implements Specification<ExtendableCategory> {
             expressions.add(builder.equal(category.get("id"), searchCategoryParam.getId()));
         }
 
-        if (searchCategoryParam.isEmpty()) {
-            expressions.add(category.isNull());
-        }
-
         predicate.getExpressions().add(builder.and(expressions.stream().toArray(Predicate[]::new)));
 
         return predicate;

@@ -8,15 +8,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class SearchCategoryParam {
-  private Integer id;
-  private String firstNestedCategoryName;
-  private String secondNestedCategoryName;
-  private String name;
+    private Integer id;
+    private String firstNestedCategoryName;
+    private String secondNestedCategoryName;
+    private String name;
 
-  public boolean isEmpty() {
-    return id == null
-            && firstNestedCategoryName == null
-            && secondNestedCategoryName == null
-            && name == null;
-  }
+    public boolean isEmpty() {
+        return id == null && firstNestedCategoryName == null && secondNestedCategoryName == null && name == null;
+    }
 }
