@@ -28,11 +28,13 @@ public class UaTransportApplication {
         ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
         logger.debug("--Application Started--");
 
-//        EwayRoutesListSaver ewayRoutesListSaver = (EwayRoutesListSaver) context.getBean(EwayRoutesListSaver.class);
-//            ewayRoutesListSaver.convertAndSaveEwayRoutes();
+        EwayRoutesListSaver ewayRoutesListSaver = (EwayRoutesListSaver) context.getBean(EwayRoutesListSaver.class);
+            ewayRoutesListSaver.convertAndSaveEwayRoutes();
 
 //        EwayStopListSaver stopListSaver = (EwayStopListSaver) context.getBean(EwayStopListSaver.class);
 //        stopListSaver.convertAndSaveStops("21");
+
+
 
 
     }

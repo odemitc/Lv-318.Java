@@ -12,8 +12,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.springframework.stereotype.Component;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.uatransport.entity.Transit;
 import org.uatransport.repository.CategoryRepository;
 import org.uatransport.repository.TransitRepository;
@@ -23,6 +24,7 @@ import org.uatransport.service.ewayutil.ewayentity.EwayRouteList;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 
 @RequiredArgsConstructor
 @Service
@@ -46,31 +48,18 @@ public class EwayRoutesListSaver {
         return uri.toString();
     }
 
-    private EwayResponseObject getResponse() throws IOException {
-        HttpClient httpClient = new DefaultHttpClient();
-        HttpGet getRequest = new HttpGet(this.getUrl());
-        ResponseHandler<EwayResponseObject> ewayRouteResponseHandler = new ResponseHandler<EwayResponseObject>() {
-            @Override
-            public EwayResponseObject handleResponse(HttpResponse httpResponse) throws ClientProtocolException, IOException {
-                HttpEntity entity = httpResponse.getEntity();
-                GsonBuilder builder = new GsonBuilder();
-                Gson gson = builder.create();
-                ContentType contentType = ContentType.getOrDefault(entity);
-                Charset charset = contentType.getCharset();
-                Reader reader = new InputStreamReader(entity.getContent(), charset);
-                return gson.fromJson(reader, EwayResponseObject.class);
-            }
-        };
-        return httpClient.execute(getRequest, ewayRouteResponseHandler);
+    private ResponseEntity<String> getResponse(){
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForEntity(getUrl(), String.class);
+    }
+
+    private EwayResponseObject getObjectFromJson(){
+        Gson gson = new Gson();
+        return gson.fromJson(getResponse().getBody(), EwayResponseObject.class);
     }
 
     public void convertAndSaveEwayRoutes() {
-        EwayResponseObject object = null;
-        try {
-            object = getResponse();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        EwayResponseObject object  = getObjectFromJson();
         EwayRouteList ewayRouteList = object.getRoutesList();
         for (EwayRoute route : ewayRouteList.getRoute()) {
             Transit transit = new Transit();

@@ -1,5 +1,7 @@
 package org.uatransport.service.ewayutil.ewayentity;
 
-public class EwayStop {
+import java.io.Serializable;
+
+public class EwayStop  implements Serializable {
 
 }
