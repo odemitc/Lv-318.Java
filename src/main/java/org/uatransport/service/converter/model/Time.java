@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 class Time {
-    Integer Hour;
-    Integer Minute;
+    private Integer hour;
+    private Integer minute;
 }
