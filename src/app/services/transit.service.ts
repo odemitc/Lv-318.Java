@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class TransitService {
 
-  private serviceUrl = environment.serverURL + '/transit/';
+  private serviceUrl = `${environment.serverURL}/transit/`;
 
   constructor(private http: HttpClient) {
   }
@@ -23,6 +23,6 @@ export class TransitService {
   }
 
   getTransitsById(id: String): Observable<Transit[]> {
-    return this.http.get<Transit[]>(this.serviceUrl + '?categoryId=' + id);
+    return this.http.get<Transit[]>(`${this.serviceUrl}?categoryId=${id}`);
   }
 }
