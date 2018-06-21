@@ -42,17 +42,13 @@ class ApiError {
         subErrors.add(subError);
     }
 
-    private void addValidationError(
-        String object, String field, Object rejectedValue, String message) {
+    private void addValidationError(String object, String field, Object rejectedValue, String message) {
         addSubError(new ApiValidationError(object, field, rejectedValue, message));
     }
 
     private void addValidationError(ConstraintViolation<?> cv) {
-        this.addValidationError(
-            cv.getRootBeanClass().getSimpleName(),
-            ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
-            cv.getInvalidValue(),
-            cv.getMessage());
+        this.addValidationError(cv.getRootBeanClass().getSimpleName(),
+                ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(), cv.getInvalidValue(), cv.getMessage());
     }
 
     void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {

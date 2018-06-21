@@ -15,8 +15,8 @@ import java.util.List;
 @RequestMapping("/stop")
 @RequiredArgsConstructor
 public class StopController {
-  private final StopService stopService;
-  private final TransitService transitService;
+    private final StopService stopService;
+    private final TransitService transitService;
 
   @GetMapping("/{id}")
   public Stop getById(@PathVariable Integer id) {

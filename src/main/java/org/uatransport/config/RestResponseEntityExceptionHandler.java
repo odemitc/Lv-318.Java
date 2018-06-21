@@ -19,8 +19,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     private static final HttpHeaders HTTP_HEADERS = new HttpHeaders();
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
-    protected ResponseEntity<Object> handleConflict(ResourceNotFoundException ex,
-                                                    WebRequest request) {
+    protected ResponseEntity<Object> handleConflict(ResourceNotFoundException ex, WebRequest request) {
 
         logger.error("handling ResourceNotFoundException...", ex);
         final ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, ex);
@@ -28,8 +27,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
-    protected ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex,
-                                                               WebRequest request) {
+    protected ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex, WebRequest request) {
         logger.error("Validation error occurred:", ex.getCause());
         final ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex);
         apiError.setMessage("Validation error occurred: " + ex.getCause());
@@ -38,16 +36,16 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
     protected ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex,
-                                                                      WebRequest request) {
+            WebRequest request) {
         logger.error("Unable to convert data {}", ex);
         Class<?> requiredType = ex.getRequiredType();
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
         apiError.setMessage(String.format("The parameter '%s' of value '%s' could not be converted to type '%s'",
-            ex.getName(), ex.getValue(), requiredType != null ? requiredType.getName() : "of the argument"));
+                ex.getName(), ex.getValue(), requiredType != null ? requiredType.getName() : "of the argument"));
         return handleExceptionInternal(ex, apiError, HTTP_HEADERS, apiError.getStatus(), request);
     }
 
-    @ExceptionHandler(value = {IllegalArgumentException.class, IllegalStateException.class})
+    @ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class })
     protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
         final ApiError apiError = new ApiError(HttpStatus.CONFLICT, ex);
         apiError.setMessage("This should be application specific");

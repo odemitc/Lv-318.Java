@@ -1,6 +1,6 @@
 package org.uatransport.service;
 
-import org.springframework.data.jpa.domain.Specification;
+import org.uatransport.config.SearchCategoryParam;
 import org.uatransport.entity.ExtendableCategory;
 
 import java.util.List;
@@ -19,5 +19,5 @@ public interface CategoryService {
 
     void delete(ExtendableCategory extendableCategory);
 
-    List<ExtendableCategory> getAll(Specification specification);
+    List<ExtendableCategory> getAll(SearchCategoryParam searchCategoryParam);
 }

@@ -6,11 +6,9 @@ import lombok.Data;
 @Data
 public class CapacityHourFeedback {
 
-    public Integer capacity;
-
-    public Time startTime;
-
-    public Time endTime;
+    private Integer capacity;
+    private Time startTime;
+    private Time endTime;
 
     public boolean containsHour(Integer hour) {
         int minuteValue = hour * 60;

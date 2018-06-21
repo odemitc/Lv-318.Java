@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class uaTransportApplicationTests {
 
-  @Test
-  public void contextLoads() {
-    assertTrue(true);
-  }
+    @Test
+    public void contextLoads() {
+        assertTrue(true);
+    }
 }

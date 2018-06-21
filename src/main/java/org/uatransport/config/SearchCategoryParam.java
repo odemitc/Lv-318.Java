@@ -13,10 +13,7 @@ public class SearchCategoryParam {
     private String secondNestedCategoryName;
     private String name;
 
-    boolean isEmpty() {
-        return id == null
-            && firstNestedCategoryName == null
-            && secondNestedCategoryName == null
-            && name == null;
+    public boolean isEmpty() {
+        return id == null && firstNestedCategoryName == null && secondNestedCategoryName == null && name == null;
     }
 }

@@ -21,25 +21,23 @@ public class FeedbackController {
     private final FeedbackService feedbackService;
 
     @GetMapping(params = "criteriaId")
-    public ResponseEntity<List<Feedback>> getByCriteria(
-        @RequestParam("criteriaId") Integer criteriaId) {
-        return new ResponseEntity<>(feedbackService.getByCriteriaId(criteriaId), HttpStatus.OK);
+    public List<Feedback> getByCriteria(@RequestParam("criteriaId") Integer criteriaId) {
+        return feedbackService.getByCriteriaId(criteriaId);
     }
 
     @GetMapping(params = "transitId")
-    public ResponseEntity<List<Feedback>> getByTransit(@RequestParam("transitId") Integer transitId) {
-
-        return new ResponseEntity<>(feedbackService.getByTransitId(transitId), HttpStatus.OK);
+    public List<Feedback> getByTransit(@RequestParam("transitId") Integer transitId) {
+        return feedbackService.getByTransitId(transitId);
     }
 
     @GetMapping(params = "userId")
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer userId) {
-        return new ResponseEntity<>(feedbackService.getByUserId(userId), HttpStatus.OK);
+    public List<Feedback> getByUser(@RequestParam("userId") Integer userId) {
+        return feedbackService.getByUserId(userId);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Feedback> getById(@PathVariable Integer id) {
-        return new ResponseEntity<>(feedbackService.getById(id), HttpStatus.OK);
+    public Feedback getById(@PathVariable Integer id) {
+        return feedbackService.getById(id);
     }
 
     @PostMapping(value = "/add")
@@ -53,36 +51,29 @@ public class FeedbackController {
     }
 
     @GetMapping(value = "/rate/{transitId}")
-    public ResponseEntity<Double> getAverageRateByTransit(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(
-            feedbackService.getAverageRateByTransitId(transitId), HttpStatus.OK);
+    public Double getAverageRateByTransit(@PathVariable Integer transitId) {
+        return feedbackService.getAverageRateByTransitId(transitId);
     }
 
     @GetMapping(value = "/rate/{transitId}/{userId}")
-    public ResponseEntity<Double> getAverageRateByTransitAndUser(
-        @PathVariable Integer transitId, @PathVariable Integer userId) {
-        return new ResponseEntity<>(
-            feedbackService.getAverageRateByTransitAndUser(transitId, userId), HttpStatus.OK);
+    public Double getAverageRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
+        return feedbackService.getAverageRateByTransitAndUser(transitId, userId);
     }
 
     @GetMapping(value = "/byHour/{transitId}")
-    public ResponseEntity<Map<Integer, Double>> getCapacityHoursMap(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.getHourCapacityMap(transitId), HttpStatus.OK);
+    public Map<Integer, Double> getCapacityHoursMap(@PathVariable Integer transitId) {
+        return feedbackService.getHourCapacityMap(transitId);
     }
 
     @GetMapping(value = "/byStop/{transitId}")
-    public ResponseEntity<Map<Stop, Double>> getCapacityStopMap(
-        @PathVariable Integer transitId,
-        @RequestParam(value = "stopList[]", required = false) List<Stop> stopList) {
+    public Map<Stop, Double> getCapacityStopMap(@PathVariable Integer transitId,
+            @RequestParam(value = "stopList[]", required = false) List<Stop> stopList) {
         Stop[] stopsVarArg = stopList.toArray(new Stop[stopList.size()]);
-        return new ResponseEntity<>(
-            feedbackService.getStopCapacityMap(transitId, stopsVarArg), HttpStatus.OK);
+        return feedbackService.getStopCapacityMap(transitId, stopsVarArg);
     }
 
     @GetMapping(value = "/accepterMap/{transitId}")
-    public ResponseEntity<EnumMap<AccepterFeedback, Double>> getAccepterMap(
-        @PathVariable Integer transitId) {
-        return new ResponseEntity<>(
-            feedbackService.getAccepterAnswerPercentageMap(transitId), HttpStatus.OK);
+    public EnumMap<AccepterFeedback, Double> getAccepterMap(@PathVariable Integer transitId) {
+        return feedbackService.getAccepterAnswerPercentageMap(transitId);
     }
 }
