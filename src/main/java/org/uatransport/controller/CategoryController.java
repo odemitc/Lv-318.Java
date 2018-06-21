@@ -40,7 +40,7 @@ public class CategoryController {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().query("id={id}")
                 .buildAndExpand(savedCategory.getId()).toUri();
 
-        return ResponseEntity.created(location).build(); // TODO: add Location
+        return ResponseEntity.created(location).build();
     }
 
     @DeleteMapping("/{id}")
