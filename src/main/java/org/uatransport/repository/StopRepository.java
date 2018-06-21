@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface StopRepository extends CrudRepository<Stop, Integer> {
 
-  List<Stop> findByStreet(String name);
+    List<Stop> findByStreet(String name);
 
   @Query("SELECT s FROM Transit t JOIN t.stops s WHERE t.id = :id ORDER BY INDEX(s)")
   List<Stop> findByTransitId(@Param("id") Integer id);

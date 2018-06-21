@@ -54,10 +54,12 @@ public class StopServiceImpl implements StopService {
         if (stop == null) {
             throw new IllegalArgumentException("Stop value should not be null!");
         }
-        if (stopRepository.existsById(stop.getId())) return stopRepository.save(stop);
-        else
+        if (stopRepository.existsById(stop.getId())) {
+            return stopRepository.save(stop);
+        } else {
             throw new ResourceNotFoundException(
                 String.format("Stop with id '%s' not found", stop.getId()));
+        }
     }
 
     @Override
@@ -83,8 +85,10 @@ public class StopServiceImpl implements StopService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
-        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId()))
+        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
             return stopRepository.findIndexByTransitIdAndStopName(transitId, street);
-        else throw new ResourceNotFoundException("Stop  not found");
+        } else {
+            throw new ResourceNotFoundException("Stop  not found");
+        }
     }
 }

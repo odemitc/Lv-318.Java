@@ -37,5 +37,4 @@ public interface FeedbackService {
     Map<Stop, Double> getStopCapacityMap(Integer transitId, Stop... stops);
 
     EnumMap<AccepterFeedback, Double> getAccepterAnswerPercentageMap(Integer transitId);
-
 }

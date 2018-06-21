@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
-import org.uatransport.service.converter.model.CapacityRouteFeedback;
 
 import javax.persistence.*;
 import java.util.List;

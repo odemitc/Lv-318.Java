@@ -57,7 +57,7 @@ public class FeedbackController {
 
     @GetMapping(value = "/rate/{transitId}/{userId}")
     public Double getAverageRateByTransitAndUser(
-            @PathVariable Integer transitId, @PathVariable Integer userId) {
+        @PathVariable Integer transitId, @PathVariable Integer userId) {
         return  feedbackService.getAverageRateByTransitAndUser(transitId, userId);
     }
 
@@ -75,7 +75,7 @@ public class FeedbackController {
 
     @GetMapping(value = "/accepterMap/{transitId}")
     public EnumMap<AccepterFeedback, Double> getAccepterMap(
-            @PathVariable Integer transitId) {
+        @PathVariable Integer transitId) {
         return feedbackService.getAccepterAnswerPercentageMap(transitId);
     }
 }
