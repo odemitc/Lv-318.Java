@@ -40,7 +40,7 @@ public class QuestionController {
         return questionService.getById(id);
     }
 
-    @GetMapping("/{feedbackCriteriaId}")
+    @GetMapping("/feedbackCriteriaId/{feedbackCriteriaId}")
     public List<Question> getByFeedbackCriteriaId(@PathVariable Integer feedbackCriteriaId) {
         return questionService.getByFeedbackCriteriaId(feedbackCriteriaId);
     }
