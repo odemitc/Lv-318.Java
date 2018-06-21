@@ -31,11 +31,7 @@ public class UaTransportApplication {
         EwayRoutesListSaver ewayRoutesListSaver = (EwayRoutesListSaver) context.getBean(EwayRoutesListSaver.class);
             ewayRoutesListSaver.convertAndSaveEwayRoutes();
 
-//        EwayStopListSaver stopListSaver = (EwayStopListSaver) context.getBean(EwayStopListSaver.class);
+        EwayStopListSaver stopListSaver = (EwayStopListSaver) context.getBean(EwayStopListSaver.class);
 //        stopListSaver.convertAndSaveStops("21");
-
-
-
-
     }
 }

@@ -20,6 +20,4 @@ public class ConfigurationUtils {
     public static String getPropertyValue(String key) {
         return String.valueOf(getConfigurationPropetries().getProperty(key));
     }
-
-
 }
