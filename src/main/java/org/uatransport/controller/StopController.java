@@ -41,7 +41,7 @@ public class StopController {
     @PostMapping("/{id}")
     public ResponseEntity<Stop> add(@RequestBody(required = false) Stop stop, @PathVariable Integer id) {
         Transit transitToUpdate = transitService.getById(id);
-        transitToUpdate.getStops().add(stop);
+        transitToUpdate.getPoints().add(stop);
         transitService.update(transitToUpdate);
         Stop savedStop = stopService.save(stop);
         return new ResponseEntity<>(stopService.save(stop), HttpStatus.CREATED);
@@ -49,7 +49,7 @@ public class StopController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Stop> update(@RequestBody Stop stop, @PathVariable Integer id) {
-        Stop savedStop = stopService.update(stop.setId(id));
+        Stop savedStop = stopService.update((Stop) stop.setId(id));
         return new ResponseEntity<>(savedStop, HttpStatus.CREATED);
     }
 }

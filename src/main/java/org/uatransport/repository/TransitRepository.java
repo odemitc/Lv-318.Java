@@ -17,5 +17,5 @@ public interface TransitRepository extends CrudRepository<Transit, Integer> {
 
     List<Transit> findByCategoryId(int id);
 
-    List<Transit> findByStopsIn(@Param("stops") Stop... stops);
+    List<Transit> findByPointsIn(@Param("stops") Stop... stops);
 }

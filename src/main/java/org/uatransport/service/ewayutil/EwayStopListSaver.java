@@ -1,28 +1,19 @@
 package org.uatransport.service.ewayutil;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lombok.RequiredArgsConstructor;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.ContentType;
-import org.apache.http.impl.client.DefaultHttpClient;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.uatransport.entity.Point;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 import org.uatransport.exception.ResourceNotFoundException;
+import org.uatransport.repository.PointRepository;
 import org.uatransport.repository.StopRepository;
 import org.uatransport.repository.TransitRepository;
-import org.uatransport.service.ewayutil.ewayentity.EwayResponseObject;
-import org.uatransport.service.ewayutil.ewayentity.EwayRoute;
-import org.uatransport.service.ewayutil.ewayentity.EwayRouteList;
 import org.uatransport.service.ewayutil.ewaystopentity.EwayPoint;
 import org.uatransport.service.ewayutil.ewaystopentity.EwayPoints;
 import org.uatransport.service.ewayutil.ewaystopentity.EwayRouteWithPoints;
@@ -37,19 +28,20 @@ import java.util.List;
 @Service
 public class EwayStopListSaver {
     private final TransitRepository transitRepository;
+    private final PointRepository pointRepository;
     private final StopRepository stopRepository;
 
-    public String getUrlByID(String transitId) {
+    private String getUrlByID(String transitId) {
         URIBuilder uri = new URIBuilder()
-                .setScheme(EwayConfig.getProperty("scheme"))
-                .setHost(EwayConfig.getProperty("host"))
-                .addParameter("login", EwayConfig.getProperty("login"))
-                .addParameter("password", EwayConfig.getProperty("password"))
-                .addParameter("function", EwayConfig.getProperty("function-stops"))
-                .addParameter("city", EwayConfig.getProperty("city"))
-                .addParameter("id", transitId)
-                .addParameter("start_position", EwayConfig.getProperty("start_position"))
-                .addParameter("stop_position", EwayConfig.getProperty("stop_position"));
+            .setScheme(EwayConfig.getProperty("scheme"))
+            .setHost(EwayConfig.getProperty("host"))
+            .addParameter("login", EwayConfig.getProperty("login"))
+            .addParameter("password", EwayConfig.getProperty("password"))
+            .addParameter("function", EwayConfig.getProperty("function-stops"))
+            .addParameter("city", EwayConfig.getProperty("city"))
+            .addParameter("id", transitId)
+            .addParameter("start_position", EwayConfig.getProperty("start_position"))
+            .addParameter("stop_position", EwayConfig.getProperty("stop_position"));
         return uri.toString();
     }
 
@@ -66,24 +58,38 @@ public class EwayStopListSaver {
     public void convertAndSaveStops(String transitId) {
         EwayStopResponse ewayStopResponse = getObjectFromJson(transitId);
         Transit transit = transitRepository.findById(Integer.parseInt(transitId))
-                .orElseThrow(() -> new ResourceNotFoundException("Impossible to save transit. There is no such transit for assignment."));
+            .orElseThrow(() -> new ResourceNotFoundException("Impossible to save transit. There is no such transit for assignment."));
         EwayRouteWithPoints route = ewayStopResponse.getRoute();
         EwayPoints ewayPoints = route.getPoints();
         EwayPoint[] arrayOfPoints = ewayPoints.getPoint();
-        List<Stop> stops = new ArrayList<>();
+        List<Point> points = new ArrayList<>();
         for (EwayPoint point : arrayOfPoints) {
-            System.out.println(point.getTitle());
-            Stop stop = new Stop();
-            stop.setLat(point.getLat());
-            stop.setLng(point.getLng());
-            stop.setDirection(point.getDirection());
-            if (point.getTitle() != null) {
-                stop.setStreet(point.getTitle());
+            if (point.getTitle() == null) {
+                Point transitPoint = new Point();
+                transitPoint.setLat(point.getLat());
+                transitPoint.setLng(point.getLng());
+                if (point.getDirection() == 1) {
+                    transitPoint.setDirection(Point.DIRECTION.FORWARD);
+                } else {
+                    transitPoint.setDirection(Point.DIRECTION.BACKWARD);
+                }
+                pointRepository.save(transitPoint);
+                points.add(transitPoint);
+            } else {
+                Stop transitStop = new Stop();
+                transitStop.setLng(point.getLng());
+                transitStop.setLat(point.getLat());
+                transitStop.setStreet(point.getTitle());
+                if (point.getDirection() == 1) {
+                    transitStop.setDirection(Point.DIRECTION.FORWARD);
+                } else {
+                    transitStop.setDirection(Point.DIRECTION.BACKWARD);
+                }
+                stopRepository.save(transitStop);
+                points.add(transitStop);
             }
-            stopRepository.save(stop);
-            stops.add(stop);
         }
-        transit.setStops(stops);
+        transit.setPoints(points);
         transitRepository.save(transit);
     }
 }

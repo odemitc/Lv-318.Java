@@ -1,0 +1,15 @@
+package org.uatransport.repository;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.uatransport.entity.Point;
+
+import java.util.List;
+
+public interface PointRepository extends CrudRepository<Point, Integer> {
+
+    @Query("SELECT s FROM Transit t JOIN t.points s WHERE t.id = :id ORDER BY INDEX(s)")
+    List<Point> findByTransitId(@Param("id") Integer id);
+}
+

@@ -106,6 +106,6 @@ public class TransitServiceImpl implements TransitService {
     @Override
     @Transactional(readOnly = true)
     public List<Transit> getTransitsByStopsIn(Stop[] stops) {
-        return transitRepository.findByStopsIn(stops);
+        return transitRepository.findByPointsIn(stops);
     }
 }

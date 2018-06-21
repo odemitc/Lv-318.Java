@@ -1,5 +1,6 @@
 package org.uatransport;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -29,10 +30,10 @@ public class UaTransportApplication {
         ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
         logger.debug("--Application Started--");
 
-        EwayRoutesListSaver ewayRoutesListSaver = (EwayRoutesListSaver) context.getBean(EwayRoutesListSaver.class);
-            ewayRoutesListSaver.convertAndSaveEwayRoutes();
+//        EwayRoutesListSaver ewayRoutesListSaver = (EwayRoutesListSaver) context.getBean(EwayRoutesListSaver.class);
+//            ewayRoutesListSaver.convertAndSaveEwayRoutes();
 
         EwayStopListSaver stopListSaver = (EwayStopListSaver) context.getBean(EwayStopListSaver.class);
-//        stopListSaver.convertAndSaveStops("21");
+        stopListSaver.convertAndSaveStops("21");
     }
 }

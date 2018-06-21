@@ -33,5 +33,5 @@ public class Transit {
     @JoinTable(name = "transit_stop", joinColumns = { @JoinColumn(name = "transit_id") }, inverseJoinColumns = {
             @JoinColumn(name = "stop_id") })
     @OrderColumn(name = "stop_index")
-    private List<Stop> stops;
+    private List<Point> points;
 }
