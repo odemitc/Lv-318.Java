@@ -33,7 +33,6 @@ export class StopsGridComponent implements OnInit {
     this.stopsList.subscribe(stopArray =>
       this.stopArray = stopArray);
     this.checkedItems = new Array(this.stopArray.length);
-    this.selectStops();
 
   }
 

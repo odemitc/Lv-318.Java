@@ -4,15 +4,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
-import {ReactiveFormsModule}from '@angular/forms';
 import {AuthService} from './services/auth/auth.service';
 import {AppComponent} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
 import { HttpModule } from '@angular/http';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -67,14 +64,13 @@ import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
 
 
-import { StopsGridComponent } from "./components/stops/stops-grid.component";
+import { StopsGridComponent } from './components/stops/stops-grid.component';
 import { QuestionComponent } from './components/question/question.component';
 import { AddQuestionComponent } from './components/question/add-question/add-question.component';
 import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
 import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
-import {DiagramService} from './services/diagram.service';
+import { DiagramService } from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
-import { QuestionService } from './services/question.service';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
 import {AddFeedbackComponent} from './components/stops/components/add-feedback/add-feedback.component';
@@ -156,7 +152,6 @@ export function createTranslateLoader(http: HttpClient) {
     HttpModule,
     HttpClientModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     MatTableModule,
     MatTabsModule,

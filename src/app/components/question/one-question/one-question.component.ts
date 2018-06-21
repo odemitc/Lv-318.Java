@@ -19,7 +19,7 @@ export class OneQuestionComponent implements OnInit {
     this.getQuestion();
   }
 
-  getQuestion(): void{
+  getQuestion(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.questionService.getQuestion(id)
     .subscribe(question => this.question = question);
@@ -33,6 +33,7 @@ export class OneQuestionComponent implements OnInit {
   this.questionService.updateQuestion(this.question)
   .subscribe(() => this.gotBack());
   }
+
   gotBack(): void {
     this.location.back();
   }
