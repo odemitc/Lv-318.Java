@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.FeedbackCriteria;
+import org.uatransport.entity.Question;
 import org.uatransport.service.FeedbackCriteriaService;
+import org.uatransport.service.QuestionService;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @RequestMapping("/feedback-criteria")
 public class FeedbackCriteriaController {
     private final FeedbackCriteriaService feedbackCriteriaService;
+
 
     @PostMapping
     public ResponseEntity<FeedbackCriteria> addFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria) {
@@ -31,8 +34,9 @@ public class FeedbackCriteriaController {
     }
 
     @GetMapping
-    public List<FeedbackCriteria> getAllFeedbackCriteria() {
-        return feedbackCriteriaService.getAll();
+    public ResponseEntity<List<FeedbackCriteria>> getAllFeedbackCriteria() {
+
+        return new ResponseEntity<>(feedbackCriteriaService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -58,11 +62,6 @@ public class FeedbackCriteriaController {
 
     }
 
-    @GetMapping("/groupId/{groupId}")
-    public List<FeedbackCriteria> getByGroupId(@PathVariable(value = "groupId") Integer groupId) {
-        return feedbackCriteriaService.getByQuestionsGroupId(groupId);
-    }
-
     @GetMapping("/question/{question}")
     public List<FeedbackCriteria> getByQuestions(@PathVariable(value = "question") String question) {
         return feedbackCriteriaService.getByQuestionsName(question);
@@ -72,5 +71,9 @@ public class FeedbackCriteriaController {
     public List<FeedbackCriteria> getByWeight(@PathVariable(value = "weight") Integer weight) {
         return feedbackCriteriaService.getByWeight(weight);
 
+    }
+    @GetMapping("/categoryId/{categoryId}/type/{type}")
+    public List<FeedbackCriteria> getByTypeAndCategoryId(@PathVariable(value = "categoryId") Integer categoryId, @PathVariable(value = "type")String type){
+        return feedbackCriteriaService.getByTypeAndCategoryId(categoryId, type);
     }
 }

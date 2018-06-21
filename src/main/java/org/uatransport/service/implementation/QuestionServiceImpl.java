@@ -53,12 +53,12 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> getByGroupId(Integer groupId) {
-        return questionRepository.findByGroupId(groupId);
+    public List<Question> getByName(String name) {
+        return questionRepository.findByName(name);
     }
 
     @Override
-    public List<Question> getByQuestionName(String questionName) {
-        return questionRepository.findByName(questionName);
+    public List<Question> getByFeedbackCriteriaId(Integer feedbackCriteriaId) {
+        return questionRepository.findByFeedbackCriteriaId(feedbackCriteriaId);
     }
 }

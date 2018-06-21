@@ -90,7 +90,9 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<FeedbackCriteria> getByQuestionsGroupId(Integer groupId) {
-        return feedbackCriteriaRepository.findByQuestionsGroupId(groupId);
+    public List<FeedbackCriteria> getByTypeAndCategoryId(Integer categoryId, String type) {
+        return feedbackCriteriaRepository.findByTypeAndNonExtendableCategoryId(categoryId, type);
     }
+
+
 }

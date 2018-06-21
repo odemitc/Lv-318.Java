@@ -26,7 +26,7 @@ public class QuestionController {
     }
 
     @PutMapping("/{id}")
-    public Question updateQuestiona(@RequestBody Question question, @PathVariable Integer id) {
+    public Question updateQuestion(@RequestBody Question question, @PathVariable Integer id) {
         return questionService.update(question.setId(id));
     }
 
@@ -40,4 +40,8 @@ public class QuestionController {
         return questionService.getById(id);
     }
 
+    @GetMapping("/{feedbackCriteriaId}")
+    public List<Question> getByFeedbackCriteriaId(@PathVariable Integer feedbackCriteriaId) {
+        return questionService.getByFeedbackCriteriaId(feedbackCriteriaId);
+    }
 }

@@ -19,12 +19,12 @@ import java.util.List;
 public class FeedbackCriteria {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private Integer weight;
 
-   @JsonManagedReference
+
     @OneToMany
     @JoinColumn(name = "criteria_id")
     private List<Question> questions;

@@ -15,10 +15,8 @@ import javax.persistence.*;
 public class Question {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    private Integer groupId;
 
     private String name;
 
