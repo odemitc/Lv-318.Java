@@ -19,7 +19,7 @@ public class DataSourceConfig {
     @Bean(name = "dataSource")
     public DataSource dataSource() {
         return DataSourceBuilder.create().url(env.getProperty("spring.datasource.url"))
-            .username(env.getProperty("spring.datasource.username")).password(env.getProperty("spring.datasource.password"))
-            .build();
+                .username(env.getProperty("spring.datasource.username"))
+                .password(env.getProperty("spring.datasource.password")).build();
     }
 }

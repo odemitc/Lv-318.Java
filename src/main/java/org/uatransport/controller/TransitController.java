@@ -28,14 +28,14 @@ public class TransitController {
     @GetMapping
     public ResponseEntity<List<TransitDTO>> getAllTransits() {
         List<TransitDTO> transits = transitService.getAll().stream()
-            .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
+                .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
         return new ResponseEntity<>(transits, HttpStatus.OK);
     }
 
     @GetMapping(params = "categoryId")
     public ResponseEntity<List<TransitDTO>> getTransitsByCategoryId(@RequestParam("categoryId") Integer categoryId) {
         List<TransitDTO> transits = transitService.getAllByCategoryId(categoryId).stream()
-            .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
+                .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
         return new ResponseEntity<>(transits, HttpStatus.OK);
     }
 

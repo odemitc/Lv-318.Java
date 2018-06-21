@@ -21,13 +21,15 @@ public class SearchSpecification implements Specification<ExtendableCategory> {
         Join<Object, ExtendableCategory> firstNestedCategory = category.join("nextLevelCategory");
 
         if (searchCategoryParam.getFirstNestedCategoryName() != null) {
-            expressions.add(builder.equal(firstNestedCategory.get("name"), searchCategoryParam.getFirstNestedCategoryName()));
+            expressions.add(
+                    builder.equal(firstNestedCategory.get("name"), searchCategoryParam.getFirstNestedCategoryName()));
         }
 
         if (searchCategoryParam.getSecondNestedCategoryName() != null) {
             Join<Object, ExtendableCategory> secondNestedCategory = firstNestedCategory.join("nextLevelCategory");
 
-            expressions.add(builder.equal(secondNestedCategory.get("name"), searchCategoryParam.getSecondNestedCategoryName()));
+            expressions.add(
+                    builder.equal(secondNestedCategory.get("name"), searchCategoryParam.getSecondNestedCategoryName()));
         }
 
         if (searchCategoryParam.getName() != null) {

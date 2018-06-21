@@ -37,7 +37,8 @@ public class CategoryServiceImpl implements CategoryService {
         try {
             categoryRepository.delete(extendableCategory);
         } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(String.format("Category with id '%s' not found", extendableCategory.getId()));
+            throw new ResourceNotFoundException(
+                    String.format("Category with id '%s' not found", extendableCategory.getId()));
         }
     }
 
@@ -58,13 +59,15 @@ public class CategoryServiceImpl implements CategoryService {
         if (categoryRepository.existsById(categoryToUpdate.getId())) {
             return categoryRepository.save(categoryToUpdate);
         } else {
-            throw new ResourceNotFoundException(String.format("Category with id '%s' not found", categoryToUpdate.getId()));
+            throw new ResourceNotFoundException(
+                    String.format("Category with id '%s' not found", categoryToUpdate.getId()));
         }
     }
 
     @Override
     public ExtendableCategory getById(Integer id) {
-        return categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", id)));
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Category with id '%s' not found", id)));
     }
 
     @Override
@@ -72,7 +75,6 @@ public class CategoryServiceImpl implements CategoryService {
     public List<ExtendableCategory> getListTopExtendableCategories() {
         return categoryRepository.findAllByNextLevelCategoryIsNull();
     }
-
 
     public List<ExtendableCategory> getAll(SearchCategoryParam searchCategoryParam) {
         if (searchCategoryParam.isEmpty()) {

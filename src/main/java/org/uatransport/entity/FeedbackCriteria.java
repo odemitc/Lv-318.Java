@@ -37,10 +37,8 @@ public class FeedbackCriteria {
 
     @RequiredArgsConstructor
     public enum FeedbackType {
-        RATING(new RatingConversionStrategy()),
-        ROUTE_BUSY_HOURS(new CapacityBusyHoursConversionStrategy()),
-        ACCEPTER(new AccepterConversionStrategy()),
-        CAPACITY(new CapacityBusyHoursConversionStrategy());
+        RATING(new RatingConversionStrategy()), ROUTE_BUSY_HOURS(new CapacityBusyHoursConversionStrategy()), ACCEPTER(
+                new AccepterConversionStrategy()), CAPACITY(new CapacityBusyHoursConversionStrategy());
 
         private final ConversionStrategy<?> conversionStrategy;
 

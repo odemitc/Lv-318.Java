@@ -27,7 +27,8 @@ public class FeedbackDTO {
     public Feedback convertToEntity() throws ParseException {
         Feedback feedback = modelMapper.map(this, Feedback.class);
         return feedback.setId(this.getId()).setAnswer(this.getAnswer()).setUser(new User().setId(this.getUserId()))
-            .setFeedbackCriteria(new FeedbackCriteria().setId(this.getCriteriaId())).setTransit(new Transit().setId(this.getTransitId()));
+                .setFeedbackCriteria(new FeedbackCriteria().setId(this.getCriteriaId()))
+                .setTransit(new Transit().setId(this.getTransitId()));
     }
 
     public static List<Feedback> toEntity(List<FeedbackDTO> feedbackDTOList) {
@@ -37,6 +38,7 @@ public class FeedbackDTO {
     private FeedbackDTO convertToDto(Feedback feedback) {
         FeedbackDTO feedbackDTO = modelMapper.map(this, FeedbackDTO.class);
         return feedbackDTO.setId(feedback.getId()).setAnswer(feedback.getAnswer()).setUserId(feedback.getUser().getId())
-            .setCriteriaId(feedback.getFeedbackCriteria().getId()).setTransitId(feedback.getFeedbackCriteria().getId());
+                .setCriteriaId(feedback.getFeedbackCriteria().getId())
+                .setTransitId(feedback.getFeedbackCriteria().getId());
     }
 }

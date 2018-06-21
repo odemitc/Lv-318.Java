@@ -78,7 +78,8 @@ public class TransitServiceImpl implements TransitService {
     @Override
     @Transactional(readOnly = true)
     public Transit getById(Integer id) {
-        return transitRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Transit with id '%s' not found", id)));
+        return transitRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Transit with id '%s' not found", id)));
     }
 
     @Override

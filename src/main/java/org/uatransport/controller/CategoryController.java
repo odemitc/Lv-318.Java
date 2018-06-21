@@ -37,7 +37,8 @@ public class CategoryController {
     public ResponseEntity<ExtendableCategory> save(@RequestBody ExtendableCategory category) {
         ExtendableCategory savedCategory = categoryService.save(category);
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().query("id={id}").buildAndExpand(savedCategory.getId()).toUri();
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().query("id={id}")
+                .buildAndExpand(savedCategory.getId()).toUri();
 
         return ResponseEntity.created(location).build(); // TODO: add Location
     }
