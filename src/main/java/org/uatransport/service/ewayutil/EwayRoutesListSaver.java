@@ -6,6 +6,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.uatransport.entity.NonExtendableCategory;
 import org.uatransport.entity.Transit;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.CategoryRepository;
@@ -59,7 +60,7 @@ public class EwayRoutesListSaver {
                     categoryId = 4;
                     break;
             }
-            transit.setCategory(categoryRepository.findById(categoryId)
+            transit.setCategory((NonExtendableCategory) categoryRepository.findById(categoryId)
                     .orElseThrow(() -> new ResourceNotFoundException("Impossible to save transit. There is no such category for assignment.")));
             transit.setName(route.getTitle());
             transitRepository.save(transit);
