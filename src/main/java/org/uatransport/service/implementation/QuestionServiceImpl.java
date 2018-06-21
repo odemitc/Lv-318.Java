@@ -33,7 +33,15 @@ public class QuestionServiceImpl implements QuestionService {
             return questionRepository.saveAndFlush(question);
         }
         return questionRepository.findById(question.getId()).orElseThrow(
-                () -> new ResourceNotFoundException(String.format("This Question does not found", question)));
+                () -> new ResourceNotFoundException(String.format("This Question %s does not found", question))); // getting
+        // a
+        // warning
+        // too
+        // many
+        // arguments
+        // for
+        // format
+        // string
     }
 
     @Override

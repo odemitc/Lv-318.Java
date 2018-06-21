@@ -15,8 +15,8 @@ import java.util.List;
 public class Transit {
 
     @Id
-    @GeneratedValue
-    /* (strategy = GenerationType.IDENTITY) */ private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String name;
 

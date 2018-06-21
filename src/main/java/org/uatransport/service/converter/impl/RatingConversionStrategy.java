@@ -12,9 +12,6 @@ public class RatingConversionStrategy
     @Override
     public Integer convert(Feedback feedback) {
         return Integer.parseInt(feedback.getAnswer());
-        // *
-        // (
-        // feedback.getFeedbackCriteria()).getWeight();
     }
 
     @Override
