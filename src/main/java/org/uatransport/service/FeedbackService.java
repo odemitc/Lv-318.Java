@@ -26,7 +26,8 @@ public interface FeedbackService {
 
     List<Feedback> getByTransitAndFeedbackCriteria(Integer transitId, FeedbackCriteria.FeedbackType feedbackType);
 
-    List<Feedback> getByTransitAndFeedbackCriteriaAndUserId(Integer transitId, FeedbackCriteria.FeedbackType feedbackType, Integer userId);
+    List<Feedback> getByTransitAndFeedbackCriteriaAndUserId(Integer transitId,
+            FeedbackCriteria.FeedbackType feedbackType, Integer userId);
 
     Double getAverageRateByTransitId(Integer transitId);
 

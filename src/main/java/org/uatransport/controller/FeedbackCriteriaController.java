@@ -26,7 +26,8 @@ public class FeedbackCriteriaController {
     }
 
     @PutMapping("/{id}")
-    public FeedbackCriteria updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria, @PathVariable Integer id) {
+    public FeedbackCriteria updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria,
+            @PathVariable Integer id) {
         return feedbackCriteriaService.update(feedbackCriteria.setId(id));
     }
 

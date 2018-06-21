@@ -6,7 +6,8 @@ import org.uatransport.entity.ExtendableCategory;
 
 import java.util.List;
 
-public interface CategoryRepository extends CrudRepository<ExtendableCategory, Integer>, JpaSpecificationExecutor<ExtendableCategory> {
+public interface CategoryRepository
+        extends CrudRepository<ExtendableCategory, Integer>, JpaSpecificationExecutor<ExtendableCategory> {
 
     List<ExtendableCategory> findAllByNextLevelCategoryIsNull();
 }

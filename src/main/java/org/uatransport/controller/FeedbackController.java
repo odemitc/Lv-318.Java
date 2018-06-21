@@ -56,9 +56,8 @@ public class FeedbackController {
     }
 
     @GetMapping(value = "/rate/{transitId}/{userId}")
-    public Double getAverageRateByTransitAndUser(
-        @PathVariable Integer transitId, @PathVariable Integer userId) {
-        return  feedbackService.getAverageRateByTransitAndUser(transitId, userId);
+    public Double getAverageRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
+        return feedbackService.getAverageRateByTransitAndUser(transitId, userId);
     }
 
     @GetMapping(value = "/byHour/{transitId}")
@@ -68,14 +67,13 @@ public class FeedbackController {
 
     @GetMapping(value = "/byStop/{transitId}")
     public Map<Stop, Double> getCapacityStopMap(@PathVariable Integer transitId,
-                                                @RequestParam(value = "stopList[]", required = false) List<Stop> stopList) {
+            @RequestParam(value = "stopList[]", required = false) List<Stop> stopList) {
         Stop[] stopsVarArg = stopList.toArray(new Stop[stopList.size()]);
         return feedbackService.getStopCapacityMap(transitId, stopsVarArg);
     }
 
     @GetMapping(value = "/accepterMap/{transitId}")
-    public EnumMap<AccepterFeedback, Double> getAccepterMap(
-        @PathVariable Integer transitId) {
+    public EnumMap<AccepterFeedback, Double> getAccepterMap(@PathVariable Integer transitId) {
         return feedbackService.getAccepterAnswerPercentageMap(transitId);
     }
 }

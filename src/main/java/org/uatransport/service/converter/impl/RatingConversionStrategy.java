@@ -7,7 +7,7 @@ import org.uatransport.service.converter.ConversionStrategy;
 import java.util.function.BiFunction;
 
 public class RatingConversionStrategy
-    implements BiFunction<String, FeedbackCriteria, Integer>, ConversionStrategy<Integer> {
+        implements BiFunction<String, FeedbackCriteria, Integer>, ConversionStrategy<Integer> {
 
     @Override
     public Integer convert(Feedback feedback) {

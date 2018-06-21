@@ -50,10 +50,8 @@ public class UserServiceImplement implements UserService {
     @Override
     @Transactional(readOnly = true)
     public User getById(int id) {
-        return userRepository
-            .findById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException(String.format("User with id '%s' not found", id)));
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("User with id '%s' not found", id)));
     }
 
     @Override

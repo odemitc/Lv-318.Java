@@ -32,10 +32,8 @@ public class StopServiceImpl implements StopService {
     @Override
     @Transactional(readOnly = true)
     public Stop getById(Integer id) {
-        return stopRepository
-            .findById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
+        return stopRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
     }
 
     @Override
@@ -57,8 +55,7 @@ public class StopServiceImpl implements StopService {
         if (stopRepository.existsById(stop.getId())) {
             return stopRepository.save(stop);
         } else {
-            throw new ResourceNotFoundException(
-                String.format("Stop with id '%s' not found", stop.getId()));
+            throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", stop.getId()));
         }
     }
 
