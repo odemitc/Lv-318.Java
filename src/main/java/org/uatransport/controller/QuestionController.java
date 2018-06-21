@@ -39,5 +39,4 @@ public class QuestionController {
     public Question getById(@PathVariable Integer id) {
         return questionService.getById(id);
     }
-
 }

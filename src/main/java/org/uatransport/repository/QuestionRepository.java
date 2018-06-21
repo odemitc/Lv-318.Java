@@ -13,6 +13,4 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     List<Question> findByGroupId(Integer groupId);
 
     List<Question> findByName(String questionName);
-    
-
 }

@@ -23,5 +23,4 @@ public interface FeedbackCriteriaRepository extends JpaRepository<FeedbackCriter
 
     @Query(value = "SELECT * FROM feedback_criteria WHERE category_id = ?1", nativeQuery = true)
     List<FeedbackCriteria> findFeedbackCriteriaByNonExtendableCategoryId(Integer categoryId);
-
 }

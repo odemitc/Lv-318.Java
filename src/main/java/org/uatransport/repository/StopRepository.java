@@ -11,19 +11,13 @@ public interface StopRepository extends CrudRepository<Stop, Integer> {
 
     List<Stop> findByStreet(String name);
 
-    @Query(value = "select * from stop join transit_stop on stop.id = transit_stop.stop_id " +
-            "where transit_stop.transit_id = :id order by stop_index", nativeQuery = true)
+    @Query("SELECT s FROM Transit t JOIN t.stops s WHERE t.id = :id ORDER BY INDEX(s)")
     List<Stop> findByTransitId(@Param("id") Integer id);
 
-    @Query(value = "select * from stop join transit_stop on stop.id = transit_stop.stop_id " +
-            "where transit_stop.transit_id = :transitId and stop.street = :street", nativeQuery = true)
-    Stop findByTransitIdAndStopName(@Param("transitId") Integer transitId, @Param("street") String street) ;
+    @Query("SELECT s FROM Transit t JOIN t.stops s WHERE t.id = :id AND s.street = :street")
+    Stop findByTransitIdAndStopName(@Param("id") Integer transitId, @Param("street") String street);
 
-    @Query(value = "select transit_stop.stop_index from transit_stop join stop on stop.id = transit_stop.stop_id " +
-            "where transit_stop.transit_id = :transitId and stop.street = :street", nativeQuery = true)
-    Integer findIndexByTransitIdAndStopName(@Param("transitId") Integer transitId, @Param("street") String street) ;
-
-    @Query(value = "select * from stop join transit_stop on stop.id = transit_stop.stop_id where stop.street is not null and transit_stop.transit_id = :id order by stop_index;", nativeQuery = true)
-    List<Stop> findByTransitIdWhereStopNotNull(@Param("id") Integer id);
+    @Query("SELECT INDEX(s) FROM Transit t JOIN t.stops s WHERE t.id = :id AND s.street = :street")
+    Integer findIndexByTransitIdAndStopName(@Param("id") Integer transitId, @Param("street") String street);
 }
 

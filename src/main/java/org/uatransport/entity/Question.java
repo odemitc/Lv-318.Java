@@ -1,11 +1,13 @@
 package org.uatransport.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Data
@@ -21,9 +23,4 @@ public class Question {
     private Integer groupId;
 
     private String name;
-
-
-
-
 }
-

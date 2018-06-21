@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @SpringBootApplication
+@Slf4j
 public class UaTransportApplication {
     private static Logger logger = LoggerFactory.getLogger(UaTransportApplication.class);
 

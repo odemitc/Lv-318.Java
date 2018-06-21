@@ -26,7 +26,8 @@ public class FeedbackCriteriaController {
     }
 
     @PutMapping("/{id}")
-    public FeedbackCriteria updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria, @PathVariable Integer id) {
+    public FeedbackCriteria updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria,
+            @PathVariable Integer id) {
         return feedbackCriteriaService.update(feedbackCriteria.setId(id));
     }
 
@@ -45,17 +46,14 @@ public class FeedbackCriteriaController {
         return feedbackCriteriaService.getByType(type);
     }
 
-
     @GetMapping("/categoryId/{categoryId}")
     public List<FeedbackCriteria> getByCategoryId(@PathVariable(value = "categoryId") Integer categoryId) {
         return feedbackCriteriaService.getByCategoryId(categoryId);
     }
 
-
     @GetMapping("/questionId/{questionId}")
     public List<FeedbackCriteria> getByQuestionsId(@PathVariable(value = "questionId") Integer questionId) {
         return feedbackCriteriaService.getByQuestionsId(questionId);
-
     }
 
     @GetMapping("/groupId/{groupId}")
@@ -71,6 +69,5 @@ public class FeedbackCriteriaController {
     @GetMapping("/weight/{weight}")
     public List<FeedbackCriteria> getByWeight(@PathVariable(value = "weight") Integer weight) {
         return feedbackCriteriaService.getByWeight(weight);
-
     }
 }

@@ -1,19 +1,16 @@
 package org.uatransport.entity;
 
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "users")
 @Data
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +26,6 @@ public class User {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-
     @Column(name = "password", nullable = false)
     private String password;
-
 }

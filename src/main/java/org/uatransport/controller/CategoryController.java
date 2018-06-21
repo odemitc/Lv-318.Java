@@ -2,19 +2,18 @@ package org.uatransport.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.uatransport.config.SearchCategoryParam;
-import org.uatransport.config.SearchSpecification;
 import org.uatransport.entity.ExtendableCategory;
-import org.uatransport.entity.NonExtendableCategory;
 import org.uatransport.service.CategoryService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -23,31 +22,36 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @GetMapping
-    public ResponseEntity<List<ExtendableCategory>> search(SearchCategoryParam searchCategoryParam) {
-        SearchSpecification specification = new SearchSpecification(searchCategoryParam, categoryService);
+    @GetMapping("/top")
+    public List<ExtendableCategory> getTop() {
+        return categoryService.getListTopExtendableCategories();
+    }
 
-        return new ResponseEntity<>(categoryService.getAll(specification), HttpStatus.OK);
+    @GetMapping
+    public List<ExtendableCategory> search(SearchCategoryParam searchCategoryParam) {
+
+        return categoryService.getAll(searchCategoryParam);
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ExtendableCategory> save(@RequestBody ExtendableCategory category) {
         ExtendableCategory savedCategory = categoryService.save(category);
-        return new ResponseEntity<>(savedCategory, HttpStatus.OK);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().query("id={id}")
+                .buildAndExpand(savedCategory.getId()).toUri();
+
+        return ResponseEntity.created(location).build(); // TODO: add Location
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable Integer id) {
         categoryService.delete(id);
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<ExtendableCategory> update(@RequestBody ExtendableCategory category, @PathVariable Integer id) {
+    public ExtendableCategory update(@RequestBody ExtendableCategory category, @PathVariable Integer id) {
         ExtendableCategory updatedCategory = categoryService.update(category.setId(id));
-        return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
+        return updatedCategory;
     }
 
     @GetMapping(value = "/img", produces = MediaType.IMAGE_PNG_VALUE)

@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
-import org.uatransport.service.converter.ConversionStrategy;
-import org.uatransport.service.converter.impl.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,7 +22,7 @@ public class FeedbackCriteria {
 
     private Integer weight;
 
-   @JsonManagedReference
+    @JsonManagedReference
     @OneToMany
     @JoinColumn(name = "criteria_id")
     private List<Question> questions;
@@ -33,21 +31,8 @@ public class FeedbackCriteria {
     @Column(name = "type", updatable = false)
     private FeedbackType type;
 
-
     @RequiredArgsConstructor
     public enum FeedbackType {
-
-        RATING(new RatingConversionStrategy()),
-        ROUTE_BUSY_HOURS(new CapacityBusyHoursConversionStrategy()),
-        ACCEPTER(new AccepterConversionStrategy()),
-        CAPACITY(new CapacityBusyHoursConversionStrategy());
-
-        private final ConversionStrategy<?> conversionStrategy;
-
-        @SuppressWarnings("unchecked")
-        public <T> T convertFeedback(Feedback feedback) {
-            return (T) conversionStrategy.convert(feedback);
-        }
-
+        RATING, ROUTE_CAPACITY, ACCEPTER, HOURS_CAPACITY
     }
 }

@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.modelmapper.ModelMapper;
-import org.uatransport.entity.dto.FeedbackDTO;
 
 import javax.persistence.*;
 
@@ -16,7 +14,8 @@ import javax.persistence.*;
 public class Feedback {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     private String answer;
@@ -33,5 +32,4 @@ public class Feedback {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "criteria_id")
     private FeedbackCriteria feedbackCriteria;
-
 }

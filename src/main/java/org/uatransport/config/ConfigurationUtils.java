@@ -7,6 +7,7 @@ public class ConfigurationUtils {
 
     private static ClassLoader classLoader = ConfigurationUtils.class.getClassLoader();
     private static final String CROSS_ORIGIN_PROPERTIES = "cross-origin.properties";
+
     private static Properties getConfigurationPropetries() {
         Properties properties = new Properties();
         try {

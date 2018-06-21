@@ -34,8 +34,7 @@ public class StopServiceImpl implements StopService {
     @Transactional(readOnly = true)
     public Stop getById(Integer id) {
         return stopRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Stop with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
     }
 
     @Override
@@ -54,9 +53,11 @@ public class StopServiceImpl implements StopService {
         if (stop == null) {
             throw new IllegalArgumentException("Stop value should not be null!");
         }
-        if (stopRepository.existsById(stop.getId())) return stopRepository.save(stop);
-        else throw new ResourceNotFoundException(String
-                .format("Stop with id '%s' not found", stop.getId()));
+        if (stopRepository.existsById(stop.getId())) {
+            return stopRepository.save(stop);
+        } else {
+            throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", stop.getId()));
+        }
     }
 
     @Override
@@ -67,6 +68,7 @@ public class StopServiceImpl implements StopService {
         }
         return stopRepository.findByStreet(street);
     }
+
     @Transactional
     public List<Stop> getByTransitId(Integer id) {
         return stopRepository.findByTransitId(id);
@@ -75,20 +77,16 @@ public class StopServiceImpl implements StopService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Stop getByTransitIdAndStopName(Integer transitId, String street) {
-        return stopRepository.findByTransitIdAndStopName(transitId, street );
+        return stopRepository.findByTransitIdAndStopName(transitId, street);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
-        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId()))
-            return stopRepository.findIndexByTransitIdAndStopName(transitId, street );
-        else throw new ResourceNotFoundException("Stop  not found");
-
-    }
-
-    @Override
-    public List<Stop> getByTransidIdWhereStreetNotNull(Integer id) {
-        return stopRepository.findByTransitIdWhereStopNotNull(id);
+        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
+            return stopRepository.findIndexByTransitIdAndStopName(transitId, street);
+        } else {
+            throw new ResourceNotFoundException("Stop  not found");
+        }
     }
 }

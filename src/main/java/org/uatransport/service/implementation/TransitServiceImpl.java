@@ -71,8 +71,7 @@ public class TransitServiceImpl implements TransitService {
         if (transitRepository.existsById(transit.getId())) {
             return transitRepository.save(transit);
         } else {
-            throw new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", transit.getId()));
+            throw new ResourceNotFoundException(String.format("Transit with id '%s' not found", transit.getId()));
         }
     }
 
@@ -80,8 +79,7 @@ public class TransitServiceImpl implements TransitService {
     @Transactional(readOnly = true)
     public Transit getById(Integer id) {
         return transitRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Transit with id '%s' not found", id)));
     }
 
     @Override
