@@ -24,7 +24,7 @@ export class BusyHoursDiagramComponent implements AfterViewInit {
         const lineChart = new Chart(CHART, {
           type: 'line',
           data: {
-            labels: Object.keys(res),
+            labels: Object.keys(res).map(data => data.concat(':00')),
             datasets: [{
               fill: true,
               lineTension: 0.6,

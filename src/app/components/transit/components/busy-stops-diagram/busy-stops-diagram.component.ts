@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {Chart} from 'chart.js';
 
 import {environment} from '../../../../../environments/environment';
@@ -10,14 +10,14 @@ import {Stop} from '../../../../models/stop.model';
   templateUrl: './busy-stops-diagram.component.html',
   styleUrls: ['./busy-stops-diagram.component.css']
 })
-export class BusyStopsDiagramComponent implements  OnInit {
+export class BusyStopsDiagramComponent implements  AfterViewInit{
   @Input() id: number;
   @Input() stopList: Stop[];
 
   constructor(private diagramService: DiagramService) {
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=' + this.stopList)
       .subscribe(res => {
         const CHART = document.getElementById('lineChart1');
@@ -46,5 +46,4 @@ export class BusyStopsDiagramComponent implements  OnInit {
         });
       });
   }
-
 }

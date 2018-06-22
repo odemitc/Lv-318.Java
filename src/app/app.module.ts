@@ -61,20 +61,20 @@ import { MainComponent } from './components/main/main.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { FeedbackCriteriaComponent } from './components/feedback-criteria/feedback-criteria.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
-import { BusyHoursDiagramComponent } from './components/stops/components/busy-hours-diagram/busy-hours-diagram.component';
+import { BusyHoursDiagramComponent } from './components/transit/components/busy-hours-diagram/busy-hours-diagram.component';
 import { MessageComponent } from './components/message/message.component';
 import { UserService } from './services/user.service';
 
 
-import { StopsGridComponent } from './components/stops/stops-grid.component';
+import { StopsGridComponent } from './components/transit/stops-grid.component';
 import { QuestionComponent } from './components/question/question.component';
 import { AddQuestionComponent } from './components/question/add-question/add-question.component';
-import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
-import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
+import { RaitingDiagramComponent } from './components/transit/components/raiting-diagram/raiting-diagram.component';
+import { AverageRateComponent } from './components/transit/components/average-rate/average-rate.component';
 import { DiagramService } from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
-import { BusyStopsDiagramComponent } from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
+import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
