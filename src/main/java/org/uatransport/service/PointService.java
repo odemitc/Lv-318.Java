@@ -1,6 +1,7 @@
 package org.uatransport.service;
 
 import org.uatransport.entity.Point;
+import org.uatransport.entity.Stop;
 
 import java.util.List;
 
@@ -13,11 +14,11 @@ public interface PointService {
 
     Point update(Point stop);
 
-    List<Point> getByStreet(String street);
+    List<Stop> getByStreet(String street);
 
-    List<Point> getByTransitId(Integer id);
+    List<Stop> getStopsByTransitId(Integer id);
 
-    Point getByTransitIdAndStopName(Integer transitId, String street);
+    Stop getByTransitIdAndStopName(Integer transitId, String street);
 
     Integer getIndexByTransitIdAndStopName(Integer transitId, String street);
 }

@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.Point;
+import org.uatransport.entity.Stop;
 import org.uatransport.exception.ResourceNotFoundException;
-import org.uatransport.repository.PointRepository;
+import org.uatransport.repository.StopRepository;
 import org.uatransport.service.PointService;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 public class PointServiceImpl implements PointService {
 
     private final PointRepository pointRepository;
+    private final StopRepository stopRepository;
 
     @Override
     @Transactional
@@ -65,7 +67,7 @@ public class PointServiceImpl implements PointService {
         if (Strings.isNullOrEmpty(street)) {
             throw new IllegalArgumentException("Parameter street should not be null!");
         }
-        return pointRepository.findByStreet(street);
+        return stopRepository.findByStreet(street);
     }
 
     @Transactional
@@ -73,17 +75,23 @@ public class PointServiceImpl implements PointService {
         return pointRepository.findByTransitId(id);
     }
 
+    @Transactional
+    public List<Stop> getStopsByTransitId(Integer id) {
+        return stopRepository.findStopsByTransitId(id);
+    }
+
+
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public Point getByTransitIdAndStopName(Integer transitId, String street) {
-        return pointRepository.findByTransitIdAndStopName(transitId, street);
+    public Stop getByTransitIdAndStopName(Integer transitId, String street) {
+        return stopRepository.findByTransitIdAndStopName(transitId, street);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
-        if (pointRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
-            return pointRepository.findIndexByTransitIdAndStopName(transitId, street);
+        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
+            return stopRepository.findIndexByTransitIdAndStopName(transitId, street);
         } else {
             throw new ResourceNotFoundException("Stop  not found");
         }
