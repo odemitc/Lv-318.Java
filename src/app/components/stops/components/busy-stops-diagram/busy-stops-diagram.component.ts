@@ -1,12 +1,12 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {Chart} from 'chart.js';
-
-import {environment} from '../../../../../environments/environment';
 import {DiagramService} from '../../../../services/diagram.service';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-busy-stops-diagram',
   templateUrl: './busy-stops-diagram.component.html',
+  styleUrls: ['./busy-stops-diagram.component.css']
 })
 export class BusyStopsDiagramComponent implements AfterViewInit {
   @Input() id: number;
@@ -15,14 +15,14 @@ export class BusyStopsDiagramComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stopList[]=null')
+    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id)
       .subscribe(res => {
         const CHART = document.getElementById('lineChart1');
 
         const lineChart = new Chart(CHART, {
           type: 'line',
           data: {
-            labels: Object.keys(res),
+            labels: Object.keys(res).map(data => data.substring(data.lastIndexOf('=') + 1, data.indexOf(')'))),
             datasets: [{
               fill: true,
               lineTension: 0.6,
@@ -30,18 +30,17 @@ export class BusyStopsDiagramComponent implements AfterViewInit {
               borderColor: 'rgba(75,192,192,1)',
               borderCapStyle: 'butt',
               borderDash: [],
-              borderDashOffset: 0.0,
+              borderDashOffset: 0.1,
               borderJointStyle: 'miter',
-              data: Object.values(res)
+              data: Object.values(res).concat(100),
             }]
           },
           options: {
             legend: {
-              display: false
+              display: false,
             }
           }
         });
       });
   }
-
 }
