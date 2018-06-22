@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {ExcategoryModel} from '../models/excategory.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ExcategoryModel } from '../models/excategory.model';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -9,13 +10,13 @@ import {ExcategoryModel} from '../models/excategory.model';
 })
 export class NonExCategoryService {
 
-  private serviceUrl = 'http://localhost:8080/category/';
+  private serviceUrl = environment.serverURL + '/category';
 
   constructor(private http: HttpClient) {
   }
 
-  public getByNames(name: String, nexlevel: String): Observable<ExcategoryModel[]> {
-    return this.http.get<ExcategoryModel[]>(this.serviceUrl + 'get?name=' + name + '&next=' + nexlevel);
+  public getByNames(name: String, nextlevel: String): Observable<ExcategoryModel[]> {
+    return this.http.get<ExcategoryModel[]>(this.serviceUrl + '?name=' + name + '&nextLevelCategoryName=' + nextlevel);
   }
 }
 

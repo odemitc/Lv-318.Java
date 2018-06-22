@@ -1,21 +1,26 @@
-.NewUserForm{
+.NewUserForm {
   width: 800px;
   margin: 200px auto;
   font-size: 25px;
 }
-.Button{
+
+.Button {
   background-color: black;
   width: 50%;
 }
+
 .email {
   width: 100%;
 }
+
 .firstName {
   width: 100%;
 }
+
 .lastName {
   width: 100%;
 }
+
 .password {
   width: 100%;
 }
