@@ -42,7 +42,7 @@ public class EwayRoutesListSaver {
         return gson.fromJson(getResponse().getBody(), EwayResponseObject.class);
     }
 
-    public void convertAndSaveEwayRoutes() {
+    EwayRouteList convertAndSaveEwayRoutes() {
         EwayResponseObject object = getObjectFromJson();
         EwayRouteList ewayRouteList = object.getRoutesList();
         for (EwayRoute route : ewayRouteList.getRoute()) {
@@ -65,6 +65,7 @@ public class EwayRoutesListSaver {
             transit.setName(route.getTitle());
             transitRepository.save(transit);
         }
+        return ewayRouteList;
     }
 
     public static void main(String[] args) {

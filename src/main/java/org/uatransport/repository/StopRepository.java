@@ -3,6 +3,7 @@ package org.uatransport.repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.uatransport.entity.Point;
 import org.uatransport.entity.Stop;
 
 import java.util.List;

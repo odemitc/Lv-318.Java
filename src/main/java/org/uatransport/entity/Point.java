@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = {"lat", "lng", "direction"})
 @Accessors(chain = true)
 @DiscriminatorColumn(name = "type")
 @DiscriminatorValue("POINT")

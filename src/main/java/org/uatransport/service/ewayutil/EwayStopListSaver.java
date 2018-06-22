@@ -55,7 +55,7 @@ public class EwayStopListSaver {
         return gson.fromJson(getResponse(transitId).getBody(), EwayStopResponse.class);
     }
 
-    public void convertAndSaveStops(String transitId) {
+    void convertAndSaveStops(String transitId) {
         EwayStopResponse ewayStopResponse = getObjectFromJson(transitId);
         Transit transit = transitRepository.findById(Integer.parseInt(transitId))
             .orElseThrow(() -> new ResourceNotFoundException("Impossible to save transit. There is no such transit for assignment."));
