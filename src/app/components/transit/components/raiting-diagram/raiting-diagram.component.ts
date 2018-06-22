@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {Chart} from 'chart.js';
 
 import {DiagramService} from '../../../../services/diagram.service';
@@ -9,14 +9,14 @@ import {environment} from '../../../../../environments/environment';
   templateUrl: './raiting-diagram.component.html',
   styleUrls: ['./raiting-diagram.component.css']
 })
-export class RaitingDiagramComponent implements OnInit {
+export class RaitingDiagramComponent implements AfterViewInit {
 
   @Input() id: number;
 
   constructor(private diagramService: DiagramService) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
     this.diagramService.getResults(environment.serverURL + '/feedback/accepterMap/' + this.id)
       .subscribe(res => {
         const CHART = document.getElementById('doughnut');
@@ -43,5 +43,4 @@ export class RaitingDiagramComponent implements OnInit {
         });
       });
   }
-
 }

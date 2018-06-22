@@ -30,7 +30,7 @@ export class QuestionService {
   addQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(this.questionUrl, question,
       httpOptions).pipe(
-      tap((question: Question) => this.log(`added question w/ id=${question.id}`)),
+      tap((data: Question) => this.log(`added question w/ id=${data.id}`)),
       catchError
       (this.handleError<Question>(`addQuestion`))
     );
