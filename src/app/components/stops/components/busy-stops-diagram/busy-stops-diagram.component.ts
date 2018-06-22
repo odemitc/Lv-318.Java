@@ -35,7 +35,7 @@ export class BusyStopsDiagramComponent implements  OnInit {
               borderDash: [],
               borderDashOffset: 0.0,
               borderJointStyle: 'miter',
-              data: Object.values(res).concat(100)
+              data: Object.values(res).concat([0, 100])
             }]
           },
           options: {
