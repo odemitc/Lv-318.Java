@@ -74,4 +74,9 @@ public class FeedbackCriteriaController {
     public List<FeedbackCriteria> getByWeight(@PathVariable(value = "weight") Integer weight) {
         return feedbackCriteriaService.getByWeight(weight);
     }
+
+    @GetMapping("/categoryId/{categoryId}/type/{type}")
+    public List<FeedbackCriteria> getByTypeAndCategoryId(@PathVariable(value = "categoryId") Integer categoryId, @PathVariable(value = "type")String type){
+        return feedbackCriteriaService.getByTypeAndCategoryId(categoryId, type);
+    }
 }
