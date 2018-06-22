@@ -1,19 +1,33 @@
-<div class="addfeedback">
-  <div class="col-md-7">
-    <form class="example-form">
- <h1> Transit № {{transitId}} </h1>
- <mat-form-field class="answer">
-  <textarea matInput [(ngModel)]="feedback.answer" placeholder="answer" name="answer"></textarea>
-</mat-form-field>
-<!-- 
-<mat-form-field appearance="standard">
-  <mat-label>{{feedback.answer}}</mat-label>
-  <input matInput placeholder="answer" [(ngModel)]="feedback.answer">
-</mat-form-field> -->
-<button mat-raised-button (click) = "save()">Save </button>
-<button mat-raised-button (click)="close()">Close</button>
-</form>
-</div>
-</div> 
-  
 
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span  style="text-align: center">{{ 'FeedbackInfo' | translate}} № {{transitId}}</span>
+  
+    <!-- <button mat-raised-button color="primary" (click) = "saveAll()">Save All </button> -->
+    <button mat-raised-button (click)="close()">{{ 'Close' | translate}}</button>
+   
+  </mat-toolbar-row>
+</mat-toolbar>
+<div mat-dialog-actions>
+<div class="addfeedback">
+  <div class ="showFeedbacks" *ngFor="let feedback of feedbacks" >
+      <div class ="showQuestions" *ngFor="let question of feedback.questions" >
+          <div class ="question">
+              {{question}}
+            </div>
+        </div>
+
+    <!-- <div class ="userId">
+      {{feedback.userId}}
+    </div>
+    <div class ="transitId">
+      {{feedback.transitId}}
+    </div>
+    <div class ="criteriaId">
+      {{feedback.criteriaId}}
+    </div> -->
+        
+    
+  </div>
+</div>
+</div>

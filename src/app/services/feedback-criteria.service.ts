@@ -14,6 +14,7 @@ const httpOptions = {
 })
 export class FeedbackCriteriaService {
   private feedbackCriteriaUrl = 'http://localhost:8080/feedback-criteria';
+  private testUrl='http://localhost:8080/feedback-criteria/type/RATING';
 
 
   constructor(private  http: HttpClient,
@@ -27,7 +28,13 @@ export class FeedbackCriteriaService {
         catchError(this.handleError('getAllFeedbackCriterias', []))
       );
   }
-
+  getAllFeedbackCriteriaByType(): Observable<FeedbackCriteria[]> {
+    return this.http.get<FeedbackCriteria[]>(this.testUrl)
+      .pipe(
+        tap(feedbackCriterias => this.log(`fetched feedbackCriterias`)),
+        catchError(this.handleError('getAllFeedbackCriterias', []))
+      );
+  }
   deleteFeedbackCriteria(feedbackCriteria: FeedbackCriteria | number): Observable<FeedbackCriteria> {
     const id = typeof feedbackCriteria === 'number' ? feedbackCriteria : feedbackCriteria.id;
     const url = `${this.feedbackCriteriaUrl}/{id}`;

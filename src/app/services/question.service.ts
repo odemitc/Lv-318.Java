@@ -27,6 +27,14 @@ export class QuestionService {
       );
   }
 
+  getAllQuestionByCriteriaId(id: number): Observable<Question[]> {
+    return this.http.get<Question[]>(this.questionUrl+'/feedbackCriteriaId/'+id)
+      .pipe(
+        tap(questions => this.log(`fetched question`)),
+        catchError(this.handleError('getAllQuestionsByCriteriaId', []))
+      );
+  }
+
   addQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(this.questionUrl, question,
       httpOptions).pipe(

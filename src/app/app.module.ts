@@ -47,11 +47,12 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material';
 
 import {FormsModule} from '@angular/forms';
 import {ExcategoryService} from './services/excategory.service';
+import {QuestionService} from './services/question.service';
 import {MenuComponent} from './components/menu/menu.component';
 import {NonExCategoryComponent} from './components/non-ex-category/non-ex-category.component';
 import {TransitsComponent} from './components/transits/transits.component';
@@ -101,7 +102,6 @@ export function createTranslateLoader(http: HttpClient) {
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
-    StatisticAverageRateComponent,
     CallbackComponent,
     BusyHoursDiagramComponent,
     BusyStopsDiagramComponent,
@@ -158,6 +158,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatMenuModule,
     FormsModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatButtonModule,
     MatDialogModule,

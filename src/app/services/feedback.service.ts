@@ -15,11 +15,15 @@ const httpOptions = {
 })
 export class FeedbackService {
   private url = environment.serverURL + '/feedback';
-
+feedbacks :Feedback[];
   constructor(private http: HttpClient) { 
 
   }
   addFeedback(feedback): Observable<Feedback> {
     return this.http.post<Feedback>(this.url ,feedback, httpOptions);
+  }
+
+  addAllFeedback(feedbacks): Observable<Feedback> {
+    return this.http.post<Feedback>(this.url+ '/add' ,feedbacks, httpOptions);
   }
 }
