@@ -10,7 +10,7 @@ import {Stop} from '../../../../models/stop.model';
   templateUrl: './busy-stops-diagram.component.html',
   styleUrls: ['./busy-stops-diagram.component.css']
 })
-export class BusyStopsDiagramComponent implements  AfterViewInit{
+export class BusyStopsDiagramComponent implements AfterViewInit {
   @Input() id: number;
   @Input() stopList: Stop[];
 
