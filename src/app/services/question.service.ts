@@ -1,9 +1,9 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
-import {MessageService} from './message.service';
-import {Question} from '../models/question.model';
-import {Injectable} from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { MessageService } from './message.service';
+import { Question } from '../models/question.model';
+import { Injectable } from '@angular/core';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -25,13 +25,12 @@ export class QuestionService {
         tap(questions => this.log(`fetched question`)),
         catchError(this.handleError('getAllQuestions', []))
       );
-
   }
 
   addQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(this.questionUrl, question,
       httpOptions).pipe(
-      tap((questionLocal: Question) => this.log(`added question w/ id=${questionLocal.id}`)),
+      tap((question: Question) => this.log(`added question w/ id=${question.id}`)),
       catchError
       (this.handleError<Question>(`addQuestion`))
     );
@@ -61,7 +60,6 @@ export class QuestionService {
       .pipe(tap(_ => this.log(`update question id=${question.id}`)),
         catchError(this.handleError<any>('updateQuestion'))
       );
-
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

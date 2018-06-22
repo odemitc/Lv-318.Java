@@ -1,28 +1,30 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
-import {DiagramService} from '../../../../services/diagram.service';
+
 import {environment} from '../../../../../environments/environment';
+import {DiagramService} from '../../../../services/diagram.service';
+import {Stop} from "../../../../models/stop.model";
 
 @Component({
   selector: 'app-busy-stops-diagram',
   templateUrl: './busy-stops-diagram.component.html',
-  styleUrls: ['./busy-stops-diagram.component.css']
 })
-export class BusyStopsDiagramComponent implements AfterViewInit {
+export class BusyStopsDiagramComponent implements  OnInit {
   @Input() id: number;
+  @Input() stopList: Stop[];
 
   constructor(private diagramService: DiagramService) {
   }
 
-  ngAfterViewInit(): void {
-    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id)
+  ngOnInit(): void {
+    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=' + this.stopList)
       .subscribe(res => {
         const CHART = document.getElementById('lineChart1');
 
-        const lineChart = new Chart(CHART, {
+        const lineChart1 = new Chart(CHART, {
           type: 'line',
           data: {
-            labels: Object.keys(res).map(data => data.substring(data.lastIndexOf('=') + 1, data.indexOf(')'))),
+            labels: Object.keys(res),
             datasets: [{
               fill: true,
               lineTension: 0.6,
@@ -30,17 +32,18 @@ export class BusyStopsDiagramComponent implements AfterViewInit {
               borderColor: 'rgba(75,192,192,1)',
               borderCapStyle: 'butt',
               borderDash: [],
-              borderDashOffset: 0.1,
+              borderDashOffset: 0.0,
               borderJointStyle: 'miter',
-              data: Object.values(res).concat(100),
+              data: Object.values(res)
             }]
           },
           options: {
             legend: {
-              display: false,
+              display: false
             }
           }
         });
       });
   }
+
 }

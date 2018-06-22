@@ -1,7 +1,7 @@
-import {MatPaginator, MatTableDataSource} from '@angular/material';
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Question} from '../../models/question.model';
-import {QuestionService} from '../../services/question.service';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Question } from '../../models/question.model';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-question',

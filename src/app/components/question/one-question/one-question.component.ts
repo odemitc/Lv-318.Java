@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {QuestionService} from '../../../services/question.service';
-import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
-import {Question} from '../../../models/question.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { QuestionService } from '../../../services/question.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { Question } from '../../../models/question.model';
 
 @Component({
   selector: 'app-one-question',
