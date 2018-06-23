@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.CategoryRepository;
@@ -103,9 +102,9 @@ public class TransitServiceImpl implements TransitService {
         return Streams.stream(transitRepository.findAll()).collect(Collectors.toList());
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<Transit> getTransitsByStopsIn(Stop[] stops) {
-        return transitRepository.findByStopsIn(stops);
-    }
+    // @Override
+    // @Transactional(readOnly = true)
+    // public List<Transit> getTransitsByStopsIn(Stop[] stops) {
+    // return transitRepository.findByStopsIn(stops);
+    // }
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.Point;
 import org.uatransport.entity.Stop;
 import org.uatransport.exception.ResourceNotFoundException;
+import org.uatransport.repository.PointRepository;
 import org.uatransport.repository.StopRepository;
 import org.uatransport.service.PointService;
 
@@ -63,7 +64,7 @@ public class PointServiceImpl implements PointService {
 
     @Override
     @Transactional
-    public List<Point> getByStreet(String street) {
+    public List<Stop> getByStreet(String street) {
         if (Strings.isNullOrEmpty(street)) {
             throw new IllegalArgumentException("Parameter street should not be null!");
         }
@@ -80,7 +81,6 @@ public class PointServiceImpl implements PointService {
         return stopRepository.findStopsByTransitId(id);
     }
 
-
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Stop getByTransitIdAndStopName(Integer transitId, String street) {
@@ -90,7 +90,7 @@ public class PointServiceImpl implements PointService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
-        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
+        if (pointRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
             return stopRepository.findIndexByTransitIdAndStopName(transitId, street);
         } else {
             throw new ResourceNotFoundException("Stop  not found");
