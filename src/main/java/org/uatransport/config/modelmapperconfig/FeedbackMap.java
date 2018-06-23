@@ -11,9 +11,8 @@ import org.uatransport.entity.dto.FeedbackDTO;
 public class FeedbackMap extends PropertyMap<Feedback, FeedbackDTO> {
     @Override
     protected void configure() {
-        map().setTransitId(source.getTransit().getId())
-            .setCriteriaId(source.getFeedbackCriteria().getId())
-            .setUserId(source.getUser().getId());
+        map().setTransitId(source.getTransit().getId()).setCriteriaId(source.getFeedbackCriteria().getId())
+                .setUserId(source.getUser().getId());
         map(source.getFeedbackCriteria().setId(map().getCriteriaId()));
         map(source.getTransit().setId(map().getTransitId()));
         map(source.getUser().setId(map().getUserId()));

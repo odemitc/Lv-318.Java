@@ -6,43 +6,44 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.uatransport.entity.Point;
 import org.uatransport.entity.Stop;
 import org.uatransport.exception.ResourceNotFoundException;
+import org.uatransport.repository.PointRepository;
 import org.uatransport.repository.StopRepository;
-import org.uatransport.service.StopService;
+import org.uatransport.service.PointService;
 
 import java.util.List;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class StopServiceImpl implements StopService {
+public class PointServiceImpl implements PointService {
 
+    private final PointRepository pointRepository;
     private final StopRepository stopRepository;
 
     @Override
     @Transactional
-    public Stop save(Stop stop) {
-        if (stop == null) {
+    public Point save(Point point) {
+        if (point == null) {
             throw new IllegalArgumentException("Stop object should not be empty");
         }
-        return stopRepository.save(stop);
+        return pointRepository.save(point);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Stop getById(Integer id) {
-        return stopRepository
-            .findById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
+    public Point getById(Integer id) {
+        return pointRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
     }
 
     @Override
     @Transactional
     public void delete(Integer id) {
         try {
-            stopRepository.deleteById(id);
+            pointRepository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", id));
         }
@@ -50,14 +51,15 @@ public class StopServiceImpl implements StopService {
 
     @Override
     @Transactional
-    public Stop update(Stop stop) {
-        if (stop == null) {
+    public Point update(Point point) {
+        if (point == null) {
             throw new IllegalArgumentException("Stop value should not be null!");
         }
-        if (stopRepository.existsById(stop.getId())) return stopRepository.save(stop);
-        else
-            throw new ResourceNotFoundException(
-                String.format("Stop with id '%s' not found", stop.getId()));
+        if (pointRepository.existsById(point.getId())) {
+            return pointRepository.save(point);
+        } else {
+            throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", point.getId()));
+        }
     }
 
     @Override
@@ -70,8 +72,13 @@ public class StopServiceImpl implements StopService {
     }
 
     @Transactional
-    public List<Stop> getByTransitId(Integer id) {
-        return stopRepository.findByTransitId(id);
+    public List<Point> getByTransitId(Integer id) {
+        return pointRepository.findByTransitId(id);
+    }
+
+    @Transactional
+    public List<Stop> getStopsByTransitId(Integer id) {
+        return stopRepository.findStopsByTransitId(id);
     }
 
     @Override
@@ -83,8 +90,10 @@ public class StopServiceImpl implements StopService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
-        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId()))
+        if (pointRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
             return stopRepository.findIndexByTransitIdAndStopName(transitId, street);
-        else throw new ResourceNotFoundException("Stop  not found");
+        } else {
+            throw new ResourceNotFoundException("Stop  not found");
+        }
     }
 }
