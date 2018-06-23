@@ -18,6 +18,7 @@ export class AddFeedbackCriteriaComponent implements OnInit {
   feedbackCriteria = new FeedbackCriteria();
   questions: Question [] = [];
   enumTypes: any;
+  isReadOnly: boolean = true;
  
   constructor(private feedbackCriteriaService: FeedbackCriteriaService,
   private location: Location,
@@ -30,13 +31,14 @@ export class AddFeedbackCriteriaComponent implements OnInit {
   
   openDialog(): void {
     let dialogRef = this.dialog.open(AddQuestionComponent, {
-      width: '600px',
+      width: '400px',
       data: {}
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.questions.push(result);
-    });
- 
+      if(!(result==null)){  
+        this.questions.push(result);
+      }
+    }); 
   }    
 
   addFeedbackCriteria(): void{
@@ -45,6 +47,11 @@ export class AddFeedbackCriteriaComponent implements OnInit {
     .subscribe(() => this.gotBack());
   }
   
+  ifRatingType(type: any){
+    if(type=="RATING"){
+    this.isReadOnly=false;
+    }
+  }
   gotBack(): void {
     this.location.back();
   }
@@ -53,17 +60,7 @@ export class AddFeedbackCriteriaComponent implements OnInit {
     this.feedbackCriteriaService.getAllEnumTypes()
     .subscribe(enumType =>{
       this.enumTypes=enumType;
-      console.log(enumType);
     } );
-      // for (let prop in enumType) {
-      //   this.enumTypes.push(prop);
-      // }
-      // for (let val of Object.values(enumType)) {
-      //   this.enumTypes.push(val.toString());
-      // }
-    
-      // this.enumTypes=Array.from(Object.values(enumType))
-  
   }
 
 }

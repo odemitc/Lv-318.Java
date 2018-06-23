@@ -1,11 +1,13 @@
-<h2 mat-dialog-title>Add question</h2>
+
+<h2 mat-dialog-title>Write question</h2>
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
     <input matInput placeholder="name" [(ngModel)]="question.name" id="name" name="name">
   </mat-form-field>
-  
-      <button class="mat-raised-button"(click)="close()">Close</button>
+  <div class="button">
+      <button class="mat-raised-button"(click)="close(question.name)">Close</button>
       <button class="mat-raised-button mat-primary"(click)="add(question.name)">Ok</button> 
  
+    </div>
 
-
+  

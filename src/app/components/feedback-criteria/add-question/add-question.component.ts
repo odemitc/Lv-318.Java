@@ -10,11 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./add-question.component.css']
 })
 export class AddQuestionComponent implements OnInit {
-  @Input() question : Question =new Question();
-  // questions : Question[];
-
-  //  question = new Question();   
-   
+  @Input() question : Question =new Question(); 
+  
 
   constructor(private dialogRef: MatDialogRef<AddQuestionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any)
@@ -23,27 +20,16 @@ export class AddQuestionComponent implements OnInit {
     } 
 
   ngOnInit() {}
-  // afterViewInit()
-  // {
-  //   this.questionForm = this.formBuilder.group( {      
-  //     name: " "
-  //   });
-
-  // }
-  // onNoClick():void{
-  //   this.dialogRef.close();
-  // }
-  // onSubmit(){
-  //   this.question = this.questionForm.value;
-  //   this.dialogRef.close();
-  // }
   
-close() {
+close(name: string) {  
   this.dialogRef.close();
+  
 }
-add(name: string){
-  this.dialogRef.close({name} as Question);
 
+add(name: string){
+  if(!(name==null)){
+  this.dialogRef.close({name} as Question);
+  }
 }
 
 }

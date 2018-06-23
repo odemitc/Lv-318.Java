@@ -17,11 +17,7 @@
             <mat-list role="list" *ngFor="let questions of feedbackCriteria.questions ">
                 <mat-list-item role="listitem">{{questions.name}}</mat-list-item>
             </mat-list>
-        </mat-cell> 
-        <!-- <p *ngFor="let question of feedbackCriteria.questions ">
-          {{question.name }}
-        </p> -->
-       
+        </mat-cell>      
       </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
