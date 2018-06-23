@@ -11,6 +11,7 @@ import {StopsGridComponent} from './components/transit/stops-grid.component';
 import { QuestionComponent} from './components/question/question.component';
 import { AddQuestionComponent } from './components/question/add-question/add-question.component';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
+import {UserLoginComponent} from "./components/user-login/user-login.component";
 const routes: Routes = [
   {path: 'category/:top/:city', component: NonExCategoryComponent},
   {path: 'category/:top/:city/:id', component: TransitsComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'question/add-question', component: AddQuestionComponent},
   {path: 'question/:id', component: OneQuestionComponent},
   {path: 'user/add', component: AddUserComponent},
+  {path: 'user/login', component: UserLoginComponent},
   {path: 'show-transit-scheme/:id', component: StopsGridComponent}
   ];
 
