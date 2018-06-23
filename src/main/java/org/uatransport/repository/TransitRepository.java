@@ -1,8 +1,6 @@
 package org.uatransport.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 
 import java.util.List;
