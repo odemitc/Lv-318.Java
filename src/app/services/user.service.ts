@@ -22,7 +22,7 @@ export class UserService {
   }
 
   public createUser(user) {
-    return this.http.post<User>(this.userUrl+'/signup', user);
+    return this.http.post<User>(this.userUrl + '/signup', user);
   }
 
   public logIn(login) {
