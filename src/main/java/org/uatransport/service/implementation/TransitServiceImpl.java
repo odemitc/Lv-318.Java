@@ -98,6 +98,11 @@ public class TransitServiceImpl implements TransitService {
     }
 
     @Override
+    public List<Transit> getAllByNextLevelCategoryId(Integer id) {
+        return transitRepository.findByCategoryNextLevelCategoryId(id);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<Transit> getAll() {
         return Streams.stream(transitRepository.findAll()).collect(Collectors.toList());
