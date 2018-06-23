@@ -44,4 +44,5 @@ public class QuestionController {
     public List<Question> getByFeedbackCriteriaId(@PathVariable Integer feedbackCriteriaId) {
         return questionService.getByFeedbackCriteriaId(feedbackCriteriaId);
     }
+
 }

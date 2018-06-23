@@ -23,8 +23,7 @@ public class FeedbackCriteria {
 
     private Integer weight;
 
-    @JsonManagedReference
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "criteria_id")
     private List<Question> questions;
 

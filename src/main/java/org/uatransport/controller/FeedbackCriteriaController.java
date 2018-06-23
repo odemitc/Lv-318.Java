@@ -17,7 +17,7 @@ public class FeedbackCriteriaController {
 
     @PostMapping
     public ResponseEntity<FeedbackCriteria> addFeedbackCriteria(
-        @RequestBody FeedbackCriteria feedbackCriteria) {
+            @RequestBody FeedbackCriteria feedbackCriteria) {
         return new ResponseEntity<>(feedbackCriteriaService.save(feedbackCriteria), HttpStatus.CREATED);
     }
 
@@ -28,7 +28,7 @@ public class FeedbackCriteriaController {
 
     @PutMapping("/{id}")
     public FeedbackCriteria updateFeedbackCriteria(
-        @RequestBody FeedbackCriteria feedbackCriteria, @PathVariable Integer id) {
+            @RequestBody FeedbackCriteria feedbackCriteria, @PathVariable Integer id) {
         return feedbackCriteriaService.update(feedbackCriteria.setId(id));
     }
 
@@ -44,19 +44,19 @@ public class FeedbackCriteriaController {
 
     @GetMapping("/type/{type}")
     public List<FeedbackCriteria> getByType(
-        @PathVariable(value = "type") FeedbackCriteria.FeedbackType type) {
+            @PathVariable(value = "type") FeedbackCriteria.FeedbackType type) {
         return feedbackCriteriaService.getByType(type);
     }
 
     @GetMapping("/categoryId/{categoryId}")
     public List<FeedbackCriteria> getByCategoryId(
-        @PathVariable(value = "categoryId") Integer categoryId) {
+            @PathVariable(value = "categoryId") Integer categoryId) {
         return feedbackCriteriaService.getByCategoryId(categoryId);
     }
 
     @GetMapping("/questionId/{questionId}")
     public List<FeedbackCriteria> getByQuestionsId(
-        @PathVariable(value = "questionId") Integer questionId) {
+            @PathVariable(value = "questionId") Integer questionId) {
         return feedbackCriteriaService.getByQuestionsId(questionId);
     }
 
@@ -76,7 +76,7 @@ public class FeedbackCriteriaController {
     }
 
     @GetMapping("/categoryId/{categoryId}/type/{type}")
-    public List<FeedbackCriteria> getByTypeAndCategoryId(@PathVariable(value = "categoryId") Integer categoryId, @PathVariable(value = "type")String type){
+    public List<FeedbackCriteria> getByTypeAndCategoryId(@PathVariable(value = "categoryId") Integer categoryId, @PathVariable(value = "type") String type) {
         return feedbackCriteriaService.getByTypeAndCategoryId(categoryId, type);
     }
 }
