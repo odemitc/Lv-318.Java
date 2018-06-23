@@ -4,6 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
+
 import {ReactiveFormsModule}from '@angular/forms';
 import {AuthService} from './services/auth/auth.service';
 import {AppComponent} from './app.component';
@@ -23,7 +24,7 @@ import {
   MatCheckboxModule,
   MatChipsModule,
   MatDatepickerModule,
-  MatDialogModule,
+  MatDialogModule, 
   MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -68,15 +69,13 @@ import {UserService} from './services/user.service';
 
 
 import { StopsGridComponent } from "./components/stops/stops-grid.component";
-import { QuestionComponent } from './components/question/question.component';
-import { AddQuestionComponent } from './components/question/add-question/add-question.component';
 import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
 import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
 import {DiagramService} from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
-import { QuestionService } from './services/question.service';
-import { OneQuestionComponent } from './components/question/one-question/one-question.component';
-
+import { AddQuestionComponent } from './components/feedback-criteria/add-question/add-question.component';
+import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component';
+import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -99,14 +98,14 @@ export function createTranslateLoader(http: HttpClient) {
     AddUserComponent,
     MessageComponent,
     StopsGridComponent,
-    QuestionComponent,
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
     CallbackComponent,
     BusyHoursDiagramComponent,
-    OneQuestionComponent,
-    BusyStopsDiagramComponent
+    BusyStopsDiagramComponent,
+    OneFeedbackCriteriaComponent,
+    AddFeedbackCriteriaComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -119,7 +118,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatChipsModule,
     MatStepperModule,
     MatDatepickerModule,
-    MatDialogModule,
+    MatDialogModule,    
     MatDividerModule,
     MatExpansionModule,
     MatGridListModule,
@@ -158,6 +157,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     MatMenuModule,
     FormsModule,
+    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -170,6 +170,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatCheckboxModule,
     MatPaginatorModule,
+    MatListModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -179,7 +180,8 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [ExcategoryService, UserService, DiagramService, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddQuestionComponent]
 })
 export class AppModule {
 }

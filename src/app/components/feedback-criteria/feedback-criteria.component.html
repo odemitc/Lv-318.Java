@@ -3,18 +3,26 @@
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-      <mat-cell *matCellDef="let feedbackCriteria"> {{feedbackCriteria.id}}</mat-cell>
-    </ng-container>
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-      <mat-cell *matCellDef="let feedbackCriteria"> {{feedbackCriteria.type | lowercase}}</mat-cell>
+      <mat-cell *matCellDef="let feedbackCriteria" a routerLink="./{{feedbackCriteria.id}}"> {{feedbackCriteria.type | lowercase}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="weight">
       <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
       <mat-cell *matCellDef="let feedbackCriteria"> {{ feedbackCriteria.weight }}</mat-cell>
     </ng-container>
+    <ng-container matColumnDef="questions">
+        <mat-header-cell *matHeaderCellDef> Questions </mat-header-cell>
+         <mat-cell *matCellDef="let feedbackCriteria"> 
+            <mat-list role="list" *ngFor="let questions of feedbackCriteria.questions ">
+                <mat-list-item role="listitem">{{questions.name}}</mat-list-item>
+            </mat-list>
+        </mat-cell> 
+        <!-- <p *ngFor="let question of feedbackCriteria.questions ">
+          {{question.name }}
+        </p> -->
+       
+      </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
