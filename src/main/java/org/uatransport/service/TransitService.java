@@ -25,5 +25,5 @@ public interface TransitService {
 
     List<Transit> getAll();
 
-    List<Transit> getTransitsByStopsIn(Stop[] stops);
+    // List<Transit> getTransitsByStopsIn(Stop[] stops);
 }
