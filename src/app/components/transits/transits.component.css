@@ -12,3 +12,7 @@
   width: 800px;
   margin: 150px auto;
 }
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
+}

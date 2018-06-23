@@ -76,7 +76,7 @@ import { DiagramService } from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
-
+import { TransitService } from './services/transit.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -139,14 +139,10 @@ export function createTranslateLoader(http: HttpClient) {
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-
-
   ],
   imports: [
     BrowserModule,
@@ -156,6 +152,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     MatNativeDateModule,
     AppRoutingModule,
+    MatSortModule,
     MatTableModule,
     MatTabsModule,
     MatMenuModule,
@@ -180,7 +177,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService, TransitService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
