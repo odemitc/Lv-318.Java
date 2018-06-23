@@ -14,6 +14,7 @@ import { AddQuestionComponent } from '../add-question/add-question.component';
 export class OneFeedbackCriteriaComponent implements OnInit {
 
   feedbackCriteria: FeedbackCriteria;
+  isReadOnly: boolean = true;
 
   constructor(private feedbackCriteriaService: FeedbackCriteriaService,
   private route: ActivatedRoute,
@@ -27,6 +28,9 @@ export class OneFeedbackCriteriaComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.feedbackCriteriaService.getFeedbackCriteria(id)
     .subscribe(feedbackCriteria => this.feedbackCriteria = feedbackCriteria);
+    if(this.feedbackCriteria.type=="RATING"){
+      this.isReadOnly=false;
+    }
   }
 
   deleteFeedbackCriteria(id: number): void {
@@ -51,5 +55,11 @@ export class OneFeedbackCriteriaComponent implements OnInit {
     });
  
   }    
+   
+  ifRatingType(type: any){
+    if(type=="RATING"){
+    this.isReadOnly=false;
+    }
+  }
 
 }
