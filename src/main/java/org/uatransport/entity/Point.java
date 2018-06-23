@@ -16,7 +16,7 @@ import javax.persistence.*;
 @DiscriminatorValue("POINT")
 public class Point {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
