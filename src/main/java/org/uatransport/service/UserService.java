@@ -1,12 +1,16 @@
 package org.uatransport.service;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.uatransport.entity.User;
+import org.uatransport.entity.dto.LoginDTO;
+import org.uatransport.entity.dto.UserDTO;
 
 import java.util.List;
 
 public interface UserService {
 
-    User addUser(User user);
+    User addUser(UserDTO user);
 
     User update(User user);
 
@@ -14,7 +18,7 @@ public interface UserService {
 
     User getById(int id);
 
-    User getByEmailAndPassword(String email, String password);
-
+   String signin(LoginDTO loginDTO) ;
+   String signup(UserDTO user);
     List<User> getAll();
 }

@@ -3,8 +3,13 @@ package org.uatransport.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.User;
+import org.uatransport.entity.dto.LoginDTO;
+import org.uatransport.entity.dto.UserDTO;
+import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.service.UserService;
 
 import java.util.List;
@@ -12,8 +17,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@CrossOrigin
 public class UserController {
+
     private final UserService userService;
+
+    @PostMapping("/signup")
+    public String  signUp(@RequestBody UserDTO userDTO) {
+        return userService.signup(userDTO);
+    }
+
+    @PostMapping("/signin")
+    public String signin(@RequestBody LoginDTO loginDTO){
+
+       return  userService.signin(loginDTO);
+
+    }
 
     @GetMapping("/all")
     public ResponseEntity<List<User>> getAllUsers() {
@@ -34,12 +53,6 @@ public class UserController {
 
     }
 
-    @PostMapping()
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        User savedUser = userService.addUser(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Integer id) {
 
@@ -47,11 +60,5 @@ public class UserController {
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 
     }
-
-    @GetMapping(value = "/in")
-    public ResponseEntity<User> getUserByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
-
-        return new ResponseEntity<>(userService.getByEmailAndPassword(email, password), HttpStatus.OK);
-    }
-
 }
+

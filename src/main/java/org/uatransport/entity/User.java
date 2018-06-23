@@ -4,8 +4,14 @@ package org.uatransport.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 @Entity
@@ -14,7 +20,7 @@ import javax.persistence.*;
 @Accessors(chain = true)
 @EqualsAndHashCode(of = "id")
 
-public class User {
+public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -32,5 +38,10 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @NotNull
+    @Column(name = "role", nullable = false)
+    private Role role;
+
 
 }

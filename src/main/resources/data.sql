@@ -14,9 +14,9 @@ INSERT INTO public.transit (id, name, category_id) VALUES (4, '#51', 7);
 INSERT INTO public.transit (id, name, category_id) VALUES (6, '#7', 4);
 INSERT INTO public.transit (id, name, category_id) VALUES (7, '#6', 4);
 
-INSERT INTO public.users (id, email, first_name, last_name, password) VALUES (1, 'name1@gmail.com', 'Name1', 'Lastname1', '1111');
-INSERT INTO public.users (id, email, first_name, last_name, password) VALUES (2, 'name2@gmail.com', 'Name2', 'Lastname2', '2222');
-INSERT INTO public.users (id, email, first_name, last_name, password) VALUES (3, 'name3@gmail.com', 'Name3', 'Lastname3', '3333');
+INSERT INTO public.users ( email, first_name, last_name, password, role) VALUES ( 'name1@gmail.com', 'Name1', 'Lastname1', '1111');
+INSERT INTO public.users ( email, first_name, last_name, password, role) VALUES ( 'name2@gmail.com', 'Name2', 'Lastname2', '2222');
+INSERT INTO public.users ( email, first_name, last_name, password, role) VALUES ( 'name3@gmail.com', 'Name3', 'Lastname3', '3333');
 
 INSERT INTO public.stop (id, street) VALUES (1, 'Залізничний Вокзал');
 INSERT INTO public.stop (id, street) VALUES (26, 'Галицьке перехрестя');

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.uatransport.exception.CustomException;
 import org.uatransport.exception.ResourceNotFoundException;
 
 @ControllerAdvice
@@ -51,6 +52,13 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         logger.error("Unable to parse data {}", ex);
         final ApiError apiError = new ApiError(HttpStatus.CONFLICT, ex);
         apiError.setMessage("This should be application specific");
+        return handleExceptionInternal(ex, apiError, HTTP_HEADERS, apiError.getStatus(), request);
+    }
+    @ExceptionHandler(value = CustomException.class)
+    protected ResponseEntity<Object> handleConflict(CustomException ex, WebRequest request) {
+
+
+        final ApiError apiError = new ApiError(ex.getHttpStatus(), ex);
         return handleExceptionInternal(ex, apiError, HTTP_HEADERS, apiError.getStatus(), request);
     }
 }
