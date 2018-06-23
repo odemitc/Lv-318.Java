@@ -13,5 +13,5 @@ import javax.persistence.*;
 @Accessors(chain = true)
 public class Stop extends Point {
 
-  private String street;
+    private String street;
 }

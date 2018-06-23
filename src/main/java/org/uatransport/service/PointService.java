@@ -6,15 +6,17 @@ import org.uatransport.entity.Stop;
 import java.util.List;
 
 public interface PointService {
-    Point save(Point stop);
+    Point save(Point point);
 
     Point getById(Integer id);
 
     void delete(Integer id);
 
-    Point update(Point stop);
+    Point update(Point point);
 
     List<Stop> getByStreet(String street);
+
+    List<Point> getByTransitId(Integer id);
 
     List<Stop> getStopsByTransitId(Integer id);
 
