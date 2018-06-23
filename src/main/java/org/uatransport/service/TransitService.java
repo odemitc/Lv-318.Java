@@ -22,6 +22,8 @@ public interface TransitService {
 
     List<Transit> getAllByNextLevelCategoryId(Integer id);
 
+    List<Transit> getAllByNextLevelCategoryName(String categoryName);
+
     List<Transit> getAll();
 
     // List<Transit> getTransitsByStopsIn(Stop[] stops);

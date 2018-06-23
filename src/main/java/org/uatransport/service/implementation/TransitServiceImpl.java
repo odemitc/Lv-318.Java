@@ -102,6 +102,14 @@ public class TransitServiceImpl implements TransitService {
     }
 
     @Override
+    public List<Transit> getAllByNextLevelCategoryName(String categoryName) {
+        if (Strings.isNullOrEmpty(categoryName)) {
+            throw new IllegalArgumentException("Category name should not be empty");
+        }
+        return transitRepository.findByCategoryNextLevelCategoryName(categoryName);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<Transit> getAll() {
         return Streams.stream(transitRepository.findAll()).collect(Collectors.toList());

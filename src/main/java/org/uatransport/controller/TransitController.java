@@ -43,6 +43,13 @@ public class TransitController {
                 .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
     }
 
+    @GetMapping(params = "nextLevelCategoryName")
+    public List<TransitDTO> getTransitsByNextLevelCategoryName(
+        @RequestParam("nextLevelCategoryName") String nextLevelCategoryName) {
+        return transitService.getAllByNextLevelCategoryName(nextLevelCategoryName).stream()
+            .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
+    }
+
     @PostMapping
     public ResponseEntity<Transit> addTransit(@RequestBody TransitDTO transitDTO) {
         Transit transit = modelMapper.map(transitDTO, Transit.class);
