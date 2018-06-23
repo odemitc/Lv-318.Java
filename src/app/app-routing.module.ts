@@ -8,9 +8,8 @@ import { MainComponent } from './components/main/main.component';
 import { FeedbackCriteriaComponent } from './components/feedback-criteria/feedback-criteria.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import {StopsGridComponent} from './components/stops/stops-grid.component';
-import { QuestionComponent} from './components/question/question.component';
-import { AddQuestionComponent } from './components/question/add-question/add-question.component';
-import { OneQuestionComponent } from './components/question/one-question/one-question.component';
+import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component';
+import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
 import { AddFeedbackComponent } from './components/stops/components/add-feedback/add-feedback.component';
 const routes: Routes = [
   {
@@ -32,16 +31,17 @@ const routes: Routes = [
   },
 
   {
-    path: 'question', component: QuestionComponent},
-  {path: 'question/add-question', component: AddQuestionComponent},
-
-  {path: 'question/:id', component: OneQuestionComponent},
+    path: 'feedback-criteria/add-feedback-criteria', component: AddFeedbackCriteriaComponent
+  },
+  {
+    path: 'feedback-criteria/:id', component: OneFeedbackCriteriaComponent
+  },
 
   {
     path: 'user/add', component: AddUserComponent
   },
   {
-    path: 'show-transit-scheme/:id', component: StopsGridComponent
+    path: 'show-transit-scheme/:id/:categoryId', component: StopsGridComponent
   },
 
   {

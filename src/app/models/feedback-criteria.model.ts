@@ -1,8 +1,7 @@
-import { Question } from './question.model';
-
-export interface FeedbackCriteria {
+import {Question} from './question.model';
+export class FeedbackCriteria {
   id: number;
   type: string;
   weight: number;
-  questions: Question[];
+  questions: Question [];
 }

@@ -18,16 +18,19 @@ export class StopsGridComponent implements OnInit {
   checkedItems: boolean[];
   private sub: any;
  @Input() idTransit: number;
+ @Input() categoryId: number;
   stopsList: Observable<Stop[]>;
   stopArray: Stop[] = [];
   public selectedStops: Stop[] = [];
+  
 
-  constructor(private stopService: StopService, private route: ActivatedRoute,public dialog: MatDialog) {
+  constructor(private stopService: StopService,private route: ActivatedRoute,public dialog: MatDialog) {
   }
 
   ngOnInit() {
     this.sub = this.route.params.forEach(params => {
       this.idTransit = params['id'];
+      this.categoryId=params['categoryId'];
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
     this.stopsList.subscribe(stopArray =>
@@ -51,6 +54,7 @@ export class StopsGridComponent implements OnInit {
   }
 
   public openModal(){
-      this.dialog.open(AddFeedbackComponent,{data:{number:this.idTransit}});
+      this.dialog.open(AddFeedbackComponent,{data:{number:this.idTransit,categoryId: this.categoryId}});
   }
+
 }

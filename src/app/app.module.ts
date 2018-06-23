@@ -4,12 +4,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
+
+import {ReactiveFormsModule}from '@angular/forms';
 import {AuthService} from './services/auth/auth.service';
 import {AppComponent} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {ExcategoryComponent} from './components/excategory/excategory.component';
 import { HttpModule } from '@angular/http';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -47,12 +51,11 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
 } from '@angular/material';
 
 import {FormsModule} from '@angular/forms';
 import {ExcategoryService} from './services/excategory.service';
-import {QuestionService} from './services/question.service';
 import {MenuComponent} from './components/menu/menu.component';
 import {NonExCategoryComponent} from './components/non-ex-category/non-ex-category.component';
 import {TransitsComponent} from './components/transits/transits.component';
@@ -65,17 +68,18 @@ import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
 
 
-import { StopsGridComponent } from './components/stops/stops-grid.component';
-import { QuestionComponent } from './components/question/question.component';
-import { AddQuestionComponent } from './components/question/add-question/add-question.component';
+import { StopsGridComponent } from "./components/stops/stops-grid.component";
 import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
 import { AverageRateComponent } from './components/stops/components/average-rate/average-rate.component';
 import { DiagramService } from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
-import { OneQuestionComponent } from './components/question/one-question/one-question.component';
-import {BusyStopsDiagramComponent} from './components/stops/components/busy-stops-diagram/busy-stops-diagram.component';
+import { AddQuestionComponent } from './components/feedback-criteria/add-question/add-question.component';
+import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component';
+import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
 import {AddFeedbackComponent} from './components/stops/components/add-feedback/add-feedback.component';
 import {FeedbackService} from './services/feedback.service';
+import {TransitService} from './services/transit.service';
+import {FeedbackCriteriaService} from './services/feedback-criteria.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -98,15 +102,15 @@ export function createTranslateLoader(http: HttpClient) {
     AddUserComponent,
     MessageComponent,
     StopsGridComponent,
-    QuestionComponent,
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
     CallbackComponent,
     BusyHoursDiagramComponent,
     BusyStopsDiagramComponent,
+    OneFeedbackCriteriaComponent,
     AddFeedbackComponent,
-    OneQuestionComponent
+    AddFeedbackCriteriaComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -152,16 +156,16 @@ export function createTranslateLoader(http: HttpClient) {
     HttpModule,
     HttpClientModule,
     MatNativeDateModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MatTableModule,
     MatTabsModule,
     MatMenuModule,
     FormsModule,
+    MatCardModule,
     MatFormFieldModule,
-    MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule,
     MatToolbarModule,
     SlideshowModule,
     HttpClientModule,
@@ -171,6 +175,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatCheckboxModule,
     MatPaginatorModule,
+    MatListModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -179,9 +184,11 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService,FeedbackService,QuestionService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService,FeedbackService,FeedbackCriteriaService,TransitService],
   bootstrap: [AppComponent],
-  entryComponents: [AddFeedbackComponent]
+  entryComponents: [AddFeedbackComponent,AddQuestionComponent]
 })
 export class AppModule {
 }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

@@ -8,22 +8,26 @@ import { Feedback } from '../models/feedback.model';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+     'Content-Type': 'application/json' })
 };
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackService {
   private url = environment.serverURL + '/feedback';
-feedbacks :Feedback[];
+
   constructor(private http: HttpClient) { 
 
   }
-  addFeedback(feedback): Observable<Feedback> {
+  addFeedback(feedback:Feedback): Observable<Feedback> {
     return this.http.post<Feedback>(this.url ,feedback, httpOptions);
   }
 
-  addAllFeedback(feedbacks): Observable<Feedback> {
-    return this.http.post<Feedback>(this.url+ '/add' ,feedbacks, httpOptions);
+  addAllFeedback(feedbacks: Feedback[]): Observable<Feedback[]> {
+    const feedbackUrl = `${this.url}/add?feedbacks[]=${feedbacks}`;
+    return this.http.post<Feedback[]>(feedbackUrl ,feedbacks, httpOptions);
   }
 }
