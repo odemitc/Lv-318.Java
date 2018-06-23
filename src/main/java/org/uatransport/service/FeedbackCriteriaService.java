@@ -28,4 +28,6 @@ public interface FeedbackCriteriaService {
 
     List<FeedbackCriteria> getByTypeAndCategoryId(Integer categoryId,String type);
 
+    List<String> getAllEnumsType();
+
 }

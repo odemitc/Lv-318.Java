@@ -25,7 +25,7 @@ public class FeedbackCriteria {
     private Integer weight;
 
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "criteria_id")
     private List<Question> questions;
 

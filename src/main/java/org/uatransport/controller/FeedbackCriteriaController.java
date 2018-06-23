@@ -34,9 +34,8 @@ public class FeedbackCriteriaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<FeedbackCriteria>> getAllFeedbackCriteria() {
-
-        return new ResponseEntity<>(feedbackCriteriaService.getAll(), HttpStatus.OK);
+    public List<FeedbackCriteria> getAllFeedbackCriteria() {
+        return feedbackCriteriaService.getAll();
     }
 
     @GetMapping("/{id}")
@@ -72,8 +71,14 @@ public class FeedbackCriteriaController {
         return feedbackCriteriaService.getByWeight(weight);
 
     }
+
     @GetMapping("/categoryId/{categoryId}/type/{type}")
-    public List<FeedbackCriteria> getByTypeAndCategoryId(@PathVariable(value = "categoryId") Integer categoryId, @PathVariable(value = "type")String type){
+    public List<FeedbackCriteria> getByTypeAndCategoryId(@PathVariable(value = "categoryId") Integer categoryId, @PathVariable(value = "type") String type) {
         return feedbackCriteriaService.getByTypeAndCategoryId(categoryId, type);
+    }
+
+    @GetMapping("/enums")
+    public List<String> getAllEnumTypes() {
+        return feedbackCriteriaService.getAllEnumsType();
     }
 }
