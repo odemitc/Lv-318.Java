@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
+import {TokenStorage} from "../../services/auth/token/token-storage";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -9,7 +11,7 @@ import { AppComponent } from '../../app.component';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public app: AppComponent) {
+  constructor(public app: AppComponent, private router: Router, private tokenStorage: TokenStorage) {
 
   }
 
@@ -20,4 +22,12 @@ export class MenuComponent implements OnInit {
     this.app.switchLanguage(language);
   }
 
+  hasToken(): boolean {
+    return this.tokenStorage.hasToken();
+  }
+
+  logOut() {
+    this.tokenStorage.signOut();
+    this.router.navigate(['main']);
+  }
 }

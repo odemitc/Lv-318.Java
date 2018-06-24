@@ -15,14 +15,20 @@ export class AuthService {
     audience: environment.auth.audience,
     scope: environment.auth.scope
   });
+
+  public isAuthenticated: boolean;
+
+  constructor(private router: Router) {
+    this.getAccessToken();
+  }
+
+
+
   expiresAt: number;
   userProfile: any;
   accessToken: string;
   authenticated: boolean;
 
-  constructor(private router: Router) {
-    this.getAccessToken();
-  }
 
   login() {
     this.auth0.authorize();
@@ -63,12 +69,12 @@ export class AuthService {
     this.authenticated = true;
   }
 
-  logout() {
-      this.auth0.logout({
-      returnTo: 'http://localhost:4200',
-      clientID: environment.auth.clientID
-    });
-  }
+  // logout() {
+  //     this.auth0.logout({
+  //     returnTo: 'http://localhost:4200',
+  //     clientID: environment.auth.clientID
+  //   });
+  // }
 
   get isLoggedIn(): boolean {
     return Date.now() < this.expiresAt && this.authenticated;

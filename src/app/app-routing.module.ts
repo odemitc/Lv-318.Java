@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'question/add-question', component: AddQuestionComponent},
   {path: 'question/:id', component: OneQuestionComponent},
   {path: 'user/add', component: AddUserComponent},
-  {path: 'stops/:city/:id', component: StopsGridComponent}
+  {path: 'stops/:city/:id', component: StopsGridComponent},
   {path: 'user/login', component: UserLoginComponent},
   ];
 

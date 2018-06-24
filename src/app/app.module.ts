@@ -65,6 +65,7 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { BusyHoursDiagramComponent } from './components/transit/components/busy-hours-diagram/busy-hours-diagram.component';
 import { MessageComponent } from './components/message/message.component';
 import { UserService } from './services/user.service';
+import { TokenStorage } from './services/auth/token/token-storage';
 
 
 import { StopsGridComponent } from './components/transit/stops-grid.component';
@@ -180,7 +181,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService, TokenStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule {
