@@ -4,14 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import 'hammerjs';
-import { AuthService } from './services/auth/auth.service';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ExcategoryComponent } from './components/excategory/excategory.component';
 import { HttpModule } from '@angular/http';
 import {Observable} from 'rxjs';
-
 
 import {
   MatAutocompleteModule,
@@ -67,7 +65,10 @@ import { BusyHoursDiagramComponent } from './components/transit/components/busy-
 import { MessageComponent } from './components/message/message.component';
 import { UserService } from './services/user.service';
 import { TokenStorage } from './services/auth/token/token-storage';
-
+import { AuthService } from './services/auth/auth.service';
+import { httpInterceptorProviders } from "./services/auth/interceptors/http-providers";
+import { StopService } from './services/stop.service';
+import { AdminGuard } from './services/guard/admin-guard.service';
 
 import { StopsGridComponent } from './components/transit/stops-grid.component';
 import { QuestionComponent } from './components/question/question.component';
@@ -182,7 +183,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService, TokenStorage],
+  providers: [httpInterceptorProviders, AdminGuard, ExcategoryService, UserService, DiagramService, AuthService, TokenStorage, StopService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
