@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   serverURL: 'http://localhost:8080',
+  accessTokenHeader: 'Access-token',
+  refreshTokenHeader: 'Refresh-token',
   auth: {
     clientID: 'fMvXBLfJoy8yuoUoTGnTa8kI-3gEePfQ',
     domain: 'uatransport.eu.auth0.com',
