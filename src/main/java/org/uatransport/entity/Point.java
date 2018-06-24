@@ -9,14 +9,14 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@EqualsAndHashCode(of = {"lat", "lng", "direction"})
+@EqualsAndHashCode(of = "id")
 @Accessors(chain = true)
 @DiscriminatorColumn(name = "type")
+@Table(name = "point")
 @DiscriminatorValue("POINT")
-@Table(name = "stop")
 public class Point {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -30,7 +30,6 @@ public class Point {
 
     @RequiredArgsConstructor
     public enum DIRECTION {
-        FORWARD,
-        BACKWARD
+        FORWARD, BACKWARD
     }
 }

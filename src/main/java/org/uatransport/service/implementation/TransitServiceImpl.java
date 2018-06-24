@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.CategoryRepository;
@@ -98,14 +97,27 @@ public class TransitServiceImpl implements TransitService {
     }
 
     @Override
+    public List<Transit> getAllByNextLevelCategoryId(Integer id) {
+        return transitRepository.findByCategoryNextLevelCategoryId(id);
+    }
+
+    @Override
+    public List<Transit> getAllByNextLevelCategoryName(String categoryName) {
+        if (Strings.isNullOrEmpty(categoryName)) {
+            throw new IllegalArgumentException("Category name should not be empty");
+        }
+        return transitRepository.findByCategoryNextLevelCategoryName(categoryName);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<Transit> getAll() {
         return Streams.stream(transitRepository.findAll()).collect(Collectors.toList());
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<Transit> getTransitsByStopsIn(Stop[] stops) {
-        return transitRepository.findByPointsIn(stops);
-    }
+    // @Override
+    // @Transactional(readOnly = true)
+    // public List<Transit> getTransitsByStopsIn(Stop[] stops) {
+    // return transitRepository.findByStopsIn(stops);
+    // }
 }
