@@ -27,7 +27,7 @@ export class TransitsComponent implements OnInit {
     this.sub = this.route.params.forEach(params => {
       this.id = params['id'];
     });
-    this.transits = this.transitService.getTransitsById(this.id);
+    this.transits = this.transitService.getTransitsByCategoryId(this.id);
   }
 
   onSubmit() {

@@ -16,11 +16,11 @@ export class ExcategoryService {
   }
 
   getTopCategories(): Observable<ExcategoryModel[]> {
-    return this.http.get<ExcategoryModel[]>(this.serviceUrl);
+    return this.http.get<ExcategoryModel[]>(this.serviceUrl + '/top');
   }
 
   getCategoriesByNextLevel(nextLevel: String): Observable<ExcategoryModel[]> {
-    return this.http.get<ExcategoryModel[]>(this.serviceUrl + '?nextLevelCategoryName=' + nextLevel);
+    return this.http.get<ExcategoryModel[]>(this.serviceUrl + '?firstNestedCategoryName=' + nextLevel);
   }
 
 }
