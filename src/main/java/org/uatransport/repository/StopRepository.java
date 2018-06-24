@@ -12,7 +12,7 @@ public interface StopRepository extends CrudRepository<Stop, Integer> {
 
     List<Stop> findByStreet(String name);
 
-    @Query("SELECT s FROM Transit t JOIN t.points s WHERE t.id = :id ORDER BY INDEX(s)")
+    @Query("SELECT s FROM Transit t JOIN t.points s WHERE t.id = :id AND s.street IS NOT NULL AND s.direction ='FORWARD' ORDER BY INDEX(s)")
     List<Stop> findByTransitId(@Param("id") Integer id);
 
     @Query("SELECT s FROM Transit t JOIN t.points s WHERE t.id = :id AND s.street = :street")

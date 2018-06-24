@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PointRepository extends CrudRepository<Point, Integer> {
 
-    @Query("SELECT s FROM Transit t JOIN t.points s WHERE t.id = :id ORDER BY INDEX(s)")
+    @Query("SELECT s FROM Transit t JOIN t.points s WHERE t.id = :id AND s.direction ='FORWARD' ORDER BY INDEX(s)")
     List<Point> findByTransitId(@Param("id") Integer id);
 
     boolean existsByLatAndLngAndDirection(Double lat,Double lng, Point.DIRECTION direction);
