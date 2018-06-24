@@ -5,6 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class EwayRouteList  implements Serializable {
+public class EwayRouteList implements Serializable {
     private EwayRoute[] route;
 }

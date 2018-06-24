@@ -18,6 +18,8 @@ public interface PointService {
 
     List<Point> getByTransitId(Integer id);
 
+    List<Stop> getByTransitIdAndDirection(Integer id, String direction);
+
     List<Stop> getStopsByTransitId(Integer id);
 
     Stop getByTransitIdAndStopName(Integer transitId, String street);

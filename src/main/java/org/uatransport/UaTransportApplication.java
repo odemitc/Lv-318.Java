@@ -26,13 +26,12 @@ import java.io.IOException;
 public class UaTransportApplication {
     private static Logger logger = LoggerFactory.getLogger(UaTransportApplication.class);
 
-
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
         logger.debug("--Application Started--");
 
-//        EwayScheduleUpdate scheduleUpdate = (EwayScheduleUpdate) context.getBean(EwayScheduleUpdate.class);
-//        scheduleUpdate.updateTransitData();
+        // EwayScheduleUpdate scheduleUpdate = (EwayScheduleUpdate) context.getBean(EwayScheduleUpdate.class);
+        // scheduleUpdate.updateTransitData();
 
     }
 }

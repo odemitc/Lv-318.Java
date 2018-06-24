@@ -12,4 +12,3 @@ public class EwayRoute implements Serializable {
     private Integer stop_position;
     private String transport;
 }
-

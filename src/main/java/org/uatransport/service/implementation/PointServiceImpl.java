@@ -76,6 +76,14 @@ public class PointServiceImpl implements PointService {
         return pointRepository.findByTransitId(id);
     }
 
+    @Override
+    public List<Stop> getByTransitIdAndDirection(Integer id, String direction) {
+        if (direction.equals("forward")) {
+            return stopRepository.findForwardStopsByTransitId(id);
+        } else
+            return stopRepository.findBackwardStopsByTransitId(id);
+    }
+
     @Transactional
     public List<Stop> getStopsByTransitId(Integer id) {
         return stopRepository.findStopsByTransitId(id);

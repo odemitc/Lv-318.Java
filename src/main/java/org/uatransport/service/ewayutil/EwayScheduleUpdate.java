@@ -12,15 +12,16 @@ public class EwayScheduleUpdate {
     private final EwayRoutesListSaver routesListSaver;
     private final EwayStopListSaver stopListSaver;
 
-    public void updateTransitData(){
+    public void updateTransitData() {
         RateLimiter rateLimiter = RateLimiter.create(5.0);
         EwayRouteList routeList = routesListSaver.convertAndSaveEwayRoutes();
         int i = 0;
-        for (EwayRoute ewayRoute: routeList.getRoute()){
+        for (EwayRoute ewayRoute : routeList.getRoute()) {
             i++;
             rateLimiter.acquire();
             stopListSaver.convertAndSaveStops(ewayRoute.getId().toString());
-            if (i==20) break;
+            if (i == 20)
+                break;
         }
 
     }

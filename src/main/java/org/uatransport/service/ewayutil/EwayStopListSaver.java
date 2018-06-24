@@ -19,8 +19,6 @@ import org.uatransport.service.ewayutil.ewaystopentity.EwayPoints;
 import org.uatransport.service.ewayutil.ewaystopentity.EwayRouteWithPoints;
 import org.uatransport.service.ewayutil.ewaystopentity.EwayStopResponse;
 
-import java.io.*;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,16 +30,13 @@ public class EwayStopListSaver {
     private final StopRepository stopRepository;
 
     private String getUrlByID(String transitId) {
-        URIBuilder uri = new URIBuilder()
-            .setScheme(EwayConfig.getProperty("scheme"))
-            .setHost(EwayConfig.getProperty("host"))
-            .addParameter("login", EwayConfig.getProperty("login"))
-            .addParameter("password", EwayConfig.getProperty("password"))
-            .addParameter("function", EwayConfig.getProperty("function-stops"))
-            .addParameter("city", EwayConfig.getProperty("city"))
-            .addParameter("id", transitId)
-            .addParameter("start_position", EwayConfig.getProperty("start_position"))
-            .addParameter("stop_position", EwayConfig.getProperty("stop_position"));
+        URIBuilder uri = new URIBuilder().setScheme(EwayConfig.getProperty("scheme"))
+                .setHost(EwayConfig.getProperty("host")).addParameter("login", EwayConfig.getProperty("login"))
+                .addParameter("password", EwayConfig.getProperty("password"))
+                .addParameter("function", EwayConfig.getProperty("function-stops"))
+                .addParameter("city", EwayConfig.getProperty("city")).addParameter("id", transitId)
+                .addParameter("start_position", EwayConfig.getProperty("start_position"))
+                .addParameter("stop_position", EwayConfig.getProperty("stop_position"));
         return uri.toString();
     }
 
@@ -58,7 +53,8 @@ public class EwayStopListSaver {
     void convertAndSaveStops(String transitId) {
         EwayStopResponse ewayStopResponse = getObjectFromJson(transitId);
         Transit transit = transitRepository.findById(Integer.parseInt(transitId))
-            .orElseThrow(() -> new ResourceNotFoundException("Impossible to save transit. There is no such transit for assignment."));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Impossible to save transit. There is no such transit for assignment."));
         EwayRouteWithPoints route = ewayStopResponse.getRoute();
         EwayPoints ewayPoints = route.getPoints();
         EwayPoint[] arrayOfPoints = ewayPoints.getPoint();

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(of = "id")
 @Accessors(chain = true)
 @DiscriminatorColumn(name = "type")
-@Table(name = "point")
+@Table(name = "stop")
 @DiscriminatorValue("POINT")
 public class Point {
     @Id

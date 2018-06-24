@@ -35,6 +35,13 @@ public class PointController {
         return pointService.getByTransitId(id);
     }
 
+    @GetMapping
+    public List<Stop> getByTransitIdAndDirection(@RequestParam("id") Integer id,
+            @RequestParam("dir") String direction) {
+        System.out.println(direction);
+        return pointService.getByTransitIdAndDirection(id, direction);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteStop(@PathVariable Integer id) {
         pointService.delete(id);

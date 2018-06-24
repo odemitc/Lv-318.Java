@@ -22,10 +22,8 @@ public class EwayRoutesListSaver {
     private final CategoryRepository categoryRepository;
 
     public String getUrl() {
-        URIBuilder uri = new URIBuilder()
-                .setScheme(EwayConfig.getProperty("scheme"))
-                .setHost(EwayConfig.getProperty("host"))
-                .addParameter("login", EwayConfig.getProperty("login"))
+        URIBuilder uri = new URIBuilder().setScheme(EwayConfig.getProperty("scheme"))
+                .setHost(EwayConfig.getProperty("host")).addParameter("login", EwayConfig.getProperty("login"))
                 .addParameter("password", EwayConfig.getProperty("password"))
                 .addParameter("function", EwayConfig.getProperty("function-transit"))
                 .addParameter("city", EwayConfig.getProperty("city"));
@@ -50,18 +48,19 @@ public class EwayRoutesListSaver {
             transit.setId(route.getId());
             Integer categoryId = 6;
             switch (route.getTransport()) {
-                case "bus":
-                    categoryId = 7;
-                    break;
-                case "trol":
-                    categoryId = 5;
-                    break;
-                case "tram":
-                    categoryId = 4;
-                    break;
+            case "bus":
+                categoryId = 7;
+                break;
+            case "trol":
+                categoryId = 5;
+                break;
+            case "tram":
+                categoryId = 4;
+                break;
             }
             transit.setCategory((NonExtendableCategory) categoryRepository.findById(categoryId)
-                    .orElseThrow(() -> new ResourceNotFoundException("Impossible to save transit. There is no such category for assignment.")));
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Impossible to save transit. There is no such category for assignment.")));
             transit.setName(route.getTitle());
             transitRepository.save(transit);
         }
