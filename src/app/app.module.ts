@@ -75,7 +75,6 @@ import { AddQuestionComponent } from './components/question/add-question/add-que
 import { RaitingDiagramComponent } from './components/transit/components/raiting-diagram/raiting-diagram.component';
 import { AverageRateComponent } from './components/transit/components/average-rate/average-rate.component';
 import { DiagramService } from './services/diagram.service';
-import { CallbackComponent } from './components/callback/callback.component';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
 
@@ -106,7 +105,6 @@ export function createTranslateLoader(http: HttpClient) {
     AddQuestionComponent,
     RaitingDiagramComponent,
     AverageRateComponent,
-    CallbackComponent,
     BusyHoursDiagramComponent,
     OneQuestionComponent,
     BusyStopsDiagramComponent
