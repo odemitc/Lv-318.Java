@@ -10,6 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ExcategoryComponent } from './components/excategory/excategory.component';
 import { HttpModule } from '@angular/http';
+import {Observable} from 'rxjs';
 
 
 import {
@@ -146,6 +147,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    Observable,
 
 
   ],
@@ -173,6 +175,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatCheckboxModule,
     MatPaginatorModule,
+    Observable,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
