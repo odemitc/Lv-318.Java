@@ -4,7 +4,7 @@ import { TokenStorage } from '../auth/token/token-storage';
 import { Role } from '../auth/roles';
 
 @Injectable()
-export class AdminGuardService {
+export class ClientGuardServise {
 
   constructor(private tokenStorage: TokenStorage,
               private router: Router) {
@@ -19,7 +19,7 @@ export class AdminGuardService {
   }
 
   checkRights(): boolean {
-    if (this.tokenStorage.getRole() === Role.Admin) {
+    if (this.tokenStorage.getRole() === Role.Client || this.tokenStorage.getRole() === Role.Admin ) {
       return true;
     } else {
       this.router.navigate(['/error/forbidden']);

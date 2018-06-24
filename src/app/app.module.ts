@@ -68,8 +68,8 @@ import { TokenStorage } from './services/auth/token/token-storage';
 import { AuthService } from './services/auth/auth.service';
 import { httpInterceptorProviders } from "./services/auth/interceptors/http-providers";
 import { StopService } from './services/stop.service';
-import { AdminGuard } from './services/guard/admin-guard.service';
-
+import { AdminGuardService } from './services/guard/admin-guard.service';
+import { ClientGuardService } from './services/guard/client-guard.service';
 import { StopsGridComponent } from './components/transit/stops-grid.component';
 import { QuestionComponent } from './components/question/question.component';
 import { AddQuestionComponent } from './components/question/add-question/add-question.component';
@@ -183,7 +183,15 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [httpInterceptorProviders, AdminGuard, ExcategoryService, UserService, DiagramService, AuthService, TokenStorage, StopService],
+  providers: [
+    httpInterceptorProviders,
+    AdminGuardService,
+    ClientGuardService,
+    ExcategoryService, UserService,
+    DiagramService,
+    AuthService,
+    TokenStorage,
+    StopService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
