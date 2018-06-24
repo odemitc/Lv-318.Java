@@ -69,6 +69,7 @@ import { AuthService } from './services/auth/auth.service';
 import { httpInterceptorProviders } from "./services/auth/interceptors/http-providers";
 import { StopService } from './services/stop.service';
 import { AdminGuardService } from './services/guard/admin-guard.service';
+import { AuthGuardService } from './services/guard/auth-guard.service';
 import { ClientGuardService } from './services/guard/client-guard.service';
 import { StopsGridComponent } from './components/transit/stops-grid.component';
 import { QuestionComponent } from './components/question/question.component';
@@ -78,6 +79,7 @@ import { AverageRateComponent } from './components/transit/components/average-ra
 import { DiagramService } from './services/diagram.service';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -187,6 +189,7 @@ export function createTranslateLoader(http: HttpClient) {
     httpInterceptorProviders,
     AdminGuardService,
     ClientGuardService,
+    AuthGuardService,
     ExcategoryService, UserService,
     DiagramService,
     AuthService,
