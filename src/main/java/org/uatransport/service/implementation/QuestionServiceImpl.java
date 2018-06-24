@@ -69,4 +69,9 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> getByQuestionName(String questionName) {
         return questionRepository.findByName(questionName);
     }
+
+    @Override
+    public List<Question> getByFeedbackCriteriaId(Integer feedbackCriteriaId) {
+        return questionRepository.findByFeedbackCriteriaId(feedbackCriteriaId);
+    }
 }
