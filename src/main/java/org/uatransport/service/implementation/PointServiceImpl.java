@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.Stop;
 import org.uatransport.exception.ResourceNotFoundException;
-import org.uatransport.repository.PointRepository;
 import org.uatransport.repository.StopRepository;
 import org.uatransport.service.PointService;
 
