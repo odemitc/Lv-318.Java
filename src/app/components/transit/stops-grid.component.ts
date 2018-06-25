@@ -17,6 +17,7 @@ export class StopsGridComponent implements OnInit {
   stopsList: Observable<Stop[]>;
   stopArray: Stop[] = [];
   public selectedStops: Stop[] = [];
+  categoryId: number;
 
   constructor(private stopService: StopService, private route: ActivatedRoute) {
   }
@@ -25,12 +26,14 @@ export class StopsGridComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.forEach(params => {
       this.idTransit = params['id'];
+      this.categoryId = params['city'];
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
     this.stopsList.subscribe(stopArray =>
       this.stopArray = stopArray);
     this.checkedItems = new Array(this.stopArray.length);
-
+    console.log(this.selectedStops);
+    console.log(this.categoryId);
   }
 
   public selectStops() {
@@ -45,6 +48,7 @@ export class StopsGridComponent implements OnInit {
 
 
     console.log(this.selectedStops);
+    console.log(this.categoryId);
   }
 
 }
