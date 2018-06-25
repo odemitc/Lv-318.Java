@@ -3,15 +3,13 @@ package org.uatransport.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.User;
 import org.uatransport.entity.dto.LoginDTO;
 import org.uatransport.entity.dto.UserDTO;
-import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.service.UserService;
 
+import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 import java.util.List;
 
@@ -24,17 +22,19 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity  signUp(@RequestBody UserDTO userDTO) {
+    public ResponseEntity signUp(@RequestBody UserDTO userDTO) {
 
-         userService.signup(userDTO);
-         return new ResponseEntity(HttpStatus.OK);
+        userService.signup(userDTO);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/signin")
-    public ResponseEntity signin(@RequestBody LoginDTO loginDTO){
-        userService.signin(loginDTO);
-        return new ResponseEntity(HttpStatus.OK);
+    public String signin(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
+        String token = userService.signin(loginDTO);
 
+        response.setHeader("Authorization", token);
+
+        return token;
     }
 
     @GetMapping("/all")
@@ -63,6 +63,7 @@ public class UserController {
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 
     }
+
     @GetMapping("/me")
     public User getCurrentUser(Principal principal) {
         return userService.getUser(principal);
