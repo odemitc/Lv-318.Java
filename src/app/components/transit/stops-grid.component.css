@@ -35,3 +35,9 @@ mat-tab-group {
   width: 550px;
   height: auto;
 }
+
+.tile{
+  text-align:center;
+  font-size: 14px;
+
+}

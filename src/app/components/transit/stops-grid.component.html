@@ -1,13 +1,28 @@
 <div class="demo-grid-list">
-  <mat-grid-list cols="7" rowHeight="50px">
-    <mat-grid-tile
-      *ngFor="let i=index; let tile of stopsList | async">
-      <input type="checkbox" [(ngModel)]="checkedItems[i]" [id]="tile.id" [name]="tile" [value]="tile.street"
-             aria-labelledby="ariaid"
-             (change)='selectStops()'>
-      <div><label id="ariaid">{{tile.street}}</label></div>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-tab-group>
+    <mat-tab label="FORWARD DIRECTION:">
+      <mat-grid-list *ngIf="stopArray.length" [cols]="stopArray.length" rowHeight="100px">
+        <mat-grid-tile
+          *ngFor="let i=index; let tile of stopArray" class="tile" >
+  <span *ngIf="stopArray.length">
+           <label [for]="tile.id">{{tile.street}}<br>
+          <input type="checkbox" [(ngModel)]="checkedItems[i]" [id]="tile.id" (change)='selectStops()'></label>
+  </span>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="BACKWARD DIRECTION:">
+      <mat-grid-list *ngIf="stopArray.length" [cols]="stopArray.length" rowHeight="100px">
+        <mat-grid-tile
+          *ngFor="let i=index; let tile of stopArray" class="tile" >
+  <span *ngIf="stopArray.length">
+           <label [for]="tile.id"><div>{{tile.street}}</div>
+          <input type="checkbox" [(ngModel)]="checkedItems[i]" [id]="tile.id" (change)='selectStops()'></label>
+  </span>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-tab>
+  </mat-tab-group>
   <app-average-rate [id]="idTransit"></app-average-rate>
       <app-busy-stops-diagram [id]="idTransit"></app-busy-stops-diagram>
       <app-busy-hours-diagram [id]="idTransit"></app-busy-hours-diagram>
