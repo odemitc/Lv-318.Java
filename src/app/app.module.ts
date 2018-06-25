@@ -52,7 +52,7 @@ import {
   MatTreeModule,
 } from '@angular/material';
 
-import { FormsModule } from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ExcategoryService } from './services/excategory.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
@@ -146,9 +146,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule,
-
-
+    MatTreeModule
   ],
   imports: [
     BrowserModule,
@@ -175,15 +173,17 @@ export function createTranslateLoader(http: HttpClient) {
     MatCheckboxModule,
     MatPaginatorModule,
     AgmDirectionModule,
+    MatStepperModule,
+    FormsModule, ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    }), AgmCoreModule.forRoot({ apiKey: 'AIzaSyBMbh1BuDtFteF5bxb03EKe2-hpKYre79g',}),
+    }), AgmCoreModule.forRoot({ apiKey: 'AIzaSyBMbh1BuDtFteF5bxb03EKe2-hpKYre79g'}),
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

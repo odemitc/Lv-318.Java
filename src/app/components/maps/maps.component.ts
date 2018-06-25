@@ -4,6 +4,7 @@ import {MapsService} from '../../services/maps.service';
 import {ActivatedRoute} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {WaypointModel, Location} from '../../models/waypoint.model';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-maps',
@@ -11,28 +12,141 @@ import {WaypointModel, Location} from '../../models/waypoint.model';
   styleUrls: ['./maps.component.css']
 })
 export class MapsComponent implements OnInit {
+  firstFormGroup: FormGroup;
+  public styles = [
+    {
+      'stylers': [
+        {
+          'saturation': -100
+        },
+        {
+          'gamma': 1
+        }
+      ]
+    },
+    {
+      'elementType': 'labels.text.stroke',
+      'stylers': [
+        {
+          'visibility': 'off'
+        }
+      ]
+    },
+    {
+      'featureType': 'poi.business',
+      'elementType': 'labels.text',
+      'stylers': [
+        {
+          'visibility': 'off'
+        }
+      ]
+    },
+    {
+      'featureType': 'poi.business',
+      'elementType': 'labels.icon',
+      'stylers': [
+        {
+          'visibility': 'off'
+        }
+      ]
+    },
+    {
+      'featureType': 'poi.place_of_worship',
+      'elementType': 'labels.text',
+      'stylers': [
+        {
+          'visibility': 'off'
+        }
+      ]
+    },
+    {
+      'featureType': 'poi.place_of_worship',
+      'elementType': 'labels.icon',
+      'stylers': [
+        {
+          'visibility': 'off'
+        }
+      ]
+    },
+    {
+      'featureType': 'road',
+      'elementType': 'geometry',
+      'stylers': [
+        {
+          'visibility': 'simplified'
+        }
+      ]
+    },
+    {
+      'featureType': 'water',
+      'stylers': [
+        {
+          'visibility': 'on'
+        },
+        {
+          'saturation': 50
+        },
+        {
+          'gamma': 0
+        },
+        {
+          'hue': '#50a5d1'
+        }
+      ]
+    },
+    {
+      'featureType': 'administrative.neighborhood',
+      'elementType': 'labels.text.fill',
+      'stylers': [
+        {
+          'color': '#333333'
+        }
+      ]
+    },
+    {
+      'featureType': 'road.local',
+      'elementType': 'labels.text',
+      'stylers': [
+        {
+          'weight': 0.5
+        },
+        {
+          'color': '#333333'
+        }
+      ]
+    },
+    {
+      'featureType': 'transit.station',
+      'elementType': 'labels.icon',
+      'stylers': [
+        {
+          'gamma': 1
+        },
+        {
+          'saturation': 50
+        }
+      ]
+    }
+  ];
   public transitId: string;
-  public routeDirection: string;
+  public routeDirection = 'forward';
   public latStatic: Number = 49.84012222290039;
   public lngStatic: Number = 24.028803095222;
-  public markerOneLat;
-  public markerOneLng;
-  public markerOneName;
-  public markerTwoLat;
-  public markerTwoLng;
-  public markerTwoName;
+  public firstStopMarker: MarkerModel = new MarkerModel();
+  public secondStopMarker: MarkerModel = new MarkerModel();
   public icon = 'http://localhost:8080/category/img?link=static/bus-stop.png';
   public direction = undefined;
   public travelMode = 'DRIVING';
   private serviceUrl = environment.serverURL + '/stop';
-  public points: any;
+  public points: any = undefined;
   public markers: MarkerModel[];
+  public stopList: MarkerModel[];
   public zoom = 13;
   public renderOptions = {
     draggable: false,
     suppressMarkers: true,
     polylineOptions: {
-      strokeColor: '#42fc0f'
+      strokeColor: '#1c7bdb'
     }
   };
   public waypoints;
@@ -50,61 +164,91 @@ export class MapsComponent implements OnInit {
     },
   };
 
-  constructor(private route: ActivatedRoute, private service: MapsService) {
+  constructor(private route: ActivatedRoute, private service: MapsService, private _formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
     this.route.params.forEach(param => {
       this.transitId = param['id'];
     });
-    this.service.getForwardDirection(this.transitId, 'forward').subscribe(points => this.points = points);
+    this.initPoints();
   }
 
   setDirectionAndRefresh(routeDirection) {
     this.routeDirection = routeDirection;
-    console.log(this.routeDirection);
-    this.service.getForwardDirection(this.transitId, this.routeDirection).subscribe(points => this.points = points);
-    this.mapClicked();
+    this.initPoints();
+    this.clearStopFirst();
+    this.clearStopSecond();
   }
 
-  mapClicked() {
-    this.markers = new Array(this.points.length);
-    for (let i = 0; i < this.points.length; i++) {
-      let marker: MarkerModel = new MarkerModel();
-      marker.name = this.points[i].street;
-      marker.lat = this.points[i].lat;
-      marker.lng = this.points[i].lng;
-      marker.draggable = false;
-      this.markers[i] = marker;
-    }
-    this.direction = {
-      origin: {lat: this.points[0].lat, lng: this.points[0].lng},
-      destination: {lat: this.points[this.points.length - 1].lat, lng: this.points[this.points.length - 1].lng}
-    };
-    this.waypoints = new Array(this.points.length - 2);
-    for (let i = 1; i < this.points.length - 1; i++) {
-      let waypoint: WaypointModel = new WaypointModel();
-      let location: Location = new Location();
-      location.lat = this.points[i].lat;
-      location.lng = this.points[i].lng;
-      waypoint.location = location;
-      waypoint.stopover = true;
-      this.waypoints[i - 1] = waypoint;
-    }
-    this.waypoints.forEach(point => console.log(point));
+  initPoints() {
+    this.service.getForwardDirection(this.transitId, this.routeDirection).subscribe(points => {
+        this.points = points;
+        console.log(points);
+        this.markers = new Array(points.length);
+        for (let i = 0; i < points.length; i++) {
+          const marker: MarkerModel = new MarkerModel();
+          marker.name = points[i].street;
+          marker.lat = points[i].lat;
+          marker.lng = points[i].lng;
+          marker.draggable = false;
+          marker.order = i;
+          this.markers[i] = marker;
+        }
+        this.direction = {
+          origin: {lat: points[0].lat, lng: points[0].lng},
+          destination: {lat: points[points.length - 1].lat, lng: points[points.length - 1].lng}
+        };
+        this.waypoints = new Array(this.points.length - 2);
+        for (let i = 1; i < points.length - 1; i++) {
+          const waypoint: WaypointModel = new WaypointModel();
+          const location: Location = new Location();
+          location.lat = points[i].lat;
+          location.lng = points[i].lng;
+          waypoint.location = location;
+          waypoint.stopover = true;
+          this.waypoints[i - 1] = waypoint;
+        }
+      }
+    )
+    ;
   }
 
   clickedMarker(marker) {
-    if (this.markerOneLat === undefined) {
-      this.markerOneName = marker.name;
-      this.markerOneLat = marker.lat;
-      this.markerOneLng = marker.lng;
+    if (this.firstStopMarker.name === undefined) {
+      this.firstStopMarker.name = marker.name;
+      this.firstStopMarker.lat = marker.lat;
+      this.firstStopMarker.lng = marker.lng;
+      this.firstStopMarker.order = marker.order;
     } else {
-      this.markerTwoName = marker.name;
-      this.markerTwoLat = marker.lat;
-      this.markerTwoLng = marker.lng;
+      if (marker.order > this.firstStopMarker.order) {
+        this.secondStopMarker.name = marker.name;
+        this.secondStopMarker.lat = marker.lat;
+        this.secondStopMarker.lng = marker.lng;
+        this.secondStopMarker.order = marker.order;
+        console.log(this.secondStopMarker.order);
+        console.log(this.firstStopMarker.order);
+        this.stopList = new Array(this.secondStopMarker.order - this.firstStopMarker.order - 1);
+        for (let i = this.firstStopMarker.order + 1, j = 0; i < this.secondStopMarker.order; i++, j++) {
+          this.stopList[j] = this.markers[i];
+        }
+      } else {
+        alert('Wrong stop order.');
+      }
     }
   }
+
+  clearStopFirst() {
+    this.firstStopMarker = new MarkerModel();
+  }
+
+  clearStopSecond() {
+    this.secondStopMarker = new MarkerModel();
+  }
+
 }
 
 export class MarkerModel {
@@ -112,4 +256,5 @@ export class MarkerModel {
   lat: number;
   lng: number;
   draggable: boolean;
+  order: number;
 }
