@@ -1,25 +1,23 @@
-
+<div class="form ">
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span  style="text-align: center">{{ 'FeedbackInfo' | translate}} № {{transitId}}</span>
-  
-    
-    <button mat-raised-button (click)="close()">{{ 'Close' | translate}}</button>
-   
   </mat-toolbar-row>
 </mat-toolbar>
-
 <div class="addfeedback ">
+
   <div class ="showFeedbacks" *ngFor="let feedback of feedbacks ">
       <div class ="showQuestions" *ngFor="let question of feedback.questions" >
           <div class ="question">
               {{question}}
             </div>
         </div>
-
-        <input type="text" [(ngModel)]="feedback.answer" name="answer">
-        <button mat-raised-button  (click) = "save(feedback)">Save </button>
+        <mat-form-field class="answer">
+          <input matInput type="text" placeholder="answer" [(ngModel)]="feedback.answer"/>
+        </mat-form-field> 
+        <button mat-raised-button color="primary" (click) = "save(feedback)">save</button>
   </div>
-  <button mat-raised-button color="primary" (click) = "saveAll()">Save All </button>
 </div>
-
+<button mat-raised-button color="primary" (click) = "saveAll(feedbacks)">{{ 'Save' | translate}} </button>
+<button mat-raised-button (click)="close()">{{ 'Close' | translate}}</button>
+</div>

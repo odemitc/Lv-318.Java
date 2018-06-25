@@ -1,30 +1,30 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {Chart} from 'chart.js';
 
-import {environment} from '../../../../../environments/environment';
 import {DiagramService} from '../../../../services/diagram.service';
-import {Stop} from "../../../../models/stop.model";
+import {environment} from '../../../../../environments/environment';
+
 
 @Component({
-  selector: 'app-busy-stops-diagram',
-  templateUrl: './busy-stops-diagram.component.html',
+  selector: 'app-busy-hours-diagram',
+  templateUrl: './busy-hours-diagram.component.html',
+  styleUrls: ['./busy-hours-diagram.component.css']
 })
-export class BusyStopsDiagramComponent implements  OnInit {
+export class BusyHoursDiagramComponent implements AfterViewInit {
   @Input() id: number;
-  @Input() stopList: Stop[];
 
   constructor(private diagramService: DiagramService) {
   }
 
-  ngOnInit(): void {
-    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=' + this.stopList)
+  ngAfterViewInit(): void {
+    this.diagramService.getResults(environment.serverURL + '/feedback/byHour/' + this.id)
       .subscribe(res => {
-        const CHART = document.getElementById('lineChart1');
+        const CHART = document.getElementById('lineChart');
 
-        const lineChart1 = new Chart(CHART, {
+        const lineChart = new Chart(CHART, {
           type: 'line',
           data: {
-            labels: Object.keys(res),
+            labels: Object.keys(res).map(data => data.concat(':00')),
             datasets: [{
               fill: true,
               lineTension: 0.6,
@@ -34,7 +34,7 @@ export class BusyStopsDiagramComponent implements  OnInit {
               borderDash: [],
               borderDashOffset: 0.0,
               borderJointStyle: 'miter',
-              data: Object.values(res)
+              data: Object.values(res).concat([0, 100])
             }]
           },
           options: {
@@ -45,5 +45,4 @@ export class BusyStopsDiagramComponent implements  OnInit {
         });
       });
   }
-
 }

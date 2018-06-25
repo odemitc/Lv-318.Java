@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable, of} from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { Feedback } from '../models/feedback.model';
-
-
+import { Observable } from 'rxjs';
 
 const httpOptions = {
-  headers: new HttpHeaders({
-     'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 
@@ -22,12 +19,17 @@ export class FeedbackService {
   constructor(private http: HttpClient) { 
 
   }
-  addFeedback(feedback:Feedback): Observable<Feedback> {
-    return this.http.post<Feedback>(this.url ,feedback, httpOptions);
+  addFeedback(feedback:Feedback)  {
+     this.http.post<Feedback>(this.url, JSON.stringify(feedback),httpOptions)
+              .subscribe(res => console.log(res),
+            err => console.log(err)
+            );
   }
 
-  addAllFeedback(feedbacks: Feedback[]): Observable<Feedback[]> {
-    const feedbackUrl = `${this.url}/add?feedbacks[]=${feedbacks}`;
-    return this.http.post<Feedback[]>(feedbackUrl ,feedbacks, httpOptions);
+  addAllFeedback(feedbacks: Feedback[]) {
+    // const feedbackUrl = `${this.url}/add?feedbacks[]=${feedbacks}`;
+    const feedbackUrl = `${this.url}/add`;
+    this.http.post<Feedback[]>(feedbackUrl, JSON.stringify(feedbacks), httpOptions).subscribe(
+      feedbacks => console.log(JSON.stringify(feedbacks)));
   }
 }

@@ -15,7 +15,7 @@
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let transit; columns: displayedColumns;" [routerLink]="['/show-transit-scheme', transit.id, transit.categoryId]"></mat-row>
+    <mat-row *matRowDef="let transit; columns: displayedColumns;" [routerLink]="['/stops', transit.categoryId, transit.id]"></mat-row>
   </table>
 </div>
 <!--<div class="AddTransit">-->

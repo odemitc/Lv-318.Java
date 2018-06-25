@@ -48,6 +48,15 @@ export class FeedbackCriteriaService {
         catchError(this.handleError('getAllFeedbackCriterias', []))
       );
   }
+
+  getAllFeedbackCriteriaByCategoryId(categoryId:number): Observable<FeedbackCriteria[]> {
+    const feedbackCriteriaUrl = `${this.feedbackCriteriaUrl}/categoryId/${categoryId}`;
+    return this.http.get<FeedbackCriteria[]>(feedbackCriteriaUrl)
+      .pipe(
+        tap(feedbackCriterias => this.log(`fetched feedbackCriterias`)),
+        catchError(this.handleError('getAllFeedbackCriterias', []))
+      );
+  }
   deleteFeedbackCriteria(number): Observable<FeedbackCriteria> {
     const id = number;
     const url = `${this.feedbackCriteriaUrl}/${id}`;

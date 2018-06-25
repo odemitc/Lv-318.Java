@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Stop } from '../../models/stop.model';
-import { ActivatedRoute } from '@angular/router';
-import { StopService } from '../../services/stop.service';
-import { Observable } from 'rxjs';
+import {Component, OnInit, Input } from '@angular/core';
+import {Stop} from '../../models/stop.model';
+import {ActivatedRoute} from '@angular/router';
+import {StopService} from '../../services/stop.service';
+import {Observable} from 'rxjs';
+
 import {MatDialog} from '@angular/material';
 
-import {AddFeedbackComponent} from '../stops/components/add-feedback/add-feedback.component';
-
+import {AddFeedbackComponent} from './components/add-feedback/add-feedback.component';
 
 @Component({
   selector: 'app-stops-grid',
@@ -17,26 +17,27 @@ export class StopsGridComponent implements OnInit {
 
   checkedItems: boolean[];
   private sub: any;
- @Input() idTransit: number;
- @Input() categoryId: number;
+  @Input() public idTransit: number;
   stopsList: Observable<Stop[]>;
   stopArray: Stop[] = [];
   public selectedStops: Stop[] = [];
-  
+  categoryId: number;
 
-  constructor(private stopService: StopService,private route: ActivatedRoute,public dialog: MatDialog) {
+  constructor(private stopService: StopService, private route: ActivatedRoute, public dialog: MatDialog) {
   }
+
 
   ngOnInit() {
     this.sub = this.route.params.forEach(params => {
       this.idTransit = params['id'];
-      this.categoryId=params['categoryId'];
+      this.categoryId = params['city'];
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
     this.stopsList.subscribe(stopArray =>
       this.stopArray = stopArray);
     this.checkedItems = new Array(this.stopArray.length);
-
+    console.log(this.selectedStops);
+    console.log(this.categoryId);
   }
 
   public selectStops() {
@@ -51,10 +52,11 @@ export class StopsGridComponent implements OnInit {
 
 
     console.log(this.selectedStops);
+    console.log(this.categoryId);
   }
 
-  public openModal(){
-      this.dialog.open(AddFeedbackComponent,{data:{number:this.idTransit,categoryId: this.categoryId}});
+  public openModal() {
+    this.dialog.open(AddFeedbackComponent, {data: {number: this.idTransit, categoryId: this.categoryId}});
   }
 
 }

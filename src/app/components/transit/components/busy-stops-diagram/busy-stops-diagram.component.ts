@@ -1,30 +1,31 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
 import {Chart} from 'chart.js';
 
-import {DiagramService} from '../../../../services/diagram.service';
 import {environment} from '../../../../../environments/environment';
-
+import {DiagramService} from '../../../../services/diagram.service';
+import {Stop} from '../../../../models/stop.model';
 
 @Component({
-  selector: 'app-busy-hours-diagram',
-  templateUrl: './busy-hours-diagram.component.html',
-  styleUrls: ['./busy-hours-diagram.component.css']
+  selector: 'app-busy-stops-diagram',
+  templateUrl: './busy-stops-diagram.component.html',
+  styleUrls: ['./busy-stops-diagram.component.css']
 })
-export class BusyHoursDiagramComponent implements AfterViewInit {
+export class BusyStopsDiagramComponent implements AfterViewInit {
   @Input() id: number;
+  @Input() stopList: Stop[]=[];
 
   constructor(private diagramService: DiagramService) {
   }
 
   ngAfterViewInit(): void {
-    this.diagramService.getResults(environment.serverURL + '/feedback/byHour/' + this.id)
+    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stopList[]=' + this.stopList)
       .subscribe(res => {
-        const CHART = document.getElementById('lineChart');
+        const CHART = document.getElementById('lineChart1');
 
-        const lineChart = new Chart(CHART, {
+        const lineChart1 = new Chart(CHART, {
           type: 'line',
           data: {
-            labels: Object.keys(res),
+            labels: Object.keys(res).map(data => data.substring(data.lastIndexOf('=') + 1, data.indexOf(')'))),
             datasets: [{
               fill: true,
               lineTension: 0.6,
@@ -34,7 +35,7 @@ export class BusyHoursDiagramComponent implements AfterViewInit {
               borderDash: [],
               borderDashOffset: 0.0,
               borderJointStyle: 'miter',
-              data: Object.values(res)
+              data: Object.values(res).concat([0, 100])
             }]
           },
           options: {
