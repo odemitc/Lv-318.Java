@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {MapsService} from '../../services/maps.service';
-import {ActivatedRoute} from '@angular/router';
-import {environment} from '../../../environments/environment';
-import {WaypointModel, Location} from '../../models/waypoint.model';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MapsService } from '../../services/maps.service';
+import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../environments/environment';
+import { WaypointModel, Location } from '../../models/waypoint.model';
 
 @Component({
   selector: 'app-maps',
@@ -49,6 +49,86 @@ export class MapsComponent implements OnInit {
       scaledSize: 0.1,
     },
   };
+  public styles = [
+    {
+      "featureType": "administrative",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#444444"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape",
+      "elementType": "all",
+      "stylers": [
+        {
+          "color": "#f2f2f2"
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "elementType": "all",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "road",
+      "elementType": "all",
+      "stylers": [
+        {
+          "saturation": -100
+        },
+        {
+          "lightness": 45
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "all",
+      "stylers": [
+        {
+          "visibility": "simplified"
+        }
+      ]
+    },
+    {
+      "featureType": "road.arterial",
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "transit",
+      "elementType": "all",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "water",
+      "elementType": "all",
+      "stylers": [
+        {
+          "color": "#425a68"
+        },
+        {
+          "visibility": "on"
+        }
+      ]
+    }
+  ]
 
   constructor(private route: ActivatedRoute, private service: MapsService) {
   }

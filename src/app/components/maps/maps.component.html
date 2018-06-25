@@ -5,6 +5,8 @@
   <agm-map [latitude]="latStatic"
            [longitude]="lngStatic"
            [zoom]="zoom"
+           [styles]="styles"
+           [la
   >
     <agm-direction *ngIf="direction"
                    [origin]="direction.origin" [destination]="direction.destination"
