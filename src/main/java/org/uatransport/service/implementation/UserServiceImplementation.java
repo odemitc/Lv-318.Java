@@ -15,11 +15,12 @@ import org.uatransport.entity.User;
 import org.uatransport.entity.dto.LoginDTO;
 import org.uatransport.entity.dto.UserDTO;
 import org.uatransport.exception.ResourceNotFoundException;
-import org.uatransport.exception.SecurityException;
+import org.uatransport.exception.SecurityJwtException;
 import org.uatransport.repository.UserRepository;
 import org.uatransport.security.JwtTokenProvider;
 import org.uatransport.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 
@@ -47,7 +48,7 @@ public class UserServiceImplementation implements UserService {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             return jwtTokenProvider.createToken(username, userRepository.findByEmail(username).getRole());
         } catch (AuthenticationException e) {
-            throw new SecurityException("Invalid username/password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
+            throw new SecurityJwtException("Invalid username/password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
 
         }
     }
@@ -103,6 +104,13 @@ public class UserServiceImplementation implements UserService {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String
                         .format("User with id '%s' not found", id)));
+
+    }
+
+    @Override
+    public User getUser(Principal principal) {
+
+            return userRepository.findByEmail(principal.getName());
 
     }
 

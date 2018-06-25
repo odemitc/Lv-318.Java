@@ -12,7 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.uatransport.entity.Role;
-import org.uatransport.exception.SecurityException;
+import org.uatransport.exception.SecurityJwtException;
 import org.uatransport.service.implementation.UserDetailServiceImplementation;
 
 import javax.annotation.PostConstruct;
@@ -74,7 +74,7 @@ public class JwtTokenProvider {
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;
         } catch (JwtException | IllegalArgumentException e) {
-            throw new SecurityException("Expired or invalid JWT token", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new SecurityJwtException("Expired or invalid JWT token", HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
     }

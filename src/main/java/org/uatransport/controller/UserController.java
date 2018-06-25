@@ -12,6 +12,7 @@ import org.uatransport.entity.dto.UserDTO;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -23,14 +24,16 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public String  signUp(@RequestBody UserDTO userDTO) {
-        return userService.signup(userDTO);
+    public ResponseEntity  signUp(@RequestBody UserDTO userDTO) {
+
+         userService.signup(userDTO);
+         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/signin")
-    public String signin(@RequestBody LoginDTO loginDTO){
-
-       return  userService.signin(loginDTO);
+    public ResponseEntity signin(@RequestBody LoginDTO loginDTO){
+        userService.signin(loginDTO);
+        return new ResponseEntity(HttpStatus.OK);
 
     }
 
@@ -59,6 +62,10 @@ public class UserController {
         User updatedUser = userService.update(user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 
+    }
+    @GetMapping("/me")
+    public User getCurrentUser(Principal principal) {
+        return userService.getUser(principal);
     }
 }
 

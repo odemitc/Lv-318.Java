@@ -6,6 +6,7 @@ import org.uatransport.entity.User;
 import org.uatransport.entity.dto.LoginDTO;
 import org.uatransport.entity.dto.UserDTO;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface UserService {
@@ -17,6 +18,7 @@ public interface UserService {
     void deleteById(int id);
 
     User getById(int id);
+    User getUser(Principal principal);
 
    String signin(LoginDTO loginDTO) ;
    String signup(UserDTO user);

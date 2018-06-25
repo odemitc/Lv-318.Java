@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.uatransport.exception.ResourceNotFoundException;
-import org.uatransport.exception.SecurityException;
+import org.uatransport.exception.SecurityJwtException;
 
 @ControllerAdvice
 @Slf4j
@@ -55,9 +55,10 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         return handleExceptionInternal(ex, apiError, HTTP_HEADERS, apiError.getStatus(), request);
     }
 
-    @ExceptionHandler(value = SecurityException.class)
-    protected ResponseEntity<Object> handleConflict(SecurityException ex, WebRequest request) {
+    @ExceptionHandler(value = SecurityJwtException.class)
+    protected ResponseEntity<Object> handleConflict(SecurityJwtException ex, WebRequest request) {
         final ApiError apiError = new ApiError(ex.getHttpStatus(), ex);
+        apiError.setMessage(ex.getMessage());
         return handleExceptionInternal(ex, apiError, HTTP_HEADERS, apiError.getStatus(), request);
     }
 }
