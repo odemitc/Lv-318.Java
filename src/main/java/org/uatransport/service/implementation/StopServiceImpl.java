@@ -9,31 +9,30 @@ import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.Stop;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.StopRepository;
-import org.uatransport.service.PointService;
+import org.uatransport.service.StopService;
 
 import java.util.List;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class PointServiceImpl implements PointService {
+public class StopServiceImpl implements StopService {
 
-    private final PointRepository pointRepository;
     private final StopRepository stopRepository;
 
     @Override
     @Transactional
-    public Point save(Point point) {
+    public Stop save(Stop point) {
         if (point == null) {
             throw new IllegalArgumentException("Stop object should not be empty");
         }
-        return pointRepository.save(point);
+        return stopRepository.save(point);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Point getById(Integer id) {
-        return pointRepository.findById(id)
+    public Stop getById(Integer id) {
+        return stopRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
     }
 
@@ -41,7 +40,7 @@ public class PointServiceImpl implements PointService {
     @Transactional
     public void delete(Integer id) {
         try {
-            pointRepository.deleteById(id);
+            stopRepository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", id));
         }
@@ -49,35 +48,22 @@ public class PointServiceImpl implements PointService {
 
     @Override
     @Transactional
-    public Point update(Point point) {
-        if (point == null) {
+    public Stop update(Stop stop) {
+        if (stop == null) {
             throw new IllegalArgumentException("Stop value should not be null!");
         }
-        if (pointRepository.existsById(point.getId())) {
-            return pointRepository.save(point);
+        if (stopRepository.existsById(stop.getId())) {
+            return stopRepository.save(stop);
         } else {
-            throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", point.getId()));
+            throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", stop.getId()));
         }
     }
 
-    @Override
     @Transactional
-    public List<Stop> getByStreet(String street) {
-        if (Strings.isNullOrEmpty(street)) {
-            throw new IllegalArgumentException("Parameter street should not be null!");
-        }
-        return stopRepository.findByStreet(street);
+    public List<Stop> getByTransitId(Integer id) {
+        return stopRepository.findByTransitId(id);
     }
 
-    @Transactional
-    public List<Point> getByTransitId(Integer id) {
-        return pointRepository.findByTransitId(id);
-    }
-
-    @Transactional
-    public List<Stop> getStopsByTransitId(Integer id) {
-        return stopRepository.findStopsByTransitId(id);
-    }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -88,7 +74,7 @@ public class PointServiceImpl implements PointService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
-        if (pointRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
+        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
             return stopRepository.findIndexByTransitIdAndStopName(transitId, street);
         } else {
             throw new ResourceNotFoundException("Stop  not found");
