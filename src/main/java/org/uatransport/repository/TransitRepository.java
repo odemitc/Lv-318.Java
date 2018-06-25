@@ -13,6 +13,10 @@ public interface TransitRepository extends CrudRepository<Transit, Integer> {
 
     List<Transit> findByCategoryName(String name);
 
-    List<Transit> findByCategoryId(int id);
+    List<Transit> findByCategoryId(Integer id);
+
+    List<Transit> findByCategoryNextLevelCategoryId(Integer id);
+
+    List<Transit> findByCategoryNextLevelCategoryName(String name);
 
 }
