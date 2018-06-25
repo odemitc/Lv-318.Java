@@ -28,7 +28,7 @@ export class BusyStopsDiagramComponent implements AfterViewInit {
             labels: Object.keys(res).map(data => data.substring(data.lastIndexOf('=') + 1, data.indexOf(')'))),
             datasets: [{
               fill: true,
-              lineTension: 0.6,
+              lineTension: 0.5,
               backgroundColor: 'rgba(75,192,192,0.4)',
               borderColor: 'rgba(75,192,192,1)',
               borderCapStyle: 'butt',

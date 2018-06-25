@@ -76,6 +76,7 @@ import { DiagramService } from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
+import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
 import { TransitService } from './services/transit.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -107,7 +108,8 @@ export function createTranslateLoader(http: HttpClient) {
     CallbackComponent,
     BusyHoursDiagramComponent,
     OneQuestionComponent,
-    BusyStopsDiagramComponent
+    BusyStopsDiagramComponent,
+    BackToPreviousPageBtnComponent
   ],
   exports: [
     MatAutocompleteModule,
