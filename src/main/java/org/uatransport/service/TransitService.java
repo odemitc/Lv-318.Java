@@ -1,6 +1,5 @@
 package org.uatransport.service;
 
-import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 
 import java.util.List;
@@ -20,6 +19,10 @@ public interface TransitService {
     Transit getByName(String name);
 
     List<Transit> getAllByCategoryId(Integer id);
+
+    List<Transit> getAllByNextLevelCategoryId(Integer id);
+
+    List<Transit> getAllByNextLevelCategoryName(String categoryName);
 
     List<Transit> getAll();
 
