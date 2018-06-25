@@ -20,7 +20,7 @@ public class EwayScheduleUpdate {
             i++;
             rateLimiter.acquire();
             stopListSaver.convertAndSaveStops(ewayRoute.getId().toString());
-            if (i == 20)
+            if (i == 5)
                 break;
         }
 
