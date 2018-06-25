@@ -65,7 +65,6 @@ import { MessageComponent } from './components/message/message.component';
 import { UserService } from './services/user.service';
 import { TokenStorage } from './services/auth/token/token-storage';
 import { AuthService } from './services/auth/auth.service';
-import { httpInterceptorProviders } from "./services/auth/interceptors/http-providers";
 import { StopService } from './services/stop.service';
 import { AdminGuardService } from './services/guard/admin-guard.service';
 import { AuthGuardService } from './services/guard/auth-guard.service';
@@ -78,6 +77,7 @@ import { AverageRateComponent } from './components/transit/components/average-ra
 import { DiagramService } from './services/diagram.service';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
+import { InterceptorService } from './services/auth/interceptors/interceptor.service';
 
 
 
@@ -182,7 +182,7 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [
-    httpInterceptorProviders,
+    InterceptorService,
     AdminGuardService,
     ClientGuardService,
     AuthGuardService,

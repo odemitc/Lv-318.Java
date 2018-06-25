@@ -1,9 +1,9 @@
 export class TokenModel {
   accessToken: string;
-  refreshToken: string;
+  // refreshToken: string;
 
-  constructor(accessToken: string, refreshToken: string) {
+  constructor(accessToken: string) {
     this.accessToken = accessToken;
-    this.refreshToken = refreshToken;
+    // this.refreshToken = refreshToken;
   }
 }

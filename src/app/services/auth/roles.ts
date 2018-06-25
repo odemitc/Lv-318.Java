@@ -10,6 +10,6 @@ export function determineRole(input: string): Role {
   } else if (input == 'ADMIN') {
     return Role.Admin;
   } else {
-    return Role.Unauthorized
+    return Role.Unauthorized;
   }
 }

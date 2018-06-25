@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpErrorResponse,
@@ -8,11 +8,11 @@ import {
   HttpRequest,
   HttpResponse
 } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {TokenStorage} from "../token/token-storage";
-import {TokenModel} from '../token/token-model';
-import {Router} from '@angular/router';
-import {environment} from '../../../../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import { TokenStorage } from '../token/token-storage';
+import { TokenModel } from '../token/token-model';
+import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class ExpirationService implements HttpInterceptor {
@@ -32,7 +32,7 @@ export class ExpirationService implements HttpInterceptor {
     return next.handle(req).do(response => {
         if (response instanceof HttpResponse) {
           if (response.headers.has(this.accessTokenHeader) && response.headers.has(this.refreshTokenHeader)) {
-            this.tokenStorage.saveToken(new TokenModel(response.headers.get(this.accessTokenHeader), response.headers.get(this.refreshTokenHeader)));
+            this.tokenStorage.saveToken(new TokenModel(response.headers.get(this.accessTokenHeader)));
           }
         }
         return response;

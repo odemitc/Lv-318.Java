@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {TokenModel} from "./token-model";
-import {determineRole, Role} from "../roles";
+import {TokenModel} from './token-model';
+import {determineRole, Role} from '../roles';
 
 const ACCESS_TOKEN = 'access_token';
 const REFRESH_TOKEN = 'refresh_token';
@@ -20,7 +20,7 @@ export class TokenStorage {
 
   public signOut() {
     window.localStorage.removeItem(ACCESS_TOKEN);
-    window.localStorage.removeItem(REFRESH_TOKEN);
+    // window.localStorage.removeItem(REFRESH_TOKEN);
     window.localStorage.clear();
     this.accessToken = null;
     this.refreshToken = null;
@@ -28,13 +28,13 @@ export class TokenStorage {
   }
 
   public saveToken(token: TokenModel) {
-    let accessToken = token.accessToken;
-    let refreshToken = token.refreshToken;
+    const accessToken = token.accessToken;
+    // let refreshToken = token.refreshToken;
     this.signOut();
     window.localStorage.setItem(ACCESS_TOKEN, accessToken);
     this.accessToken = accessToken;
-    window.localStorage.setItem(REFRESH_TOKEN, refreshToken);
-    this.refreshToken = refreshToken;
+    // window.localStorage.setItem(REFRESH_TOKEN, refreshToken);
+    // this.refreshToken = refreshToken;
     this.decodedToken = this.decodeToken();
   }
 
@@ -65,6 +65,6 @@ export class TokenStorage {
   }
 
   public hasToken(): boolean {
-    return this.refreshToken != null;
+    return this.accessToken != null;
   }
 }

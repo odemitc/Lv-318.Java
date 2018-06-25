@@ -1,6 +1,6 @@
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {InterceptorService} from "./interceptor.service";
-import {ExpirationService} from './expiration.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './interceptor.service';
+import { ExpirationService } from './expiration.service';
 
 
 export const httpInterceptorProviders = [
