@@ -1,6 +1,5 @@
 package org.uatransport.service;
 
-import org.uatransport.entity.Point;
 import org.uatransport.entity.Stop;
 
 import java.util.List;

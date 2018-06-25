@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.uatransport.entity.Point;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 import org.uatransport.service.PointService;

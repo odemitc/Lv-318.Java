@@ -2,7 +2,6 @@ package org.uatransport.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.uatransport.entity.Point;
 
 import java.util.List;
 
