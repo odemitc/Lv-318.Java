@@ -40,10 +40,6 @@ public class FeedbackController {
         return feedbackService.getById(id);
     }
 
-    @PostMapping(value = "/add")
-    public ResponseEntity<List<Feedback>> addAll(@RequestBody List<FeedbackDTO> feedbackDTOList) {
-        return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
-    }
 
     @PostMapping
     public ResponseEntity<Feedback> add(@RequestBody FeedbackDTO feedbackDTO) {
@@ -56,7 +52,8 @@ public class FeedbackController {
     }
 
     @GetMapping(value = "/rate/{transitId}/{userId}")
-    public Double getAverageRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
+    public Double getAverageRateByTransitAndUser(
+            @PathVariable Integer transitId, @PathVariable Integer userId) {
         return feedbackService.getAverageRateByTransitAndUser(transitId, userId);
     }
 
@@ -75,5 +72,11 @@ public class FeedbackController {
     @GetMapping(value = "/accepterMap/{transitId}")
     public EnumMap<AccepterFeedback, Double> getAccepterMap(@PathVariable Integer transitId) {
         return feedbackService.getAccepterAnswerPercentageMap(transitId);
+    }
+
+    @PostMapping(value = "/add")
+    public ResponseEntity<List<Feedback>> addAll(@RequestParam(value = "feedbacks[]")
+                                                         List<FeedbackDTO> feedbackDTOList) {
+        return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
     }
 }

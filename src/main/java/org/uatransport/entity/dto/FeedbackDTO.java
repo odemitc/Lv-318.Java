@@ -5,6 +5,7 @@ import lombok.experimental.Accessors;
 import org.modelmapper.ModelMapper;
 import org.springframework.expression.ParseException;
 import org.uatransport.entity.Feedback;
+import org.uatransport.entity.Question;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +19,7 @@ public class FeedbackDTO {
     private Integer userId;
     private Integer transitId;
     private Integer criteriaId;
+    private List<Question> questions;
 
     ModelMapper modelMapper = new ModelMapper();
 

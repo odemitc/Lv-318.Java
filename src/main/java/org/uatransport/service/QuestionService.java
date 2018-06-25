@@ -19,4 +19,6 @@ public interface QuestionService {
     List<Question> getByGroupId(Integer groupId);
 
     List<Question> getByQuestionName(String questionName);
+
+    List<Question> getByFeedbackCriteriaId(Integer feedbackCriteriaId);
 }
