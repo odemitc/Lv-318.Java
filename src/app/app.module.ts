@@ -61,6 +61,7 @@ import { MainComponent } from './components/main/main.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { FeedbackCriteriaComponent } from './components/feedback-criteria/feedback-criteria.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 import { BusyHoursDiagramComponent } from './components/transit/components/busy-hours-diagram/busy-hours-diagram.component';
 import { MessageComponent } from './components/message/message.component';
 import { UserService } from './services/user.service';
@@ -96,6 +97,7 @@ export function createTranslateLoader(http: HttpClient) {
     MainComponent,
     FeedbackCriteriaComponent,
     AddUserComponent,
+    UserLoginComponent,
     MessageComponent,
     StopsGridComponent,
     QuestionComponent,
