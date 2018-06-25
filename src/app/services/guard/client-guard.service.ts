@@ -22,7 +22,7 @@ export class ClientGuardService {
     if (this.tokenStorage.getRole() === Role.Client || this.tokenStorage.getRole() === Role.Admin ) {
       return true;
     } else {
-      this.router.navigate(['/error/forbidden']);
+      this.router.navigate(['/error/']);
       return false;
     }
   }

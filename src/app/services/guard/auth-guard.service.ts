@@ -19,7 +19,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
 
   checkRights(): boolean {
     if (this.tokenStorage.hasToken()) {
-      this.router.navigate(['/error/forbidden']);
+      this.router.navigate(['/error/']);
       return false;
     } else {
       return true;
