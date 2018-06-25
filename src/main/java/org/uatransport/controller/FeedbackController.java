@@ -74,9 +74,12 @@ public class FeedbackController {
         return feedbackService.getAccepterAnswerPercentageMap(transitId);
     }
 
+//    @PostMapping(value = "/add")
+//    public ResponseEntity<List<Feedback>> addAll(@RequestParam(value = "feedbacks[]") List<FeedbackDTO> feedbackDTOList) {
+//        return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
+//    }
     @PostMapping(value = "/add")
-    public ResponseEntity<List<Feedback>> addAll(@RequestParam(value = "feedbacks[]")
-                                                         List<FeedbackDTO> feedbackDTOList) {
+    public ResponseEntity<List<Feedback>> addAll(@RequestBody List<FeedbackDTO> feedbackDTOList) {
         return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
     }
 }
