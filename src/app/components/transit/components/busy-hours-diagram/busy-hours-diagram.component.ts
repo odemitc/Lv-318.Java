@@ -34,7 +34,7 @@ export class BusyHoursDiagramComponent implements AfterViewInit {
               borderDash: [],
               borderDashOffset: 0.0,
               borderJointStyle: 'miter',
-              data: Object.values(res).concat([0, 100])
+              data: Object.values(res).concat([0, 100]).map(data => (<number>data).toPrecision(3))
             }]
           },
           options: {
