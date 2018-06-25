@@ -64,7 +64,6 @@ public class StopServiceImpl implements StopService {
         return stopRepository.findByTransitId(id);
     }
 
-
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Stop getByTransitIdAndStopName(Integer transitId, String street) {

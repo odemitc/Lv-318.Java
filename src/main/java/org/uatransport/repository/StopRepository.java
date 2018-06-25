@@ -22,4 +22,4 @@ public interface StopRepository extends CrudRepository<Stop, Integer> {
     @Query("SELECT INDEX(s) FROM Transit t JOIN t.stops s WHERE t.id = :id AND s.street = :street")
     Integer findIndexByTransitIdAndStopName(@Param("id") Integer transitId, @Param("street") String street);
 
-   }
+}
