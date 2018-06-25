@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.uatransport.entity.TokenModel;
 import org.uatransport.entity.User;
 import org.uatransport.entity.dto.LoginDTO;
 import org.uatransport.entity.dto.UserDTO;
@@ -29,12 +30,12 @@ public class UserController {
     }
 
     @PostMapping("/signin")
-    public String signin(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
+    public ResponseEntity signin(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
         String token = userService.signin(loginDTO);
 
         response.setHeader("Authorization", token);
 
-        return token;
+        return ResponseEntity.ok(new TokenModel(token));
     }
 
     @GetMapping("/all")
