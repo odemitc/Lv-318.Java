@@ -30,7 +30,7 @@ export class StopsGridComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.forEach(params => {
       this.idTransit = params['id'];
-      this.categoryId = params['city'];
+      this.categoryId = params['categoryId'];
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
     this.stopsList.subscribe(stopArray =>

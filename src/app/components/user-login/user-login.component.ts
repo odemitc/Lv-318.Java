@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import {Router} from "@angular/router";
-import {UserService} from "../../services/user.service";
-import {Login} from '../../models/login.model';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { Login } from '../../models/login.model';
 
 @Component({
   selector: 'app-user-login',
@@ -25,6 +25,5 @@ export class UserLoginComponent {
       });
 
   }
-
 
 }

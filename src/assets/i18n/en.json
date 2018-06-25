@@ -7,8 +7,11 @@
   "Close": "Close",
   "Save" : "Save",
 "FeedbackInfo": "Feedback for Transit",
-  "By-Hour" : "By hours",
-  "By-Stop" : "By stops",
+  "By-Hour" : "Load by hours",
+  "By-Stop" : "Load by stops",
   "Average-Rate" : "Average rate",
-  "RateInfo":"Rate for 1 to 10"
+  "RateInfo":"Rate for 1 to 10",
+  "Route" : "Route",
+  "Raiting-Diagram" : "Reviews",
+  "Back": "Back"
 }

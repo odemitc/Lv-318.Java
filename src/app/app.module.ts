@@ -71,11 +71,15 @@ import { RaitingDiagramComponent } from './components/transit/components/raiting
 import { AverageRateComponent } from './components/transit/components/average-rate/average-rate.component';
 import { DiagramService } from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
+import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
+import { TransitService } from './services/transit.service';
 import { AddQuestionComponent } from './components/feedback-criteria/add-question/add-question.component';
 import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component';
 import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
 import {AddFeedbackComponent} from './components/transit/components/add-feedback/add-feedback.component';
 import {BusyStopsDiagramComponent} from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
+import {FeedbackService} from './services/feedback.service';
+import {FeedbackCriteriaService} from "./services/feedback-criteria.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -107,7 +111,8 @@ export function createTranslateLoader(http: HttpClient) {
     BusyStopsDiagramComponent,
     OneFeedbackCriteriaComponent,
     AddFeedbackComponent,
-    AddFeedbackCriteriaComponent
+    AddFeedbackCriteriaComponent,
+    BackToPreviousPageBtnComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -139,14 +144,10 @@ export function createTranslateLoader(http: HttpClient) {
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-
-
   ],
   imports: [
     BrowserModule,
@@ -156,6 +157,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     MatNativeDateModule,
     AppRoutingModule,
+    MatSortModule,
     MatTableModule,
     MatTabsModule,
     MatMenuModule,
@@ -182,7 +184,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService],
+  providers: [ExcategoryService, UserService, DiagramService,FeedbackService,FeedbackCriteriaService],
   bootstrap: [AppComponent],
   entryComponents: [AddFeedbackComponent,AddQuestionComponent]
 })
