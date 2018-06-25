@@ -33,7 +33,7 @@ public class UserController {
     public ResponseEntity signin(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
         String token = userService.signin(loginDTO);
 
-        response.setHeader("Authorization", token);
+//        response.setHeader("Authorization", token);
 
         return ResponseEntity.ok(new TokenModel(token));
     }
