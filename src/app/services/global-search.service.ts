@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Transit } from '../models/transit.model';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -11,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class GlobalSearchService {
-  private globalSearchUrl = 'http://localhost:8080/search';
+  private globalSearchUrl = environment.serverURL + '/search';
 
   searchValue = '';
 
