@@ -6,7 +6,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { Question } from '../models/question.model';
 
-
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -39,7 +38,7 @@ export class FeedbackCriteriaService {
   }
 
 
-  getAllFeedbackCriteriaByTypeAndCategoryId(categoryId:number,type: String): Observable<FeedbackCriteria[]> {
+  getAllFeedbackCriteriaByTypeAndCategoryId(categoryId: number, type: String): Observable<FeedbackCriteria[]> {
     const feedbackCriteriaUrl = `${this.feedbackCriteriaUrl}/categoryId/${categoryId}/type/${type}`;
     return this.http.get<FeedbackCriteria[]>(feedbackCriteriaUrl)
       .pipe(
@@ -48,7 +47,7 @@ export class FeedbackCriteriaService {
       );
   }
 
-  getAllFeedbackCriteriaByCategoryId(categoryId:number): Observable<FeedbackCriteria[]> {
+  getAllFeedbackCriteriaByCategoryId(categoryId: number): Observable<FeedbackCriteria[]> {
     const feedbackCriteriaUrl = `${this.feedbackCriteriaUrl}/categoryId/${categoryId}`;
     return this.http.get<FeedbackCriteria[]>(feedbackCriteriaUrl)
       .pipe(
@@ -94,7 +93,6 @@ export class FeedbackCriteriaService {
 
       return of(result as T);
     };
-
   }
 
   private log(message: string) {

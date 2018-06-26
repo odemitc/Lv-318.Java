@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient,HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders(({
@@ -15,7 +15,7 @@ export class DiagramService {
   }
 
   getResults(url: string) {
-    return this.http.get(url,httpOptions);
+    return this.http.get(url, httpOptions);
   }
 
 }
