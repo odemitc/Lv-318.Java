@@ -14,14 +14,12 @@ import org.uatransport.entity.Role;
 import org.uatransport.entity.User;
 import org.uatransport.entity.dto.LoginDTO;
 import org.uatransport.entity.dto.UserDTO;
-import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.exception.SecurityJwtException;
 import org.uatransport.repository.UserRepository;
 import org.uatransport.security.JwtTokenProvider;
 import org.uatransport.service.UserService;
 
 import java.security.Principal;
-import java.util.List;
 
 
 @Service
@@ -69,22 +67,6 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     @Transactional
-    public User addUser(UserDTO userDTO) {
-        if (userDTO == null) {
-            throw new IllegalArgumentException("Parameter should not be null");
-        }
-        User user = new User();
-        user.setRole(Role.USER);
-        user.setFirstName(userDTO.getFirstName());
-        user.setLastName(userDTO.getLastName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(bcryptEncoder.encode(userDTO.getPassword()));
-
-        return userRepository.saveAndFlush(user);
-    }
-
-    @Override
-    @Transactional
     public User update(User user) {
         if (user == null) {
             throw new IllegalArgumentException("Parameter should not be null");
@@ -98,14 +80,6 @@ public class UserServiceImplementation implements UserService {
         userRepository.deleteById(id);
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public User getById(int id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("User with id '%s' not found", id)));
-
-    }
 
     @Override
     public User getUser(Principal principal) {
@@ -114,10 +88,6 @@ public class UserServiceImplementation implements UserService {
 
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
+
 
 }

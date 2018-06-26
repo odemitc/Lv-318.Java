@@ -12,7 +12,6 @@ import org.uatransport.service.UserService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -25,8 +24,8 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseEntity signUp(@RequestBody UserDTO userDTO) {
 
-        userService.signup(userDTO);
-        return new ResponseEntity(HttpStatus.OK);
+        String token = userService.signup(userDTO);
+        return ResponseEntity.ok(new TokenModel(token));
     }
 
     @PostMapping("/signin")
@@ -38,17 +37,6 @@ public class UserController {
         return ResponseEntity.ok(new TokenModel(token));
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllUsers() {
-
-        return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
-
-        return new ResponseEntity<>(userService.getById(id), HttpStatus.OK);
-    }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Integer id) {
