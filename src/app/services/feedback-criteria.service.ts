@@ -38,6 +38,24 @@ export class FeedbackCriteriaService {
     return this.http.post<FeedbackCriteria>(this.feedbackCriteriaUrl, feedbackCriteria);
   }
 
+
+  getAllFeedbackCriteriaByTypeAndCategoryId(categoryId:number,type: String): Observable<FeedbackCriteria[]> {
+    const feedbackCriteriaUrl = `${this.feedbackCriteriaUrl}/categoryId/${categoryId}/type/${type}`;
+    return this.http.get<FeedbackCriteria[]>(feedbackCriteriaUrl)
+      .pipe(
+        tap(feedbackCriterias => this.log(`fetched feedbackCriterias`)),
+        catchError(this.handleError('getAllFeedbackCriterias', []))
+      );
+  }
+
+  getAllFeedbackCriteriaByCategoryId(categoryId:number): Observable<FeedbackCriteria[]> {
+    const feedbackCriteriaUrl = `${this.feedbackCriteriaUrl}/categoryId/${categoryId}`;
+    return this.http.get<FeedbackCriteria[]>(feedbackCriteriaUrl)
+      .pipe(
+        tap(feedbackCriterias => this.log(`fetched feedbackCriterias`)),
+        catchError(this.handleError('getAllFeedbackCriterias', []))
+      );
+  }
   deleteFeedbackCriteria(number): Observable<FeedbackCriteria> {
     const id = number;
     const url = `${this.feedbackCriteriaUrl}/${id}`;
@@ -47,6 +65,7 @@ export class FeedbackCriteriaService {
         catchError(this.handleError<FeedbackCriteria>('deletefeedbackCriteria'))
       );
   }
+
   getFeedbackCriteria(id: number): Observable<FeedbackCriteria> {
     const feedbackCriteriaUrl = `${this.feedbackCriteriaUrl}/${id}`;
     return this.http.get<FeedbackCriteria>(feedbackCriteriaUrl).pipe(
