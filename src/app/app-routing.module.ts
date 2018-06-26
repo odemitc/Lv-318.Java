@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'feedback-criteria', component: FeedbackCriteriaComponent},
   {path: 'feedback-criteria/add-feedback-criteria', component: AddFeedbackCriteriaComponent},
   {path: 'feedback-criteria/:id', component: OneFeedbackCriteriaComponent},
-  {path: 'show-transit-scheme/:id/:categoryId/:name', component: StopsGridComponent},
+  {path: 'show-transit-scheme/:categoryId/:id/:name', component: StopsGridComponent},
   {path: 'feedback', component: AddFeedbackComponent}
 
 ];
