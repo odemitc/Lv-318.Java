@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {MapsService} from "../../../../services/maps.service";
-import {ActivatedRoute} from '@angular/router';
-import {environment} from '../../../../../environments/environment';
-import { WaypointModel,Location } from "../../../../models/waypoint.model";
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { MapsService } from '../../../../services/maps.service';
+import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
+import { Location, WaypointModel } from '../../../../models/waypoint.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-maps',
