@@ -228,7 +228,6 @@ export function createTranslateLoader(http: HttpClient) {
     TransitService,
     ExcategoryService,
     DiagramService,
-    AuthService,
     GlobalSearchService,
     FeedbackService,
     FeedbackCriteriaService],
