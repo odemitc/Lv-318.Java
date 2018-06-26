@@ -72,8 +72,8 @@ public class FeedbackCriteriaController {
 
     }
 
-    @GetMapping("/typeCategoryId")
-    public List<FeedbackCriteria> getByTypeAndCategoryId(@RequestParam(value = "categoryId") Integer categoryId, @RequestParam(value = "type") String type) {
+    @GetMapping("/categoryId/{categoryId}/type/{type}")
+    public List<FeedbackCriteria> getByTypeAndCategoryId(@PathVariable(value = "categoryId") Integer categoryId, @PathVariable(value = "type") String type) {
         return feedbackCriteriaService.getByTypeAndCategoryId(categoryId, type);
     }
 
