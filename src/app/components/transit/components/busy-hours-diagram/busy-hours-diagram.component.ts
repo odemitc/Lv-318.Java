@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {Chart} from 'chart.js';
 
 import {DiagramService} from '../../../../services/diagram.service';
@@ -24,7 +24,7 @@ export class BusyHoursDiagramComponent implements AfterViewInit {
         const lineChart = new Chart(CHART, {
           type: 'line',
           data: {
-            labels: Object.keys(res),
+            labels: Object.keys(res).map(data => data.concat(':00')),
             datasets: [{
               fill: true,
               lineTension: 0.6,
@@ -34,7 +34,7 @@ export class BusyHoursDiagramComponent implements AfterViewInit {
               borderDash: [],
               borderDashOffset: 0.0,
               borderJointStyle: 'miter',
-              data: Object.values(res)
+              data: Object.values(res).concat([0, 100]).map(data => (<number>data).toPrecision(3))
             }]
           },
           options: {

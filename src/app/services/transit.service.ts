@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class TransitService {
 
-  private serviceUrl = environment.serverURL + '/transit/';
+  private serviceUrl = `${environment.serverURL}/transit/`;
 
   constructor(private http: HttpClient) {
   }
@@ -22,7 +22,11 @@ export class TransitService {
     return this.http.post<Transit>(this.serviceUrl, transit);
   }
 
-  getTransitsById(id: String): Observable<Transit[]> {
-    return this.http.get<Transit[]>(this.serviceUrl + '?categoryId=' + id);
+  getTransitsByCategoryId(id: number): Observable<Transit[]> {
+    return this.http.get<Transit[]>(`${this.serviceUrl}?categoryId=${id}`);
+  }
+
+  getTransitsByNextLevelCategoryName(categoryName: string): Observable<Transit[]> {
+    return this.http.get<Transit[]>(`${this.serviceUrl}?nextLevelCategoryName=${categoryName}`);
   }
 }

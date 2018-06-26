@@ -10,17 +10,18 @@ import { Location } from '@angular/common';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
- search: string ="";
- 
+  search: string = '';
+
   constructor(public app: AppComponent,
-  private router: Router,
-  private globalSearchComponent: GlobalSearchService,
-  private location: Location) {
+              private router: Router,
+              private globalSearchComponent: GlobalSearchService,
+              private location: Location) {
 
   }
 
   ngOnInit() {
   }
+
   ngOnChanges(changes: SimpleChanges) {
     console.log(this.search);
   }
@@ -28,12 +29,13 @@ export class MenuComponent implements OnInit {
   switchLanguage(language: string) {
     this.app.switchLanguage(language);
   }
-  onEnter(value: string){
-  this.globalSearchComponent.setSearchValue(value);
-  this.router.navigate(['search/'+ '?search=/'+ value]); 
+
+  onEnter(value: string) {
+    this.globalSearchComponent.setSearchValue(value);
+    this.router.navigate(['search/' + '?search=/' + value]);
   }
 
-  isHomeRouteActivated(): boolean{
+  isHomeRouteActivated(): boolean {
     return this.location.path().indexOf('/show-transit-scheme/') > -1;
-}
+  }
 }

@@ -3,7 +3,7 @@
   <div class="transport"><a [routerLink]="['/main']" [ngStyle]="{'color' : 'black'}">Transport</a>
     <a class="lang" (click)="switchLanguage('ua')"><img src="../../../assets/img/ukraine.png"></a>
     <a class="lang" (click)="switchLanguage('en')"><img src="../../../assets/img/united-kingdom.png"></a></div>
-  
+
     <div class="Search" *ngIf="isHomeRouteActivated()">
         <input #search aria-label="search" placeholder="Search" (keyup.enter)="onEnter(search.value)">
     </div>
@@ -17,5 +17,9 @@
       <button mat-stroked-button type="submit">{{'User' | translate}}</button>
     </a>
   </div>
-  
+  <div class="LoginUser">
+    <a [routerLink]="['/user/login']">
+      <button mat-stroked-button type="submit">{{'Login'| translate}}</button>
+    </a>
+  </div>
 </mat-toolbar>

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackCriteriaComponent } from '../feedback-criteria.component';
 import { AddQuestionComponent } from '../add-question/add-question.component';
-import {FeedbackCriteria} from '../../../models/feedback-criteria.model'; 
+import { FeedbackCriteria } from '../../../models/feedback-criteria.model';
 import { FeedbackCriteriaService } from '../../../services/feedback-criteria.service';
 import { Location } from '@angular/common';
-import {MatDialog, MatDialogConfig} from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Question } from '../../../models/question.model';
 import { map } from 'rxjs/operators';
 
@@ -19,48 +19,50 @@ export class AddFeedbackCriteriaComponent implements OnInit {
   questions: Question [] = [];
   enumTypes: any;
   isReadOnly: boolean = true;
- 
+
   constructor(private feedbackCriteriaService: FeedbackCriteriaService,
-  private location: Location,
-  private dialog: MatDialog) { }
+              private location: Location,
+              private dialog: MatDialog) {
+  }
 
   ngOnInit() {
-   this.getAllEnumTypes();
-   
+    this.getAllEnumTypes();
+
   }
-  
+
   openDialog(): void {
     let dialogRef = this.dialog.open(AddQuestionComponent, {
       width: '400px',
       data: this.isReadOnly
     });
     dialogRef.afterClosed().subscribe(result => {
-      if(!(result==null)){  
+      if (!(result == null)) {
         this.questions.push(result);
       }
-    }); 
-  }    
+    });
+  }
 
-  addFeedbackCriteria(): void{
+  addFeedbackCriteria(): void {
     this.feedbackCriteria.questions = this.questions;
     this.feedbackCriteriaService.addFeedbackCritea(this.feedbackCriteria)
-    .subscribe(() => this.gotBack());
+      .subscribe(() => this.gotBack());
   }
-  
-  ifRatingType(type: any){
-    if(type=="RATING"){
-    this.isReadOnly=false;
+
+  ifRatingType(type: any) {
+    if (type === 'RATING') {
+      this.isReadOnly = false;
     }
   }
+
   gotBack(): void {
     this.location.back();
   }
 
-  getAllEnumTypes(): void{
+  getAllEnumTypes(): void {
     this.feedbackCriteriaService.getAllEnumTypes()
-    .subscribe(enumType =>{
-      this.enumTypes=enumType;
-    } );
+      .subscribe(enumType => {
+        this.enumTypes = enumType;
+      });
   }
 
 }
