@@ -1,16 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './services/auth/auth.service';
-import { AppComponent } from './app.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { ExcategoryComponent } from './components/excategory/excategory.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './services/auth/auth.service';
+import {AppComponent} from './app.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from 'src/app/app-routing.module';
+import {ExcategoryComponent} from './components/excategory/excategory.component';
 import { HttpModule } from '@angular/http';
 
 
@@ -53,6 +53,8 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+
+import { FormsModule } from '@angular/forms';
 import { ExcategoryService } from './services/excategory.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
@@ -77,12 +79,15 @@ import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one
 import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
 import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { GlobalSearchService } from './services/global-search.service';
-import { BackToPreviousPageBtnComponent } from './components/transit/components/back-button/back-to-previous-page-btn.component';
+import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
 import { TransitService } from './services/transit.service';
-import { AddFeedbackComponent } from './components/transit/components/add-feedback/add-feedback.component';
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
 import { FeedbackService } from './services/feedback.service';
 import { FeedbackCriteriaService } from './services/feedback-criteria.service';
+import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
+import { MapsComponent } from './components/transit/components/maps/maps.component';
+import { AddFeedbackComponent } from "./components/transit/components/add-feedback/add-feedback.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -115,6 +120,8 @@ export function createTranslateLoader(http: HttpClient) {
     AddFeedbackCriteriaComponent,
     GlobalSearchComponent,
     BusyStopsDiagramComponent,
+    BackToPreviousPageBtnComponent,
+    MapsComponent,
     AddFeedbackComponent,
     BackToPreviousPageBtnComponent
   ],
@@ -191,7 +198,18 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    AgmDirectionModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyBMbh1BuDtFteF5bxb03EKe2-hpKYre79g'}),
   ],
   providers: [ExcategoryService, UserService, DiagramService,
     AuthService, TransitService, GlobalSearchService,
