@@ -20,14 +20,14 @@ public interface FeedbackCriteriaService {
 
     List<FeedbackCriteria> getByCategoryId(Integer id);
 
-    List<FeedbackCriteria> getByWeight(Integer weight);
-
     List<FeedbackCriteria> getByQuestionsName(String question);
 
     List<FeedbackCriteria> getByQuestionsId(Integer questionId);
 
-    List<FeedbackCriteria> getByTypeAndCategoryId(Integer categoryId,String type);
+    List<FeedbackCriteria> getByTypeAndCategoryId(Integer categoryId, String type);
 
     List<String> getAllEnumsType();
+
+    List<FeedbackCriteria> getByQuestionsWeight(Integer weight);
 
 }

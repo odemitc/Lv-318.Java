@@ -13,8 +13,6 @@ public interface FeedbackCriteriaRepository extends JpaRepository<FeedbackCriter
 
     Optional<FeedbackCriteria> findById(Integer id);
 
-    List<FeedbackCriteria> findByWeight(Integer weight);
-
     List<FeedbackCriteria> findByQuestionsName(String question);
 
     List<FeedbackCriteria> findByQuestionsId(Integer questionId);
@@ -26,5 +24,7 @@ public interface FeedbackCriteriaRepository extends JpaRepository<FeedbackCriter
 
     @Query(value = "SELECT * FROM feedback_criteria WHERE category_id = ?1", nativeQuery = true)
     List<FeedbackCriteria> findFeedbackCriteriaByNonExtendableCategoryId(Integer categoryId);
+
+    List<FeedbackCriteria> findByQuestionsWeight(Integer weight);
 
 }

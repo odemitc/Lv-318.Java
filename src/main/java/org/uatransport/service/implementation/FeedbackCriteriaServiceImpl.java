@@ -76,12 +76,6 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<FeedbackCriteria> getByWeight(Integer weight) {
-        return feedbackCriteriaRepository.findByWeight(weight);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<FeedbackCriteria> getByQuestionsName(String question) {
         return feedbackCriteriaRepository.findByQuestionsName(question);
     }
@@ -107,6 +101,11 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
             System.out.println(allEnumTypes.size());
         }
         return allEnumTypes;
+    }
+
+    @Override
+    public List<FeedbackCriteria> getByQuestionsWeight(Integer weight) {
+        return feedbackCriteriaRepository.findByQuestionsWeight(weight);
     }
 
 

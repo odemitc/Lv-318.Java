@@ -15,4 +15,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
     @Query(value = "SELECT * FROM question WHERE criteria_id = ?1", nativeQuery = true)
     List<Question> findByFeedbackCriteriaId(Integer feedbackCriteriaId);
+
+    List<Question> findByWeight(Integer weight);
 }

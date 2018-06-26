@@ -21,4 +21,6 @@ public interface QuestionService {
 
     List<Question> getByFeedbackCriteriaId(Integer feedbackCriteriaId);
 
+    List<Question> getByWeight(Integer weight);
+
 }

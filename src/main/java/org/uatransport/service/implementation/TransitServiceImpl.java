@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Streams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.uatransport.entity.Stop;
@@ -109,5 +110,10 @@ public class TransitServiceImpl implements TransitService {
     @Transactional(readOnly = true)
     public List<Transit> getTransitsByStopsIn(Stop[] stops) {
         return transitRepository.findByStopsIn(stops);
+    }
+
+    @Override
+    public List<Transit> getAll(Specification specification) {
+        return transitRepository.findAll(specification);
     }
 }

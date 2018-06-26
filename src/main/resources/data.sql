@@ -98,6 +98,10 @@ INSERT INTO public.feedback_criteria (id, type, weight, category_id) VALUES (18,
 INSERT INTO public.feedback_criteria (id, type, weight, category_id) VALUES (19, 'CAPACITY', null, 6);
 INSERT INTO public.feedback_criteria (id, type, weight, category_id) VALUES (20, 'CAPACITY', null, 7);
 
+INSERT INTO public.question (id,  name, criteria_id, weight) VALUES (1,  'якість проїзду?', 1, 1);
+INSERT INTO public.question (id,  name, criteria_id, weight) VALUES (2,  'якість обслуговуючого персоналу (водій , кондуктор)?', 2, 2);
+INSERT INTO public.question (id,  name, criteria_id, weight) VALUES (3, 'якість проїзду?', 3,  3);
+
 INSERT INTO public.question ( group_id, name, criteria_id) VALUES ( 1, 'якість проїзду?', 1);
 INSERT INTO public.question ( group_id, name, criteria_id) VALUES ( 2, 'якість обслуговуючого персоналу (водій , кондуктор)?', 2);
 INSERT INTO public.question ( group_id, name, criteria_id) VALUES ( 3, 'якість проїзду?', 3);
