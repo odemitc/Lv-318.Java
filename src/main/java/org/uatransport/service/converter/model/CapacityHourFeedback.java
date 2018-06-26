@@ -3,6 +3,7 @@ package org.uatransport.service.converter.model;
 import com.google.common.collect.Range;
 import lombok.Data;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 @Data
@@ -14,7 +15,7 @@ public class CapacityHourFeedback {
 
     public boolean containsHour(Integer hour) {
         return (Objects.equals(this.startTime.getHour(), this.endTime.getHour()))
-                ? containsHourWithEqualsStartEndHours(hour) : containsHourWithDifferentStartEndHours(hour);
+            ? containsHourWithEqualsStartEndHours(hour) : containsHourWithDifferentStartEndHours(hour);
     }
 
     private boolean containsHourWithEqualsStartEndHours(Integer hour) {
@@ -36,7 +37,6 @@ public class CapacityHourFeedback {
                 counter++;
             }
         }
-
         return counter >= countCheckedMinutes;
     }
 }
