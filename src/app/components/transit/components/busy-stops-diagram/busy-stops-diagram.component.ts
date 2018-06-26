@@ -19,14 +19,14 @@ export class BusyStopsDiagramComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=' + this.stopList)
+    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=')
       .subscribe(res => {
         const CHART = document.getElementById('lineChart1');
 
         this.lineChart1 = new Chart(CHART, {
           type: 'line',
           data: {
-            labels: Object.keys(res).map(data => data.substring(data.lastIndexOf('=') + 1, data.indexOf(')'))),
+            labels: Object.keys(res).map(data => data.substring(data.indexOf('=', 2) + 11, data.indexOf(', lat'))),
             datasets: [{
               fill: true,
               lineTension: 0.5,

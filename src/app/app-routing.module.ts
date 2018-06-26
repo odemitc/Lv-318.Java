@@ -13,6 +13,7 @@ import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add
 import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import {AddFeedbackComponent} from './components/transit/components/add-feedback/add-feedback.component';
+import { MapsComponent } from './components/transit/components/maps/maps.component';
 
 const routes: Routes = [
   {path: 'category/:top/:city', component: NonExCategoryComponent},
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path: 'feedback-criteria/:id', component: OneFeedbackCriteriaComponent},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'show-transit-scheme/:categoryId/:id/:name', component: StopsGridComponent},
-  {path: 'feedback', component: AddFeedbackComponent}
+  {path: 'feedback', component: AddFeedbackComponent},
+  {path: 'direction/:id', component: MapsComponent}
 
 ];
 
