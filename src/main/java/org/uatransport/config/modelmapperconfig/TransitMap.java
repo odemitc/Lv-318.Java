@@ -25,7 +25,7 @@ public class TransitMap implements Converter<Transit, TransitDTO> {
         destination.setCategoryId(source.getCategory().getId());
 
         if (!stops.isEmpty()) {
-            destination.setRouteName(stops.get(0).getStreet() + " - " + stops.get(stops.size() - 1).getStreet());
+            destination.setRouteName(stops.get(0).getStreet() + " - " + stops.get((stops.size() - 1) / 2).getStreet());
         } else {
             destination.setRouteName("Empty");
         }
