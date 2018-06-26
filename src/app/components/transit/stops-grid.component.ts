@@ -1,9 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Stop} from '../../models/stop.model';
 import {ActivatedRoute} from '@angular/router';
 import {StopService} from '../../services/stop.service';
 import {Observable} from 'rxjs';
-import {BusyStopsDiagramComponent} from './components/busy-stops-diagram/busy-stops-diagram.component';
+import {MatDialog} from '@angular/material';
+
+import {AddFeedbackComponent} from './components/add-feedback/add-feedback.component';
 
 @Component({
   selector: 'app-stops-grid',
@@ -14,17 +16,15 @@ export class StopsGridComponent implements OnInit {
 
   checkedItems: boolean[];
   private sub: any;
-  public idTransit: number;
+  @Input() public idTransit: number;
+  @Input() transitName: String;
   stopsList: Observable<Stop[]>;
   stopArray: Stop[] = [];
   public selectedStops: Stop[] = [];
   categoryId: number;
 
-  @ViewChild(BusyStopsDiagramComponent) child : BusyStopsDiagramComponent;
-
-  constructor(private stopService: StopService, private route: ActivatedRoute) {
+  constructor(private stopService: StopService, private route: ActivatedRoute, public dialog: MatDialog) {
   }
-
 
   ngOnInit() {
     this.sub = this.route.params.forEach(params => {
@@ -39,7 +39,6 @@ export class StopsGridComponent implements OnInit {
       );
 
     console.log(this.selectedStops);
-    console.log(this.categoryId);
   }
 
   public selectStops() {
@@ -52,6 +51,12 @@ export class StopsGridComponent implements OnInit {
       }
     }
 
+  }
+
+  public openModal() {
+    this.dialog.open(AddFeedbackComponent, {width: '400px', height: '500px',
+      data: {number: this.idTransit, categoryId: this.categoryId,
+        transitName: this.transitName}});
   }
 
 }
