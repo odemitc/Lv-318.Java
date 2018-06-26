@@ -1,5 +1,5 @@
 button {
-  position: fixed;
-  right: 25px;
+  position: absolute;
+  right: 140px;
   top: 125px;
 }

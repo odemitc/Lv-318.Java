@@ -77,7 +77,11 @@ export class AddFeedbackComponent {
         feedbackDTO.userId = feedback.userId;
         feedbackDTO.criteriaId = feedback.criteriaId;
         feedbackDTO.type = feedback.type;
-        feedbackDTO.answer = feedback.answer;
+        if(feedbackDTO.type == 'ACCEPTER'){
+          feedbackDTO.answer =`"${feedback.answer}"`;
+        }else {
+          feedbackDTO.answer = feedback.answer.toString();
+        }
         feedbackDTOs.push(feedbackDTO);
       }
     });

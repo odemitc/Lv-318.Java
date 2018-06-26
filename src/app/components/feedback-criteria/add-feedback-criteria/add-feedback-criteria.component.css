@@ -3,6 +3,18 @@
     width: 50%;
     margin: 150px 400px;
   }
-  .mat-elevation-z8{
-    width: 100%; 
+  .mat-form-field{
+    width: 60%; 
+    
   }
+  .questionadd .mat-list{
+    width: 60%; 
+  }
+  .mat-raised-button{
+    margin-top: 2%;
+  }
+  .mat-stroked-button{
+    margin: 5% 40% 0 0;
+    float: right;
+  }
+  

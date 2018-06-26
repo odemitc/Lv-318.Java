@@ -13,7 +13,7 @@ export class FeedbackDTO {
   userId: number;
   transitId: number;
   criteriaId: number;
-  answer: String;
+  answer: any;
 }
 
 export class RatingAnswer {

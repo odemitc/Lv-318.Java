@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterContentChecked, AfterViewInit, Component, Input} from '@angular/core';
 import {Chart} from 'chart.js';
 
 import {environment} from '../../../../../environments/environment';
@@ -12,17 +12,18 @@ import {Stop} from '../../../../models/stop.model';
 })
 export class BusyStopsDiagramComponent implements AfterViewInit {
   @Input() id: number;
-  @Input() stopList: Stop[]=[];
+  @Input() stopList: Stop[];
+  lineChart1;
 
   constructor(private diagramService: DiagramService) {
   }
 
   ngAfterViewInit(): void {
-    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stopList[]=' + this.stopList)
+    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=' + this.stopList)
       .subscribe(res => {
         const CHART = document.getElementById('lineChart1');
 
-        const lineChart1 = new Chart(CHART, {
+        this.lineChart1 = new Chart(CHART, {
           type: 'line',
           data: {
             labels: Object.keys(res).map(data => data.substring(data.lastIndexOf('=') + 1, data.indexOf(')'))),
@@ -35,7 +36,7 @@ export class BusyStopsDiagramComponent implements AfterViewInit {
               borderDash: [],
               borderDashOffset: 0.0,
               borderJointStyle: 'miter',
-              data: Object.values(res).concat([0, 100])
+              data: Object.values(res).concat([0, 100]).map(data => (<number>data).toPrecision(3))
             }]
           },
           options: {
@@ -47,3 +48,4 @@ export class BusyStopsDiagramComponent implements AfterViewInit {
       });
   }
 }
+

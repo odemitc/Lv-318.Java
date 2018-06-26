@@ -1,14 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import 'hammerjs';
-import { AuthService } from './services/auth/auth.service';
-import { AppComponent } from './app.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { ExcategoryComponent } from './components/excategory/excategory.component';
+
+import {ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from './services/auth/auth.service';
+import {AppComponent} from './app.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from 'src/app/app-routing.module';
+import {ExcategoryComponent} from './components/excategory/excategory.component';
 import { HttpModule } from '@angular/http';
 
 
@@ -66,16 +68,19 @@ import { BusyHoursDiagramComponent } from './components/transit/components/busy-
 import { MessageComponent } from './components/message/message.component';
 import { UserService } from './services/user.service';
 
+
 import { StopsGridComponent } from './components/transit/stops-grid.component';
 import { RaitingDiagramComponent } from './components/transit/components/raiting-diagram/raiting-diagram.component';
 import { AverageRateComponent } from './components/transit/components/average-rate/average-rate.component';
 import { DiagramService } from './services/diagram.service';
 import { CallbackComponent } from './components/callback/callback.component';
-import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
-import { TransitService } from './services/transit.service';
 import { AddQuestionComponent } from './components/feedback-criteria/add-question/add-question.component';
 import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component';
 import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
+import { GlobalSearchComponent } from './components/global-search/global-search.component';
+import { GlobalSearchService } from './services/global-search.service';
+import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
+import { TransitService } from './services/transit.service';
 import {AddFeedbackComponent} from './components/transit/components/add-feedback/add-feedback.component';
 import {BusyStopsDiagramComponent} from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
 import {FeedbackService} from './services/feedback.service';
@@ -108,10 +113,11 @@ export function createTranslateLoader(http: HttpClient) {
     AverageRateComponent,
     CallbackComponent,
     BusyHoursDiagramComponent,
-    BusyStopsDiagramComponent,
     OneFeedbackCriteriaComponent,
-    AddFeedbackComponent,
     AddFeedbackCriteriaComponent,
+    GlobalSearchComponent,
+    BusyStopsDiagramComponent,
+    AddFeedbackComponent,
     BackToPreviousPageBtnComponent
   ],
   exports: [
@@ -144,10 +150,14 @@ export function createTranslateLoader(http: HttpClient) {
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+
+
   ],
   imports: [
     BrowserModule,
@@ -156,6 +166,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpModule,
     HttpClientModule,
     MatNativeDateModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MatSortModule,
     MatTableModule,
@@ -184,9 +195,9 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService,FeedbackService,FeedbackCriteriaService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService, GlobalSearchService,FeedbackService,FeedbackCriteriaService],
   bootstrap: [AppComponent],
-  entryComponents: [AddFeedbackComponent,AddQuestionComponent]
+  entryComponents: [AddQuestionComponent,AddFeedbackComponent]
 })
 export class AppModule {
 }
