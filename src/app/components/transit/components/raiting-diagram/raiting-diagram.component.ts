@@ -34,7 +34,7 @@ export class RaitingDiagramComponent implements AfterViewInit {
               borderCapStyle: 'butt',
               borderDash: [],
               borderDashOffset: 0.0,
-              data: Object.values(res)
+              data: Object.values(res).map(data => (<number>data).toPrecision(3))
             }]
           },
           options: {
