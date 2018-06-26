@@ -19,8 +19,8 @@ public class RatingConversionStrategy implements ConversionStrategy<Integer> {
     @SneakyThrows
     public Double apply(Feedback feedback) {
         List<RatingFeedback> answers = new ObjectMapper().readValue(feedback.getAnswer(),
-            new TypeReference<List<RatingFeedback>>() {
-            });
+                new TypeReference<List<RatingFeedback>>() {
+                });
         return answers.stream().mapToInt(answer -> answer.getAnswer() * answer.getWeight()).average().orElse(0.0);
     }
 

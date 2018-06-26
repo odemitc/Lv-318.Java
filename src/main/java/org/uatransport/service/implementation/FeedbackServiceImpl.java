@@ -83,14 +83,16 @@ public class FeedbackServiceImpl implements FeedbackService {
             FeedbackCriteria.FeedbackType feedbackType, Integer userId) {
         return feedbackRepository.findByTransitIdAndFeedbackCriteriaTypeAndUserId(transitId, feedbackType, userId);
     }
-//Old version
+
+    // Old version
     @Override
     @Transactional(readOnly = true)
     public Double getAverageRateByTransitId(Integer transitId) {
         List<Feedback> feedbackList = getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.RATING);
         return getAverageRate(feedbackList);
     }
-    //Old version
+
+    // Old version
     @Override
     @Transactional(readOnly = true)
     public Double getAverageRateByTransitAndUser(Integer transitId, Integer userId) {
@@ -103,16 +105,18 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Transactional(readOnly = true)
     public Double getAverageRateForRateAnswersByTransitAndUser(Integer transitId, Integer userId) {
         List<Feedback> feedbackList = getByTransitAndFeedbackCriteriaAndUserId(transitId,
-            FeedbackCriteria.FeedbackType.RATING_ANSWER, userId);
+                FeedbackCriteria.FeedbackType.RATING_ANSWER, userId);
         return getAverageRateForRateAnswers(feedbackList);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Double getAverageRateForRateAnswersByTransitId(Integer transitId) {
-        List<Feedback> feedbackList = getByTransitAndFeedbackCriteria(transitId, FeedbackCriteria.FeedbackType.RATING_ANSWER);
+        List<Feedback> feedbackList = getByTransitAndFeedbackCriteria(transitId,
+                FeedbackCriteria.FeedbackType.RATING_ANSWER);
         return getAverageRateForRateAnswers(feedbackList);
     }
+
     @Override
     @Transactional(readOnly = true)
     public Map<Stop, Double> getStopCapacityMap(Integer transitId, Stop... stops) {
@@ -152,15 +156,16 @@ public class FeedbackServiceImpl implements FeedbackService {
                 .filter(capacityHourFeedback -> capacityHourFeedback.containsHour(feedbackHour))
                 .mapToInt(CapacityHourFeedback::getCapacity).average().orElse(0.0);
     }
-    //Old version
+
+    // Old version
     private Double getAverageRate(List<Feedback> feedbackList) {
         return feedbackList.stream().mapToInt(new RatingConversionStrategy()::convert).average()
-            .orElseThrow(ResourceNotFoundException::new);
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     private Double getAverageRateForRateAnswers(List<Feedback> feedbackList) {
         return feedbackList.stream().mapToDouble(new RatingConversionStrategy()::apply).average()
-            .orElseThrow(ResourceNotFoundException::new);
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     private List<CapacityHourFeedback> convertCapacityHourFeedBacks(Integer transitId) {
