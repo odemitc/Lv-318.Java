@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './services/auth/auth.guard';
 
 import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
 import { TransitsComponent } from './components/transits/transits.component';
@@ -14,9 +13,10 @@ import { OneQuestionComponent } from './components/question/one-question/one-que
 import { UserLoginComponent } from './components/user-login/user-login.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: '/main', pathMatch: 'full'},
+  {path: 'main', component: MainComponent},
   {path: 'category/:top/:city', component: NonExCategoryComponent},
   {path: 'category/:top/:city/:id', component: TransitsComponent},
-  {path: 'main', component: MainComponent},
   {path: 'feedback-criteria', component: FeedbackCriteriaComponent},
   {path: 'question', component: QuestionComponent},
   {path: 'question/add-question', component: AddQuestionComponent},
@@ -31,7 +31,6 @@ const routes: Routes = [
   imports: [
     [RouterModule.forRoot(routes)]
   ],
-  providers: [AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
