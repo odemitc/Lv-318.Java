@@ -75,8 +75,4 @@ public class QuestionServiceImpl implements QuestionService {
         return questionRepository.findByWeight(weight);
     }
 
-    @Override
-    public List<Question> getByFeedbackCriteriaId(Integer feedbackCriteriaId) {
-        return questionRepository.findByFeedbackCriteriaId(feedbackCriteriaId);
-    }
 }

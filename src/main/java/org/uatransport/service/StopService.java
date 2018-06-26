@@ -17,5 +17,7 @@ public interface StopService {
 
     Stop getByTransitIdAndStopName(Integer transitId, String street);
 
+    List<Stop>getByTransitIdAndDirection(Integer id, String direction);
+
     Integer getIndexByTransitIdAndStopName(Integer transitId, String street);
 }

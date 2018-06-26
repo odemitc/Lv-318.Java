@@ -17,6 +17,8 @@ public class Stop {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    private String street;
+
     private Double lat;
 
     private Double lng;
@@ -30,5 +32,4 @@ public class Stop {
         FORWARD, BACKWARD
     }
 
-    private String street;
 }
