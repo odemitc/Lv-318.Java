@@ -3,7 +3,6 @@ package org.uatransport.service.ewayutil;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.client.utils.URIBuilder;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

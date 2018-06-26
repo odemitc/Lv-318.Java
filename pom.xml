@@ -69,7 +69,6 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -140,14 +139,14 @@
                         ${project.basedir}/src/main/resources/checkstyle-configuration.xml
                     </configLocation>
                 </configuration>
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>validate</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>check</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>net.revelc.code.formatter</groupId>
@@ -158,16 +157,16 @@
                         ${project.basedir}/src/main/resources/checkstyle-configuration.xml
                     </configXmlFile>
                 </configuration>
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>clean</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>-->
-                                <!--format-->
-                            <!--</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+                <executions>
+                    <execution>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>
+                                format
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

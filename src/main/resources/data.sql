@@ -80,39 +80,69 @@ INSERT INTO public.question (id, weight, name, criteria_id) VALUES (38, 20, 'о 
 INSERT INTO public.question (id, weight, name, criteria_id) VALUES (39, 19, 'оцініть завантаженість автобуса', 19);
 INSERT INTO public.question (id, weight, name, criteria_id) VALUES (40, 20, 'оцініть завантаженість маршрутки', 20);
 
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '10', 1, 4, 1);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '7', 2, 4, 1);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '6', 3, 2, 1);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '2', 4, 2, 1);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '10', 5, 3, 1);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('9', 6, 3, 1);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('8', 7, 4, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '10', 1, 4, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '7', 2, 4, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '6', 3, 2, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '2', 4, 2, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '10', 5, 3, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('9', 6, 3, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('8', 7, 4, 1);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '7', 8, 4, 1);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('8', 1, 4, 2);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '6', 2, 4, 2);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '6', 3, 2, 2);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('2', 4, 2, 2);
-
-
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 12, 4, 2);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"NO"', 12, 4, 1);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 10, 24, 2);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 11, 3, 1);
+--
+--
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 12, 4, 2);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"NO"', 12, 4, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 10, 24, 2);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 11, 3, 1);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 9, 7, 1);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 10, 2, 3);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"NO"', 10, 2, 1);
-
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('{ "capacity":30, "from":{"street":"Автовокзал"} ,"to" :{"street":"вул. Скорини"}}', 13, 3, 3);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":30, "from":{"street":"Мотозавод"} ,"to" :{"street":"станція Скнилів"}}', 14, 7, 2);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":10, "from":{"street":"пл. Петрушевича"} ,"to" :{"street":"вул. Зубрівська"}}', 16, 11, 1);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":30, "from":{"street":"пл. Петрушевича"} ,"to" :{"street":"вул. Сихівська"}}', 16, 24, 3);
-
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":8, "minute":44}, "endTime":{"hour":9, "minute":44} , "capacity":30}', 18, 3, 3);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":8, "minute":44}, "endTime":{"hour":9, "minute":44} , "capacity":30}', 18, 7, 2);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":16, "minute":44}, "endTime":{"hour":17, "minute":44} , "capacity":30}', 17, 11, 3);
-INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":2, "minute":44}, "endTime":{"hour":3, "minute":44} , "capacity":30}', 17, 24, 1);
-
+--
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('{ "capacity":30, "from":{"street":"Автовокзал"} ,"to" :{"street":"вул. Скорини"}}', 13, 3, 3);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":30, "from":{"street":"Мотозавод"} ,"to" :{"street":"станція Скнилів"}}', 14, 7, 2);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":10, "from":{"street":"пл. Петрушевича"} ,"to" :{"street":"вул. Зубрівська"}}', 16, 11, 1);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":30, "from":{"street":"пл. Петрушевича"} ,"to" :{"street":"вул. Сихівська"}}', 16, 24, 3);
+--
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":8, "minute":44}, "endTime":{"hour":9, "minute":44} , "capacity":30}', 18, 3, 3);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":8, "minute":44}, "endTime":{"hour":9, "minute":44} , "capacity":30}', 18, 7, 2);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":16, "minute":44}, "endTime":{"hour":17, "minute":44} , "capacity":30}', 17, 11, 3);
+-- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":2, "minute":44}, "endTime":{"hour":3, "minute":44} , "capacity":30}', 17, 24, 1);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '[{"weight":1,"answer":4}]', 26, 4, 1);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '[{"weight":2,"answer":4}]', 21, 2, 1);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '[{"weight":2,"answer":4}]', 24, 2, 1);
 -- INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '[{"weight":4,"answer":5}]', 23, 2, 1);
+
+
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '2', 1, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('10', 1, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '7', 2, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '10', 1, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '7', 2, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '6', 3, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '2', 4, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ('10', 5, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '9', 6, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '8', 7, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '10', 1, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '7', 2, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '6', 3, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '2', 4, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '10', 5, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '9', 6, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '8', 7, 4, 1);
+INSERT INTO public.feedback (answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 8, 4, 2);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 10, 4, 2);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '"YES"', 11, 3, 1);
+INSERT INTO public.feedback (answer, criteria_id, transit_id, user_id) VALUES ('"NO"', 9, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":8, "minute":44}, "endTime":{"hour":9, "minute":44} , "capacity":30}', 16, 4, 2);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":2, "minute":44}, "endTime":{"hour":3, "minute":44} , "capacity":30}', 18, 4, 1);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":8, "minute":44}, "endTime":{"hour":9, "minute":44} , "capacity":30}', 15, 4, 3);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "startTime" : {"hour":16, "minute":44}, "endTime":{"hour":17, "minute":44} , "capacity":30}', 17, 4, 3);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":30, "from":{"street":"Автовокзал"} ,"to" :{"street":"вул. Скорини"}}', 13, 4, 3);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":30, "from":{"street":"Автовокзал"} ,"to" :{"street":"Податкова"}}', 19, 4, 2);
+INSERT INTO public.feedback ( answer, criteria_id, transit_id, user_id) VALUES ( '{ "capacity":10, "from":{"street":"Автовокзал"} ,"to" :{"street":"Податкова"}}', 14, 4, 1);
+INSERT INTO public.feedback (answer, criteria_id, transit_id, user_id) VALUES ('{ "capacity":30, "from":{"street":"Автовокзал"} ,"to" :{"street":"вул. Скорини"}}', 12, 4, 3);
