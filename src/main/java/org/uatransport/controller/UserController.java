@@ -31,7 +31,6 @@ public class UserController {
     public void deleteUser(@PathVariable Integer id) {
 
         userService.deleteById(id);
-
     }
 
     @PostMapping()
@@ -45,7 +44,6 @@ public class UserController {
 
         User updatedUser = userService.update(user);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-
     }
 
     @GetMapping(value = "/in")
@@ -53,5 +51,4 @@ public class UserController {
 
         return new ResponseEntity<>(userService.getByEmailAndPassword(email, password), HttpStatus.OK);
     }
-
 }

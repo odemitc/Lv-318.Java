@@ -1,6 +1,5 @@
 package org.uatransport.service;
 
-
 import org.uatransport.entity.Question;
 
 import java.util.List;
@@ -23,4 +22,5 @@ public interface QuestionService {
 
     List<Question> getByWeight(Integer weight);
 
+    List<Question> getByFeedbackCriteriaId(Integer feedbackCriteriaId);
 }

@@ -1,9 +1,7 @@
 package org.uatransport.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-import org.uatransport.config.GlobalSearch;
-import org.uatransport.entity.Stop;
+
 import org.uatransport.entity.Transit;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -17,8 +15,10 @@ public interface TransitRepository extends CrudRepository<Transit, Integer>, Jpa
 
     List<Transit> findByCategoryName(String name);
 
-    List<Transit> findByCategoryId(int id);
+    List<Transit> findByCategoryId(Integer id);
 
-    List<Transit> findByStopsIn(@Param("stops") Stop... stops);
+    List<Transit> findByCategoryNextLevelCategoryId(Integer id);
+
+    List<Transit> findByCategoryNextLevelCategoryName(String name);
 
 }

@@ -72,8 +72,7 @@ public class TransitServiceImpl implements TransitService {
         if (transitRepository.existsById(transit.getId())) {
             return transitRepository.save(transit);
         } else {
-            throw new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", transit.getId()));
+            throw new ResourceNotFoundException(String.format("Transit with id '%s' not found", transit.getId()));
         }
     }
 
@@ -81,8 +80,7 @@ public class TransitServiceImpl implements TransitService {
     @Transactional(readOnly = true)
     public Transit getById(Integer id) {
         return transitRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException(String
-                .format("Transit with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Transit with id '%s' not found", id)));
     }
 
     @Override
@@ -101,16 +99,29 @@ public class TransitServiceImpl implements TransitService {
     }
 
     @Override
+    public List<Transit> getAllByNextLevelCategoryId(Integer id) {
+        return transitRepository.findByCategoryNextLevelCategoryId(id);
+    }
+
+    @Override
+    public List<Transit> getAllByNextLevelCategoryName(String categoryName) {
+        if (Strings.isNullOrEmpty(categoryName)) {
+            throw new IllegalArgumentException("Category name should not be empty");
+        }
+        return transitRepository.findByCategoryNextLevelCategoryName(categoryName);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<Transit> getAll() {
         return Streams.stream(transitRepository.findAll()).collect(Collectors.toList());
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<Transit> getTransitsByStopsIn(Stop[] stops) {
-        return transitRepository.findByStopsIn(stops);
-    }
+//    @Override
+//    @Transactional(readOnly = true)
+//    public List<Transit> getTransitsByStopsIn(Stop[] stops) {
+//        return transitRepository.findByStopsIn(stops);
+//    }
 
     @Override
     public List<Transit> getAll(Specification specification) {

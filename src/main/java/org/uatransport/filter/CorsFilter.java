@@ -1,41 +1,30 @@
 package org.uatransport.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.*;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static org.uatransport.config.ConfigurationUtils.getPropertyValue;
 
 @Component
-public class CorsFilter implements Filter {
-
-    private Logger logger = LoggerFactory.getLogger(CorsFilter.class);
+public class CorsFilter extends OncePerRequestFilter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+            FilterChain filterChain) throws ServletException, IOException {
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", getPropertyValue("Access-Control-Allow-Origin"));
+        httpServletResponse.setHeader("Access-Control-Allow-Methods", getPropertyValue("Access-Control-Allow-Methods"));
+        httpServletResponse.setHeader("Access-Control-Allow-Headers", getPropertyValue("Access-Control-Allow-Headers"));
 
-    }
-
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
-        HttpServletResponse response = (HttpServletResponse)servletResponse;
-        response.setHeader("Access-Control-Allow-Origin", getPropertyValue("Access-Control-Allow-Origin"));
-        response.setHeader("Access-Control-Allow-Methods",getPropertyValue("Access-Control-Allow-Methods"));
-        response.setHeader("Access-Control-Allow-Headers", getPropertyValue("Access-Control-Allow-Headers"));
-        filterChain.doFilter(servletRequest,response);
-
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 
     @Override
     public void destroy() {
-
     }
 }

@@ -6,14 +6,12 @@ import org.uatransport.service.converter.ConversionStrategy;
 
 import java.util.function.BiFunction;
 
-public class RatingConversionStrategy implements BiFunction<String, FeedbackCriteria, Integer>, ConversionStrategy<Integer> {
+public class RatingConversionStrategy
+        implements BiFunction<String, FeedbackCriteria, Integer>, ConversionStrategy<Integer> {
 
     @Override
     public Integer convert(Feedback feedback) {
-        return Integer.parseInt(feedback.getAnswer()) ;
-//                *
-//                (
-//                feedback.getFeedbackCriteria()).getWeight();
+        return Integer.parseInt(feedback.getAnswer());
     }
 
     @Override

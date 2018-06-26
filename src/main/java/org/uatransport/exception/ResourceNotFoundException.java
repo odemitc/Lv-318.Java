@@ -2,7 +2,6 @@ package org.uatransport.exception;
 
 import lombok.RequiredArgsConstructor;
 
-
 @RequiredArgsConstructor
 public class ResourceNotFoundException extends RuntimeException {
 
