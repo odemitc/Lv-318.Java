@@ -1,8 +1,11 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, Input } from '@angular/core';
 import {Stop} from '../../models/stop.model';
 import {ActivatedRoute} from '@angular/router';
 import {StopService} from '../../services/stop.service';
 import {Observable} from 'rxjs';
+import {MatDialog} from '@angular/material';
+import {AddFeedbackComponent} from './components/add-feedback/add-feedback.component';
+
 import {MatDialog} from '@angular/material';
 
 import {AddFeedbackComponent} from './components/add-feedback/add-feedback.component';
@@ -26,19 +29,18 @@ export class StopsGridComponent implements OnInit {
   constructor(private stopService: StopService, private route: ActivatedRoute, public dialog: MatDialog) {
   }
 
+
   ngOnInit() {
     this.sub = this.route.params.forEach(params => {
       this.idTransit = params['id'];
-      this.categoryId = params['city'];
+      this.categoryId = params['categoryId'];
+      this.transitName = params['name'];
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
-    this.stopsList.subscribe(stopArray =>{
-        this.stopArray = stopArray;
-        this.checkedItems = new Array(this.stopArray.length);
-      }
-      );
+    this.stopsList.subscribe(stopArray =>
+      this.stopArray = stopArray);
+    this.checkedItems = new Array(this.stopArray.length);
 
-    console.log(this.selectedStops);
   }
 
   public selectStops() {
@@ -50,14 +52,13 @@ export class StopsGridComponent implements OnInit {
         this.selectedStops.splice(this.selectedStops.indexOf(this.stopArray[i]), 1);
       }
     }
-
-  }
+    console.log(this.selectedStops);
+ }
 
   public openModal() {
     this.dialog.open(AddFeedbackComponent, {width: '400px', height: '500px',
-      data: {number: this.idTransit, categoryId: this.categoryId,
+        data: {number: this.idTransit, categoryId: this.categoryId,
         transitName: this.transitName}});
   }
 
 }
-

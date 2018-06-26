@@ -1,4 +1,4 @@
-.onequestion {
+.onefeedbackCriteria {
   font-size: 14px;
   width: 50%;
   margin: 150px 400px;
@@ -12,4 +12,8 @@
 .mat-form-field {
 
   width: 70%;
+}
+
+.mat-card {
+  width: 64%;
 }
