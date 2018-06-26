@@ -28,8 +28,7 @@ const routes: Routes = [
   {path: 'feedback-criteria/add-feedback-criteria', component: AddFeedbackCriteriaComponent},
   {path: 'feedback-criteria/:id', component: OneFeedbackCriteriaComponent},
   {path: 'user/login', component: UserLoginComponent},
-  {path: 'show-transit-scheme/:id', component: StopsGridComponent}
-
+  {path: 'show-transit-scheme/:categoryId/:id/:name', component: StopsGridComponent}
 ];
 
 @NgModule({
