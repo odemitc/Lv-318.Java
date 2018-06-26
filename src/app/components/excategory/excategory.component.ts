@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ExcategoryModel } from '../../models/excategory.model';
-import { ExcategoryService } from '../../services/excategory.service';
-import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {ExcategoryModel} from "../../models/excategory.model";
+import {ExcategoryService} from "../../services/excategory.service";
+import {Observable} from "rxjs/index";
 
 @Component({
   selector: 'app-excategory',
@@ -14,7 +13,6 @@ export class ExcategoryComponent implements OnInit {
   private cities: Observable<ExcategoryModel[]>;
   private serverURL = environment.serverURL + '/category/img?link=';
 
-
   constructor(public service: ExcategoryService) {
   }
 
@@ -25,4 +23,5 @@ export class ExcategoryComponent implements OnInit {
   getCities(nextLevel: String) {
     this.cities = this.service.getCategoriesByNextLevel(nextLevel);
   }
+
 }

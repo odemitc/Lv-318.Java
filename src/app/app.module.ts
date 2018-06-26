@@ -1,18 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import 'hammerjs';
-import { AuthService } from './services/auth/auth.service';
-import { AppComponent } from './app.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { ExcategoryComponent } from './components/excategory/excategory.component';
-import { HttpModule } from '@angular/http';
 
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {AppRoutingModule} from 'src/app/app-routing.module';
+import {ExcategoryComponent} from './components/excategory/excategory.component';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {
+  MatFormField,
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -24,15 +24,13 @@ import {
   MatDatepickerModule,
   MatDialogModule,
   MatDividerModule,
-  MatExpansionModule,
-  MatFormFieldModule,
+  MatExpansionModule, MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatMenuModule,
   MatNativeDateModule,
-  MatOptionModule,
   MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
@@ -50,8 +48,35 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  MatOptionModule
 } from '@angular/material';
 
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ExcategoryService } from './services/excategory.service';
+import { MenuComponent } from './components/menu/menu.component';
+import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
+import { TransitsComponent } from './components/transits/transits.component';
+import { MainComponent } from './components/main/main.component';
+import { SlideshowModule } from 'ng-simple-slideshow';
+import { FeedbackCriteriaComponent } from './components/feedback-criteria/feedback-criteria.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { BusyHoursDiagramComponent } from './components/transit/components/busy-hours-diagram/busy-hours-diagram.component';
+import { MessageComponent } from './components/message/message.component';
+import { UserService } from './services/user.service';
+
+
+import { StopsGridComponent } from './components/transit/stops-grid.component';
+import { QuestionComponent } from './components/question/question.component';
+import { AddQuestionComponent } from './components/question/add-question/add-question.component';
+import { RaitingDiagramComponent } from './components/transit/components/raiting-diagram/raiting-diagram.component';
+import { AverageRateComponent } from './components/transit/components/average-rate/average-rate.component';
+import { DiagramService } from './services/diagram.service';
+import { CallbackComponent } from './components/callback/callback.component';
+import { OneQuestionComponent } from './components/question/one-question/one-question.component';
+import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
+import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
+import { TransitService } from './services/transit.service';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ExcategoryService } from './services/excategory.service';
 import { MenuComponent } from './components/menu/menu.component';
@@ -98,7 +123,9 @@ export function createTranslateLoader(http: HttpClient) {
     TransitsComponent,
     MainComponent,
     FeedbackCriteriaComponent,
+    AddFeedbackCriteriaComponent,
     AddUserComponent,
+    UserLoginComponent,
     MessageComponent,
     StopsGridComponent,
     QuestionComponent,
@@ -109,7 +136,7 @@ export function createTranslateLoader(http: HttpClient) {
     BusyHoursDiagramComponent,
     OneQuestionComponent,
     BusyStopsDiagramComponent,
-    MapsComponent
+    BackToPreviousPageBtnComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -146,16 +173,14 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    HttpModule,
+    BrowserModule, BrowserAnimationsModule, MatSidenavModule,
     HttpClientModule,
     MatNativeDateModule,
     AppRoutingModule,
+    MatSortModule,
     MatTableModule,
     MatTabsModule,
     MatMenuModule,
@@ -181,9 +206,9 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    }), AgmCoreModule.forRoot({ apiKey: 'AIzaSyBMbh1BuDtFteF5bxb03EKe2-hpKYre79g'}),
+    })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService ],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService, TransitService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

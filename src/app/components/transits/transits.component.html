@@ -1,41 +1,44 @@
-<div class="transit">
-  <table mat-table [dataSource]="transits" class="mat-elevation-z8">
+<div class="transitTable">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
-      <mat-cell *matCellDef="let transit"> {{transit.id}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id</mat-header-cell>
+      <mat-cell *matCellDef="let transit"> {{ transit.id }} </mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-      <mat-cell *matCellDef="let transit"> {{transit.name}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+      <mat-cell *matCellDef="let transit"> {{ transit.name }} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="route">
-      <mat-header-cell *matHeaderCellDef> Route</mat-header-cell>
-      <mat-cell *matCellDef="let transit" > {{transit.stops[0].street }} - {{
-        transit.stops[transit.stops.length-1].street }}
-      </mat-cell>
+
+    <ng-container matColumnDef="categoryId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Category Id</mat-header-cell>
+      <mat-cell *matCellDef="let transit"> {{ transit.categoryId }} </mat-cell>
     </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let transit; columns: displayedColumns;" [routerLink]="['/show-transit-scheme', transit.id]"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns; let transit;"
+             [routerLink]="['/show-transit-scheme', transit.categoryId, transit.id]"></mat-row>
   </table>
 </div>
 <!--<div class="AddTransit">-->
-  <!--<h2 class="mat-h2">Add transit</h2>-->
-  <!--<form class="Test" (ngSubmit)="onSubmit()" #myForm="ngForm">-->
-    <!--<table class="Test" cellspacing="0">-->
-      <!--<tr>-->
-        <!--<td>-->
-          <!--<mat-form-field class="Name">-->
-            <!--<input matInput placeholder="Name" id="name" [(ngModel)]="transit.name" name="name">-->
-          <!--</mat-form-field>-->
-        <!--</td>-->
-        <!--<td>-->
-          <!--<mat-form-field class="Category">-->
-            <!--<input matInput placeholder="Category id" type="number" [(ngModel)]="transit.categoryId" name="category.id">-->
-          <!--</mat-form-field>-->
-        <!--</td>-->
-      <!--</tr>-->
-    <!--</table>-->
-    <!--<button mat-stroked-button type="submit">Submit</button>-->
-  <!--</form>-->
+<!--<h2 class="mat-h2">Add transit</h2>-->
+<!--<form class="Test" (ngSubmit)="onSubmit()" #myForm="ngForm">-->
+<!--<table class="Test" cellspacing="0">-->
+<!--<tr>-->
+<!--<td>-->
+<!--<mat-form-field class="Name">-->
+<!--<input matInput placeholder="Name" id="name" [(ngModel)]="transit.name" name="name">-->
+<!--</mat-form-field>-->
+<!--</td>-->
+<!--<td>-->
+<!--<mat-form-field class="Category">-->
+<!--<input matInput placeholder="Category id" type="number" [(ngModel)]="transit.categoryId" name="category.id">-->
+<!--</mat-form-field>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--<button mat-stroked-button type="submit">Submit</button>-->
+<!--</form>-->
 <!--</div>-->
 
