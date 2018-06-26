@@ -19,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/category")
 @RequiredArgsConstructor
+
 public class CategoryController {
     private final CategoryService categoryService;
 
@@ -42,7 +43,7 @@ public class CategoryController {
         ExtendableCategory savedCategory = categoryService.save(category);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-            .buildAndExpand(savedCategory.getId()).toUri();
+                .buildAndExpand(savedCategory.getId()).toUri();
 
         return ResponseEntity.created(location).build();
     }

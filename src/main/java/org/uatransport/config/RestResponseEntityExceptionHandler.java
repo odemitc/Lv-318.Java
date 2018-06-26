@@ -28,10 +28,9 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
-    protected ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex,
-                                                               WebRequest request) {
-        logger.error("Unable to parse data {}", ex);
-        final ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex);
+    protected ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex, WebRequest request) {
+        logger.error("Validation error occurred:", ex.getCause());
+        final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex);
         apiError.setMessage("Validation error occurred: " + ex.getCause());
         return handleExceptionInternal(ex, apiError, HTTP_HEADERS, apiError.getStatus(), request);
     }

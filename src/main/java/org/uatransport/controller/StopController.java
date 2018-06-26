@@ -16,27 +16,34 @@ import java.util.List;
 @RequestMapping("/stop")
 @RequiredArgsConstructor
 public class StopController {
-    private final StopService pointService;
+    private final StopService stopService;
     private final TransitService transitService;
 
     @GetMapping("/{id}")
     public Stop getById(@PathVariable Integer id) {
-        return pointService.getById(id);
+        return stopService.getById(id);
     }
 
     @GetMapping(params = "transit-id")
     public List<Stop> getByTransitId(@RequestParam("transit-id") Integer id) {
-        return pointService.getByTransitId(id);
+        return stopService.getByTransitId(id);
+    }
+
+    @GetMapping
+    public List<Stop> getByTransitIdAndDirection(@RequestParam("id") Integer id,
+            @RequestParam("dir") String direction) {
+        System.out.println(direction);
+        return stopService.getByTransitIdAndDirection(id, direction);
     }
 
     @DeleteMapping("/{id}")
     public void deleteStop(@PathVariable Integer id) {
-        pointService.delete(id);
+        stopService.delete(id);
     }
 
     @PostMapping("/{id}")
     public ResponseEntity<Stop> add(@RequestBody(required = false) Stop stop, @PathVariable Integer id) {
-        Stop savedPoint = pointService.save(stop);
+        Stop savedPoint = stopService.save(stop);
         Transit transitToUpdate = transitService.getById(id);
         transitToUpdate.getStops().add(stop);
         transitService.update(transitToUpdate);
@@ -48,6 +55,6 @@ public class StopController {
 
     @PutMapping("/{id}")
     public Stop update(@RequestBody Stop stop, @PathVariable Integer id) {
-        return pointService.update(stop.setId(id));
+        return stopService.update(stop.setId(id));
     }
 }
