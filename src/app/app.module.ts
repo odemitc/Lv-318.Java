@@ -91,7 +91,7 @@ import { FeedbackCriteriaService } from './services/feedback-criteria.service';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { MapsComponent } from './components/transit/components/maps/maps.component';
-import { AddFeedbackComponent } from "./components/transit/components/add-feedback/add-feedback.component";
+import { AddFeedbackComponent } from './components/transit/components/add-feedback/add-feedback.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

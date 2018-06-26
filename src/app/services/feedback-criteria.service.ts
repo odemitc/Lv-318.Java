@@ -5,6 +5,7 @@ import { FeedbackCriteria } from '../models/feedback-criteria.model';
 import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { Question } from '../models/question.model';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -14,7 +15,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class FeedbackCriteriaService {
-  private feedbackCriteriaUrl = 'http://localhost:8080/feedback-criteria';
+  private feedbackCriteriaUrl = environment.serverURL + '/feedback-criteria';
 
 
   constructor(private  http: HttpClient,

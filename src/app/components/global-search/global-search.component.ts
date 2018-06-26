@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GlobalSearchService } from '../../services/global-search.service';
 import { Transit } from '../../models/transit.model';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Location } from '@angular/common';
 
 @Component({
@@ -10,18 +10,19 @@ import { Location } from '@angular/common';
   styleUrls: ['./global-search.component.css']
 })
 export class GlobalSearchComponent implements OnInit {
-empty = true;
-emptyTransit = false;
+  empty = true;
+  emptyTransit = false;
 
-transits: Transit [];
-searchValue = '';
-displayedColumns = ['name', 'route'];
-dataSource = new MatTableDataSource();
+  transits: Transit [];
+  searchValue = '';
+  displayedColumns = ['id', 'name', 'categoryId', 'routeName'];
+  dataSource = new MatTableDataSource();
 
-@ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private globalSearchService: GlobalSearchService,
-    private location: Location ) { }
+              private location: Location) {
+  }
 
   ngOnInit() {
     this.empty = true;
@@ -49,8 +50,9 @@ dataSource = new MatTableDataSource();
     filterValue = filterValue.trim();
     this.dataSource.filter = filterValue;
     this.dataSource.filterPredicate = (data, filter) =>
-    JSON.stringify(data).includes(filter);
+      JSON.stringify(data).includes(filter);
   }
+
   gotBack(): void {
     this.location.back();
   }
