@@ -23,4 +23,6 @@ public class Question {
     private Integer groupId;
 
     private String name;
+
+    private Integer weight;
 }
