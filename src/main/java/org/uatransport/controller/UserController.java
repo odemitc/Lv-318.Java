@@ -33,7 +33,7 @@ public class UserController {
     public ResponseEntity signin(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
         String token = userService.signin(loginDTO);
 
-//        response.setHeader("Authorization", token);
+        //        response.setHeader("Authorization", token);
 
         return ResponseEntity.ok(new TokenModel(token));
     }
@@ -57,12 +57,6 @@ public class UserController {
 
     }
 
-    @PostMapping()
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        User savedUser = userService.addUser(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Integer id) {
 
@@ -76,4 +70,3 @@ public class UserController {
         return userService.getUser(principal);
     }
 }
-

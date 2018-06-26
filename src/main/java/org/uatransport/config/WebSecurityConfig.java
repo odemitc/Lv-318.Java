@@ -1,7 +1,6 @@
 package org.uatransport.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Entry points
         http.authorizeRequests()//
-                .antMatchers("/user/signin", "/user/signup", "/user/all").permitAll()//
+                .antMatchers("/user/signin", "/user/signup", "/user/all", "/stop/*", "/transit/*", "/category/*", "/feedback/*" ).permitAll()//
                 //.antMatchers("/user/signup").permitAll()//
                 // Disallow everything else..
                 .anyRequest().authenticated();
