@@ -42,7 +42,6 @@ export class FeedbackCriteriaComponent implements OnInit {
       if (searchTerm) {
         return this.containsIgnoringCase(criteria.id, searchTerm)
           || this.containsIgnoringCase(criteria.type, searchTerm)
-          // || this.containsIgnoringCase(criteria.weight, searchTerm)
           || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult
           || this.containsIgnoringCase(question.name, searchTerm), false);
       }
@@ -52,7 +51,6 @@ export class FeedbackCriteriaComponent implements OnInit {
   search(searchTerm: string) {
     if (searchTerm) {
       this.dataSource.data = this.data.filter(criteria => this.containsIgnoringCase(criteria.type, searchTerm)
-        // || this.containsIgnoringCase(criteria.weight, searchTerm)
         || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult
         || this.containsIgnoringCase(question.name, searchTerm), false)
         || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult

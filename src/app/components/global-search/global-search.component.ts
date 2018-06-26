@@ -16,8 +16,8 @@ emptyTransit: boolean = false;
 transits: Transit [];
 searchValue: string ="";
 displayedColumns = ['name', 'route'];
-dataSource = new MatTableDataSource();
-
+dataSource = new MatTableDataSource<Transit>();
+data: Transit [];
 @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private globalSearchService: GlobalSearchService,
@@ -49,11 +49,12 @@ dataSource = new MatTableDataSource();
   
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();    
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter=filterValue;    
-    this.dataSource.filterPredicate = (data, filter) =>
-    JSON.stringify(data).includes(filter);
+    
   }
   gotBack(): void {
     this.location.back();
   }
+  
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TransitService } from '../../services/transit.service';
 import { Convert, Transit } from '../../models/transit.model';
 import { ActivatedRoute } from '@angular/router';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-transits',
@@ -19,6 +19,7 @@ export class TransitsComponent implements OnInit {
   dataSource: MatTableDataSource<Transit> = new MatTableDataSource();
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns = ['id', 'name', 'categoryId'];
 
@@ -29,6 +30,7 @@ export class TransitsComponent implements OnInit {
   ngOnInit() {
     this.getAllTransits();
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   getAllTransits(): void {

@@ -1,7 +1,9 @@
 <div class="transitTable">
+    <mat-form-field>
+        <input matInput (keyup)="search($event.target.value)" placeholder="Filter">
+      </mat-form-field>
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
-    <ng-container matColumnDef="id">
+     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Id</mat-header-cell>
       <mat-cell *matCellDef="let transit"> {{ transit.id }} </mat-cell>
     </ng-container>
@@ -20,6 +22,8 @@
     <mat-row *matRowDef="let row; columns: displayedColumns; let transit;"
              [routerLink]="['/show-transit-scheme', transit.categoryId, transit.id]"></mat-row>
   </table>
+  <mat-paginator [pageSizeOptions]="[3, 5, 10]" showFirstLastButtons></mat-paginator>
+</div>
 </div>
 <!--<div class="AddTransit">-->
 <!--<h2 class="mat-h2">Add transit</h2>-->
