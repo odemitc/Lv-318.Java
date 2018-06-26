@@ -45,9 +45,9 @@ public class TransitController {
 
     @GetMapping(params = "nextLevelCategoryName")
     public List<TransitDTO> getTransitsByNextLevelCategoryName(
-        @RequestParam("nextLevelCategoryName") String nextLevelCategoryName) {
+            @RequestParam("nextLevelCategoryName") String nextLevelCategoryName) {
         return transitService.getAllByNextLevelCategoryName(nextLevelCategoryName).stream()
-            .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
+                .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
     }
 
     @PostMapping

@@ -1,6 +1,5 @@
 package org.uatransport.service.implementation;
 
-import com.google.common.base.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -33,7 +32,7 @@ public class StopServiceImpl implements StopService {
     @Transactional(readOnly = true)
     public Stop getById(Integer id) {
         return stopRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
+            .orElseThrow(() -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
     }
 
     @Override
