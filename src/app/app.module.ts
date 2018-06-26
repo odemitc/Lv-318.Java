@@ -52,7 +52,7 @@ import {
   MatTreeModule,
 } from '@angular/material';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExcategoryService } from './services/excategory.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { NonExCategoryComponent } from './components/non-ex-category/non-ex-category.component';
@@ -78,6 +78,9 @@ import { OneQuestionComponent } from './components/question/one-question/one-que
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
 import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
 import { TransitService } from './services/transit.service';
+import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
+import { MapsComponent } from './components/transit/components/maps/maps.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -109,7 +112,8 @@ export function createTranslateLoader(http: HttpClient) {
     BusyHoursDiagramComponent,
     OneQuestionComponent,
     BusyStopsDiagramComponent,
-    BackToPreviousPageBtnComponent
+    BackToPreviousPageBtnComponent,
+    MapsComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -177,7 +181,18 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    AgmDirectionModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyBMbh1BuDtFteF5bxb03EKe2-hpKYre79g'}),
   ],
   providers: [ExcategoryService, UserService, DiagramService, AuthService, TransitService],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ import { QuestionComponent } from './components/question/question.component';
 import { AddQuestionComponent } from './components/question/add-question/add-question.component';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import {MapsComponent} from "./components/transit/components/maps/maps.component";
 
 const routes: Routes = [
   {path: 'category/:top/:city', component: NonExCategoryComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'user/add', component: AddUserComponent},
   {path: 'stops/:city/:id', component: StopsGridComponent},
   {path: 'user/login', component: UserLoginComponent},
-  {path: 'show-transit-scheme/:city/:id', component: StopsGridComponent}
+  {path: 'show-transit-scheme/:city/:id', component: StopsGridComponent},
+  {path: 'direction/:id', component: MapsComponent}
 ];
 
 @NgModule({
