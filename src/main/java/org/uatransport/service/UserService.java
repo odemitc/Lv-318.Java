@@ -8,7 +8,6 @@ import java.security.Principal;
 
 public interface UserService {
 
-
     User update(User user);
 
     void deleteById(int id);

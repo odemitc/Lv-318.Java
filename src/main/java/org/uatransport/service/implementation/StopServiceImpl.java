@@ -72,7 +72,7 @@ public class StopServiceImpl implements StopService {
 
     @Override
     public List<Stop> getByTransitIdAndDirection(Integer id, String direction) {
-        if(direction.equals("forward")){
+        if (direction.equals("forward")) {
             return stopRepository.findForwardStopsByTransitId(id);
         }
         return stopRepository.findBackwardStopsByTransitId(id);

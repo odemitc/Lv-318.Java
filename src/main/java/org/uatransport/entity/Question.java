@@ -21,8 +21,4 @@ public class Question {
 
     private Integer weight;
 
-
-
-
 }
-

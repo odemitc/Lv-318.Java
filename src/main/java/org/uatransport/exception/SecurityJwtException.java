@@ -21,4 +21,5 @@ public class SecurityJwtException extends RuntimeException {
 
     public HttpStatus getHttpStatus() {
         return httpStatus;
-    } }
+    }
+}

@@ -5,27 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.uatransport.controller.UserController;
-import org.uatransport.entity.dto.UserDTO;
-import org.uatransport.repository.UserRepository;
-
-import javax.jnlp.UnavailableServiceException;
-import javax.xml.bind.SchemaOutputResolver;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
-import org.uatransport.service.ewayutil.EwayRoutesListSaver;
-import org.uatransport.service.ewayutil.EwayScheduleUpdate;
-import org.uatransport.service.ewayutil.EwayStopListSaver;
-import org.uatransport.service.ewayutil.ewayentity.EwayResponseObject;
-import org.uatransport.service.ewayutil.ewayentity.EwayRoute;
-import org.uatransport.service.ewayutil.ewayentity.EwayRouteList;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 @SpringBootApplication
 @Slf4j
@@ -36,7 +16,7 @@ public class UaTransportApplication {
         ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
         logger.debug("--Application Started--");
 
-//         EwayScheduleUpdate scheduleUpdate = (EwayScheduleUpdate) context.getBean(EwayScheduleUpdate.class);
-//         scheduleUpdate.updateTransitData();
+        // EwayScheduleUpdate scheduleUpdate = (EwayScheduleUpdate) context.getBean(EwayScheduleUpdate.class);
+        // scheduleUpdate.updateTransitData();
     }
 }

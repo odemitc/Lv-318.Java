@@ -22,9 +22,11 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity signUp(@RequestBody UserDTO userDTO) {
+    public ResponseEntity signUp(@RequestBody UserDTO userDTO, HttpServletResponse response) {
 
         String token = userService.signup(userDTO);
+        response.setHeader("Authorization", token);
+
         return ResponseEntity.ok(new TokenModel(token));
     }
 
@@ -32,11 +34,10 @@ public class UserController {
     public ResponseEntity signin(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
         String token = userService.signin(loginDTO);
 
-        //        response.setHeader("Authorization", token);
+        response.setHeader("Authorization", token);
 
         return ResponseEntity.ok(new TokenModel(token));
     }
-
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Integer id) {

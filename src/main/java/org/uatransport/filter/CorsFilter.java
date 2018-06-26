@@ -33,4 +33,3 @@ public class CorsFilter extends OncePerRequestFilter {
     public void destroy() {
     }
 }
-

@@ -117,11 +117,11 @@ public class TransitServiceImpl implements TransitService {
         return Streams.stream(transitRepository.findAll()).collect(Collectors.toList());
     }
 
-//    @Override
-//    @Transactional(readOnly = true)
-//    public List<Transit> getTransitsByStopsIn(Stop[] stops) {
-//        return transitRepository.findByStopsIn(stops);
-//    }
+    // @Override
+    // @Transactional(readOnly = true)
+    // public List<Transit> getTransitsByStopsIn(Stop[] stops) {
+    // return transitRepository.findByStopsIn(stops);
+    // }
 
     @Override
     public List<Transit> getAll(Specification specification) {

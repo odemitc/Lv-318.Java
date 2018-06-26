@@ -1,8 +1,7 @@
 package org.uatransport.config;
-import lombok.Data;
 
 public class GlobalSearch {
-    private String globalSearch="";
+    private String globalSearch = "";
 
     public GlobalSearch(String globalSearch) {
         this.globalSearch = globalSearch;

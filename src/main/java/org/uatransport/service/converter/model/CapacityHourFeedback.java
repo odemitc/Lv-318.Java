@@ -15,7 +15,7 @@ public class CapacityHourFeedback {
 
     public boolean containsHour(Integer hour) {
         return (Objects.equals(this.startTime.getHour(), this.endTime.getHour()))
-            ? containsHourWithEqualsStartEndHours(hour) : containsHourWithDifferentStartEndHours(hour);
+                ? containsHourWithEqualsStartEndHours(hour) : containsHourWithDifferentStartEndHours(hour);
     }
 
     private boolean containsHourWithEqualsStartEndHours(Integer hour) {

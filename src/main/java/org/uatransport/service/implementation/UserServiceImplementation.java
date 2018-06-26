@@ -21,12 +21,10 @@ import org.uatransport.service.UserService;
 
 import java.security.Principal;
 
-
 @Service
 @RequiredArgsConstructor
 @Qualifier("UserDetails")
 public class UserServiceImplementation implements UserService {
-
 
     private final UserRepository userRepository;
 
@@ -62,7 +60,6 @@ public class UserServiceImplementation implements UserService {
         userRepository.save(user);
         return jwtTokenProvider.createToken(user.getEmail(), user.getRole());
 
-
     }
 
     @Override
@@ -80,14 +77,11 @@ public class UserServiceImplementation implements UserService {
         userRepository.deleteById(id);
     }
 
-
     @Override
     public User getUser(Principal principal) {
 
-            return userRepository.findByEmail(principal.getName());
+        return userRepository.findByEmail(principal.getName());
 
     }
-
-
 
 }

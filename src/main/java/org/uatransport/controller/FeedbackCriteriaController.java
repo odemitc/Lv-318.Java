@@ -5,9 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.uatransport.entity.FeedbackCriteria;
-import org.uatransport.entity.Question;
 import org.uatransport.service.FeedbackCriteriaService;
-import org.uatransport.service.QuestionService;
 
 import java.util.List;
 
@@ -16,7 +14,6 @@ import java.util.List;
 @RequestMapping("/feedback-criteria")
 public class FeedbackCriteriaController {
     private final FeedbackCriteriaService feedbackCriteriaService;
-
 
     @PostMapping
     public ResponseEntity<FeedbackCriteria> addFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria) {
@@ -29,7 +26,8 @@ public class FeedbackCriteriaController {
     }
 
     @PutMapping("/{id}")
-    public FeedbackCriteria updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria, @PathVariable Integer id) {
+    public FeedbackCriteria updateFeedbackCriteria(@RequestBody FeedbackCriteria feedbackCriteria,
+            @PathVariable Integer id) {
         return feedbackCriteriaService.update(feedbackCriteria.setId(id));
     }
 
@@ -48,12 +46,10 @@ public class FeedbackCriteriaController {
         return feedbackCriteriaService.getByType(type);
     }
 
-
     @GetMapping(params = "categoryId")
     public List<FeedbackCriteria> getByCategoryId(@RequestParam(value = "categoryId") Integer categoryId) {
         return feedbackCriteriaService.getByCategoryId(categoryId);
     }
-
 
     @GetMapping(params = "questionId")
     public List<FeedbackCriteria> getByQuestionsId(@RequestParam(value = "questionId") Integer questionId) {

@@ -28,7 +28,7 @@ public class JwtTokenProvider {
     private String secretKey;
 
     @Value("${jwt.token.expire-length}")
-    private long validityInMilliseconds; // 1h
+    private long validityInMilliseconds; // 2h
 
     private final UserDetailServiceImplementation userDetails;
 
@@ -44,12 +44,8 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS256, secretKey)
-                .compact();
+        return Jwts.builder().setClaims(claims).setIssuedAt(now).setExpiration(validity)
+                .signWith(SignatureAlgorithm.HS256, secretKey).compact();
     }
 
     public Authentication getAuthentication(String token) {

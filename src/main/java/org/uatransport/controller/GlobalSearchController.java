@@ -21,6 +21,6 @@ public class GlobalSearchController {
     @GetMapping(params = "search")
     public ResponseEntity<List<Transit>> getAll(@RequestParam("search") String search) {
         GlobalSearchSpecification globalSearchSpecification = new GlobalSearchSpecification(new GlobalSearch(search));
-        return  new ResponseEntity<>(transitService.getAll(globalSearchSpecification), HttpStatus.OK);
+        return new ResponseEntity<>(transitService.getAll(globalSearchSpecification), HttpStatus.OK);
     }
 }
