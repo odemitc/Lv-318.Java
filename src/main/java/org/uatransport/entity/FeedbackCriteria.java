@@ -1,6 +1,5 @@
 package org.uatransport.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +16,8 @@ import java.util.List;
 public class FeedbackCriteria {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    private Integer weight;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "criteria_id")

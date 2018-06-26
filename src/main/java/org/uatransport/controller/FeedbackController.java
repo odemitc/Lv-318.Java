@@ -52,8 +52,7 @@ public class FeedbackController {
     }
 
     @GetMapping(value = "/rate/{transitId}/{userId}")
-    public Double getAverageRateByTransitAndUser(
-            @PathVariable Integer transitId, @PathVariable Integer userId) {
+    public Double getAverageRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
         return feedbackService.getAverageRateByTransitAndUser(transitId, userId);
     }
 
@@ -64,7 +63,7 @@ public class FeedbackController {
 
     @GetMapping(value = "/byStop/{transitId}")
     public Map<Stop, Double> getCapacityStopMap(@PathVariable Integer transitId,
-                                                @RequestParam(value = "stopList[]", required = false) List<Stop> stopList) {
+            @RequestParam(value = "stop-list", required = false) List<Stop> stopList) {
         Stop[] stopsVarArg = stopList.toArray(new Stop[stopList.size()]);
         return feedbackService.getStopCapacityMap(transitId, stopsVarArg);
     }

@@ -16,9 +16,10 @@ public interface QuestionService {
 
     Question getById(Integer id);
 
-    List<Question> getByGroupId(Integer groupId);
-
-    List<Question> getByQuestionName(String questionName);
+    List<Question> getByName(String name);
 
     List<Question> getByFeedbackCriteriaId(Integer feedbackCriteriaId);
+
+    List<Question> getByWeight(Integer weight);
+
 }
