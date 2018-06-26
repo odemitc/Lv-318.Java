@@ -1,20 +1,21 @@
 package org.uatransport.service;
 
 import org.uatransport.entity.User;
+import org.uatransport.entity.dto.LoginDTO;
+import org.uatransport.entity.dto.UserDTO;
 
-import java.util.List;
+import java.security.Principal;
 
 public interface UserService {
-
-    User addUser(User user);
 
     User update(User user);
 
     void deleteById(int id);
 
-    User getById(int id);
+    User getUser(Principal principal);
 
-    User getByEmailAndPassword(String email, String password);
+    String signin(LoginDTO loginDTO);
 
-    List<User> getAll();
+    String signup(UserDTO user);
+
 }

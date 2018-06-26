@@ -8,8 +8,7 @@ import org.uatransport.entity.Feedback;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.dto.FeedbackDTO;
 import org.uatransport.service.FeedbackService;
-import org.uatransport.service.model.AccepterFeedback;
-import org.uatransport.service.model.CapacityFeedback;
+import org.uatransport.service.converter.model.AccepterFeedback;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -17,36 +16,28 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/feedback")
-@CrossOrigin
 @RequiredArgsConstructor
 public class FeedbackController {
     private final FeedbackService feedbackService;
 
     @GetMapping(params = "criteriaId")
-    public ResponseEntity<List<Feedback>> getByCriteria(@RequestParam("criteriaId") Integer criteriaId) {
-        return new ResponseEntity<>(feedbackService.getByCriteriaId(criteriaId), HttpStatus.OK);
+    public List<Feedback> getByCriteria(@RequestParam("criteriaId") Integer criteriaId) {
+        return feedbackService.getByCriteriaId(criteriaId);
     }
 
     @GetMapping(params = "transitId")
-    public ResponseEntity<List<Feedback>> getByTransit(@RequestParam("transitId") Integer transitId) {
-
-        return new ResponseEntity<>(feedbackService.getByTransitId(transitId), HttpStatus.OK);
+    public List<Feedback> getByTransit(@RequestParam("transitId") Integer transitId) {
+        return feedbackService.getByTransitId(transitId);
     }
 
     @GetMapping(params = "userId")
-    public ResponseEntity<List<Feedback>> getByUser(@RequestParam("userId") Integer userId) {
-        return new ResponseEntity<>(feedbackService.getByUserId(userId), HttpStatus.OK);
+    public List<Feedback> getByUser(@RequestParam("userId") Integer userId) {
+        return feedbackService.getByUserId(userId);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Feedback> getById(@PathVariable Integer id) {
-        return new ResponseEntity<>(feedbackService.getById(id), HttpStatus.OK);
-    }
-
-
-    @PostMapping(value = "/add")
-    public ResponseEntity<List<Feedback>> addAll(@RequestBody List<FeedbackDTO> feedbackDTOList) {
-        return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
+    public Feedback getById(@PathVariable Integer id) {
+        return feedbackService.getById(id);
     }
 
     @PostMapping
@@ -54,39 +45,47 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.addFeedback(feedbackDTO), HttpStatus.CREATED);
     }
 
+    // old Version
     @GetMapping(value = "/rate/{transitId}")
-    public ResponseEntity<Double> getAverageRateByTransit(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.convertRatingFeedBacks(transitId), HttpStatus.OK);
+    public Double getAverageRateByTransit(@PathVariable Integer transitId) {
+        return feedbackService.getAverageRateByTransitId(transitId);
     }
 
+    // old Version
     @GetMapping(value = "/rate/{transitId}/{userId}")
-    public ResponseEntity<Double> getAverageRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
-        return new ResponseEntity<>(feedbackService.convertRatingFeedBacksByUser(transitId, userId), HttpStatus.OK);
-    }
-
-
-    @GetMapping(value = "/capacity/{transitId}")
-    public ResponseEntity<List<CapacityFeedback>> getCapacityFeedBacks(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.convertCapacityFeedBacks(transitId), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/accepter/{transitId}")
-    public ResponseEntity<List<AccepterFeedback>> getAccepterFeedBacks(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.convertAccepterFeedBacks(transitId), HttpStatus.OK);
+    public Double getAverageRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
+        return feedbackService.getAverageRateByTransitAndUser(transitId, userId);
     }
 
     @GetMapping(value = "/byHour/{transitId}")
-    public ResponseEntity<Map<Integer, Double>> getCapacityHoursMap(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.getDataForCapacityHoursDiagram(transitId), HttpStatus.OK);
+    public Map<Integer, Double> getCapacityHoursMap(@PathVariable Integer transitId) {
+        return feedbackService.getHourCapacityMap(transitId);
     }
 
     @GetMapping(value = "/byStop/{transitId}")
-    public ResponseEntity<Map<Stop, Double>> getCapacityStopMap(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.getDataForCapacityStopDiagram(transitId), HttpStatus.OK);
+    public Map<Stop, Double> getCapacityStopMap(@PathVariable Integer transitId,
+            @RequestParam(value = "stop-list", required = false) List<Stop> stopList) {
+        Stop[] stopsVarArg = stopList.toArray(new Stop[stopList.size()]);
+        return feedbackService.getStopCapacityMap(transitId, stopsVarArg);
     }
 
     @GetMapping(value = "/accepterMap/{transitId}")
-    public ResponseEntity<EnumMap<AccepterFeedback, Double>> getAccepterMap(@PathVariable Integer transitId) {
-        return new ResponseEntity<>(feedbackService.getDataForAccepterDiagram(transitId), HttpStatus.OK);
+    public EnumMap<AccepterFeedback, Double> getAccepterMap(@PathVariable Integer transitId) {
+        return feedbackService.getAccepterAnswerPercentageMap(transitId);
+    }
+
+    @PostMapping(value = "/add")
+    public ResponseEntity<List<Feedback>> addAll(@RequestBody List<FeedbackDTO> feedbackDTOList) {
+        return new ResponseEntity<>(feedbackService.addAll(feedbackDTOList), HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/rating/{transitId}")
+    public Double getRateByTransit(@PathVariable Integer transitId) {
+        return feedbackService.getAverageRateForRateAnswersByTransitId(transitId);
+    }
+
+    @GetMapping(value = "/rating/{transitId}/{userId}")
+    public Double getRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
+        return feedbackService.getAverageRateForRateAnswersByTransitAndUser(transitId, userId);
     }
 }

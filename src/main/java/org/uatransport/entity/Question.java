@@ -1,6 +1,5 @@
 package org.uatransport.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -15,16 +14,11 @@ import javax.persistence.*;
 public class Question {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    private Integer groupId;
-
 
     private String name;
 
-    private String questionName;
-
+    private Integer weight;
 
 }
-

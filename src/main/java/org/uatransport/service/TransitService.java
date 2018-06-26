@@ -1,5 +1,6 @@
 package org.uatransport.service;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 
@@ -21,8 +22,14 @@ public interface TransitService {
 
     List<Transit> getAllByCategoryId(Integer id);
 
+    List<Transit> getAllByNextLevelCategoryId(Integer id);
+
+    List<Transit> getAllByNextLevelCategoryName(String categoryName);
+
     List<Transit> getAll();
 
-    List<Transit> getTransitsByStopsIn(Stop[] stops);
+    // List<Transit> getTransitsByStopsIn(Stop[] stops);
+
+    List<Transit> getAll(Specification specification);
 
 }

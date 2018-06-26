@@ -9,18 +9,23 @@ import java.util.List;
 
 public interface StopRepository extends CrudRepository<Stop, Integer> {
 
-    List<Stop> findByStreet(String name);
+    boolean existsByLatAndLngAndDirection(Double lat, Double lng, Stop.DIRECTION direction);
 
-    @Query(value = "select * from stop join transit_stop on stop.id = transit_stop.stop_id " +
-            "where transit_stop.transit_id = :id order by stop_index", nativeQuery = true)
+    Stop getByLatAndLngAndDirection(Double lat, Double lng, Stop.DIRECTION direction);
+
+    @Query("SELECT s FROM Transit t JOIN t.stops s WHERE t.id = :id AND s.street IS NOT NULL AND s.direction ='FORWARD'ORDER BY INDEX(s)")
     List<Stop> findByTransitId(@Param("id") Integer id);
 
-    @Query(value = "select * from stop join transit_stop on stop.id = transit_stop.stop_id " +
-            "where transit_stop.transit_id = :transitId and stop.street = :street", nativeQuery = true)
-    Stop findByTransitIdAndStopName(@Param("transitId") Integer transitId, @Param("street") String street) ;
+    @Query("SELECT s FROM Transit t JOIN t.stops s WHERE t.id = :id AND s.street IS NOT NULL AND s.direction ='FORWARD' AND s.street = :street")
+    Stop findByTransitIdAndStopName(@Param("id") Integer transitId, @Param("street") String street);
 
-    @Query(value = "select transit_stop.stop_index from transit_stop join stop on stop.id = transit_stop.stop_id " +
-            "where transit_stop.transit_id = :transitId and stop.street = :street", nativeQuery = true)
-    Integer findIndexByTransitIdAndStopName(@Param("transitId") Integer transitId, @Param("street") String street) ;
+    @Query("SELECT INDEX(s) FROM Transit t JOIN t.stops s WHERE t.id = :id AND s.street IS NOT NULL AND s.direction ='FORWARD' AND s.street = :street")
+    Integer findIndexByTransitIdAndStopName(@Param("id") Integer transitId, @Param("street") String street);
+
+    @Query("SELECT s FROM Transit t JOIN t.stops s WHERE t.id = :id AND s.street IS NOT NULL AND s.direction ='FORWARD' ORDER BY INDEX(s)")
+    List<Stop> findForwardStopsByTransitId(@Param("id") Integer id);
+
+    @Query("SELECT s FROM Transit t JOIN t.stops s WHERE t.id = :id AND s.street IS NOT NULL AND s.direction ='BACKWARD' ORDER BY INDEX(s)")
+    List<Stop> findBackwardStopsByTransitId(@Param("id") Integer id);
+
 }
-

@@ -3,11 +3,15 @@ package org.uatransport.service.implementation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.uatransport.entity.Feedback;
 import org.uatransport.entity.FeedbackCriteria;
 import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackCriteriaRepository;
 import org.uatransport.service.FeedbackCriteriaService;
 
+;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -42,7 +46,7 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
         }
 
         return feedbackCriteriaRepository.findById(feedbackCriteria.getId()).orElseThrow(() -> new ResourceNotFoundException(
-            String.format("This FeedbackCriteria does not found", feedbackCriteria)));
+                String.format("This FeedbackCriteria does not found", feedbackCriteria)));
     }
 
     @Override
@@ -54,7 +58,7 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     @Transactional(readOnly = true)
     public FeedbackCriteria getById(Integer id) {
         return feedbackCriteriaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String
-            .format("FeedbackCriteria with id '%s' not found", id)));
+                .format("FeedbackCriteria with id '%s' not found", id)));
     }
 
 
@@ -72,12 +76,6 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<FeedbackCriteria> getByWeight(Integer weight) {
-        return feedbackCriteriaRepository.findByWeight(weight);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<FeedbackCriteria> getByQuestionsName(String question) {
         return feedbackCriteriaRepository.findByQuestionsName(question);
     }
@@ -90,7 +88,25 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<FeedbackCriteria> getByQuestionsGroupId(Integer groupId) {
-        return feedbackCriteriaRepository.findByQuestionsGroupId(groupId);
+    public List<FeedbackCriteria> getByTypeAndCategoryId(Integer categoryId, String type) {
+        return feedbackCriteriaRepository.findByTypeAndNonExtendableCategoryId(categoryId, type);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<String> getAllEnumsType() {
+        List<String> allEnumTypes = new ArrayList<>();
+        for (FeedbackCriteria.FeedbackType feedbackType : FeedbackCriteria.FeedbackType.values()) {
+            allEnumTypes.add(feedbackType.toString());
+            System.out.println(allEnumTypes.size());
+        }
+        return allEnumTypes;
+    }
+
+    @Override
+    public List<FeedbackCriteria> getByQuestionsWeight(Integer weight) {
+        return feedbackCriteriaRepository.findByQuestionsWeight(weight);
+    }
+
+
 }

@@ -16,8 +16,10 @@ import java.util.Set;
 class ApiError {
 
     private HttpStatus status;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
+
     private String message;
     private String debugMessage;
     private List<ApiValidationError> subErrors;
@@ -33,7 +35,6 @@ class ApiError {
         this.debugMessage = ex.getLocalizedMessage();
     }
 
-
     private void addSubError(ApiValidationError subError) {
         if (subErrors == null) {
             subErrors = new ArrayList<>();
@@ -47,8 +48,7 @@ class ApiError {
 
     private void addValidationError(ConstraintViolation<?> cv) {
         this.addValidationError(cv.getRootBeanClass().getSimpleName(),
-                ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
-                cv.getInvalidValue(), cv.getMessage());
+                ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(), cv.getInvalidValue(), cv.getMessage());
     }
 
     void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {

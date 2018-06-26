@@ -1,34 +1,42 @@
 package org.uatransport.controller;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.uatransport.entity.TokenModel;
 import org.uatransport.entity.User;
+import org.uatransport.entity.dto.LoginDTO;
+import org.uatransport.entity.dto.UserDTO;
 import org.uatransport.service.UserService;
 
-import java.util.List;
-
+import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@CrossOrigin
 public class UserController {
-
 
     private final UserService userService;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllUsers() {
+    @PostMapping("/signup")
+    public ResponseEntity signUp(@RequestBody UserDTO userDTO, HttpServletResponse response) {
 
-        return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
+        String token = userService.signup(userDTO);
+        response.setHeader("Authorization", token);
+
+        return ResponseEntity.ok(new TokenModel(token));
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+    @PostMapping("/signin")
+    public ResponseEntity signin(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
+        String token = userService.signin(loginDTO);
 
-        return new ResponseEntity<>(userService.getById(id), HttpStatus.OK);
+        response.setHeader("Authorization", token);
+
+        return ResponseEntity.ok(new TokenModel(token));
     }
 
     @DeleteMapping("/{id}")
@@ -36,12 +44,6 @@ public class UserController {
 
         userService.deleteById(id);
 
-    }
-
-    @PostMapping()
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        User savedUser = userService.addUser(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -52,10 +54,8 @@ public class UserController {
 
     }
 
-    @GetMapping(value = "/in")
-    public ResponseEntity<User> getUserByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
-
-        return new ResponseEntity<>(userService.getByEmailAndPassword(email, password), HttpStatus.OK);
+    @GetMapping("/me")
+    public User getCurrentUser(Principal principal) {
+        return userService.getUser(principal);
     }
-
 }
