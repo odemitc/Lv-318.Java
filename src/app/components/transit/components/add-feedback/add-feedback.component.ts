@@ -5,31 +5,27 @@ import {Feedback, FeedbackDTO} from '../../../../models/feedback.model';
 import {FeedbackService} from '../../../../services/feedback.service';
 import {FeedbackCriteriaService} from '../../../../services/feedback-criteria.service';
 import {FeedbackCriteria} from '../../../../models/feedback-criteria.model';
+import {Transit} from '../../../../models/transit.model';
 
 @Component({
   selector: 'app-add-feedback',
   templateUrl: './add-feedback.component.html',
   styleUrls: ['./add-feedback.component.css']
 })
-export class AddFeedbackComponent implements OnInit {
-
+export class AddFeedbackComponent {
+  @Input() transitName: String = this.data.transitName;
   @Input() feedbacks: Feedback[] = [];
   @Input() capacityFeedbacks: Feedback[];
   @Input() transitId: number = this.data.number;
   private categoryId: number = this.data.categoryId;
   private questionsDatas: String[];
+  private checkBoxAnswers: String[] = ['YES', 'NO', 'MAYBE'];
 
 
   constructor(private dialogRef: MatDialogRef<AddFeedbackComponent>, @ Inject(MAT_DIALOG_DATA) public data: any,
               private feedbackService: FeedbackService, private criteriaService: FeedbackCriteriaService) {
-
     this.feedbacks = this.buildFeedbacksByCriteriaType(['RATING', 'ACCEPTER']);
     this.capacityFeedbacks = this.buildFeedbacksByCriteriaType(['ROUTE_CAPACITY', 'HOURS_CAPACITY']);
-
-  }
-
-  ngOnInit() {
-    console.log(this.feedbacks);
 
   }
 
@@ -41,7 +37,6 @@ export class AddFeedbackComponent implements OnInit {
           feedbackCriterias.forEach(criteria => {
             this.questionsDatas = criteria.questions.map(question => question.name);
             let feedback: Feedback = this.buildFeedback(criteria, this.questionsDatas);
-            // this.setAnswer(criteria.type,feedback);
             feedbacks.push(feedback);
           })
         });
@@ -64,24 +59,27 @@ export class AddFeedbackComponent implements OnInit {
   }
 
   public saveAllFeedback(): void {
-    console.log(this.feedbacks);
-
-    this.feedbackService.saveAllFeedback(this.toDTOList(this.feedbacks)).subscribe(data => {
+    let feedbackDTOs: FeedbackDTO[] = this.toDTOList(this.feedbacks);
+    this.feedbackService.saveAllFeedback(feedbackDTOs).subscribe(data => {
       alert('Feedback created successfully.');
     });
+
+    this.dialogRef.close();
   }
 
 
   public toDTOList(feedbacks: Feedback[]): FeedbackDTO[] {
-    let feedbackDTOs: Feedback[] = [];
+    let feedbackDTOs: FeedbackDTO[] = [];
     feedbacks.forEach(feedback => {
-      let feedbackDTO: Feedback = new Feedback();
-      feedbackDTO.transitId = feedback.transitId;
-      feedbackDTO.userId = feedback.userId;
-      feedbackDTO.criteriaId = feedback.criteriaId;
-      feedbackDTO.type = feedback.type;
-      feedbackDTO.answer = feedback.answer;
-      feedbackDTOs.push(feedbackDTO);
+      if (feedback.answer && feedback.answer.length > 0) {
+        let feedbackDTO: Feedback = new Feedback();
+        feedbackDTO.transitId = feedback.transitId;
+        feedbackDTO.userId = feedback.userId;
+        feedbackDTO.criteriaId = feedback.criteriaId;
+        feedbackDTO.type = feedback.type;
+        feedbackDTO.answer = feedback.answer;
+        feedbackDTOs.push(feedbackDTO);
+      }
     });
     return feedbackDTOs;
   }

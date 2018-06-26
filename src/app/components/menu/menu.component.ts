@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { AppComponent } from '../../app.component';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public app: AppComponent) {
+  constructor(public app: AppComponent,private location: Location) {
 
   }
 
@@ -19,5 +20,4 @@ export class MenuComponent implements OnInit {
   switchLanguage(language: string) {
     this.app.switchLanguage(language);
   }
-
 }

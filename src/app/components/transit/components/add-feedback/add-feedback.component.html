@@ -1,23 +1,36 @@
 <div class="form ">
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span  style="text-align: center">{{ 'FeedbackInfo' | translate}} № {{transitId}}</span>
-  </mat-toolbar-row>
-</mat-toolbar>
-<div class="addfeedback ">
-
-  <div class ="showFeedbacks" *ngFor="let feedback of feedbacks ">
-      <div class ="showQuestions" *ngFor="let question of feedback.questions" >
-          <div class ="question">
-              {{question}}
-            </div>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>{{ 'FeedbackInfo' | translate}} {{transitName}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="addfeedback ">
+    <div class="showFeedbacks" *ngFor="let feedback of feedbacks ">
+      <div class="showQuestions" *ngFor="let question of feedback.questions">
+        <div class="question">
+          {{question}}
         </div>
-        <mat-form-field class="answer">
-          <input matInput type="text" placeholder="answer" [(ngModel)]="feedback.answer"/>
-        </mat-form-field>
-        <!--<button mat-raised-button color="primary" (click) = "saveFeedback(feedback)">save</button>-->
+
+        <div *ngIf="feedback.type == 'RATING'">
+          <mat-form-field class="answer">
+            <input matInput type="number" min="0" max="10" placeholder="answer" [(ngModel)]="feedback.answer"/>
+            <mat-error>Please enter a value between 0 and 10</mat-error>
+            <mat-hint align="end">0/ 10</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="feedback.type == 'ACCEPTER'">
+          <div class="radio">
+            <label for="answer" *ngFor="let answer of checkBoxAnswers ">
+              <input type="radio" [value]="answer" [(ngModel)]="feedback.answer">{{ answer | lowercase | translate }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<button mat-raised-button color="primary" (click) = "saveAllFeedback()">{{ 'Save' | translate}} </button>
-<button mat-raised-button (click)="close()">{{ 'Close' | translate}}</button>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="saveAllFeedback()">{{ 'Save' | translate}}</button>
+    <button mat-raised-button (click)="close()">{{ 'Close' | translate}}</button>
+  </div>
 </div>

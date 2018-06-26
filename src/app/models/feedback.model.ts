@@ -5,13 +5,13 @@ export class Feedback {
   transitId: number;
   criteriaId: number;
   type: String;
-  questions : String[] ;
+  questions: String[];
   answer: String;
 }
 
 export class FeedbackDTO {
   userId: number;
-  transitId : number;
+  transitId: number;
   criteriaId: number;
   answer: String;
 }

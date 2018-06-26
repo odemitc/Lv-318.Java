@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {MatDialog} from '@angular/material';
 
 import {AddFeedbackComponent} from './components/add-feedback/add-feedback.component';
+import { Transit } from '../../models/transit.model';
 
 @Component({
   selector: 'app-stops-grid',
@@ -18,6 +19,7 @@ export class StopsGridComponent implements OnInit {
   checkedItems: boolean[];
   private sub: any;
   @Input() public idTransit: number;
+  @Input() transitName: String;
   stopsList: Observable<Stop[]>;
   stopArray: Stop[] = [];
   public selectedStops: Stop[] = [];
@@ -31,6 +33,7 @@ export class StopsGridComponent implements OnInit {
     this.sub = this.route.params.forEach(params => {
       this.idTransit = params['id'];
       this.categoryId = params['categoryId'];
+      this.transitName = params['name']
     });
     this.stopsList = this.stopService.getStopsByTransitId(this.idTransit);
     this.stopsList.subscribe(stopArray =>
@@ -56,7 +59,7 @@ export class StopsGridComponent implements OnInit {
   }
 
   public openModal() {
-    this.dialog.open(AddFeedbackComponent, {data: {number: this.idTransit, categoryId: this.categoryId}});
+    this.dialog.open(AddFeedbackComponent, {width:'400px',height:'500px', data: {number: this.idTransit, categoryId: this.categoryId,transitName: this.transitName}});
   }
 
 }
