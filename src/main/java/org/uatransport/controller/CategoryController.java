@@ -28,9 +28,13 @@ public class CategoryController {
         return categoryService.getListTopExtendableCategories();
     }
 
+    @GetMapping("/{id}")
+    public ExtendableCategory getByid(@PathVariable Integer id) {
+        return categoryService.getById(id);
+    }
+
     @GetMapping
     public List<ExtendableCategory> search(SearchCategoryParam searchCategoryParam) {
-
         return categoryService.getAll(searchCategoryParam);
     }
 
@@ -38,10 +42,10 @@ public class CategoryController {
     public ResponseEntity<ExtendableCategory> save(@RequestBody ExtendableCategory category) {
         ExtendableCategory savedCategory = categoryService.save(category);
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().query("id={id}")
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedCategory.getId()).toUri();
 
-        return ResponseEntity.created(location).build(); // TODO: add Location
+        return ResponseEntity.created(location).build();
     }
 
     @DeleteMapping("/{id}")
@@ -51,8 +55,7 @@ public class CategoryController {
 
     @PutMapping("/{id}")
     public ExtendableCategory update(@RequestBody ExtendableCategory category, @PathVariable Integer id) {
-        ExtendableCategory updatedCategory = categoryService.update(category.setId(id));
-        return updatedCategory;
+        return categoryService.update(category.setId(id));
     }
 
     @GetMapping(value = "/img", produces = MediaType.IMAGE_PNG_VALUE)

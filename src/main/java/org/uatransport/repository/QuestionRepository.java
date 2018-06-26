@@ -11,10 +11,10 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
     Optional<Question> findById(Integer id);
 
-    List<Question> findByGroupId(Integer groupId);
-
     List<Question> findByName(String questionName);
 
     @Query(value = "SELECT * FROM question WHERE criteria_id = ?1", nativeQuery = true)
     List<Question> findByFeedbackCriteriaId(Integer feedbackCriteriaId);
+
+    List<Question> findByWeight(Integer weight);
 }

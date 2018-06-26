@@ -4,10 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.uatransport.entity.Point;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
-import org.uatransport.service.PointService;
+import org.uatransport.service.StopService;
 import org.uatransport.service.TransitService;
 
 import java.net.URI;
@@ -16,23 +15,25 @@ import java.util.List;
 @RestController
 @RequestMapping("/stop")
 @RequiredArgsConstructor
-public class PointController {
-    private final PointService pointService;
+public class StopController {
+    private final StopService pointService;
     private final TransitService transitService;
 
     @GetMapping("/{id}")
-    public Point getById(@PathVariable Integer id) {
+    public Stop getById(@PathVariable Integer id) {
         return pointService.getById(id);
     }
 
-    @GetMapping(params = "street")
-    public List<Stop> getByStreet(@RequestParam("street") String street) {
-        return pointService.getByStreet(street);
+    @GetMapping(params = "transit-id")
+    public List<Stop> getByTransitId(@RequestParam("transit-id") Integer id) {
+        return pointService.getByTransitId(id);
     }
 
-    @GetMapping(params = "transit-id")
-    public List<Point> getByTransitId(@RequestParam("transit-id") Integer id) {
-        return pointService.getByTransitId(id);
+    @GetMapping
+    public List<Stop> getByTransitIdAndDirection(@RequestParam("id") Integer id,
+            @RequestParam("dir") String direction) {
+        System.out.println(direction);
+        return pointService.getByTransitIdAndDirection(id, direction);
     }
 
     @DeleteMapping("/{id}")
@@ -41,10 +42,10 @@ public class PointController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<Point> add(@RequestBody(required = false) Point point, @PathVariable Integer id) {
-        Point savedPoint = pointService.save(point);
+    public ResponseEntity<Stop> add(@RequestBody(required = false) Stop stop, @PathVariable Integer id) {
+        Stop savedPoint = pointService.save(stop);
         Transit transitToUpdate = transitService.getById(id);
-        transitToUpdate.getPoints().add(point);
+        transitToUpdate.getStops().add(stop);
         transitService.update(transitToUpdate);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().query("id={id}")
                 .buildAndExpand(savedPoint.getId()).toUri();
@@ -53,7 +54,7 @@ public class PointController {
     }
 
     @PutMapping("/{id}")
-    public Point update(@RequestBody Point point, @PathVariable Integer id) {
-        return pointService.update(point.setId(id));
+    public Stop update(@RequestBody Stop stop, @PathVariable Integer id) {
+        return pointService.update(stop.setId(id));
     }
 }

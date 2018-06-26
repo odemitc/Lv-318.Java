@@ -23,5 +23,4 @@ public class RatingConversionStrategy implements ConversionStrategy<Integer> {
                 });
         return answers.stream().mapToInt(answer -> answer.getAnswer() * answer.getWeight()).average().orElse(0.0);
     }
-
 }
