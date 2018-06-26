@@ -1,12 +1,8 @@
-
-.question{
-    font-size: 14px;
+.search{
+    font-size: 20px;
     width: 50%;
     margin: 150px 400px;
   }
   .mat-elevation-z8{
     width: 100%; 
-  }
-  .mat-raised-button{
-  margin-left: 75%;
   }

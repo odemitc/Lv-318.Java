@@ -1,5 +1,4 @@
-export class Question {
-    id: number;
-    groupId: number;
+export class Question {    
     name: string;
+    weight: number;
 }
