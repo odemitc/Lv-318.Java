@@ -15,6 +15,7 @@ import java.util.List;
 public class Transit {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
@@ -31,6 +32,6 @@ public class Transit {
     @JoinTable(name = "transit_stop", joinColumns = { @JoinColumn(name = "transit_id") }, inverseJoinColumns = {
             @JoinColumn(name = "stop_id") })
     @OrderColumn(name = "stop_index")
-    private List<Point> points;
+    private List<Stop> stops;
 
 }
