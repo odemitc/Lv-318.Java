@@ -81,8 +81,10 @@ import { GlobalSearchComponent } from './components/global-search/global-search.
 import { GlobalSearchService } from './services/global-search.service';
 import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
 import { TransitService } from './services/transit.service';
-import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
-
+import {AddFeedbackComponent} from './components/transit/components/add-feedback/add-feedback.component';
+import {BusyStopsDiagramComponent} from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
+import {FeedbackService} from './services/feedback.service';
+import {FeedbackCriteriaService} from "./services/feedback-criteria.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -115,6 +117,7 @@ export function createTranslateLoader(http: HttpClient) {
     AddFeedbackCriteriaComponent,
     GlobalSearchComponent,
     BusyStopsDiagramComponent,
+    AddFeedbackComponent,
     BackToPreviousPageBtnComponent
   ],
   exports: [
@@ -192,9 +195,9 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService, GlobalSearchService, TransitService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService, TransitService, GlobalSearchService,FeedbackService,FeedbackCriteriaService],
   bootstrap: [AppComponent],
-  entryComponents: [AddQuestionComponent]
+  entryComponents: [AddQuestionComponent,AddFeedbackComponent]
 })
 export class AppModule {
 }

@@ -21,6 +21,9 @@ export class TransitService {
   addTransit(transit: Transit): Observable<Transit> {
     return this.http.post<Transit>(this.serviceUrl, transit);
   }
+  getTransitById(id: number): Observable<Transit> {
+    return this.http.get<Transit>(`${this.serviceUrl}/${id}`);
+  }
 
   getTransitsByCategoryId(id: number): Observable<Transit[]> {
     return this.http.get<Transit[]>(`${this.serviceUrl}?categoryId=${id}`);

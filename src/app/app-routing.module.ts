@@ -12,6 +12,7 @@ import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one
 import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
 import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import {AddFeedbackComponent} from './components/transit/components/add-feedback/add-feedback.component';
 
 const routes: Routes = [
   {path: 'category/:top/:city', component: NonExCategoryComponent},
@@ -28,14 +29,16 @@ const routes: Routes = [
   {path: 'feedback-criteria/add-feedback-criteria', component: AddFeedbackCriteriaComponent},
   {path: 'feedback-criteria/:id', component: OneFeedbackCriteriaComponent},
   {path: 'user/login', component: UserLoginComponent},
-  {path: 'show-transit-scheme/:categoryId/:id/:name', component: StopsGridComponent}
+  {path: 'show-transit-scheme/:categoryId/:id/:name', component: StopsGridComponent},
+  {path: 'feedback', component: AddFeedbackComponent}
+
 ];
+
 
 @NgModule({
   imports: [
     [RouterModule.forRoot(routes)]
   ],
-  providers: [AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

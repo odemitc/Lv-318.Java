@@ -4,10 +4,17 @@
   "User" : "User",
   "MAIN-TEXT": "is a system that allows the end users to find out how bad or how good the certain transportation method is.It also allows users to share what they think of certain transportation method by leaving feedback, reporting complains, posting comments, etc.",
   "word" : "word",
+  "Close": "Close",
+  "Save" : "Save",
+"FeedbackInfo": "Feedback for Transit",
   "By-Hour" : "Load by hours",
   "By-Stop" : "Load by stops",
   "Average-Rate" : "Average rate",
+  "RateInfo":"Rate for 1 to 10",
   "Route" : "Route",
   "Raiting-Diagram" : "Reviews",
-  "Back": "Back"
+  "Back": "Back",
+  "yes": "Yes",
+  "no": "No",
+  "maybe": "Maybe"
 }
