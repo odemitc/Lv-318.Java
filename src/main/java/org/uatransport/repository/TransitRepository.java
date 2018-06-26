@@ -1,11 +1,13 @@
 package org.uatransport.repository;
 
 import org.springframework.data.repository.CrudRepository;
+
 import org.uatransport.entity.Transit;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
 
-public interface TransitRepository extends CrudRepository<Transit, Integer> {
+public interface TransitRepository extends CrudRepository<Transit, Integer>, JpaSpecificationExecutor<Transit> {
 
     Transit findByName(String name);
 

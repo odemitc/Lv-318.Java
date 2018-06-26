@@ -16,10 +16,8 @@ import java.util.List;
 public class FeedbackCriteria {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    private Integer weight;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "criteria_id")

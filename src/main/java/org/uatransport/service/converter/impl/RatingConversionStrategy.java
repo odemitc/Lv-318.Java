@@ -16,6 +16,7 @@ public class RatingConversionStrategy
 
     @Override
     public Integer apply(String answer, FeedbackCriteria ratingCriteria) {
-        return Integer.parseInt(answer) * ratingCriteria.getWeight();
+        return Integer.parseInt(answer) ;
+//                * ratingCriteria.getWeight();
     }
 }
