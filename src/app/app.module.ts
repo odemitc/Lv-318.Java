@@ -77,7 +77,7 @@ import { AverageRateComponent } from './components/transit/components/average-ra
 import { DiagramService } from './services/diagram.service';
 import { OneQuestionComponent } from './components/question/one-question/one-question.component';
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
-import { InterceptorService } from './services/auth/interceptors/interceptor.service';
+import { httpInterceptorProviders } from './services/auth/interceptors/http-providers';
 
 
 import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
@@ -184,7 +184,7 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [
-    InterceptorService,
+    httpInterceptorProviders,
     AdminGuardService,
     ClientGuardService,
     AuthGuardService,

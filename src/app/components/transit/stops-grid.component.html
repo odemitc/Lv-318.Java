@@ -1,8 +1,6 @@
 <div class="demo-grid-list">
-  <mat-tab-group>
-    <mat-tab [label]="'Forward direction' | translate">
       <mat-grid-list *ngIf="stopArray.length" [cols]="stopArray.length" rowHeight="100px" class="grid-list">
-        <mat-grid-tile
+        <mat-grid-tile class="mat-grid-tile-class"
           *ngFor="let i=index; let tile of stopArray" class="tile" >
           <label [for]="tile.id"><div>{{tile.street}}</div>
             <input type="checkbox" [(ngModel)]="checkedItems[i]" [id]="tile.id" (change)='selectStops()'>
@@ -10,21 +8,8 @@
           </label>
         </mat-grid-tile>
       </mat-grid-list>
-    </mat-tab>
-    <mat-tab [label]="'Backward direction' | translate">
-      <mat-grid-list *ngIf="stopArray.length" [cols]="stopArray.length" rowHeight="100px">
-        <mat-grid-tile
-          *ngFor="let i=index; let tile of stopArray" class="tile" >
-            <label [for]="tile.id"><div>{{tile.street}}</div>
-              <input type="checkbox" [(ngModel)]="checkedItems[i]" [id]="tile.id" (change)='selectStops()'>
-              <img src="../../../assets/img/list.jpg">
-            </label>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </mat-tab>
-  </mat-tab-group>
-  <app-average-rate [id]="idTransit"></app-average-rate>
-  <app-raiting-diagram [id]="idTransit"></app-raiting-diagram>
+    <!--<app-average-rate [id]="idTransit"></app-average-rate>-->
+  <!--<app-raiting-diagram [id]="idTransit"></app-raiting-diagram>-->
   <app-busy-stops-diagram [id]="idTransit" [stopList]="selectedStops"></app-busy-stops-diagram>
   <app-busy-hours-diagram [id]="idTransit"></app-busy-hours-diagram>
 </div>

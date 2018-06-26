@@ -3,7 +3,7 @@ import {Stop} from '../../models/stop.model';
 import {ActivatedRoute} from '@angular/router';
 import {StopService} from '../../services/stop.service';
 import {Observable} from 'rxjs';
-import {BusyStopsDiagramComponent} from "./components/busy-stops-diagram/busy-stops-diagram.component";
+import {BusyStopsDiagramComponent} from './components/busy-stops-diagram/busy-stops-diagram.component';
 
 @Component({
   selector: 'app-stops-grid',
@@ -51,8 +51,6 @@ export class StopsGridComponent implements OnInit {
         this.selectedStops.splice(this.selectedStops.indexOf(this.stopArray[i]), 1);
       }
     }
-
-    this.child.updateChartData(this.selectedStops);
 
   }
 
