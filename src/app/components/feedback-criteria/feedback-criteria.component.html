@@ -1,11 +1,12 @@
 <div class="feedbackCriteria">
+    <button  mat-stroked-button a routerLink="./add-feedback-criteria">Add new</button>
     <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input matInput (keyup)="search($event.target.value)" placeholder="Filter">
         </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-      <mat-cell *matCellDef="let feedbackCriteria" a routerLink="./{{feedbackCriteria.id}}"> {{feedbackCriteria.type | lowercase}}</mat-cell>
+      <mat-cell *matCellDef="let feedbackCriteria" a routerLink="./{{feedbackCriteria.id}}"> {{feedbackCriteria.type}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="weight">
       <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
@@ -22,7 +23,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
-  <mat-paginator [pageSizeOptions]="[3, 5, 10]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[3, 5, 10]" showFirstLastButtons></mat-paginator>  
 </div>
 
  

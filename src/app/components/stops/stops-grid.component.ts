@@ -17,6 +17,7 @@ export class StopsGridComponent implements OnInit {
   stopsList: Observable<Stop[]>;
 
   constructor(private stopService: StopService, private route: ActivatedRoute) {
+  
   }
 
   ngOnInit() {

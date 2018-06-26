@@ -6,8 +6,8 @@ import { FeedbackCriteriaService } from '../../../services/feedback-criteria.ser
 import { Location } from '@angular/common';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { Question } from '../../../models/question.model';
-import { EnumType } from '../../../models/enum-type-model';
 import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-add-feedback-criteria',
   templateUrl: './add-feedback-criteria.component.html',

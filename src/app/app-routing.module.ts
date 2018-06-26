@@ -10,6 +10,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import {StopsGridComponent} from './components/stops/stops-grid.component';
 import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component';
 import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
+import { GlobalSearchComponent } from './components/global-search/global-search.component';
 const routes: Routes = [
   {
     path: 'category/:top/:city', component: NonExCategoryComponent
@@ -26,6 +27,9 @@ const routes: Routes = [
     path: 'main', component: MainComponent
   },
   {
+    path: 'search/?search=/:value', component: GlobalSearchComponent
+  },
+  {
     path: 'feedback-criteria', component: FeedbackCriteriaComponent
   },
   {
@@ -33,8 +37,7 @@ const routes: Routes = [
   },
   {
     path: 'feedback-criteria/:id', component: OneFeedbackCriteriaComponent
-  },
-  
+  },  
   {
     path: 'user/add', component: AddUserComponent
   },

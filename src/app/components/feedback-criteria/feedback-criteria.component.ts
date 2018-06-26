@@ -15,7 +15,8 @@ export class FeedbackCriteriaComponent implements OnInit {
 
   feedbackCriterias: FeedbackCriteria[];
   displayedColumns = ['type', 'weight', 'questions'];
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource<FeedbackCriteria>();
+  data: FeedbackCriteria[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -30,18 +31,37 @@ export class FeedbackCriteriaComponent implements OnInit {
 
   getAllFeedbackCriteria(): void {
     this.feedbackCriteriaService.getAllFeedbackCriteria()
-      .subscribe(feedbackCriterias => this.dataSource.data = feedbackCriterias);
+      .subscribe(feedbackCriterias => {
+        this.dataSource.data = feedbackCriterias;
+        this.data = feedbackCriterias;
+      });
     this.dataSource.paginator = this.paginator;
-    
+      
   }
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter=filterValue;
-    filterValue = filterValue.toUpperCase();
-    this.dataSource.filter = filterValue;       
-    this.dataSource.filterPredicate = (data, filter) =>
-    JSON.stringify(data).includes(filter);
+  applyFilter(searchTerm: string) {
+    this.dataSource.filterPredicate = (criteria, searchTerm) => {
+      if (searchTerm) {
+        return this.containsIgnoringCase(criteria.id, searchTerm) 
+        || this.containsIgnoringCase(criteria.type, searchTerm)
+        || this.containsIgnoringCase(criteria.weight, searchTerm)
+        || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult || this.containsIgnoringCase(question.name, searchTerm), false)
+      }
+    };
+  }
+
+  search(searchTerm: string) {
+    if (searchTerm) {
+      this.dataSource.data = this.data.filter(criteria => this.containsIgnoringCase(criteria.type, searchTerm)
+      || this.containsIgnoringCase(criteria.weight, searchTerm)
+      || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult || this.containsIgnoringCase(question.name, searchTerm), false)
+      );
+    } else {
+      this.dataSource.data = this.data;
+    }
+  }
+
+  private containsIgnoringCase(first: any, second: any) :boolean {
+    return first && second && first.toString().trim().toLowerCase().indexOf(second.toString().trim().toLowerCase()) >= 0;
   }
 }

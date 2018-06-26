@@ -66,7 +66,7 @@ import {AddUserComponent} from './components/add-user/add-user.component';
 import {BusyHoursDiagramComponent} from './components/stops/components/busy-hours-diagram/busy-hours-diagram.component';
 import {MessageComponent} from './components/message/message.component';
 import {UserService} from './services/user.service';
-
+import { DataFilterPipe } from './services/data-filter.pipe';
 
 import { StopsGridComponent } from "./components/stops/stops-grid.component";
 import { RaitingDiagramComponent } from './components/stops/components/raiting-diagram/raiting-diagram.component';
@@ -76,6 +76,9 @@ import { CallbackComponent } from './components/callback/callback.component';
 import { AddQuestionComponent } from './components/feedback-criteria/add-question/add-question.component';
 import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component';
 import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
+import { GlobalSearchComponent } from './components/global-search/global-search.component';
+import { GlobalSearchService } from './services/global-search.service';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -105,7 +108,9 @@ export function createTranslateLoader(http: HttpClient) {
     BusyHoursDiagramComponent,
     BusyStopsDiagramComponent,
     OneFeedbackCriteriaComponent,
-    AddFeedbackCriteriaComponent
+    AddFeedbackCriteriaComponent,
+    GlobalSearchComponent,
+    DataFilterPipe,
   ],
   exports: [
     MatAutocompleteModule,
@@ -179,7 +184,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService, GlobalSearchService],
   bootstrap: [AppComponent],
   entryComponents: [AddQuestionComponent]
 })
