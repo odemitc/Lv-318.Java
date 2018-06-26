@@ -2,7 +2,7 @@
     <mat-card *ngIf="empty">I`m sorry but we can`t find information</mat-card>
     <button  mat-stroked-button (click)="gotBack()">Go back</button>
 
-    <div class="transit" *ngIf="dataSource">
+    <div class="transit" *ngIf="emptyTransit">
        <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>

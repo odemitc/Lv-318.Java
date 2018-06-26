@@ -8,15 +8,12 @@
       <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
       <mat-cell *matCellDef="let feedbackCriteria" a routerLink="./{{feedbackCriteria.id}}"> {{feedbackCriteria.type}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let feedbackCriteria"> {{ feedbackCriteria.weight }}</mat-cell>
-    </ng-container>
     <ng-container matColumnDef="questions">
         <mat-header-cell *matHeaderCellDef> Questions </mat-header-cell>
          <mat-cell *matCellDef="let feedbackCriteria"> 
             <mat-list role="list" *ngFor="let questions of feedbackCriteria.questions ">
                 <mat-list-item role="listitem">{{questions.name}}</mat-list-item>
+                <mat-list-item role="listitem">{{questions.weight}}</mat-list-item>
             </mat-list>
         </mat-cell>      
       </ng-container>

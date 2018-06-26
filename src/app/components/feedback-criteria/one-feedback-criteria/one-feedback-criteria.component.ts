@@ -27,10 +27,11 @@ export class OneFeedbackCriteriaComponent implements OnInit {
   getFeedbackCriteria(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.feedbackCriteriaService.getFeedbackCriteria(id)
-    .subscribe(feedbackCriteria => this.feedbackCriteria = feedbackCriteria);
-    if(this.feedbackCriteria.type=="RATING"){
-      this.isReadOnly=false;
-    }
+    .subscribe(feedbackCriteria => 
+      {this.feedbackCriteria = feedbackCriteria
+        if(this.feedbackCriteria.type=="RATING")
+        this.isReadOnly=false;
+      });
   }
 
   deleteFeedbackCriteria(id: number): void {
@@ -48,18 +49,13 @@ export class OneFeedbackCriteriaComponent implements OnInit {
   openDialog(): void {
     let dialogRef = this.dialog.open(AddQuestionComponent, {
       width: '600px',
-      data: {}
+      data: this.isReadOnly
     });
     dialogRef.afterClosed().subscribe(result => {
       this.feedbackCriteria.questions.push(result);
     });
  
   }    
-   
-  ifRatingType(type: any){
-    if(type=="RATING"){
-    this.isReadOnly=false;
-    }
-  }
+ 
 
 }

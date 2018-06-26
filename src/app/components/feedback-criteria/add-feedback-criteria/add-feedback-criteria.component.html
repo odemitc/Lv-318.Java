@@ -5,21 +5,16 @@
               {{ enumType }}
             </mat-option>
           </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-        <mat-label>Weight</mat-label>
-        <input [readonly]="isReadOnly" matInput placeholder="weight" [(ngModel)]= "feedbackCriteria.weight" id="weight" name="weight">
-        <mat-hint align="end">You can add weight only to RATING type</mat-hint>
-    </mat-form-field>   
-      <div class="button"> 
-      <button mat-raised-button (click)="openDialog()">Add Questions</button></div>  
+    </mat-form-field>        
       <div class="questionadd" *ngIf="questions">
         <mat-list *ngFor="let question of questions">
-          <mat-list-item >{{question.name}}</mat-list-item>
-            <mat-divider></mat-divider>
-         </mat-list>
-        
-      </div>
+          <mat-list-item >Question: {{question.name}}</mat-list-item>
+          <mat-list-item *ngIf="question.weight">Weight: {{question.weight}}</mat-list-item>
+          <mat-divider></mat-divider>
+         </mat-list> 
+        </div>
+      <div class="button"> 
+          <button mat-raised-button (click)="openDialog()">Add Questions</button></div>  
             <button mat-stroked-button (click) = "addFeedbackCriteria()" > SAVE </button>
       
   </div>

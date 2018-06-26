@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, SimpleChanges } from '@angular/core';
 import { GlobalSearchService } from '../../services/global-search.service';
 import { Transit } from '../../models/transit.model';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
@@ -9,8 +9,10 @@ import { Location } from '@angular/common';
   templateUrl: './global-search.component.html',
   styleUrls: ['./global-search.component.css']
 })
-export class GlobalSearchComponent implements OnInit, OnChanges {
+export class GlobalSearchComponent implements OnInit {
 empty: boolean = true;
+emptyTransit: boolean = false;
+
 transits: Transit [];
 searchValue: string ="";
 displayedColumns = ['name', 'route'];
@@ -19,24 +21,30 @@ dataSource = new MatTableDataSource();
 @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private globalSearchService: GlobalSearchService,
-    private location: Location, ) { }
+    private location: Location ) { }
  
 
   ngOnInit(){
+    this.empty=true;
+    this.emptyTransit=false;
     this.getResults();     
   }
-  ngOnChanges(changes: SimpleChanges) {
-    this.empty=true;
-    this.getResults();        
-     
-  }
+
 
   getResults(): void{
-    this.globalSearchService.getResults().subscribe(transits => this.dataSource.data = transits);
-    if(!(this.dataSource.data=null)){
-      this.empty=false;
-    }
-    this.dataSource.paginator = this.paginator;
+    this.globalSearchService.getResults().subscribe(transits => {
+      this.dataSource.data = transits
+      if(!(transits.length===0)){
+        this.emptyTransit=true;
+        this.empty=false;
+      }
+      if(transits.length===0){
+        this.emptyTransit=false;
+        this.empty=true;
+      }
+      this.dataSource.paginator = this.paginator;
+    });  
+    
   }
   
   applyFilter(filterValue: string) {

@@ -11,24 +11,23 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AddQuestionComponent implements OnInit {
   @Input() question : Question =new Question(); 
-  
+  isReadOnly: boolean;
 
   constructor(private dialogRef: MatDialogRef<AddQuestionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any)
     {
-      
+      this.isReadOnly=data;
     } 
 
   ngOnInit() {}
   
-close(name: string) {  
-  this.dialogRef.close();
-  
+close(name: string, weight: number) {  
+  this.dialogRef.close();  
 }
 
-add(name: string){
+add(name: string, weight: number){
   if(!(name==null)){
-  this.dialogRef.close({name} as Question);
+  this.dialogRef.close({name, weight} as Question);
   }
 }
 

@@ -32,7 +32,7 @@ export class AddFeedbackCriteriaComponent implements OnInit {
   openDialog(): void {
     let dialogRef = this.dialog.open(AddQuestionComponent, {
       width: '400px',
-      data: {}
+      data: this.isReadOnly
     });
     dialogRef.afterClosed().subscribe(result => {
       if(!(result==null)){  

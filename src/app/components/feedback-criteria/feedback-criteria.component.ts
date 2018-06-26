@@ -14,7 +14,7 @@ import { Question } from '../../models/question.model';
 export class FeedbackCriteriaComponent implements OnInit {
 
   feedbackCriterias: FeedbackCriteria[];
-  displayedColumns = ['type', 'weight', 'questions'];
+  displayedColumns = ['type', 'questions'];
   dataSource = new MatTableDataSource<FeedbackCriteria>();
   data: FeedbackCriteria[];
 
@@ -25,9 +25,7 @@ export class FeedbackCriteriaComponent implements OnInit {
 
   ngOnInit() {
     this.getAllFeedbackCriteria();
-
-  }
-  
+  }  
 
   getAllFeedbackCriteria(): void {
     this.feedbackCriteriaService.getAllFeedbackCriteria()
@@ -44,7 +42,7 @@ export class FeedbackCriteriaComponent implements OnInit {
       if (searchTerm) {
         return this.containsIgnoringCase(criteria.id, searchTerm) 
         || this.containsIgnoringCase(criteria.type, searchTerm)
-        || this.containsIgnoringCase(criteria.weight, searchTerm)
+        // || this.containsIgnoringCase(criteria.weight, searchTerm)
         || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult || this.containsIgnoringCase(question.name, searchTerm), false)
       }
     };
@@ -53,9 +51,10 @@ export class FeedbackCriteriaComponent implements OnInit {
   search(searchTerm: string) {
     if (searchTerm) {
       this.dataSource.data = this.data.filter(criteria => this.containsIgnoringCase(criteria.type, searchTerm)
-      || this.containsIgnoringCase(criteria.weight, searchTerm)
+      // || this.containsIgnoringCase(criteria.weight, searchTerm)
       || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult || this.containsIgnoringCase(question.name, searchTerm), false)
-      );
+      || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult || this.containsIgnoringCase(question.weight, searchTerm), false)
+    );
     } else {
       this.dataSource.data = this.data;
     }
