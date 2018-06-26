@@ -2,6 +2,7 @@ package org.uatransport.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,7 @@ public class TransitController {
                 .map(transit -> modelMapper.map(transit, TransitDTO.class)).collect(Collectors.toList());
     }
 
+    @Cacheable(cacheNames = "cityTransits")
     @GetMapping(params = "nextLevelCategoryName")
     public List<TransitDTO> getTransitsByNextLevelCategoryName(
             @RequestParam("nextLevelCategoryName") String nextLevelCategoryName) {
