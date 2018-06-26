@@ -64,7 +64,7 @@ public class FeedbackController {
 
     @GetMapping(value = "/byStop/{transitId}")
     public Map<Stop, Double> getCapacityStopMap(@PathVariable Integer transitId,
-                                                @RequestParam(value = "stopList[]", required = false) List<Stop> stopList) {
+            @RequestParam(value = "stop-list", required = false) List<Stop> stopList) {
         Stop[] stopsVarArg = stopList.toArray(new Stop[stopList.size()]);
         return feedbackService.getStopCapacityMap(transitId, stopsVarArg);
     }
