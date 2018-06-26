@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
+
 import { Login } from '../../models/login.model';
+import { TokenStorage } from '../../services/auth/token/token-storage';
+import { TokenModel } from '../../services/auth/token/token-model';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-user-login',
@@ -11,19 +13,20 @@ import { Login } from '../../models/login.model';
 })
 export class UserLoginComponent {
 
-
   login: Login = new Login();
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private authService: AuthService, private tokenStorage: TokenStorage) {
 
   }
 
-  logIn(): void {
-    this.userService.logIn(this.login)
-      .subscribe(data => {
+  logIn() {
+    this.authService.signIn(this.login)
+      .subscribe((token: TokenModel) => {
+        this.tokenStorage.saveToken(token);
         alert('User loged successfully.');
-      });
+        this.router.navigate(['main']);
+      })
 
   }
 
-}
+ }

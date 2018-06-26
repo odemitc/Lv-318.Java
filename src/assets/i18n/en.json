@@ -14,6 +14,11 @@
   "Route" : "Route",
   "Raiting-Diagram" : "Reviews",
   "Back": "Back",
+  "Forward direction": "Forward direction",
+  "Backward direction": "Backward direction",
+  "Log In" : "Log In",
+  "Log Out" : "Log Out",
+  "Back": "Back",
   "yes": "Yes",
   "no": "No",
   "maybe": "Maybe"

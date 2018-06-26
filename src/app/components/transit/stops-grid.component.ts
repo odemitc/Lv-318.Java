@@ -3,9 +3,7 @@ import {Stop} from '../../models/stop.model';
 import {ActivatedRoute} from '@angular/router';
 import {StopService} from '../../services/stop.service';
 import {Observable} from 'rxjs';
-
 import {MatDialog} from '@angular/material';
-
 import {AddFeedbackComponent} from './components/add-feedback/add-feedback.component';
 
 @Component({
@@ -38,8 +36,7 @@ export class StopsGridComponent implements OnInit {
     this.stopsList.subscribe(stopArray =>
       this.stopArray = stopArray);
     this.checkedItems = new Array(this.stopArray.length);
-    console.log(this.selectedStops);
-    console.log(this.categoryId);
+
   }
 
   public selectStops() {
@@ -51,11 +48,8 @@ export class StopsGridComponent implements OnInit {
         this.selectedStops.splice(this.selectedStops.indexOf(this.stopArray[i]), 1);
       }
     }
-
-
     console.log(this.selectedStops);
-    console.log(this.categoryId);
-  }
+ }
 
   public openModal() {
     this.dialog.open(AddFeedbackComponent, {width: '400px', height: '500px',

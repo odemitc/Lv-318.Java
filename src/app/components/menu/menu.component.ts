@@ -3,6 +3,7 @@ import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
 import { GlobalSearchService } from '../../services/global-search.service';
 import { Location } from '@angular/common';
+import { TokenStorage } from '../../services/auth/token/token-storage';
 
 @Component({
   selector: 'app-menu',
@@ -14,6 +15,7 @@ export class MenuComponent implements OnInit, OnChanges {
 
   constructor(public app: AppComponent,
               private router: Router,
+              private tokenStorage: TokenStorage,
               private globalSearchComponent: GlobalSearchService,
               private location: Location) {
 
@@ -37,5 +39,13 @@ export class MenuComponent implements OnInit, OnChanges {
 
   isHomeRouteActivated(): boolean {
     return this.location.path().indexOf('/show-transit-scheme/') > -1;
+  }
+  hasToken(): boolean {
+    return this.tokenStorage.hasToken();
+  }
+
+  logOut() {
+    this.tokenStorage.signOut();
+    this.router.navigate(['main']);
   }
 }
