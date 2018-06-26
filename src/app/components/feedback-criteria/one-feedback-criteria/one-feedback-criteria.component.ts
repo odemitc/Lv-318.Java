@@ -3,7 +3,7 @@ import { FeedbackCriteria } from '../../../models/feedback-criteria.model';
 import { FeedbackCriteriaService } from '../../../services/feedback-criteria.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { AddQuestionComponent } from '../add-question/add-question.component';
 
 @Component({
@@ -14,7 +14,7 @@ import { AddQuestionComponent } from '../add-question/add-question.component';
 export class OneFeedbackCriteriaComponent implements OnInit {
 
   feedbackCriteria: FeedbackCriteria;
-  isReadOnly: boolean = true;
+  isReadOnly = true;
 
   constructor(private feedbackCriteriaService: FeedbackCriteriaService,
               private route: ActivatedRoute,
@@ -52,15 +52,12 @@ export class OneFeedbackCriteriaComponent implements OnInit {
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddQuestionComponent, {
+    const dialogRef = this.dialog.open(AddQuestionComponent, {
       width: '600px',
       data: this.isReadOnly
     });
     dialogRef.afterClosed().subscribe(result => {
       this.feedbackCriteria.questions.push(result);
     });
-
   }
-
-
 }
