@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FeedbackCriteriaComponent } from '../feedback-criteria.component';
 import { AddQuestionComponent } from '../add-question/add-question.component';
 import { FeedbackCriteria } from '../../../models/feedback-criteria.model';
 import { FeedbackCriteriaService } from '../../../services/feedback-criteria.service';
 import { Location } from '@angular/common';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Question } from '../../../models/question.model';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-feedback-criteria',
@@ -18,7 +16,7 @@ export class AddFeedbackCriteriaComponent implements OnInit {
   feedbackCriteria = new FeedbackCriteria();
   questions: Question [] = [];
   enumTypes: any;
-  isReadOnly: boolean = true;
+  isReadOnly = true;
 
   constructor(private feedbackCriteriaService: FeedbackCriteriaService,
               private location: Location,
@@ -31,7 +29,7 @@ export class AddFeedbackCriteriaComponent implements OnInit {
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddQuestionComponent, {
+    const dialogRef = this.dialog.open(AddQuestionComponent, {
       width: '400px',
       data: this.isReadOnly
     });

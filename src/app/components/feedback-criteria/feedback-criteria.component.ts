@@ -37,17 +37,17 @@ export class FeedbackCriteriaComponent implements OnInit {
 
   }
 
-  applyFilter(searchTerm: string) {
-    this.dataSource.filterPredicate = (criteria, searchTerm) => {
-      if (searchTerm) {
-        return this.containsIgnoringCase(criteria.id, searchTerm)
-          || this.containsIgnoringCase(criteria.type, searchTerm)
-          // || this.containsIgnoringCase(criteria.weight, searchTerm)
-          || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult
-          || this.containsIgnoringCase(question.name, searchTerm), false);
-      }
-    };
-  }
+  // applyFilter(searchTerm: string) {
+  //   this.dataSource.filterPredicate = (criteria, searchTerm) => {
+  //     if (searchTerm) {
+  //       return this.containsIgnoringCase(criteria.id, searchTerm)
+  //         || this.containsIgnoringCase(criteria.type, searchTerm)
+  //         // || this.containsIgnoringCase(criteria.weight, searchTerm)
+  //         || criteria.questions.reduce((accumulatedResult, question) => accumulatedResult
+  //         || this.containsIgnoringCase(question.name, searchTerm), false);
+  //     }
+  //   };
+  // }
 
   search(searchTerm: string) {
     if (searchTerm) {
