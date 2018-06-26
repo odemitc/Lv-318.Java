@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
 import { GlobalSearchService } from '../../services/global-search.service';
@@ -9,8 +9,8 @@ import { Location } from '@angular/common';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
-  search: string = '';
+export class MenuComponent implements OnInit, OnChanges {
+  search = '';
 
   constructor(public app: AppComponent,
               private router: Router,

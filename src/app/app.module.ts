@@ -82,9 +82,12 @@ import { GlobalSearchService } from './services/global-search.service';
 import {BackToPreviousPageBtnComponent} from './components/transit/components/back-button/back-to-previous-page-btn.component';
 import { TransitService } from './services/transit.service';
 import { BusyStopsDiagramComponent } from './components/transit/components/busy-stops-diagram/busy-stops-diagram.component';
+import { FeedbackService } from './services/feedback.service';
+import { FeedbackCriteriaService } from './services/feedback-criteria.service';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { MapsComponent } from './components/transit/components/maps/maps.component';
+import { AddFeedbackComponent } from "./components/transit/components/add-feedback/add-feedback.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -118,7 +121,9 @@ export function createTranslateLoader(http: HttpClient) {
     GlobalSearchComponent,
     BusyStopsDiagramComponent,
     BackToPreviousPageBtnComponent,
-    MapsComponent
+    MapsComponent,
+    AddFeedbackComponent,
+    BackToPreviousPageBtnComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -206,9 +211,11 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyBMbh1BuDtFteF5bxb03EKe2-hpKYre79g'}),
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService, GlobalSearchService],
+  providers: [ExcategoryService, UserService, DiagramService,
+    AuthService, TransitService, GlobalSearchService,
+    FeedbackService, FeedbackCriteriaService],
   bootstrap: [AppComponent],
-  entryComponents: [AddQuestionComponent]
+  entryComponents: [AddQuestionComponent, AddFeedbackComponent]
 })
 export class AppModule {
 }

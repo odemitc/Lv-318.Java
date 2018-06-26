@@ -7,12 +7,12 @@ import { TransitsComponent } from './components/transits/transits.component';
 import { MainComponent } from './components/main/main.component';
 import { FeedbackCriteriaComponent } from './components/feedback-criteria/feedback-criteria.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
-import { StopsGridComponent } from './components/transit/stops-grid.component';
+import {StopsGridComponent} from './components/transit/stops-grid.component';
+import { OneFeedbackCriteriaComponent } from './components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component';
+import { AddFeedbackCriteriaComponent } from './components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component';
+import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
-import {MapsComponent} from "./components/transit/components/maps/maps.component";
-import { OneFeedbackCriteriaComponent } from "./components/feedback-criteria/one-feedback-criteria/one-feedback-criteria.component";
-import { AddFeedbackCriteriaComponent } from "./components/feedback-criteria/add-feedback-criteria/add-feedback-criteria.component";
-import { GlobalSearchComponent } from "./components/global-search/global-search.component";
+import {AddFeedbackComponent} from './components/transit/components/add-feedback/add-feedback.component';
 
 const routes: Routes = [
   {path: 'category/:top/:city', component: NonExCategoryComponent},
@@ -30,7 +30,8 @@ const routes: Routes = [
   {path: 'feedback-criteria/:id', component: OneFeedbackCriteriaComponent},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'show-transit-scheme/:categoryId/:id/:name', component: StopsGridComponent},
-  {path: 'direction/:id', component: MapsComponent}
+  {path: 'feedback', component: AddFeedbackComponent}
+
 ];
 
 @NgModule({
