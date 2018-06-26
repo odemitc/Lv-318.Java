@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'user/add', component: AddUserComponent},
   {path: 'stops/:city/:id', component: StopsGridComponent},
   {path: 'user/login', component: UserLoginComponent},
-  {path: 'show-transit-scheme/:city/:id', component: StopsGridComponent}
+  {path: 'show-transit-scheme/:categoryId/:id/:name', component: StopsGridComponent}
 ];
 
 @NgModule({
