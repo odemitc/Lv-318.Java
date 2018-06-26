@@ -58,11 +58,6 @@ export class BusyStopsDiagramComponent implements OnInit {
       );
     }
 
-    // this.chart.data.labels.pop();
-    // this.chart.update();
-    // this.chart.data.labels.push(stops);
-    // this.chart.update();
-
   }
 
 

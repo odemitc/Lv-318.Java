@@ -6,10 +6,6 @@ import {Observable} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {AddFeedbackComponent} from './components/add-feedback/add-feedback.component';
 
-import {MatDialog} from '@angular/material';
-
-import {AddFeedbackComponent} from './components/add-feedback/add-feedback.component';
-
 @Component({
   selector: 'app-stops-grid',
   templateUrl: './stops-grid.component.html',
