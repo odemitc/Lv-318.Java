@@ -4,7 +4,6 @@ import org.uatransport.entity.FeedbackCriteria;
 
 import java.util.List;
 
-
 public interface FeedbackCriteriaService {
     FeedbackCriteria save(FeedbackCriteria feedbackCriteria);
 
