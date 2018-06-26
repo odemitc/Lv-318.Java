@@ -30,7 +30,7 @@ public class UaTransportApplication {
         ConfigurableApplicationContext context = SpringApplication.run(UaTransportApplication.class, args);
         logger.debug("--Application Started--");
 
-         EwayScheduleUpdate scheduleUpdate = (EwayScheduleUpdate) context.getBean(EwayScheduleUpdate.class);
-         scheduleUpdate.updateTransitData();
+//         EwayScheduleUpdate scheduleUpdate = (EwayScheduleUpdate) context.getBean(EwayScheduleUpdate.class);
+//         scheduleUpdate.updateTransitData();
     }
 }

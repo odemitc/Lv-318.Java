@@ -7,11 +7,9 @@ import org.apache.http.client.utils.URIBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.uatransport.entity.Point;
 import org.uatransport.entity.Stop;
 import org.uatransport.entity.Transit;
 import org.uatransport.exception.ResourceNotFoundException;
-import org.uatransport.repository.PointRepository;
 import org.uatransport.repository.StopRepository;
 import org.uatransport.repository.TransitRepository;
 import org.uatransport.service.ewayutil.ewaystopentity.EwayPoint;
@@ -26,7 +24,6 @@ import java.util.List;
 @Service
 public class EwayStopListSaver {
     private final TransitRepository transitRepository;
-    private final PointRepository pointRepository;
     private final StopRepository stopRepository;
 
     private String getUrlByID(String transitId) {
@@ -58,7 +55,7 @@ public class EwayStopListSaver {
         EwayRouteWithPoints route = ewayStopResponse.getRoute();
         EwayPoints ewayPoints = route.getPoints();
         EwayPoint[] arrayOfPoints = ewayPoints.getPoint();
-        List<Point> points = new ArrayList<>();
+        List<Stop> stops = new ArrayList<>();
         for (EwayPoint point : arrayOfPoints) {
             if (!(point.getTitle() == null)) {
                 Stop transitStop = new Stop();
@@ -66,15 +63,15 @@ public class EwayStopListSaver {
                 transitStop.setLat(point.getLat());
                 transitStop.setStreet(point.getTitle());
                 if (point.getDirection() == 1) {
-                    transitStop.setDirection(Point.DIRECTION.FORWARD);
+                    transitStop.setDirection(Stop.DIRECTION.FORWARD);
                 } else {
-                    transitStop.setDirection(Point.DIRECTION.BACKWARD);
+                    transitStop.setDirection(Stop.DIRECTION.BACKWARD);
                 }
                 stopRepository.save(transitStop);
-                points.add(transitStop);
+                stops.add(transitStop);
             }
         }
-        transit.setPoints(points);
+        transit.setStops(stops);
         transitRepository.save(transit);
     }
 }
