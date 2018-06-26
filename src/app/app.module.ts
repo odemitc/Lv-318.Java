@@ -59,12 +59,12 @@ import { MainComponent } from './components/main/main.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { FeedbackCriteriaComponent } from './components/feedback-criteria/feedback-criteria.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
-import { UserLoginComponent } from './components/user-login/user-login.component';
 import { BusyHoursDiagramComponent } from './components/transit/components/busy-hours-diagram/busy-hours-diagram.component';
 import { MessageComponent } from './components/message/message.component';
 import { UserService } from './services/user.service';
 import { TokenStorage } from './services/auth/token/token-storage';
 import { AuthService } from './services/auth/auth.service';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 import { StopService } from './services/stop.service';
 import { AdminGuardService } from './services/guard/admin-guard.service';
 import { AuthGuardService } from './services/guard/auth-guard.service';
@@ -102,7 +102,6 @@ export function createTranslateLoader(http: HttpClient) {
     MainComponent,
     FeedbackCriteriaComponent,
     AddUserComponent,
-    UserLoginComponent,
     MessageComponent,
     StopsGridComponent,
     QuestionComponent,
@@ -112,7 +111,8 @@ export function createTranslateLoader(http: HttpClient) {
     BusyHoursDiagramComponent,
     OneQuestionComponent,
     BusyStopsDiagramComponent,
-    BackToPreviousPageBtnComponent
+    BackToPreviousPageBtnComponent,
+    UserLoginComponent
   ],
   exports: [
     MatAutocompleteModule,
@@ -188,11 +188,13 @@ export function createTranslateLoader(http: HttpClient) {
     AdminGuardService,
     ClientGuardService,
     AuthGuardService,
-    ExcategoryService, UserService,
+    ExcategoryService,
+    UserService,
     DiagramService,
     AuthService,
     TokenStorage,
-    StopService],
+    StopService,
+    TransitService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
