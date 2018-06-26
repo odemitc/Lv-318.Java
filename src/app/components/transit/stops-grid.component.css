@@ -1,5 +1,4 @@
 .demo-grid-list {
-  position: relative;
   top: 50px;
   width: auto;
   margin: 100px 100px;
@@ -33,9 +32,7 @@ p {
 }
 
 mat-tab-group {
-  position: relative;
-
-  width: 550px;
+  width: 1200px;
   height: auto;
 }
 
@@ -46,6 +43,6 @@ mat-tab-group {
 }
 
 .grid-list {
-  min-width: 900px;
+  min-width: 1200px;
 }
 

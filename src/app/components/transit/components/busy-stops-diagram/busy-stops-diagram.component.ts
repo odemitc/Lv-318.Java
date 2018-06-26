@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterViewInit, Component, Input} from '@angular/core';
+import {AfterContentChecked, AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
 
 import {environment} from '../../../../../environments/environment';
@@ -16,7 +16,6 @@ export class BusyStopsDiagramComponent implements OnInit {
   @Input() stopList: Stop[];
 
   chart;
-  keys;
   values;
 
   constructor(private diagramService: DiagramService, private stopService: StopService) {
@@ -63,19 +62,14 @@ export class BusyStopsDiagramComponent implements OnInit {
     // this.chart.update();
     // this.chart.data.labels.push(stops);
     // this.chart.update();
-    console.log('update');
 
   }
 
 
   ngOnInit(): void {
-
-
     this.values = this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=' + this.stopList).subscribe(
       res => {
 
-
-    console.log(this.keys);
     let CHART = document.getElementById('lineChart1');
 
     this.chart = new Chart(CHART, {
@@ -106,19 +100,4 @@ export class BusyStopsDiagramComponent implements OnInit {
 
   }
 
-  public removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.pop();
-    });
-    // chart.update();
-  }
-
-  public addData(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.push(data);
-    });
-    chart.update();
-  }
 }

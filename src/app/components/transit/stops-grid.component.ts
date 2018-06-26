@@ -52,10 +52,7 @@ export class StopsGridComponent implements OnInit {
       }
     }
 
-    console.log(this.child);
     this.child.updateChartData(this.selectedStops);
-    console.log(this.selectedStops);
-    console.log(this.categoryId);
 
   }
 

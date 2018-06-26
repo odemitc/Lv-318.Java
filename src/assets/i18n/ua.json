@@ -7,9 +7,10 @@
   "By-Hour" : "Завантаження за годинами",
   "By-Stop" : "Завантаження за зупинками",
   "Average-Rate" : "Загальний рейтинг",
-  "Forward direction": "Прямий напрямок",
-  "Backward direction": "Зворотній напрямок"
   "Route" : "Маршрут",
   "Raiting-Diagram" : "Відгуки",
-  "Back" : "Повернутись"
+  "Back" : "Повернутись",
+  "Forward direction": "Прямий напрямок",
+  "Backward direction": "Зворотній напрямок"
+
   }
