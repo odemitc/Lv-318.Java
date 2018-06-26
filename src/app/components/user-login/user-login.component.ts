@@ -18,12 +18,10 @@ export class UserLoginComponent {
 
   }
 
-  logIn(): void {
-    this.userService.logIn(this.login)
-      .subscribe(data => {
-        alert('User loged successfully.');
-      });
-
-  }
+  // logIn(): void {
+  //   this.userService.logIn(this.login)
+  //     .subscribe(data => {
+  //       alert('User loged successfully.');
+  //     });
 
 }
