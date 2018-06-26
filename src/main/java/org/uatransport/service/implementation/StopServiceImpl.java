@@ -18,24 +18,22 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StopServiceImpl implements StopService {
 
-
     private final StopRepository stopRepository;
 
     @Override
     @Transactional
-    public Stop save(Stop stop) {
-        if (stop == null) {
+    public Stop save(Stop point) {
+        if (point == null) {
             throw new IllegalArgumentException("Stop object should not be empty");
         }
-        return stopRepository.save(stop);
+        return stopRepository.save(point);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Stop getById(Integer id) {
         return stopRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String
-                        .format("Stop with id '%s' not found", id)));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Stop with id '%s' not found", id)));
     }
 
     @Override
@@ -54,19 +52,13 @@ public class StopServiceImpl implements StopService {
         if (stop == null) {
             throw new IllegalArgumentException("Stop value should not be null!");
         }
-        if (stopRepository.existsById(stop.getId())) return stopRepository.save(stop);
-        else throw new ResourceNotFoundException(String
-                .format("Stop with id '%s' not found", stop.getId()));
+        if (stopRepository.existsById(stop.getId())) {
+            return stopRepository.save(stop);
+        } else {
+            throw new ResourceNotFoundException(String.format("Stop with id '%s' not found", stop.getId()));
+        }
     }
 
-    @Override
-    @Transactional
-    public List<Stop> getByStreet(String street) {
-        if (Strings.isNullOrEmpty(street)) {
-            throw new IllegalArgumentException("Parameter street should not be null!");
-        }
-        return stopRepository.findByStreet(street);
-    }
     @Transactional
     public List<Stop> getByTransitId(Integer id) {
         return stopRepository.findByTransitId(id);
@@ -75,17 +67,16 @@ public class StopServiceImpl implements StopService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Stop getByTransitIdAndStopName(Integer transitId, String street) {
-        return stopRepository.findByTransitIdAndStopName(transitId, street );
+        return stopRepository.findByTransitIdAndStopName(transitId, street);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Integer getIndexByTransitIdAndStopName(Integer transitId, String street) {
-        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId()))
-            return stopRepository.findIndexByTransitIdAndStopName(transitId, street );
-        else throw new ResourceNotFoundException("Stop  not found");
-
+        if (stopRepository.existsById(getByTransitIdAndStopName(transitId, street).getId())) {
+            return stopRepository.findIndexByTransitIdAndStopName(transitId, street);
+        } else {
+            throw new ResourceNotFoundException("Stop  not found");
+        }
     }
-
-
 }

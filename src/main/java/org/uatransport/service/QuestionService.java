@@ -1,6 +1,5 @@
 package org.uatransport.service;
 
-
 import org.uatransport.entity.Question;
 
 import java.util.List;
@@ -21,4 +20,5 @@ public interface QuestionService {
 
     List<Question> getByQuestionName(String questionName);
 
+    List<Question> getByFeedbackCriteriaId(Integer feedbackCriteriaId);
 }

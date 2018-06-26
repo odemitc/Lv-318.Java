@@ -1,28 +1,19 @@
 package org.uatransport.config;
 
-
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.uatransport.filter.CorsFilter;
-
-import java.util.Collections;
+import org.uatransport.config.modelmapperconfig.TransitMap;
+import org.uatransport.entity.Transit;
+import org.uatransport.entity.dto.TransitDTO;
 
 @Configuration
 public class Config {
 
     @Bean
     public ModelMapper modelMapper() {
-        return new ModelMapper();
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.createTypeMap(Transit.class, TransitDTO.class).setConverter(new TransitMap());
+        return modelMapper;
     }
-
-//    @Bean
-//    public FilterRegistrationBean filterRegistrationBean(){
-//        FilterRegistrationBean filter = new FilterRegistrationBean();
-//        filter.setFilter(new CorsFilter());
-//        filter.setUrlPatterns(Collections.singleton("/**"));
-//        filter.setName("Cors filter");
-//        return filter;
-//    }
 }

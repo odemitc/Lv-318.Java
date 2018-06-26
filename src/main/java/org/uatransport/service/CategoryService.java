@@ -1,9 +1,7 @@
 package org.uatransport.service;
 
-import org.springframework.data.jpa.domain.Specification;
+import org.uatransport.config.SearchCategoryParam;
 import org.uatransport.entity.ExtendableCategory;
-import org.uatransport.entity.NonExtendableCategory;
-import org.uatransport.entity.dto.NonExtendableCategoryDto;
 
 import java.util.List;
 
@@ -17,18 +15,9 @@ public interface CategoryService {
 
     ExtendableCategory getById(Integer id);
 
-    List<ExtendableCategory> getByNextLevelCategoryId(Integer id);
-
-    NonExtendableCategory addNonExtendableCategory(NonExtendableCategoryDto nonExtendableCategory);
-
-    List<NonExtendableCategory> getByNames(String name, String next);
-
     List<ExtendableCategory> getListTopExtendableCategories();
 
     void delete(ExtendableCategory extendableCategory);
 
-    ExtendableCategory getByName(String name);
-
-    List<ExtendableCategory> getAll(Specification specification);
-
+    List<ExtendableCategory> getAll(SearchCategoryParam searchCategoryParam);
 }

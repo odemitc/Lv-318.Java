@@ -8,7 +8,6 @@ import org.uatransport.exception.ResourceNotFoundException;
 import org.uatransport.repository.FeedbackCriteriaRepository;
 import org.uatransport.service.FeedbackCriteriaService;
 
-;
 import java.util.List;
 
 @Service
@@ -30,7 +29,6 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
         feedbackCriteriaRepository.deleteById(id);
     }
 
-
     @Transactional
     public FeedbackCriteria update(FeedbackCriteria feedbackCriteria) {
         if (feedbackCriteria == null) {
@@ -41,8 +39,9 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
             return feedbackCriteriaRepository.saveAndFlush(feedbackCriteria);
         }
 
-        return feedbackCriteriaRepository.findById(feedbackCriteria.getId()).orElseThrow(() -> new ResourceNotFoundException(
-            String.format("This FeedbackCriteria does not found", feedbackCriteria)));
+        return feedbackCriteriaRepository.findById(feedbackCriteria.getId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format("This FeedbackCriteria does not found", feedbackCriteria)));
     }
 
     @Override
@@ -53,10 +52,9 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     @Override
     @Transactional(readOnly = true)
     public FeedbackCriteria getById(Integer id) {
-        return feedbackCriteriaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String
-            .format("FeedbackCriteria with id '%s' not found", id)));
+        return feedbackCriteriaRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException(String.format("FeedbackCriteria with id '%s' not found", id)));
     }
-
 
     @Override
     @Transactional(readOnly = true)
@@ -92,5 +90,11 @@ public class FeedbackCriteriaServiceImpl implements FeedbackCriteriaService {
     @Transactional(readOnly = true)
     public List<FeedbackCriteria> getByQuestionsGroupId(Integer groupId) {
         return feedbackCriteriaRepository.findByQuestionsGroupId(groupId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<FeedbackCriteria> getByTypeAndCategoryId(Integer categoryId, String type) {
+        return feedbackCriteriaRepository.findByTypeAndNonExtendableCategoryId(categoryId, type);
     }
 }

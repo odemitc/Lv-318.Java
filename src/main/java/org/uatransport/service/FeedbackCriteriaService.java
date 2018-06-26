@@ -4,7 +4,6 @@ import org.uatransport.entity.FeedbackCriteria;
 
 import java.util.List;
 
-
 public interface FeedbackCriteriaService {
     FeedbackCriteria save(FeedbackCriteria feedbackCriteria);
 
@@ -28,5 +27,5 @@ public interface FeedbackCriteriaService {
 
     List<FeedbackCriteria> getByQuestionsGroupId(Integer groupId);
 
-
+    List<FeedbackCriteria> getByTypeAndCategoryId(Integer categoryId,String type);
 }
