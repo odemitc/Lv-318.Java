@@ -192,7 +192,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ExcategoryService, UserService, DiagramService, AuthService, GlobalSearchService],
+  providers: [ExcategoryService, UserService, DiagramService, AuthService, GlobalSearchService, TransitService],
   bootstrap: [AppComponent],
   entryComponents: [AddQuestionComponent]
 })
