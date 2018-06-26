@@ -52,8 +52,7 @@ public class FeedbackController {
     }
 
     @GetMapping(value = "/rate/{transitId}/{userId}")
-    public Double getAverageRateByTransitAndUser(
-            @PathVariable Integer transitId, @PathVariable Integer userId) {
+    public Double getAverageRateByTransitAndUser(@PathVariable Integer transitId, @PathVariable Integer userId) {
         return feedbackService.getAverageRateByTransitAndUser(transitId, userId);
     }
 
