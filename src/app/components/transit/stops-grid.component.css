@@ -1,5 +1,8 @@
 .demo-grid-list {
-  margin: 150px 150px;
+  position: relative;
+  top: 50px;
+  width: auto;
+  margin: 100px 100px;
 }
 
 .mat-card {
@@ -30,7 +33,9 @@ p {
 }
 
 mat-tab-group {
-  width: auto;
+  position: relative;
+
+  width: 550px;
   height: auto;
 }
 

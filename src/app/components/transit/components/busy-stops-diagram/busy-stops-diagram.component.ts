@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterViewInit, Component, Input} from '@angular/core';
 import {Chart} from 'chart.js';
 
 import {environment} from '../../../../../environments/environment';
