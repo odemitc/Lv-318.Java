@@ -21,36 +21,32 @@ export class BusyStopsDiagramComponent implements OnInit {
   constructor(private diagramService: DiagramService, private stopService: StopService) {
   }
 
-  public updateChartData(stops: Stop[]) {
-    if(stops.length >= 2 ) {
-      this.chart.destroy();
-      this.values.unsubscribe();
-      this.stopService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=' + stops).subscribe(
-        res => {
 
+  ngAfterViewInit(): void {
+    this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=')
+      .subscribe(res => {
+        const CHART = document.getElementById('lineChart1');
 
-          let CHART = document.getElementById('lineChart1');
+        this.lineChart1 = new Chart(CHART, {
+          type: 'line',
+          data: {
+            labels: Object.keys(res).map(data => data.substring(data.indexOf('=', 2) + 11, data.indexOf(', lat'))),
+            datasets: [{
+              fill: true,
+              lineTension: 0.5,
+              backgroundColor: 'rgba(75,192,192,0.4)',
+              borderColor: 'rgba(75,192,192,1)',
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJointStyle: 'miter',
+              data: Object.values(res).concat([0, 100]).map(data => (<number>data).toPrecision(3))
+            }]
+          },
+          options: {
+            legend: {
+              display: false
 
-          this.chart = new Chart(CHART, {
-            type: 'line',
-            data: {
-              labels: Object.keys(res).map(data => data.substring(data.lastIndexOf('=') + 1, data.indexOf(')'))),
-              datasets: [{
-                fill: true,
-                lineTension: 0.6,
-                backgroundColor: 'rgba(75,192,192,0.4)',
-                borderColor: 'rgba(75,192,192,1)',
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJointStyle: 'miter',
-                data: Object.values(res).concat([0, 100])
-              }]
-            },
-            options: {
-              legend: {
-                display: false
-              }
             }
           });
 
