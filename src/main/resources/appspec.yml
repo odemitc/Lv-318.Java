@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: ua-transport-1.0.jara
+  - source: ua-transport-1.0.jar
     destination: /home/ec2-user/server
     overwrite: yes
 hooks:
