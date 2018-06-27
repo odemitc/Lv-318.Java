@@ -133,7 +133,7 @@ export class MapsComponent implements OnInit {
   public lngStatic: Number = 24.028803095222;
   public firstStopMarker: MarkerModel = new MarkerModel();
   public secondStopMarker: MarkerModel = new MarkerModel();
-  public icon = 'http://localhost:8080/category/img?link=static/bus-stop.png';
+  public icon = environment.serverURL + '/category/img?link=static/bus-stop.png';
   public direction = undefined;
   public travelMode = 'DRIVING';
   private serviceUrl = environment.serverURL + '/stop';

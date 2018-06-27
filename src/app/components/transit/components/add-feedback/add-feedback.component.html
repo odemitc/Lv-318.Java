@@ -10,22 +10,22 @@
         <div class="question">
           {{question}}
         </div>
-      </div>
-      <div *ngIf="feedback.type == 'RATING'">
-        <mat-form-field class="answer">
-          <input matInput type="text" min="0" max="10" placeholder="answer" [(ngModel)]="feedback.answer"/>
-          <mat-hint align="end">0/ 10</mat-hint>
-        </mat-form-field>
-      </div>
 
-      <div *ngIf="feedback.type == 'ACCEPTER'">
-        <div class="radio">
-          <label for="answer" *ngFor="let answer of checkBoxAnswers ">
-            <input type="radio" [value]="answer" [(ngModel)]="feedback.answer">{{ answer | lowercase | translate }}
-          </label>
+        <div *ngIf="feedback.type == 'RATING'">
+          <mat-form-field class="answer">
+            <input matInput type="text" min="0" max="10" placeholder="answer" [(ngModel)]="feedback.answer"/>
+            <mat-hint align="end">0/ 10</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="feedback.type == 'ACCEPTER'">
+          <div class="radio">
+            <label for="answer" *ngFor="let answer of checkBoxAnswers ">
+              <input type="radio" [value]="answer" [(ngModel)]="feedback.answer">{{ answer | lowercase | translate }}
+            </label>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
   <div class="buttons">

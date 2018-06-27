@@ -30,9 +30,11 @@
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"
-               [routerLink]="['/show-transit-scheme', transit.categoryId,
-               transit.id, transit.name]"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+               <!--a routerLink='/show-transit-scheme/{categoryId}/{id}/{name}'>-->
+               <!--[routerLink]="['/show-transit-scheme', transit.categoryId,-->
+               <!--transit.id, transit.name]">-->
+               </mat-row>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
   </div>
