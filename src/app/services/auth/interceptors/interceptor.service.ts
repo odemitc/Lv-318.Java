@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {TokenStorage} from '../token/token-storage';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { TokenStorage } from '../token/token-storage';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
-import {environment} from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
-import 'rxjs/add/observable/fromPromise'
+import 'rxjs/add/observable/fromPromise';
 
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
@@ -21,15 +21,11 @@ export class InterceptorService implements HttpInterceptor {
       req = this.addAuthHeaderToRequest(req);
     }
     return next.handle(req);
-
   }
 
   private addAuthHeaderToRequest(request: HttpRequest<any>): HttpRequest<any> {
-    console.log(request);
     return request.clone({
       headers: request.headers.append(this.accessTokenHeader, `Bearer ${this.tokenStorage.getAccessToken()}`)
-
     });
-
   }
 }

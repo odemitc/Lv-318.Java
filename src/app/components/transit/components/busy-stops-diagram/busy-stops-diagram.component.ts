@@ -1,26 +1,22 @@
-import {AfterContentChecked, AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {Chart} from 'chart.js';
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { Chart } from 'chart.js';
 
-import {environment} from '../../../../../environments/environment';
-import {DiagramService} from '../../../../services/diagram.service';
-import {Stop} from '../../../../models/stop.model';
-import {StopService} from "../../../../services/stop.service";
+import { environment } from '../../../../../environments/environment';
+import { DiagramService } from '../../../../services/diagram.service';
+import { Stop } from '../../../../models/stop.model';
 
 @Component({
   selector: 'app-busy-stops-diagram',
   templateUrl: './busy-stops-diagram.component.html',
   styleUrls: ['./busy-stops-diagram.component.css']
 })
-export class BusyStopsDiagramComponent implements OnInit {
+export class BusyStopsDiagramComponent implements AfterViewInit {
   @Input() id: number;
   @Input() stopList: Stop[];
+  lineChart1;
 
-  chart;
-  values;
-
-  constructor(private diagramService: DiagramService, private stopService: StopService) {
+  constructor(private diagramService: DiagramService) {
   }
-
 
   ngAfterViewInit(): void {
     this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=')
@@ -46,49 +42,9 @@ export class BusyStopsDiagramComponent implements OnInit {
           options: {
             legend: {
               display: false
-
             }
-          });
-
-        }
-      );
-    }
-
+          }
+        });
+      });
   }
-
-
-  ngOnInit(): void {
-    this.values = this.diagramService.getResults(environment.serverURL + '/feedback/byStop/' + this.id + '?stop-list=' + this.stopList).subscribe(
-      res => {
-
-    let CHART = document.getElementById('lineChart1');
-
-    this.chart = new Chart(CHART, {
-      type: 'line',
-      data: {
-        labels: Object.keys(res).map(data => data.substring(data.lastIndexOf('=') + 1, data.indexOf(')'))),
-        datasets: [{
-          fill: true,
-          lineTension: 0.6,
-          backgroundColor: 'rgba(75,192,192,0.4)',
-          borderColor: 'rgba(75,192,192,1)',
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJointStyle: 'miter',
-          data: Object.values(res).concat([0, 100]).map(data => (<number>data).toPrecision(3))
-        }]
-      },
-      options: {
-        legend: {
-          display: false
-        }
-      }
-    });
-
-      }
-    );
-
-  }
-
 }

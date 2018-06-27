@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {JwtHelperService} from '@auth0/angular-jwt';
-import {TokenModel} from './token-model';
-import {determineRole, Role} from '../roles';
+import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { TokenModel } from './token-model';
+import { determineRole, Role } from '../roles';
 
 const ACCESS_TOKEN = 'access_token';
 const REFRESH_TOKEN = 'refresh_token';

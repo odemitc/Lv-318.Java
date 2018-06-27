@@ -1,13 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest,
-  HttpResponse
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { TokenStorage } from '../token/token-storage';
 import { TokenModel } from '../token/token-model';
@@ -26,12 +18,9 @@ export class ExpirationService implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.tokenStorage.isExpired()) {
-      req = this.addRefreshTokentToRequest(req);
-    }
     return next.handle(req).do(response => {
         if (response instanceof HttpResponse) {
-          if (response.headers.has(this.accessTokenHeader) && response.headers.has(this.refreshTokenHeader)) {
+          if (response.headers.has(this.accessTokenHeader)) {
             this.tokenStorage.saveToken(new TokenModel(response.headers.get(this.accessTokenHeader)));
           }
         }
@@ -39,7 +28,7 @@ export class ExpirationService implements HttpInterceptor {
       },
       error => {
         if (error instanceof HttpErrorResponse) {
-          if (error.status == 401) {
+          if (error.status === 401) {
             this.tokenStorage.signOut();
             this.router.navigate(['/']);
           }

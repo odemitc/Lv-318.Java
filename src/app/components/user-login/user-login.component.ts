@@ -25,8 +25,6 @@ export class UserLoginComponent {
         this.tokenStorage.saveToken(token);
         alert('User loged successfully.');
         this.router.navigate(['main']);
-      })
-
+      });
   }
-
- }
+}
