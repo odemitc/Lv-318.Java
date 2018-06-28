@@ -39,8 +39,4 @@ public interface FeedbackService {
 
     EnumMap<AccepterFeedback, Double> getAccepterAnswerPercentageMap(Integer transitId);
 
-    Double getAverageRateForRateAnswersByTransitAndUser(Integer transitId, Integer userId);
-
-    Double getAverageRateForRateAnswersByTransitId(Integer transitId);
-
 }
