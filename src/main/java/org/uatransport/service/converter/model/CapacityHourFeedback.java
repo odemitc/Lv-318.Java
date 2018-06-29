@@ -3,7 +3,6 @@ package org.uatransport.service.converter.model;
 import com.google.common.collect.Range;
 import lombok.Data;
 
-import java.util.Comparator;
 import java.util.Objects;
 
 @Data
